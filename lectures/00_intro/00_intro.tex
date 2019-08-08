@@ -1,0 +1,133 @@
+%**************************************************************************************
+% License:
+% CC BY-NC-SA 4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)
+%**************************************************************************************
+
+\documentclass[notes]{beamer}
+
+\mode<presentation> {
+
+\usetheme{Madrid}
+
+% Burnt orange
+\definecolor{burntorange}{rgb}{0.8, 0.33, 0.0}
+\colorlet{beamer@blendedblue}{burntorange}
+% Pale yellow
+\definecolor{paleyellow}{rgb}{1.0, 1.0, 0.953}
+\setbeamercolor{background canvas}{bg=paleyellow}
+% Secondary and tertiary palett
+\setbeamercolor*{palette secondary}{use=structure,fg=white,bg=burntorange!80!black}
+\setbeamercolor*{palette tertiary}{use=structure,fg=white,bg=burntorange!60!black}
+
+% To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}
+% To replace the footer line in all slides with a simple slide count uncomment this line
+%\setbeamertemplate{footline}[page number]
+
+% To remove the navigation symbols from the bottom of all slides uncomment this line
+%\setbeamertemplate{navigation symbols}{}
+}
+
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{breqn}
+\usepackage{graphicx} % for figures
+\usepackage{subcaption} % for subplots 
+\usepackage[labelsep=space,tableposition=top]{caption}
+\renewcommand{\figurename}{Fig.} 
+\usepackage{cleveref}
+\usepackage{caption,subcaption}% http://ctan.org/pkg/{caption,subcaption}
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{multirow}
+
+% To print 2 slides on a page
+%\usepackage{handoutWithNotes}
+%\pgfpagesuselayout{2 on 1}[border shrink=2mm]
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+% The short title appears at the bottom of every slide, the full title is only on the title page
+\title[CE394M: isoparametric - gauss integration]{CE 311K: Introduction to Computer Methods} 
+\author{Krishna Kumar} % name
+\institute[UT Austin] % institution 
+{
+University of Texas at Austin \\
+\medskip
+\textit{
+  \url{krishnak@utexas.edu}} % Your email address
+}
+\date{\today} % Date, can be changed to a custom date
+
+\begin{document}
+
+\begin{frame}
+\titlepage % title page as the first slide
+\end{frame}
+
+\begin{frame}
+ % Table of contents slide, comment this block out to remove it
+ \frametitle{Overview}
+ % Throughout your presentation, if you choose to use \section{} and \subsection{} 
+ % commands, these %will automatically be printed on this slide as an overview 
+ \tableofcontents
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+% slides
+%----------------------------------------------------------------------------------------
+%------------------------------------------------
+\begin{frame}
+	\frametitle{Famous people in computing}
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=\textwidth]{figs/turing-bombe.png}
+		\caption*{Credit: Rutherford Journal}
+	\end{figure}
+\end{frame}
+
+\note{
+	Enigma has 150,738,274,937,250 possible states.
+}
+
+%------------------------------------------------
+\begin{frame}
+	\frametitle{Famous people in computing}
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=\textwidth]{figs/hamilton-bouman.png}
+		\caption*{Credits: MIT Museum  and PBS}
+	\end{figure}
+\end{frame}
+
+\note{
+	Margaret Hamilton next to a stack of the Apollo Guidance Computer source code (1969, with 11,000 lines of code running on 72 kilobytes of computer memory, credits: MIT Museum) and Katie Bouman who developed the algorithm for creating the first-ever image of black hole (2019, credits: PBS) and the HDD of 5 petabytes of data.
+}
+
+\section{Simulations}
+%------------------------------------------------
+\begin{frame}
+\frametitle{How to animate like Disney}
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.85\textwidth]{figs/ana-before-snow.png}
+	\caption*{}
+\end{figure}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{Snow simulations}
+\mode<beamer>{
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=0.85\textwidth]{figs/ana-snow.png}
+		\caption*{Snow simulation}
+	\end{figure}
+}
+\mode<handout>{
+	\vspace{5cm}
+}
+\end{frame}
+
+
+\end{document}
