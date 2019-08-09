@@ -85,7 +85,7 @@ University of Texas at Austin \\
 	\begin{figure}[ht]
 		\centering
 		\includegraphics[width=\textwidth]{figs/turing-bombe.png}
-		\caption*{Enigma has 150,738,274,937,250 possible states. Credits: Rutherford journal}
+		\caption*{Enigma has 150,738,274,937,250 possible states. (credit: Rutherford journal)}
 	\end{figure}
 \end{frame}
 
@@ -99,8 +99,9 @@ University of Texas at Austin \\
 	\begin{figure}[ht]
 		\centering
 		\includegraphics[width=\textwidth]{figs/hamilton-bouman.png}
-		\caption*{Margaret Hamilton next to a stack of the Apollo Guidance Computer source code (1969, credits: MIT Museum) and Katie Bouman who developed the algorithm for creating the first-ever image of black hole (2019, credits: PBS).}
+		\caption*{Margaret Hamilton next to a stack of the Apollo Guidance Computer source code (1969, credit: MIT Museum) and Katie Bouman who developed the algorithm for creating the first-ever image of black hole (2019, credits: PBS).}
 	\end{figure}
+	\textcolor{blue}{\faQuestionCircleO ~Could you guess the storage size requirements?}
 \end{frame}
 
 \note{
@@ -121,6 +122,7 @@ University of Texas at Austin \\
 \note{
 	Scientists have obtained the first image of a black hole, using Event Horizon Telescope observations of the center of the galaxy M87. The image shows a bright ring formed as light bends in the intense gravity around a black hole that is 6.5 billion times more massive than the Sun. The task of observing this super massive black hole is extremely hard, the size ratio is same as observing an orange on the surface of moon from the Earth.
 }
+
 \section{Simulations}
 %------------------------------------------------
 \begin{frame}
@@ -157,6 +159,24 @@ University of Texas at Austin \\
 		\centering
 		\includegraphics[width=\textwidth]{figs/anna-snow.png}
 		\caption*{\textcolor{blue}{\faCommentsO ~How to achieve the snow simulation?}}
+	\end{figure}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+	\frametitle{Modeling the real world: Spherical Cow}
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=0.65\textwidth]{figs/spherical-cow.png}
+	\end{figure}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+	\frametitle{Modeling snow}
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=\textwidth]{figs/snow-model.png}
 	\end{figure}
 \end{frame}
 
@@ -206,6 +226,8 @@ University of Texas at Austin \\
 			\item Representation of snow: Each snow flake is modeled as a particle
 			\item Physics: our model or parameters of how the snow behaves
 			\item Solver: How the snow would move and interact with the objects in the scene.
+			\item Algorithm: A sequence of logical steps required to perform a specific task.
+			\item Implementation and verification of our snow model.
 		\end{itemize}
 		\faLightbulbO~\textcolor{green}{This is a \textbf{simulation}.}
 	}
@@ -223,8 +245,14 @@ University of Texas at Austin \\
 \end{frame}
 
 \note{
-	 A simulation is an approximate imitation of the operation of a process or system. The first step is to create model, which represents the system's key characteristics, such as its behavior, functions and abstract or physical properties. The model represents the system itself, whereas the simulation represents its operation over time.
+	 A simulation is an approximate imitation of the operation of a process or system. The first step is to create model, which represents the system's key characteristics, such as its behavior, functions and abstract or physical properties. The model represents the system itself, whereas the simulation represents its operation over time.	
+	 
+	 There are several numerical techniques that can be used to solve a mathematical problem. They differ in accuracy, length of calulations, and difficulty in programming.
+	 
+	 Since numerical solutions are an approximation and  the computer program that executes the numerical method might have errors (or bugs), a numerical solution needs to be examined closely.
 }
+
+
 
 %------------------------------------------------
 \begin{frame}
@@ -242,6 +270,7 @@ University of Texas at Austin \\
 }
 \end{frame}
 
+\section{Numerical solution}
 %------------------------------------------------
 \subsection{Numerical solution of a sliding block}
 \begin{frame}
@@ -249,6 +278,7 @@ University of Texas at Austin \\
 	\begin{figure}[ht]
 		\centering
 		\includegraphics[width=\textwidth]{figs/egypt-pyramid.jpg}
+		\caption*{A wall painting from the tomb of Djehutihotep (credit: martinhumanities.com)}
 	\end{figure}
 \end{frame}
 
@@ -284,32 +314,32 @@ University of Texas at Austin \\
 %------------------------------------------------
 \begin{frame}
 	\frametitle{Numerical solution of a sliding block: Forces}
-	\begin{minipage}[t]{0.75\linewidth}
+	\begin{minipage}[t]{0.7\linewidth}
 	\mode<beamer>{		
 		\begin{align*}
-			& F_y = F \sin \theta \quad \& \quad F_x = F \cos \theta \\
+			& F_x = F \cos \theta \quad \& \quad F_y = F \sin \theta\\
 			& F_f = \mu \cdot F_N = \mu \cdot W - \mu F_y = \mu m g - \mu F \sin \theta \\
 			& \text{Vertical forces} \sum F_{vert} \uparrow: F_y + F_N - W = 0 \\
 			& F_N = \mu m g - F \sin \theta \\
 			& \text{Horizontal forces} \sum F_{hor} \rightarrow: F_x + F_f = 0 \\ 
 			& F \cos \theta - \mu m g + \mu F \sin \theta = 0 \\
 		\end{align*}
-		
-		\begin{empheq}[box=\tcbhighmath]{equation*}
-			F = \frac{\mu \cdot W}{(\cos \theta + \mu \sin \theta)}
-		\end{empheq}
 	}
 	\mode<handout>{
-		\vspace{5cm}
+		\vspace{4cm}
 	}
 	\end{minipage}%
 	\hfill%
-	\begin{minipage}[t]{0.2\linewidth}
+	\begin{minipage}[t]{0.29\linewidth}
 		\begin{figure}[ht]
 			\centering
 			\includegraphics[width=\textwidth]{figs/block-forces.png}
 		\end{figure}
 	\end{minipage}%
-t\end{frame}
+			
+	\begin{empheq}[box=\tcbhighmath]{equation*}
+		F = \frac{\mu \cdot m g}{(\cos \theta + \mu \sin \theta)}
+ 	\end{empheq}
+\end{frame}
 
 \end{document}
