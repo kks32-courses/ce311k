@@ -194,7 +194,7 @@ sympy-plots-for-*.tex/
 # pythontex
 *.pytxcode
 pythontex-files-*/
-*/.ipynb_checkpoints/*
+*/.ipynb_checkpoints/*.ipynb
 
 # tcolorbox
 *.listing
