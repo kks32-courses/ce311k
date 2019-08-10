@@ -43,6 +43,7 @@
 \usepackage{xcolor}
 \usepackage{empheq}
 \usepackage[most]{tcolorbox}
+\usepackage{siunitx}
 
 % To print 2 slides on a page
 %\usepackage{handoutWithNotes}
@@ -252,24 +253,6 @@ University of Texas at Austin \\
 	 Since numerical solutions are an approximation and  the computer program that executes the numerical method might have errors (or bugs), a numerical solution needs to be examined closely.
 }
 
-
-
-%------------------------------------------------
-\begin{frame}
-\frametitle{\faCommentsO ~What are the characteristics of a numerical solution?}
-\mode<beamer>{
-	\begin{itemize}
-		\item Yields an \textit{approximate} numerical answer (a finite number) for the problem 
-		\item These solutions can be very accurate
-		\item Most answers are determined in an iterative approach (numerical method: mathematical / computer-aided technique) until a desired minimum/acceptable accuracy is obtained
-		\item Typically, a finite set of iterations (steps) are used in the numerical method to obtain a solution
-	\end{itemize}
-}
-\mode<handout>{
-	\vspace{5cm}
-}
-\end{frame}
-
 \section{Numerical solution}
 %------------------------------------------------
 \subsection{Numerical solution of a sliding block}
@@ -342,4 +325,58 @@ University of Texas at Austin \\
  	\end{empheq}
 \end{frame}
 
+%------------------------------------------------
+\begin{frame}
+	\frametitle{Numerical solution of a sliding block: Compute force}
+	\begin{itemize}
+		\item Given $W = 25 kN (\SI{2500}{kg})$, $\theta = 45^o$ and $\mu = 0.75$ ($35^o$):
+		\mode<beamer>{	
+			\begin{equation*}
+				F = \frac{0.75 \times 25 }{\cos(45) + 0.75 \sin(45)} = \SI{15.15}{kN}.
+			\end{equation*}
+		}
+		\mode<handout>{
+			\vspace{1cm}
+		}
+		\item Given $F = 17.5 kN (\SI{2500}{kg})$ and $\mu = 0.75$, what's $\theta$?
+		\mode<beamer>{	
+			\begin{align*}
+			Try~\theta = 60^o:~ & F = \frac{0.75 \times 25 }{\cos(60) + 0.75 \sin(60)} = \SI{16.31}{kN}.\\
+			Try~\theta = 70^o:~ & F = \frac{0.75 \times 25 }{\cos(70) + 0.75 \sin(70)} = \SI{17.91}{kN}.\\
+			Try~\theta = 65^o:~ & F = \frac{0.75 \times 25 }{\cos(65) + 0.75 \sin(65)} = \SI{17.00}{kN}.\\
+			Try~\theta = 67,5^o:~ & F = \frac{0.75 \times 25 }{\cos(67.5) + 0.75 \sin(67.5)} = \SI{17.43}{kN}.
+			\end{align*}
+			This is \textbf{bisection method!}
+		}
+		\mode<handout>{
+			\vspace{4cm}
+		}
+	\end{itemize}
+\end{frame}
+
+
+%------------------------------------------------
+\begin{frame}
+	\frametitle{\faCommentsO ~What are the characteristics of a numerical solution?}
+	\mode<beamer>{
+		\begin{itemize}
+			\item Yields an \textit{approximate} numerical answer (a finite number) for the problem 
+			\item These solutions can be very accurate
+			\item Most answers are determined in an iterative approach (numerical method: mathematical / computer-aided technique) until a desired minimum/acceptable accuracy is obtained
+			\item Typically, a finite set of iterations (steps) are used in the numerical method to obtain a solution
+		\end{itemize}
+	}
+	\mode<handout>{
+		\vspace{5cm}
+	}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+	\frametitle{Numerical solution of a sliding block: Friction angles}	
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=0.85\textwidth]{figs/sliding-block-force-frictions.png}
+	\end{figure}
+\end{frame}
 \end{document}
