@@ -43,7 +43,9 @@
 \usepackage{xcolor}
 \usepackage{empheq}
 \usepackage[most]{tcolorbox}
+\usepackage{listings}
 \usepackage{siunitx}
+\usepackage{verbatim}
 
 % To print 2 slides on a page
 %\usepackage{handoutWithNotes}
@@ -378,10 +380,12 @@ University of Texas at Austin \\
 	\frametitle{\faCommentsO ~What are the characteristics of a numerical solution?}
 	\mode<beamer>{
 		\begin{itemize}
+			\item A numerical recipe is \textit{a sequence of simple steps}
+			\item \textit{Flow of control} as each step is executed.
 			\item Yields an \textit{approximate} numerical answer (a finite number) for the problem 
 			\item These solutions can be very accurate
 			\item Most answers are determined in an iterative approach (numerical method: mathematical / computer-aided technique) until a desired minimum/acceptable accuracy is obtained
-			\item Typically, a finite set of iterations (steps) are used in the numerical method to obtain a solution
+			\item Typically, a finite set of iterations (steps) are used in the numerical method to obtain a solution. A means of determining \textit{when to stop}.
 		\end{itemize}
 	}
 	\mode<handout>{
@@ -396,5 +400,136 @@ University of Texas at Austin \\
 		\centering
 		\includegraphics[width=0.85\textwidth]{figs/sliding-block-force-frictions.png}
 	\end{figure}
+\end{frame}
+
+%------------------------------------------------
+
+\section{Aspects of languages}
+
+%------------------------------------------------
+\begin{frame}
+	\frametitle{\faCommentsO ~What does a computer do?}
+	\mode<beamer>{
+		\begin{itemize}
+			\item Fundamentally:
+			\begin{itemize}
+				\item performs \textit{calculations} - a billion calculations per second.
+				\item Remembers results 100s of gigabytes of storage.
+			\end{itemize}
+		\item Computers only know and do what you tell them!
+		\item \textbf{Fixed program} computer (calculator)
+		\item \textbf{Stored program} computer - machine stores and executes instructions
+	\end{itemize}
+	}
+	\mode<handout>{
+		\vspace{5cm}
+	}
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=0.6\textwidth]{figs/bluegene.png}
+		\caption*{IBM Bluegene/P supercomputer (credit: unknown)}
+	\end{figure}
+\end{frame}
+\note{A single rack of IBM Bluegene/P in 2007 could do 5Terra flops as fast as the current iPhones X.
+
+UT Austin's Frontera can do 38 PetaFlops. In contrast a human brain can do 1,000 petaflops or 10 quadrillion operations per second (i.e., 1 exaflop or a billion - billion calculations).
+}
+
+
+%------------------------------------------------
+\begin{frame}
+	\frametitle{Aspects of languages: Primitive constructs}
+	\mode<beamer>{
+		\begin{itemize}
+			\item Turing showed that you can compute anything using \textbf{6
+			primitives}.
+			\item Anything computable in one language is computable in
+			any other programming language.
+			\item \textit{English}: words
+			\item \textit{Programming languages}: numbers, strings, simple operators
+		\end{itemize}
+	}
+	\mode<handout>{
+		\vspace{2cm}
+	}
+	\begin{minipage}[t]{0.59\linewidth}	
+		\begin{figure}[ht]
+			\centering
+			\includegraphics[width=\textwidth]{figs/english-word-cloud.png}
+			\caption*{English word cloud (credit: Michael Twardos)}
+		\end{figure}
+	\end{minipage}%
+	\hfill%
+	\begin{minipage}[t]{0.39\linewidth}
+		\begin{figure}[ht]
+			\centering
+			\includegraphics[width=0.7\textwidth]{figs/python-word-cloud.png}
+			\caption*{Python word cloud \\ (credit: unknown)}
+		\end{figure}
+	\end{minipage}%
+\end{frame}
+
+\note{In fact, Alan Turing, who was a really great computer scientist, he showed that you can compute anything using the six primitives. And the six primitives are move left, move right, read, write, scan, and do nothing. Using those six instructions and the piece of tape, he showed that you can compute anything. And using those six instructions, programming languages came about that created a moreconvenient set of primitives. You don't have to program in only these six commands.}
+
+\note{\faCommentO What are the primary aspects of a language?
+
+\begin{itemize}
+	\item Primitive constructs (objects and operators)
+	\item Syntax
+	\item Static semantics
+\end{itemize}
+}
+%------------------------------------------------
+\begin{frame}
+	\frametitle{Aspects of languages: Syntax and Static semantics}
+		\textit{\textbf{Syntax}}
+		\begin{itemize}
+			\item \textit{English} 
+			\begin{itemize}
+				\item ``\textit{boy dog cat}'': \mode<beamer>{syntactically invalid}
+				\item ``\textit{boy hugs cat}'': \mode<beamer>{syntactically valid}
+			\end{itemize}
+			\item \textit{Python} 
+			\begin{itemize}
+				\item \texttt{5 "Hi"}: \mode<beamer>{syntactically invalid}
+				\item \texttt{3.2 * 7}: \mode<beamer>{syntactically valid}
+			\end{itemize}
+		\end{itemize}
+	
+		\textit{\textbf{Static semantics}} is when syntactically valid strings have meaning:
+		\begin{itemize}
+			\item English: ``\textit{I are hungry}'': syntactically valid, 	but static semantic error
+			\item Python: \texttt{5 + "Hi"}: syntactically valid, but static semantic error
+		\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+	\frametitle{Aspects of languages: Semantics}
+	Semantics is the meaning associated with a syntactically correct string of symbols with no static semantic errors:
+	\begin{itemize}
+		\item \textit{English}: can have many meanings ``Flying planes can be dangerous''.
+		\item \textit{programming languages}: have only one meaning but may not be what programmer intended		
+	\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+	\frametitle{Where things can go wrong}
+	\begin{itemize}
+		\item \textbf{syntactic errors}: - common and easily caught
+		\item \textbf{static semantic errors}:
+		\begin{itemize}
+			\item some languages check for these before running program
+			\item can cause unpredictable behavior
+		\end{itemize}
+		\item no semantic errors \textbf{but different meaning than what
+		programmer intended}
+		\begin{itemize}
+			\item program crashes, stops running
+			\item program runs forever
+			\item program gives an answer but different than expected		
+		\end{itemize}
+	\end{itemize}
 \end{frame}
 \end{document}
