@@ -61,8 +61,7 @@
 {
 University of Texas at Austin \\
 \medskip
-\textit{
-  \url{krishnak@utexas.edu}} % Your email address
+\href{mailto:krishnak@utexas.edu}{krishnak@utexas.edu} % email address
 }
 \date{\today} % Date, can be changed to a custom date
 
@@ -70,6 +69,12 @@ University of Texas at Austin \\
 
 \begin{frame}
 \titlepage % title page as the first slide
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{\faCommentsO ~What would you like to learn from the course?}
+
 \end{frame}
 
 \begin{frame}
@@ -129,11 +134,9 @@ University of Texas at Austin \\
 \end{frame}
 
 \note{
-	Lovelace speculated that the Engine 'might act upon other things besides number... the Engine might compose elaborate and scientific pieces of music of any degree of complexity or extent'. The idea of a machine that could manipulate symbols in accordance with rules and that number could represent entities other than quantity mark the fundamental transition from calculation to computation.
+	Lovelace speculated that the Engine `might act upon other things besides number... the Engine might compose elaborate and scientific pieces of music of any degree of complexity or extent'. The idea of a machine that could manipulate symbols in accordance with rules and that number could represent entities other than quantity mark the fundamental transition from calculation to computation.
 	
-	Hopper is the pioneer computer scientist, known for creating COBOL – the first computing language.
-	
-
+	Hopper is the pioneer computer scientist, known for creating COBOL – the first computing language. There are over 220 billion lines of COBOL in existence, a figure which equates to around 80\% of the world's actively used code. There are estimated to be over a million COBOL programmers in the world today. Most impressive perhaps, is that 200 times as many COBOL transactions take place each day than Google searches.
 }
 
 %------------------------------------------------
@@ -321,6 +324,21 @@ UT Austin's Frontera can do 38 PetaFlops. In contrast a human brain can do 1,000
 
 %------------------------------------------------
 \begin{frame}
+	\frametitle{\faCommentO ~What are the primary aspects of a language?}
+	\mode<beamer>{
+		\begin{itemize}
+			\item Primitive constructs (objects and operators)
+			\item Syntax
+			\item Static semantics
+		\end{itemize}
+	}
+	\mode<handout>{
+		\vspace{5cm}
+	}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
 	\frametitle{Aspects of languages: Primitive constructs}
 	\mode<beamer>{
 		\begin{itemize}
@@ -354,14 +372,6 @@ UT Austin's Frontera can do 38 PetaFlops. In contrast a human brain can do 1,000
 
 \note{In fact, Alan Turing, who was a really great computer scientist, he showed that you can compute anything using the six primitives. And the six primitives are move left, move right, read, write, scan, and do nothing. Using those six instructions and the piece of tape, he showed that you can compute anything. And using those six instructions, programming languages came about that created a moreconvenient set of primitives. You don't have to program in only these six commands.}
 
-\note{\faCommentO What are the primary aspects of a language?
-
-\begin{itemize}
-	\item Primitive constructs (objects and operators)
-	\item Syntax
-	\item Static semantics
-\end{itemize}
-}
 %------------------------------------------------
 \begin{frame}
 	\frametitle{Aspects of languages: Syntax and Static semantics}
