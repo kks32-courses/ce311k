@@ -308,7 +308,7 @@ University of Texas at Austin \\
 	\end{itemize}
 	}
 	\mode<handout>{
-		\vspace{5cm}
+		\vspace{3cm}
 	}
 	\begin{figure}[ht]
 		\centering
@@ -351,7 +351,7 @@ UT Austin's Frontera can do 38 PetaFlops. In contrast a human brain can do 1,000
 		\end{itemize}
 	}
 	\mode<handout>{
-		\vspace{2cm}
+		\vspace{3cm}
 	}
 	\begin{minipage}[t]{0.59\linewidth}	
 		\begin{figure}[ht]
@@ -375,7 +375,8 @@ UT Austin's Frontera can do 38 PetaFlops. In contrast a human brain can do 1,000
 %------------------------------------------------
 \begin{frame}
 	\frametitle{Aspects of languages: Syntax and Static semantics}
-		\textit{\textbf{Syntax}}
+	\textit{\textbf{Syntax}}
+	\mode<beamer>{
 		\begin{itemize}
 			\item \textit{English} 
 			\begin{itemize}
@@ -388,12 +389,20 @@ UT Austin's Frontera can do 38 PetaFlops. In contrast a human brain can do 1,000
 				\item \texttt{3.2 * 7}: \mode<beamer>{syntactically valid}
 			\end{itemize}
 		\end{itemize}
-	
-		\textit{\textbf{Static semantics}} is when syntactically valid strings have meaning:
+	}
+	\mode<handout>{
+		\vspace{3cm}
+	}
+	\textit{\textbf{Static semantics}} is when syntactically valid strings have meaning:
+	\mode<beamer>{	
 		\begin{itemize}
 			\item English: ``\textit{I are hungry}'': syntactically valid, 	but static semantic error
 			\item Python: \texttt{5 + "Hi"}: syntactically valid, but static semantic error
 		\end{itemize}
+	}
+	\mode<handout>{
+		\vspace{3cm}
+	}
 \end{frame}
 
 %------------------------------------------------
@@ -409,6 +418,7 @@ UT Austin's Frontera can do 38 PetaFlops. In contrast a human brain can do 1,000
 %------------------------------------------------
 \begin{frame}
 	\frametitle{Where things can go wrong}
+	\mode<beamer>{
 	\begin{itemize}
 		\item \textbf{syntactic errors}: - common and easily caught
 		\item \textbf{static semantic errors}:
@@ -424,6 +434,10 @@ UT Austin's Frontera can do 38 PetaFlops. In contrast a human brain can do 1,000
 			\item program gives an answer but different than expected		
 		\end{itemize}
 	\end{itemize}
+	}
+	\mode<handout>{
+		\vspace{6cm}
+	}
 \end{frame}
 
 %------------------------------------------------
@@ -434,16 +448,26 @@ UT Austin's Frontera can do 38 PetaFlops. In contrast a human brain can do 1,000
 	\begin{itemize}
 		\item We'll be using Python 3.x 
 		\item a program is a sequence of definitions and commands
-		\begin{itemize}
-			\item \textbf{definitions} \textit{evaluated}
-			\item \textbf{commands (statements)} instructs Python interpreter (program) to \textit{execute} something
-		\end{itemize}
+		\mode<beamer>{
+			\begin{itemize}
+				\item \textbf{definitions} \textit{evaluated}
+				\item \textbf{commands (statements)} instructs Python interpreter (program) to \textit{execute} something
+			\end{itemize}
+		}
+		\mode<handout>{
+			\vspace{2cm}
+		}
 		\item programs manipulate \textbf{data objects}
 		\item objects are
-		\begin{itemize}
-			\item \textbf{scalar} (cannot be subdivided)
-			\item \textit{non-scalar} (have internal structure that can be accessed)
-		\end{itemize}
+		\mode<beamer>{
+			\begin{itemize}
+				\item \textbf{scalar} (cannot be subdivided)
+				\item \textit{non-scalar} (have internal structure that can be accessed)
+			\end{itemize}
+		}
+		\mode<handout>{
+			\vspace{2cm}
+		}
 	\end{itemize}
 \end{frame}
 \note{
@@ -460,13 +484,18 @@ programs can do to them:
 %------------------------------------------------
 \begin{frame}[fragile]
 	\frametitle{Scalar objects}
-	\begin{itemize}
-		\item \texttt{int}: represent integers, e.g., \texttt{5}
-		\item \texttt{float}: represent real numbers, e.g., \texttt{3.27}
-		\item \texttt{bool}: represent Boolean values \texttt{True} and \texttt{False}
-		\item \texttt{NoneType}:  special and has one value, \texttt{None}
-		\item can use \texttt{type()} to see the type of an object
-	\end{itemize}
+	\mode<beamer>{
+		\begin{itemize}
+			\item \texttt{int}: represent integers, e.g., \texttt{5}
+			\item \texttt{float}: represent real numbers, e.g., \texttt{3.27}
+			\item \texttt{bool}: represent Boolean values \texttt{True} and \texttt{False}
+			\item \texttt{NoneType}:  special and has one value, \texttt{None}
+			\item can use \texttt{type()} to see the type of an object
+		\end{itemize}
+	}
+	\mode<handout>{
+		\vspace{4cm}
+	}
 	\begin{lstlisting}[language=Python]
 		In [1]: type(5)
 		Out[1]: int
@@ -489,14 +518,19 @@ programs can do to them:
 %------------------------------------------------
 \begin{frame}[fragile]
 	\frametitle{Expressions and operations}
-	\begin{itemize}
-		\item \textbf{combine objects and operators} to form \textit{expressions}
-		\item an expression has a value, which has a type
-		\item syntax for a simple expression
-		\begin{verbatim}
-		<object> <operator> <object>
-		\end{verbatim}
-		\item Operations on `ints` and `floats`:
+	\mode<beamer>{	
+		\begin{itemize}	
+			\item \textbf{combine objects and operators} to form \textit{expressions}
+			\item an expression has a value, which has a type
+			\item syntax for a simple expression:
+			$<object> <operator> <object>$
+		\end{itemize}
+	}
+	\mode<handout>{
+		\vspace{3cm}
+	}
+	\begin{itemize}	
+		\item Operations on `ints' and `floats':
 		\item \verb|i + j|: \textit{sum} (int $\|$ float)
 		\item \verb|i - j|: \textit{difference} (int $\|$ float)	
 		\item \verb|i * j|: \textit{product} (int $\|$ float)
@@ -509,21 +543,26 @@ programs can do to them:
 %------------------------------------------------
 \begin{frame}[fragile]
 	\frametitle{Binding variables and values}
-	\begin{itemize}
-		\item equal sign is an \textbf{assignment} of a value to a variable name.
-		\begin{lstlisting}[language=Python]
+	Equal sign is an \textbf{assignment} of a value to a variable name.
+	\begin{lstlisting}[language=Python]
 	pi = 3.14159
 	pi_approx = 22/7
-		\end{lstlisting}
+	\end{lstlisting}
+	\begin{itemize}
+	\mode<beamer>{
 		\item value stored in computer memory
 		\item an assignment binds name to value
-		\item retrieve value associated with name or variable by invoking the name, by typing \verb|pi|
+		\item retrieve value associated with name or variable by invoking the name, by typing $pi$
 		\item Why give names to values of expressions?
 		\begin{itemize}
 			\item to reuse names instead of values
 			\item easier to change code later
 		\end{itemize}
 		\item Programming vs math: in programming, you do not ``\textit{solve for x}''. An assignment expression on the right, evaluated to a value. A variable name defined on the left stores the value(s).
+	}
+	\mode<handout>{
+		\vspace{5cm}
+	}
 	\end{itemize}
 \end{frame}
 
@@ -549,6 +588,7 @@ programs can do to them:
 		radius = 14
 		\end{lstlisting}
 	\end{itemize}
+	\mode<beamer>{
 	\begin{minipage}[t]{0.49\linewidth}
 	\begin{figure}[ht]
 		\centering
@@ -562,6 +602,10 @@ programs can do to them:
 			\includegraphics[width=0.62\textwidth]{figs/variable-binding-after.png}
 		\end{figure}
 	\end{minipage}
+	}
+	\mode<handout>{
+		\vspace{3cm}
+	}
 \end{frame}
 
 %------------------------------------------------
@@ -681,7 +725,7 @@ print(area)
 			\end{equation*}
 		}
 		\mode<handout>{
-			\vspace{1cm}
+			\vspace{1.5cm}
 		}
 		\item Given $F = 17.5 kN (\SI{2500}{kg})$ and $\mu = 0.75$, what's $\theta$?
 		\mode<beamer>{	
