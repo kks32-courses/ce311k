@@ -71,10 +71,9 @@ University of Texas at Austin \\
 \titlepage % title page as the first slide
 \end{frame}
 
-
+%------------------------------------------------
 \begin{frame}
 	\frametitle{\faCommentsO ~What would you like to learn from the course?}
-
 \end{frame}
 
 \begin{frame}
@@ -289,9 +288,7 @@ University of Texas at Austin \\
 }
 
 %------------------------------------------------
-
 \section{Aspects of languages}
-
 %------------------------------------------------
 \begin{frame}
 	\frametitle{\faCommentsO ~What does a computer do?}
@@ -321,6 +318,14 @@ University of Texas at Austin \\
 UT Austin's Frontera can do 38 PetaFlops. In contrast a human brain can do 1,000 petaflops or 10 quadrillion operations per second (i.e., 1 exaflop or a billion - billion calculations).
 }
 
+%------------------------------------------------
+\begin{frame}[fragile]
+	\frametitle{Companies using python}
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=\textwidth]{figs/python-companies.png}
+	\end{figure}
+\end{frame}
 
 %------------------------------------------------
 \begin{frame}
@@ -374,6 +379,61 @@ UT Austin's Frontera can do 38 PetaFlops. In contrast a human brain can do 1,000
 
 %------------------------------------------------
 \begin{frame}
+	\frametitle{Python program}
+	\begin{itemize}
+		\item We'll be using Python 3.x 
+		\item a program is a sequence of definitions and commands
+		\mode<beamer>{
+			\begin{itemize}
+				\item \textbf{definitions} \textit{evaluated}
+				\item \textbf{commands (statements)} instructs Python interpreter (program) to \textit{execute} something
+			\end{itemize}
+		}
+		\mode<handout>{
+			\vspace{2cm}
+		}
+		\item programs manipulate \textbf{data objects}
+		\item objects are
+		\mode<beamer>{
+			\begin{itemize}
+				\item \textbf{scalar} (cannot be subdivided)
+				\item \textit{non-scalar} (have internal structure that can be accessed)
+			\end{itemize}
+			objects have a \textbf{type} that defines the kinds of things
+			programs can do to them. For example matrices.
+		}
+		\mode<handout>{
+			\vspace{2cm}
+		}
+	\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}[fragile]
+	\frametitle{Scalar objects}
+	\mode<beamer>{
+		\begin{itemize}
+			\item \texttt{int}: represent integers, e.g., \texttt{5}
+			\item \texttt{float}: represent real numbers, e.g., \texttt{3.27}
+			\item \texttt{bool}: represent Boolean values \texttt{True} and \texttt{False}
+			\item \texttt{NoneType}:  special and has one value, \texttt{None}
+			\item can use \texttt{type()} to see the type of an object
+		\end{itemize}
+	}
+	\mode<handout>{
+		\vspace{4cm}
+	}
+	\begin{lstlisting}[language=Python]
+	In [1]: type(5)
+	Out[1]: int
+	In [2]: type(3.0)
+	Out[2]: float
+	\end{lstlisting}
+\end{frame}
+
+
+%------------------------------------------------
+\begin{frame}
 	\frametitle{Aspects of languages: Syntax and Static semantics}
 	\textit{\textbf{Syntax}}
 	\mode<beamer>{
@@ -416,6 +476,31 @@ UT Austin's Frontera can do 38 PetaFlops. In contrast a human brain can do 1,000
 \end{frame}
 
 %------------------------------------------------
+\begin{frame}[fragile]
+	\frametitle{Expressions and operations}
+	\mode<beamer>{	
+		\begin{itemize}	
+			\item \textbf{combine objects and operators} to form \textit{expressions}
+			\item an expression has a value, which has a type
+			\item syntax for a simple expression:
+			$<object> <operator> <object>$
+		\end{itemize}
+	}
+	\mode<handout>{
+		\vspace{3cm}
+	}
+	\begin{itemize}	
+		\item Operations on `ints' and `floats':
+		\item \verb|i + j|: \textit{sum} (int $\|$ float)
+		\item \verb|i - j|: \textit{difference} (int $\|$ float)	
+		\item \verb|i * j|: \textit{product} (int $\|$ float)
+		\item \verb|i / j|: \textit{division} (float)
+		\item \verb|i % j|: \textit{remainder} of \verb|i| divided by \verb|j|
+		\item \verb|i ** j|: \verb|i| to the \textit{power} of \verb|j|
+	\end{itemize}
+\end{frame}
+
+%------------------------------------------------
 \begin{frame}
 	\frametitle{Where things can go wrong}
 	\mode<beamer>{
@@ -441,114 +526,7 @@ UT Austin's Frontera can do 38 PetaFlops. In contrast a human brain can do 1,000
 \end{frame}
 
 %------------------------------------------------
-\section{Python}
-%------------------------------------------------
-%------------------------------------------------
-\begin{frame}[fragile]
-	\frametitle{Companies using python}
-	\begin{figure}[ht]
-		\centering
-		\includegraphics[width=\textwidth]{figs/python-companies.png}
-	\end{figure}
-\end{frame}
-%------------------------------------------------
-
-\begin{frame}
-	\frametitle{Python program}
-	\begin{itemize}
-		\item We'll be using Python 3.x 
-		\item a program is a sequence of definitions and commands
-		\mode<beamer>{
-			\begin{itemize}
-				\item \textbf{definitions} \textit{evaluated}
-				\item \textbf{commands (statements)} instructs Python interpreter (program) to \textit{execute} something
-			\end{itemize}
-		}
-		\mode<handout>{
-			\vspace{2cm}
-		}
-		\item programs manipulate \textbf{data objects}
-		\item objects are
-		\mode<beamer>{
-			\begin{itemize}
-				\item \textbf{scalar} (cannot be subdivided)
-				\item \textit{non-scalar} (have internal structure that can be accessed)
-			\end{itemize}
-		}
-		\mode<handout>{
-			\vspace{2cm}
-		}
-	\end{itemize}
-\end{frame}
-\note{
-objects have a \textbf{type} that defines the kinds of things
-programs can do to them:
-
-\begin{itemize}
-	\item Krishna is a human so he can walk, write Python code, speak English, etc.
-	\item Chewbacca is a wookie so he can walk, “mwaaarhrhh”, etc.
-\end{itemize}
-}
-
-%------------------------------------------------
-\begin{frame}[fragile]
-	\frametitle{Scalar objects}
-	\mode<beamer>{
-		\begin{itemize}
-			\item \texttt{int}: represent integers, e.g., \texttt{5}
-			\item \texttt{float}: represent real numbers, e.g., \texttt{3.27}
-			\item \texttt{bool}: represent Boolean values \texttt{True} and \texttt{False}
-			\item \texttt{NoneType}:  special and has one value, \texttt{None}
-			\item can use \texttt{type()} to see the type of an object
-		\end{itemize}
-	}
-	\mode<handout>{
-		\vspace{4cm}
-	}
-	\begin{lstlisting}[language=Python]
-		In [1]: type(5)
-		Out[1]: int
-		In [2]: type(3.0)
-		Out[2]: float
-	\end{lstlisting}
-\end{frame}
-
-
-%------------------------------------------------
-\begin{frame}[fragile]
-	\frametitle{Printing to console}
-	To show the output from code to a user \verb|print| command:
-	\begin{figure}[ht]
-	\centering
-	\includegraphics[width=0.6\textwidth]{figs/shell-print.png}
-\end{figure}
-\end{frame}
-
-%------------------------------------------------
-\begin{frame}[fragile]
-	\frametitle{Expressions and operations}
-	\mode<beamer>{	
-		\begin{itemize}	
-			\item \textbf{combine objects and operators} to form \textit{expressions}
-			\item an expression has a value, which has a type
-			\item syntax for a simple expression:
-			$<object> <operator> <object>$
-		\end{itemize}
-	}
-	\mode<handout>{
-		\vspace{3cm}
-	}
-	\begin{itemize}	
-		\item Operations on `ints' and `floats':
-		\item \verb|i + j|: \textit{sum} (int $\|$ float)
-		\item \verb|i - j|: \textit{difference} (int $\|$ float)	
-		\item \verb|i * j|: \textit{product} (int $\|$ float)
-		\item \verb|i / j|: \textit{division} (float)
-		\item \verb|i % j|: \textit{remainder} of \verb|i| divided by \verb|j|
-		\item \verb|i ** j|: \verb|i| to the \textit{power} of \verb|j|
-	\end{itemize}
-\end{frame}
-
+\section{Python variables and bindings}
 %------------------------------------------------
 \begin{frame}[fragile]
 	\frametitle{Binding variables and values}
