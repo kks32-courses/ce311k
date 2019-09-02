@@ -466,6 +466,15 @@ UT Austin's Frontera can do 38 PetaFlops. In contrast a human brain can do 1,000
 	\end{lstlisting}
 \end{frame}
 
+%------------------------------------------------
+\begin{frame}[fragile]
+	\frametitle{Printing to console}
+	To show the output from code to a user \verb|print| command:
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=0.6\textwidth]{figs/shell-print.png}
+	\end{figure}
+\end{frame}
 
 %------------------------------------------------
 \begin{frame}
@@ -535,6 +544,23 @@ UT Austin's Frontera can do 38 PetaFlops. In contrast a human brain can do 1,000
 	\end{itemize}
 \end{frame}
 
+
+%------------------------------------------------
+\begin{frame}[fragile]
+	\frametitle{Operator precedence}
+	\begin{table}[!h]
+		\begin{tabular}{ll}
+			\toprule
+			\verb|()| & Parantheses (grouping)  \\
+			\verb|**| & Exponential \\
+			\verb|+x, -x| & Positive, negative \\
+			\verb|*, /, %| & Multiplication, division, remainder \\
+			\verb|+, -| & Addition, subtraction \\
+			\bottomrule
+		\end{tabular}
+	\end{table}
+	If at equal level terms are evaluated from left to right.
+\end{frame}
 %------------------------------------------------
 \begin{frame}
 	\frametitle{Where things can go wrong}
@@ -663,14 +689,4 @@ print(area)
 \end{frame}
 \note{As far as Python is concerned, they are not different. When executed, they will do the same thing. To a human reader, however, they are quite different. When we read the fragment on the left, there is no \textit{a priori} reason to suspect that anything is amiss. However, a quick glance at the code on the right sould prompt us to be suspicious that something is wrong. Either the variable should have been named \texttt{radius} rather than \texttt{diameter} or \texttt{diameter} should have been divided by \texttt{2.0} in the area calculation.}
 
-
-%------------------------------------------------
-\begin{frame}[fragile]
-	\frametitle{Printing to console}
-	To show the output from code to a user \verb|print| command:
-	\begin{figure}[ht]
-		\centering
-		\includegraphics[width=0.6\textwidth]{figs/shell-print.png}
-	\end{figure}
-\end{frame}
 \end{document}
