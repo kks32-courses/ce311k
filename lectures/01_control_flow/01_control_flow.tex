@@ -71,14 +71,6 @@ University of Texas at Austin \\
 \titlepage % title page as the first slide
 \end{frame}
 
-\begin{frame}
- % Table of contents slide, comment this block out to remove it
- \frametitle{Overview}
- % Throughout your presentation, if you choose to use \section{} and \subsection{} 
- % commands, these %will automatically be printed on this slide as an overview 
- \tableofcontents
-\end{frame}
-
 \newif\ifshowtoc
 \showtoctrue% toggles to show the toc
 
@@ -180,7 +172,20 @@ University of Texas at Austin \\
 		\mode<handout>{
 			\vspace{1.5cm}
 		}
-		\item Given $F = 17.5 kN (\SI{2500}{kg})$ and $\mu = 0.75$, what's $\theta$?
+		\item Given $F = 17.5 kN (\SI{1750}{kg})$ and $\mu = 0.75$, what's $\theta$?
+		\begin{figure}[ht]
+			\centering
+			\includegraphics[width=0.6\textwidth]{figs/sliding-block-mu0p75.png}
+		\end{figure}
+	\end{itemize}
+\end{frame}
+
+
+%------------------------------------------------
+\begin{frame}
+	\frametitle{Numerical solution of a sliding block: Compute force}
+	\begin{itemize}
+		\item Given $F = 17.5 kN (\SI{1750}{kg})$ and $\mu = 0.75$, what's $\theta$?
 		\mode<beamer>{	
 			\begin{align*}
 			Try~\theta = 60^o:~ & F = \frac{0.75 \times 25 }{\cos(60) + 0.75 \sin(60)} = \SI{16.31}{kN}.\\
@@ -221,17 +226,6 @@ University of Texas at Austin \\
 	\begin{figure}[ht]
 		\centering
 		\includegraphics[width=0.85\textwidth]{figs/sliding-block-force-frictions.png}
-	\end{figure}
-\end{frame}
-
-
-%------------------------------------------------
-\begin{frame}[fragile]
-	\frametitle{Printing to console}
-	To show the output from code to a user \verb|print| command:
-	\begin{figure}[ht]
-		\centering
-		\includegraphics[width=0.6\textwidth]{figs/shell-print.png}
 	\end{figure}
 \end{frame}
 

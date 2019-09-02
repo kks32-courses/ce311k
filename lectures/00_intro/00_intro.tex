@@ -134,10 +134,11 @@ University of Texas at Austin \\
 \end{frame}
 
 \note{
-	Aspects of numerical methods in the Bombe:
+	Aspects of numerical technique in the Bombe:
 	\begin{itemize}
 		\item Initial guess (the better the guess, the better is the solution)
 		\item Error quantifying
+		\item Algorithm
 		\item Identify divergence from a solution
 		\item Verification
 	\end{itemize}
@@ -448,6 +449,8 @@ UT Austin's Frontera can do 38 PetaFlops. In contrast a human brain can do 1,000
 			\item \texttt{int}: represent integers, e.g., \texttt{5}
 			\item \texttt{float}: represent real numbers, e.g., \texttt{3.27}
 			\item \texttt{bool}: represent Boolean values \texttt{True} and \texttt{False}
+			\item \texttt{str}: A sequence of characters (can contain unicode characters). 
+			e.g., \texttt{``Hi!'' ``$\theta$''} 
 			\item \texttt{NoneType}:  special and has one value, \texttt{None}
 			\item can use \texttt{type()} to see the type of an object
 		\end{itemize}
@@ -659,4 +662,15 @@ print(area)
 	\end{minipage}
 \end{frame}
 \note{As far as Python is concerned, they are not different. When executed, they will do the same thing. To a human reader, however, they are quite different. When we read the fragment on the left, there is no \textit{a priori} reason to suspect that anything is amiss. However, a quick glance at the code on the right sould prompt us to be suspicious that something is wrong. Either the variable should have been named \texttt{radius} rather than \texttt{diameter} or \texttt{diameter} should have been divided by \texttt{2.0} in the area calculation.}
+
+
+%------------------------------------------------
+\begin{frame}[fragile]
+	\frametitle{Printing to console}
+	To show the output from code to a user \verb|print| command:
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=0.6\textwidth]{figs/shell-print.png}
+	\end{figure}
+\end{frame}
 \end{document}
