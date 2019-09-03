@@ -87,9 +87,8 @@ University of Texas at Austin \\
 %----------------------------------------------------------------------------------------
 %------------------------------------------------
 
-\section{Numerical solution}
 %------------------------------------------------
-\subsection{Numerical solution of a sliding block}
+\section{Numerical solution of a sliding block}
 \begin{frame}
 	\frametitle{What is the optimal angle to pull the statue?}
 	\begin{figure}[ht]
@@ -170,22 +169,236 @@ University of Texas at Austin \\
 			\end{equation*}
 		}
 		\mode<handout>{
-			\vspace{1.5cm}
+			\vspace{2.5cm}
 		}
-		\item Given $F = 17.5 kN (\SI{1750}{kg})$ and $\mu = 0.75$, what's $\theta$?
-		\begin{figure}[ht]
-			\centering
-			\includegraphics[width=0.6\textwidth]{figs/sliding-block-mu0p75.png}
-		\end{figure}
+		\item Given $W = 25 kN (\SI{2500}{kg})$ and $\mu = 0.75$, what's the optimum $\theta$?
 	\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+	\frametitle{\faCommentsO Numerical solution of a sliding block: Optimal theta?}
+	Given $W = \SI{25}{\kilo\newton} (\SI{2500}{\kilogram})$ and $\mu = 0.75$, what's the optimum $\theta$?
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=0.8\textwidth]{figs/sliding-block-mu0p75-10.png}
+	\end{figure}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}[fragile]
+	\frametitle{Lists}
+	\begin{itemize}
+		\item A list is a sequence of data. (mutable)
+		\item An `array' in most other languages is a similar concept, but Python lists are more general than most arrays as they can hold a mixture of types. 
+		\item A list is constructed using square brackets:
+	\end{itemize}
+	\begin{lstlisting}[language=Python]
+>>> a = [0, 10, 20, 30, 40, 50, 60, 70, 80]
+>>> print(a)
+[0, 10, 20, 30, 40, 50, 60, 70, 80]
+>>> type(a)
+<class 'list'>
+>>> len(a)
+10
+>>> a.append(90)
+>>> print(a)
+[0, 10, 20, 30, 40, 50, 60, 70, 80, 90]
+	\end{lstlisting}
 \end{frame}
 
 
 %------------------------------------------------
-\begin{frame}
-	\frametitle{Numerical solution of a sliding block: Compute force}
+\begin{frame}[fragile]
+	\frametitle{Iterating through a list: for loops}
+	
+	Looping over each item in a list (or more generally a sequence) is called `iterating'. We iterate over the members of the lab group using the syntax:
+
+	\begin{lstlisting}[language=Python]
+for each item in list do
+	print(item)
+	\end{lstlisting}
+	
+	\begin{lstlisting}[language=Python]
+for item in list:
+	print(item)
+	\end{lstlisting}
+	
+	\textcolor{red}{\faWarning ~Indentation matters in python!}
+\end{frame}
+
+
+%------------------------------------------------
+\begin{frame}[fragile]
+	\frametitle{range()}
+	
+	The \verb|range()| returns a sequence of numbers:
+	
+		\vspace{0.5cm}
+		
+		\verb|range(stop)|
+		
+		\vspace{0.5cm}
+	
+	\textit{stop:} Number of integers (whole numbers) to generate, starting from zero. eg. range(3) yields a sequence of [0, 1, 2].
+	
+	\vspace{0.5cm}
+	
+	\verb|range([start], stop[, step])|
+	
 	\begin{itemize}
-		\item Given $F = 17.5 kN (\SI{1750}{kg})$ and $\mu = 0.75$, what's $\theta$?
+		\item \textit{start}: Starting number of the sequence.
+		\item \textit{stop}: Generate numbers up to, but not including this number.
+		\item \textit{step}: Difference between each number in the sequence.
+	\end{itemize}
+	
+\end{frame}
+
+\note{
+	Note that:
+	\begin{itemize}
+	\item All parameters must be integers.
+	\item All parameters can be positive or negative.
+	\item range() (and Python in general) is 0-index based, meaning list indexes start at 0, not 1		
+	\end{itemize}
+}
+
+
+%------------------------------------------------
+\begin{frame}
+	\frametitle{Numerical solution of a sliding block: Optimal theta?}
+	Given $W = \SI{25}{\kilo\newton} (\SI{2500}{\kilogram})$ and $\mu = 0.75$, what's the optimum $\theta$?
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=0.75\textwidth]{figs/sliding-block-mu0p75.png}
+		\caption*{\textcolor{red}{\faQuestionCircleO ~Identifying optimum requires conditional statements}}
+	\end{figure}
+
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}[fragile]
+	\frametitle{Comparison on int, float and strings}
+	\texttt{i} and \texttt{j} are variable names and comparisons below evaluate to a Boolean
+	\mode<beamer>{
+		\begin{itemize}
+			\item \texttt{i > j}
+			\item \texttt{i >= j}
+			\item \texttt{i < j}
+			\item \texttt{i <=j}
+			\item \texttt{i == j}: equality test, \texttt{True} if \texttt{i} is the same as \texttt{j}
+			\item \texttt{i != j}: in equality test, \texttt{True} if \texttt{i} is not the same as \texttt{j}
+		\end{itemize}
+	}
+	\mode<handout>{
+		\vspace{5cm}
+	}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}[fragile]
+	\frametitle{Logic operators on bools}
+	\texttt{a} and \texttt{b} are variable names with Boolean values
+	\mode<beamer>{
+		\begin{itemize}
+			\item \texttt{not a}: \texttt{True} if \texttt{a} is \texttt{False} \\
+			\texttt{False} if \texttt{a} is \texttt{True}
+			\item \texttt{a and b}: \texttt{True} if both are \texttt{True}.
+			\item \texttt{a or b}: \texttt{True} if either or both are \texttt{True}.
+		\end{itemize}
+	}
+	\mode<handout>{
+		\vspace{3cm}
+	}
+	\begin{table}[!h]
+		\begin{tabular}{llll}
+			\toprule
+			\texttt{A} & \texttt{B} & \texttt{A and B} & \texttt{A or B} \\
+			\verb|True| & \verb|True| & \verb|True| & \verb|True| \\
+			\verb|True| & \verb|False| & \verb|False| & \verb|True| \\
+			\verb|False| & \verb|True| & \verb|False| & \verb|True| \\
+			\verb|False| & \verb|False| & \verb|False| & \verb|False| \\
+									
+			\bottomrule
+		\end{tabular}
+	\end{table}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+	\frametitle{Designing a smart window: if condition}
+	\begin{minipage}[t]{0.49\linewidth}
+		\begin{figure}[ht]
+			\centering
+			\includegraphics[width=0.62\textwidth]{figs/smart-window.jpg}
+		\end{figure}
+	\end{minipage}%
+	\hfill%
+	\begin{minipage}[t]{0.49\linewidth}
+	\begin{itemize}
+		\item An electric window opener, attached to a rain sensor and a temperature 
+		gauge, might be controlled by the following program:
+		\mode<beamer>{
+		\item If raining: close window
+		\item If too hot (80F): open window
+		\item If too cold (66F): close window
+		\item Otherwise: do nothing and leave window as it is
+		}
+	\end{itemize}
+	\end{minipage}
+
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}[fragile]
+	\frametitle{Designing a smart window: if condition}
+	\begin{lstlisting}
+# If raining, close the window
+if raining:  
+	close_window()
+
+# If the temperature is over 80 F, open window
+elif temperature > 80: # else if
+	open_window()
+
+# If the temperature is below 66 F, close window
+elif temperature < 66:
+	close_window()
+
+# Otherwise, do nothing and leave window as it is
+else:  
+	continue
+	\end{lstlisting}
+\end{frame}
+
+\note{
+\texttt{<condition>} has a value \texttt{True} or \texttt{False}
+
+evaluate \texttt{expressions} in that block if \texttt{<condition>} is True
+}
+
+
+%------------------------------------------------
+\begin{frame}
+	\frametitle{Numerical solution of a sliding block: Optimal theta?}
+	Given $W = \SI{25}{\kilo\newton} (\SI{2500}{\kilogram})$ and $\mu = 0.75$, what's the optimum $\theta$?
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=0.75\textwidth]{figs/sliding-block-mu0p75.png}
+		\caption*{\textcolor{blue}{Identify optimum with an if conditional statement}}
+	\end{figure}
+	
+\end{frame}
+
+%------------------------------------------------
+
+\section{Bisection method}
+%------------------------------------------------
+\begin{frame}
+	\frametitle{Calculate the optimum angle to pull for a given force}
+
+	\begin{itemize}
+		\item Given $F = \SI{17.5}{\kilo\newton} (\SI{1750}{kg})$, $W=\SI{25}{kN}$ and $\mu = 0.75$, what's $\theta$?
 		\mode<beamer>{	
 			\begin{align*}
 			Try~\theta = 60^o:~ & F = \frac{0.75 \times 25 }{\cos(60) + 0.75 \sin(60)} = \SI{16.31}{kN}.\\
