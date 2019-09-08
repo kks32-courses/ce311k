@@ -1,0 +1,81 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{graphicx}
+\usepackage[left=30mm, right=30mm, top=30mm, bottom=35mm]{geometry}
+\usepackage{amsmath}
+\usepackage{siunitx}
+\usepackage{fancyhdr}
+\usepackage{url}
+\pagestyle{fancy}
+%-------------------------------------------------------------------------------
+\lhead{\textbf{Fall 2019}}
+\rhead{\textbf{CE311K Intro to Computer Methods}}
+\cfoot{\thepage}
+%-------------------------------------------------------------------------------
+
+\begin{document}
+\begin{centering}
+	\textbf{
+		Assignment 00: Variables and Operator Precedence\\
+		Assigned: 9th September 2019\\
+		Due: 20th September 2019 at 5PM\\
+	}
+\end{centering}
+
+\vspace{1em}
+ 
+ The purpose of this assignment is to develop your skills in creating variables and understand operator precedence.
+ 
+\begin{enumerate}
+	\item Creating new variables \verb|height| and \verb|radius| for a cylinder of height \SI{0.75}{\meter} and a radius of~\SI{0.3}{\meter}, write a Python code in Jupyter notebook to compute, store and print, the following properties of a cylinder:
+	\begin{enumerate}
+		\item Surface area of the side
+		\item Surface area of each end
+		\item Total surface area (surface area of the sides + both ends)
+		\item Volume
+	\end{enumerate}
+	Please create additional variables as required and use appropriate names. Use the Internet to find the appropriate equations for the volumes and surface areas. Also evaluate the number of decimal places to which Python computes these results.
+	
+	\item A simply supported beam of length \SI{2}{\meter} is supporting a uniformly distributed load $w$ of \SI{5}{\kilo \newton \per \meter \squared}. The Young's modulus of the beam $E$ is: \SI{3000}{ksi}. Write a code creating appropriate variables to compute the deflection at any point $x$ on the beam. Calculate the deflection and the ratio of the current deflection to the maximum possible deflection at $x$ of 0.1, 0.25, 0.5, 1, and 1.7 meters from the left support.
+	
+	The deflection at any point $x$ on a simply supported beam with a UDL of $w$ is given as:
+	\begin{equation*}
+		\delta = \frac{w x}{24 EI}(l^2 - 2lx^2 + x^3)
+	\end{equation*}
+	
+	The maximum deflection of a simply supported beam with a UDL is:
+	
+	\begin{equation*}
+		\delta_{max} = \frac{5wl^4}{384EI}
+	\end{equation*}
+	
+	The moment of inertia $I$ of a rectangular cross-section is given as:
+	
+	\begin{equation}
+		I = \frac{b d^3}{12}
+	\end{equation}
+	
+	%E = 3,000 ksi, L=30 ft, b = 12 in, h = 24 in, w = 2.5 kips/ft.
+	
+	\item Netflix employs 200TB-sized (TerraBytes) HardDisks storage units at the local Internet Service Provider (ISP) to stream most frequently watched movies. This reduces their bandwidth requirement and also makes watching the popular movies faster for their users. Consider the current storage capacity of a Netflix sroage device at your local ISP of 200TB, calculate how many HD movies (approximately 1.2 GB) can be stored in that storage box? You have been tasked by Netflix to procure new hard disks (storage) that can store as many movies as the 200TB storage boxes could for HD movies, except Netflix would like to store it in the new 4K format (approximately 8 GB) instead of the HD format. What is the new storage size requirement?
+	
+	\item The following Python code has a bug (errors in implemention) in the calculating of the following expression.
+		
+	\begin{equation*}
+	(-4)^2 + \frac{208}{2 * 4}
+	\end{equation*}
+
+	Python expression: \verb|-4**(2)+((208)/2*4)|
+	
+	\begin{enumerate}
+		\item Fix the Python code so that it yields the correct answer of 42 for the above expression
+		
+		\item Remove any redundant (unnecessary) usage of parenthesis. 
+		
+		\item Enumerate the sequence of operations ($<object><operator><object>$) in which Python will execute the corrected code.
+		
+		\item What is the type (int/float/str) of the result from executing the above Python expression?
+	\end{enumerate}
+\end{enumerate}
+
+\end{document}
+
