@@ -30,7 +30,7 @@ Note: Please upload your solution as an ipynb file to the Canvas page.
  
 \begin{enumerate}
 	
-	\item Write a function to solve for the deflection of a beam supporting a uniformly distributed load $q$ to half its length as shown below. The beam could be both simply supported or fixed end. Assume a default argument of simply supported. Write a Python function using conditional statements (if/else) to compute the deflection at any location $x$ along the length of the beam.
+	\item Write a function to solve for the deflection of a beam supporting a uniformly distributed load $q$ to half its length as shown below. The beam could be both simply supported or fixed end. Assume by default the beam is simply supported, if not condition is specified. Write a Python function using conditional statements (if/else) to compute the deflection at any location $x$ along the length of the beam.
 
 	\begin{figure}[ht]
 		\centering
@@ -86,9 +86,9 @@ Note: Please upload your solution as an ipynb file to the Canvas page.
 	\begin{equation*}
 	f(t) = 0.5 * a * t^2 + v_0 * t - d
 	\end{equation*}
-	Specify, $a = 0.6m/s^2$, $v_0 = 4.5 m/s$, and $d=50m$ and find the root at $t\approx7.4s$.
+	Specify, $a = 0.6m/s^2$, $v_0 = 4.5 m/s$, and $d=50m$ and the approximate solution for the root is at $t\approx7.43s$.
 	
-	\item Develop a Python module called \verb|utmath| that computes the following.
+	\item Develop a Python module called \verb|utmath| in the file  \verb|utmath.py| that computes the following.
 	\begin{enumerate}
 		\item \verb|utmath.pi|
 		\item \verb|utmath.e|
