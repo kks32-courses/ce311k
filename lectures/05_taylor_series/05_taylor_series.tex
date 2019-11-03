@@ -206,7 +206,7 @@ like that might seem completely out of left field. Let's graph these functions. 
 look close to each other. But how do we think to make this approximation? and how do we even get that particular quadratic?
 }
 
-
+\section{Taylor series}
 %------------------------------------------------
 \begin{frame}
 	\frametitle{Taylor series}
@@ -353,5 +353,78 @@ look close to each other. But how do we think to make this approximation? and ho
 	}
 \end{frame}
 
+
+\section{Newton Raphson}
+%------------------------------------------------
+\begin{frame}
+	\frametitle{Newton Raphson}
+ Assuming $r$ is a root of $f$ and that f is continuously differentiable in the
+	vicinity of $r$ with $f^\prime (r) \ne 0$, then a sequence $(x_n)$ that converges to $r$ for $n \rightarrow \infty$ can be found using the Taylor expansion of $f$:
+	\mode<beamer>{
+		\begin{align*}
+			f(r) & =  f(x_n + \varepsilon_n) = f(x_n) + f^\prime(x_n)\varepsilon_n + \frac{f^{\prime\prime}(x_n)}{2!}\varepsilon_n^2 \dots \\
+			\varepsilon_n & \approx - \frac{f(x_n)}{f^\prime(x_n)} \\
+			r = x_n + \varepsilon_n & \approx x_n - \frac{f(x_n)}{f^\prime(x_n)}
+		\end{align*}
+		in other words $ x_n - \frac{f(x_n)}{f^\prime(x_n)}$ is the next iteration of $r$, and hence we write:
+	\begin{equation*}
+	x_{n+1} = x_n - \frac{f(x_n)}{f^\prime(x_n)}
+	\end{equation*} 
+	}
+	\mode<handout>{
+		\vspace{5cm}
+	}
+\end{frame}
+\note{
+		We wish to find roots of $f(x)$ using a converging sequence $(x_n)$. But we want to do it faster.
+		
+	Newton's original method (1685) was purely algebraic, which he applied only to	polynomials and used a sequence of polynomials instead of successive approximations $x_n$.
+	
+	Raphson's simplified version (1690) was also only algebraic and he applied it only to polynomials but used $x_n$ approximations. 
+	
+	Simpson gave the form used today 50 years later (1740), along with other important results in the same paper.}
+
+
+%------------------------------------------------
+\begin{frame}
+	\frametitle{Newton-Raphson graphical expression}
+	\mode<beamer>{
+		\begin{figure}[ht]
+			\centering
+			\includegraphics[width=0.65\textwidth]{figs/newton.png}
+		\end{figure}
+	}
+	\mode<handout>{
+		\vspace{5cm}
+	}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+	\frametitle{Newton-Raphson failure}
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=\textwidth]{figs/nr-1.png}
+	\end{figure}
+\end{frame}
+
+
+%------------------------------------------------
+\begin{frame}
+	\frametitle{Newton-Raphson failure}
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=\textwidth]{figs/nr-2.png}
+	\end{figure}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+	\frametitle{Newton-Raphson failure}
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=\textwidth]{figs/nr-3.png}
+	\end{figure}
+\end{frame}
 
 \end{document}
