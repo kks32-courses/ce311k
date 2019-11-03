@@ -125,7 +125,7 @@ University of Texas at Austin \\
 	\end{figure}
 \end{frame}
 
-\note{King's college fan vaults were built in 1441}
+\note{King's college fan vaults were built in 1500s}
 
 %------------------------------------------------
 \begin{frame}
@@ -145,15 +145,6 @@ University of Texas at Austin \\
 
 %------------------------------------------------
 \begin{frame}
-	\frametitle{Catenary, caternary \dots everywhere}
-	\begin{figure}[ht]
-		\centering
-		\includegraphics[width=0.95\textwidth]{figs/wembley.jpg}
-	\end{figure}
-\end{frame}
-
-%------------------------------------------------
-\begin{frame}
 	\frametitle{Sagrada Familia}
 	\begin{figure}[ht]
 		\centering
@@ -163,6 +154,15 @@ University of Texas at Austin \\
 
 \note{Antoni Gaudi i Cornet (1852-1926) was a well-known architect from Spain.
 	Gaudi used catenary arches in many of his projects. One of Gaudi's greatest works however became the Temple of the Holy Family (the Sagrada Familia) in Barcelona.}
+
+%------------------------------------------------
+\begin{frame}
+	\frametitle{Catenary, caternary \dots everywhere}
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=0.95\textwidth]{figs/wembley.jpg}
+	\end{figure}
+\end{frame}
 
 %------------------------------------------------
 \begin{frame}
@@ -182,4 +182,48 @@ University of Texas at Austin \\
 		\includegraphics[width=\textwidth]{figs/catenary_parabola.png}
 	\end{figure}
 \end{frame}
+
+\note{Parabola $y = x^2$ for a parabola, a hyperbolic function like $\cosh(x)\approx = 1 + \frac{x^2}{2}$}
+
+%------------------------------------------------
+\begin{frame}
+	\frametitle{Potential energy of a simple pendulum}
+	We need to know how high the weight of the pendulum is above its lowest point
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=\textwidth]{figs/simple-pendulum.png}
+	\end{figure}
+\end{frame}
+
+
+\note{Taylor series approximation $\cos(\theta) \approx $ for a parabola, a hyperbolic 
+	function like $\cosh(x)\approx 1 + \frac{x^2}{2}$, which gives 
+	$h = R(1 - (1 + \frac{\theta^2}{2})) = R \frac{\theta^2}{2}$
+
+The cosine function made the problem awkward and unweildy. If we approximate using 
+$\cos(\theta) \approx \frac{\theta^2}{2}$ everything fell into place. An approximation 
+like that might seem completely out of left field. Let's graph these functions. They do 
+look close to each other. But how do we think to make this approximation? and how do we even get that particular quadratic?
+}
+
+
+%------------------------------------------------
+\begin{frame}
+	\frametitle{Taylor series}
+	\mode<beamer>{
+		\begin{itemize}
+			\item Taylor series is one the best tools maths has to offer for approximating functions. 
+			
+			\item Taylor series is about taking non-polynomial functions and finding polyomials that approximate at some input. 
+			
+			\item The motive here is the polynomials tend to be much easier to deal with than other functions, they are easier to compute, take derivatives, integrate, just easier overall. 
+			
+			\item $e^x = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \dots$
+		\end{itemize}
+	}
+	\mode<handout>{
+		\vspace{5cm}
+	}
+\end{frame}
+
 \end{document}
