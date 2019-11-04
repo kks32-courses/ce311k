@@ -354,6 +354,26 @@ look close to each other. But how do we think to make this approximation? and ho
 \end{frame}
 
 
+%------------------------------------------------
+\begin{frame}
+	\frametitle{Taylor series: Two variables}
+	The Taylor series of $f$ expanded about $(x,y)=(a,b)$ is:	
+	\mode<beamer>{
+	\begin{equation*}
+		\begin{split}
+		(x,y)=f(a,b)+\frac{\partial f}{\partial x}(a,b)\cdot (x-a)+\frac{\partial f}{\partial y}(a,b)\cdot(y-b) \\
+		+\frac{1}{2!}[\frac{\partial^2 f}{\partial x^2}(a,b)\cdot (x-a)^2\\ 
+		+ 2 \frac{\partial^2 f}{\partial xy}(a,b)\cdot (x-a)(y-b)+\\ \frac{\partial^2 f}{\partial y^2}(a,b)\cdot (y-b)^2]+\cdots
+		\end{split}
+	\end{equation*}
+	}
+	\mode<handout>{
+		\vspace{5cm}
+	}
+\end{frame}
+
+
+
 \section{Newton Raphson}
 %------------------------------------------------
 \begin{frame}
