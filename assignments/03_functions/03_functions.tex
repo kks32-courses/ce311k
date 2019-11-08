@@ -72,9 +72,9 @@ Note: Please upload your solution as an ipynb file to the Canvas page.
 	Using these values, obtain the deflection at 3 locations: $x = L/4, L/2, 3L/4$ for both simply supported and fixed end beams.
 	
 	\item Create a user defined function called \verb|bisection| that implements the Bisection Method for computing the roots of equations. The equation that is to be solved should be defined in a separate user defined function called \verb|fn| and this function should be used within the bisection function. Use the bisection function within a Python script to find a root of an equation (see below).
-	The arguments for the bisection function should be the initial guesses for $x0$ and $x1$.  The returned values from the bisection function should be the identified root, the number of iterations it took to obtain the root, and the relative error. 
+	The arguments for the bisection function should be the initial guesses for $x0$ and $x1$.  The returned values from the bisection function should be the identified root, the number of iterations it took to obtain the root, and the error. 
 	
-	Your bisection function should stop iterating on the root when the approximate relative error ($\varepsilon_a$) is less than 0.01\%.
+	Your bisection function should stop iterating on the root when the approximate error ($\varepsilon_a$) is less than 0.01\%.
 
 	Your program should contain extensive error checking. At a minimum, it must include the following features:
 	\begin{enumerate}
