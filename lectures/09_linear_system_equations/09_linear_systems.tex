@@ -364,12 +364,14 @@ University of Texas at Austin \\
 	\frametitle{Gauss Seidel Iterative approach}
 	Using Gauss-Seidel solve for [x]
 	\begin{align*}
-	4x_1 + x_2   + 2x_3 & = 4\\
-	3x_1 + 5 x_2 + x_3 & = 7\\
+	4x_1 + x_2   + 2x_3 & = 4
+\\
+	3x_1 + 5 x_2 + x_3 & = 7
+\\
 	x_1  + x_2   + 3x_3 & = 3 \\
 	\end{align*}
 	\mode<beamer>{
-		Assuming an initial guess of $x_1, x_2, x_3 = 0$.
+		Assuming an initial guess of $x_1, x_2, x_3 = 0$. End of first iteration.
 \begin{align*}
 x_1 & = \frac{4 - x_2 - 2x_3}{4} = \frac{4 - 0 - 0}{4} = 1 \\
 x_2 & = \frac{7 - 3x_1 - x_3}{5} = \frac{7 - 3 * 1 - 0}{5} = 0.8 \\
@@ -389,5 +391,32 @@ x_3 & = \frac{3 - x_1 - x_2}{3} = \frac{3 - 1 - 0.8}{3} = 0.4 \\
 	\left|\varepsilon_{a, i}\right| = \left|\frac{x_i^k - x_i^{k-1}}{x_i^k}*100\% \right|< \varepsilon_s
 	\end{align*}
 	where $k$, and $k-1$ represents the current and previous iterations
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+	\frametitle{Truss analysis}
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=\textwidth]{figs/truss.png}
+	\end{figure}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+	\frametitle{Truss analysis: Force balance}
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=0.8\textwidth]{figs/force-balance.png}
+	\end{figure}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+	\frametitle{Truss analysis: Matrix formulation}
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=\textwidth]{figs/truss-matrix.png}
+	\end{figure}
 \end{frame}
 \end{document}
