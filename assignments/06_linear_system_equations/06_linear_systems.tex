@@ -26,10 +26,41 @@ Note: Please upload your solution as an ipynb file to the Canvas page.
 
 \vspace{1em}
  
- The purpose of this assignment is to introduce you to computer methods for solving systems of
- simultaneous linear equations. You will perform hand calculations that solves the equations usingGauss Elimination and Gauss-Seidel iterative approach and then and write a computer program that does the same.
+ The purpose of this assignment is to introduce you to computer methods for solving systems of
+
+ simultaneous linear equations. You will perform hand calculations that solves the equations using
+Gauss Elimination and Gauss-Seidel iterative approach and then and write a computer program that does the same.
  
 \begin{enumerate}
+	
+	
+	\item Given the system of equations $Ax = b$, as defined below:
+	
+	\begin{align*}
+	\begin{bmatrix}
+	2 & -2 & 1 \\
+	3 & 2 & -5 \\
+	-1 & 2 & 3 \\
+	\end{bmatrix}
+	\begin{bmatrix}
+	x_1 \\
+	x_2 \\
+	x_3 \\
+	\end{bmatrix}
+	=
+	\begin{bmatrix}
+	10 \\
+	-16 \\
+	8 \\
+	\end{bmatrix}
+	\end{align*}
+	\begin{enumerate}
+		\item Determine the solution by hand using Gauss Elimination
+		\item Use the `\verb|numpy.linalg.solve|' library function to solve
+		\item Solve using a Python code for Gauss-Seidel method.
+	\end{enumerate}
+
+	
 	\item Given the system of equations $Ax = b$, as defined below:
 
 	\begin{align*}
@@ -38,13 +69,12 @@ Note: Please upload your solution as an ipynb file to the Canvas page.
 	2 & 5 & 1 \\
 	-3 & 1 & 6 \\
 	\end{bmatrix}
-	\quad
 	\begin{bmatrix}
 	x_1 \\
 	x_2 \\
 	x_3 \\
 	\end{bmatrix}
-	\quad
+	=
 	\begin{bmatrix}
 	51 \\
 	23 \\
@@ -52,10 +82,9 @@ Note: Please upload your solution as an ipynb file to the Canvas page.
 	\end{bmatrix}
 	\end{align*}
 	\begin{enumerate}
-		\item Determine the solution by hand using Gauss Elimination
-		\item Write a Python code for Gauss Elimination to solve the above equation
-		\item Use the `\verb|numpy.linalg.solve|' library function to solve
 		\item Carry out three iterations of the Gauss-Seidel method, assuming an initial values of $x$ equal to zero. After the third iteration, compute the error for each estimate with relative to the true values from `\verb|numpy.linalg.solve|'
+		\item Use the `\verb|numpy.linalg.solve|' library function to solve
+		\item Solve using a Python code for Gauss-Seidel method.
 	\end{enumerate}
 
 	\item Solve the  axial forces $F_i$ for the following truss with pin-joints and 13 members. The resulting system of 13 equations is:
@@ -82,7 +111,10 @@ Note: Please upload your solution as an ipynb file to the Canvas page.
 	\begin{enumerate}
 		\item Solve this system of equations using the solve function in the linalg package from
 numpy.
-		\item Solve this system of equations using your Gauss-Seidel user defined function usinginitial values of $F$ equal to zero. Explain what is happening when you try to solve thisproblem using Gauss-Seidel.
+		\item Solve this system of equations using your Gauss-Seidel user defined function using
+initial values of $F$ equal to zero. Explain what is happening when you try to solve this
+problem using Gauss-Seidel.
+
 	\end{enumerate}
 \end{enumerate}
 
