@@ -320,8 +320,74 @@ University of Texas at Austin \\
 \begin{frame}
 	\frametitle{Gauss Elimination: Limitations}
 	\begin{enumerate}
-		\item Prone to round off errors, when we have many (>100) equations.
+		\item Prone to round off errors, when we have many ($>100$) equations.
 		\item If coefficient matrix is sparse (lots of zeros), elimination methods are very inefficient.
 	\end{enumerate}
+\end{frame}
+
+
+%------------------------------------------------
+\begin{frame}
+	\frametitle{Gauss Seidel Iterative approach}
+	 For conciseness, we limit to $3\times3$ equations. If diagonal elements are all non-zero, then the equations can be solved as:
+		\begin{align*}
+	\begin{bmatrix}
+	a_{11} & a_{12} & a_{13} \\
+	a_{21} & a_{22} & a_{23} \\
+	a_{31} & a_{32} & a_{33} \\
+	\end{bmatrix}
+	\begin{bmatrix}
+	x_1 \\
+	x_2 \\
+	x_3 \\
+	\end{bmatrix} = 
+	\begin{bmatrix}
+	b_1 \\
+	b_2 \\
+	b_3 \\
+	\end{bmatrix}
+	\end{align*}
+	\mode<beamer>{
+		\begin{align*}
+		x_1 & = \frac{b_1 - a_{12}x_2 - a_{13}x_3}{a_{11}} \\
+		x_2 & = \frac{b_2- a_{21}x_1 - a_{23}x_3}{a_{22}} \\
+		x_3 & = \frac{b_3 - a_{31}x_1 - a_{32}x_2}{a_{33}} \\
+		\end{align*}
+	}
+	\mode<handout>{
+		\vspace*{3cm}
+	}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+	\frametitle{Gauss Seidel Iterative approach}
+	Using Gauss-Seidel solve for [x]
+	\begin{align*}
+	4x_1 + x_2   + 2x_3 & = 4\\
+	3x_1 + 5 x_2 + x_3 & = 7\\
+	x_1  + x_2   + 3x_3 & = 3 \\
+	\end{align*}
+	\mode<beamer>{
+		Assuming an initial guess of $x_1, x_2, x_3 = 0$.
+\begin{align*}
+x_1 & = \frac{4 - x_2 - 2x_3}{4} = \frac{4 - 0 - 0}{4} = 1 \\
+x_2 & = \frac{7 - 3x_1 - x_3}{5} = \frac{7 - 3 * 1 - 0}{5} = 0.8 \\
+x_3 & = \frac{3 - x_1 - x_2}{3} = \frac{3 - 1 - 0.8}{3} = 0.4 \\
+\end{align*}
+	}
+	\mode<handout>{
+		\vspace*{3cm}
+	}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+	\frametitle{Gauss Seidel Convergence criteria}
+	Convergence can be checked using the relative error.
+	\begin{align*}
+	\left|\varepsilon_{a, i}\right| = \left|\frac{x_i^k - x_i^{k-1}}{x_i^k}*100\% \right|< \varepsilon_s
+	\end{align*}
+	where $k$, and $k-1$ represents the current and previous iterations
 \end{frame}
 \end{document}
