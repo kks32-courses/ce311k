@@ -63,7 +63,7 @@ University of Texas at Austin \\
 \medskip
 \href{mailto:krishnak@utexas.edu}{krishnak@utexas.edu} % email address
 }
-\date{\today} % Date, can be changed to a custom date
+\date{Fall 2020} % Date, can be changed to a custom date
 
 \begin{document}
 
@@ -71,10 +71,7 @@ University of Texas at Austin \\
 \titlepage % title page as the first slide
 \end{frame}
 
-%------------------------------------------------
-\begin{frame}
-	\frametitle{\faCommentsO ~What would you like to learn from the course?}
-\end{frame}
+
 
 \begin{frame}
  % Table of contents slide, comment this block out to remove it
@@ -82,6 +79,7 @@ University of Texas at Austin \\
  % Throughout your presentation, if you choose to use \section{} and \subsection{} 
  % commands, these %will automatically be printed on this slide as an overview 
  \tableofcontents
+ \textcolor{blue}{\faQuestionCircleO ~How are you feeling this morning?}
 \end{frame}
 
 \newif\ifshowtoc
@@ -99,51 +97,15 @@ University of Texas at Austin \\
 % slides
 %----------------------------------------------------------------------------------------
 %------------------------------------------------
-\begin{frame}[fragile]
-	\frametitle{On computable numbers}
+\begin{frame}
+	\frametitle{What is an algorithm?}
 	\begin{figure}[ht]
 		\centering
-		\includegraphics[width=\textwidth]{figs/turing-bombe.png}
-		\caption*{Enigma has 150,738,274,937,250 possible states. (credit: Rutherford journal)}
+		\includegraphics[width=0.92\textwidth]{figs/plant-tree.png}
 	\end{figure}
-	Decipher this text from an Engima machine:
-	\begin{verbatim}
-	KLDP AXKR MIMS VNUK M
-	\end{verbatim}
+	\textcolor{blue}{\faQuestionCircleO ~Could you identify examples of algorithms in real-world?}
 \end{frame}
-
-\note{
-	Turing began to consider whether a method or process could be devised that could decide whether a given mathematical assertion was provable. Turing analyzed the methodical process, focusing on logical instructions, the action of the mind, and a machine that could be embodied as a physical form. Turing developed the proof that automatic computation cannot solve all mathematical problems. This concept became known as the Turing machine, which has become the foundation of the modern theory of computation and computability.
-	
-	KLDP AXKR MIMS VNUK M is Welcome to UT Austin
-}
-
-%------------------------------------------------
-\begin{frame}[fragile]
-	\frametitle{The Bombe}
-	\begin{verbatim}
-		Ciphertext          W	S	N	P	N	L	K	L	S	T	C	S
-		Plaintext "crib"    A	T	T	A	C	K	A	T	D	A	W	N
-		Message position    1	2	3	4	5	6	7	8	9	10	11	12
-	\end{verbatim}
-	\begin{figure}[ht]
-		\centering
-		\includegraphics[width=0.25\textwidth]{figs/bombe-loops.png}
-		\caption*{The letters of a crib and ciphertext expressed as a graph to provide a menu which specifies how to set up a bombe run.}
-	\end{figure}
-\end{frame}
-
-\note{
-	Aspects of numerical technique in the Bombe:
-	\begin{itemize}
-		\item Initial guess (the better the guess, the better is the solution)
-		\item Error quantifying
-		\item Algorithm
-		\item Identify divergence from a solution
-		\item Verification
-	\end{itemize}
-}
-
+\note{An algorithm is a finite sequence of well-defined, computer-implementable instructions, typically to solve a class of problems or to perform a computation.}
 
 %------------------------------------------------
 \begin{frame}
@@ -169,6 +131,26 @@ University of Texas at Austin \\
 	Lovelace speculated that the Engine `might act upon other things besides number... the Engine might compose elaborate and scientific pieces of music of any degree of complexity or extent'. The idea of a machine that could manipulate symbols in accordance with rules and that number could represent entities other than quantity mark the fundamental transition from calculation to computation.
 	
 	Hopper is the pioneer computer scientist, known for creating COBOL – the first computing language. There are over 220 billion lines of COBOL in existence, a figure which equates to around 80\% of the world's actively used code. There are estimated to be over a million COBOL programmers in the world today. Most impressive perhaps, is that 200 times as many COBOL transactions take place each day than Google searches, which is 5.6 billion queries/day.
+}
+
+%------------------------------------------------
+\begin{frame}[fragile]
+	\frametitle{On computable numbers}
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=\textwidth]{figs/turing-bombe.png}
+		\caption*{Enigma has 150,738,274,937,250 possible states. (credit: Rutherford journal)}
+	\end{figure}
+	Decipher this text from an Engima machine:
+	\begin{verbatim}
+	KLDP AXKR MIMS VNUK M
+	\end{verbatim}
+\end{frame}
+
+\note{
+	Turing began to consider whether a method or process could be devised that could decide whether a given mathematical assertion was provable. Turing analyzed the methodical process, focusing on logical instructions, the action of the mind, and a machine that could be embodied as a physical form. Turing developed the proof that automatic computation cannot solve all mathematical problems. This concept became known as the Turing machine, which has become the foundation of the modern theory of computation and computability.
+	
+	KLDP AXKR MIMS VNUK M is Welcome to UT Austin
 }
 
 %------------------------------------------------
@@ -213,20 +195,11 @@ University of Texas at Austin \\
 
 %------------------------------------------------
 \begin{frame}
-\frametitle{How to bury Anna under the snow?}
-	\begin{figure}[ht]
-		\centering
-		\includegraphics[width=0.3\textwidth]{figs/anna-in-snow.png}
-	\end{figure}
-\end{frame}
-
-%------------------------------------------------
-\begin{frame}
-	\frametitle{How to animate like Disney?}
+	\frametitle{\faQuestionCircleO  How to bury Anna under the snow?}
 	\begin{figure}[ht]
 		\centering
 		\includegraphics[width=\textwidth]{figs/anna-snow.png}
-		\caption*{\textcolor{blue}{\faCommentsO ~How to achieve the snow simulation?}}
+		
 	\end{figure}
 \end{frame}
 
