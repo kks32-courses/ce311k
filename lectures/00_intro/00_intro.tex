@@ -353,10 +353,11 @@ UT Austin's Frontera can do 38 PetaFlops. In contrast a human brain can do 1,000
 	\frametitle{Aspects of languages: Primitive constructs}
 	\mode<beamer>{
 		\begin{itemize}
+			\item Anything computable in one language is computable in
+any other programming language.
 			\item Turing showed that you can compute anything using \textbf{6
 			primitives}.
-			\item Anything computable in one language is computable in
-			any other programming language.
+
 			\item \textit{English}: words
 			\item \textit{Programming languages}: numbers, strings, simple operators
 		\end{itemize}
@@ -381,7 +382,7 @@ UT Austin's Frontera can do 38 PetaFlops. In contrast a human brain can do 1,000
 	\end{minipage}%
 \end{frame}
 
-\note{In fact, Alan Turing, who was a really great computer scientist, he showed that you can compute anything using the six primitives. And the six primitives are move left, move right, read, write, scan, and do nothing. Using those six instructions and the piece of tape, he showed that you can compute anything. And using those six instructions, programming languages came about that created a moreconvenient set of primitives. You don't have to program in only these six commands.}
+\note{In fact, Alan Turing, who was a really great computer scientist, he showed that you can compute anything using the six primitives. And the six primitives are move left, move right, read, write, scan, and do nothing. Using those six instructions and the piece of tape, he showed that you can compute anything. And using those six instructions, programming languages came about that created a more convenient set of primitives. You don't have to program in only these six commands.}
 
 %------------------------------------------------
 \begin{frame}
@@ -406,7 +407,7 @@ UT Austin's Frontera can do 38 PetaFlops. In contrast a human brain can do 1,000
 				\item \textit{non-scalar} (have internal structure that can be accessed)
 			\end{itemize}
 			objects have a \textbf{type} that defines the kinds of things
-			programs can do to them. For example matrices.
+			programs can do to them. For example a list of items.
 		}
 		\mode<handout>{
 			\vspace{2cm}
@@ -508,9 +509,9 @@ UT Austin's Frontera can do 38 PetaFlops. In contrast a human brain can do 1,000
 	}
 	\begin{itemize}	
 		\item Operations on `ints' and `floats':
-		\item \verb|i + j|: \textit{sum} (int $\|$ float)
-		\item \verb|i - j|: \textit{difference} (int $\|$ float)	
-		\item \verb|i * j|: \textit{product} (int $\|$ float)
+		\item \verb|i + j|: \textit{sum} (int or float)
+		\item \verb|i - j|: \textit{difference} (int or float)	
+		\item \verb|i * j|: \textit{product} (int or float)
 		\item \verb|i / j|: \textit{division} (float)
 		\item \verb|i % j|: \textit{remainder} of \verb|i| divided by \verb|j|
 		\item \verb|i ** j|: \verb|i| to the \textit{power} of \verb|j|
