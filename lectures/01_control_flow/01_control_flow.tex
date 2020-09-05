@@ -63,7 +63,7 @@ University of Texas at Austin \\
 \medskip
 \href{mailto:krishnak@utexas.edu}{krishnak@utexas.edu} % email address
 }
-\date{\today} % Date, can be changed to a custom date
+\date{Fall 2020} % Date, can be changed to a custom date
 
 \begin{document}
 
@@ -231,9 +231,10 @@ for item in list:
 
 %------------------------------------------------
 \begin{frame}[fragile]
-	\frametitle{range()}
-	
-	The \verb|range()| returns a sequence of numbers:
+	\frametitle{np.arange()}
+	We need a new library called `numpy`, we are going to import the new library.
+	\verb|import numpy as np|
+	The \verb|np.arange()| returns a sequence of numbers:
 	
 		\vspace{0.5cm}
 		
@@ -241,11 +242,11 @@ for item in list:
 		
 		\vspace{0.5cm}
 	
-	\textit{stop:} Number of integers (whole numbers) to generate, starting from zero. eg. range(3) yields a sequence of [0, 1, 2].
+	\textit{stop:} Number of integers (whole numbers) to generate, starting from zero. eg. np.arange(3) yields a sequence of [0, 1, 2].
 	
 	\vspace{0.5cm}
 	
-	\verb|range([start], stop[, step])|
+	\verb|np.arange([start], stop[, step])|
 	
 	\begin{itemize}
 		\item \textit{start}: Starting number of the sequence.
@@ -258,7 +259,6 @@ for item in list:
 \note{
 	Note that:
 	\begin{itemize}
-	\item All parameters must be integers.
 	\item All parameters can be positive or negative.
 	\item range() (and Python in general) is 0-index based, meaning list indexes start at 0, not 1		
 	\end{itemize}
