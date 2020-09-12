@@ -394,19 +394,19 @@ evaluate \texttt{expressions} in that block if \texttt{<condition>} is True
 %------------------------------------------------
 
 \section{Bisection method}
+
 %------------------------------------------------
 \begin{frame}
 	\frametitle{Calculate the optimum angle to pull for a given force}
-
+	
 	\begin{itemize}
 		\item Given $F = \SI{17.5}{\kilo\newton} (\SI{1750}{kg})$, $W=\SI{25}{kN}$ and $\mu = 0.75$, what's $\theta$?
 		\mode<beamer>{	
 			\begin{align*}
-			Try~\theta = 30^o:~ & F = \frac{0.75 \times 25 }{\cos(30) + 0.75 \sin(30)} = \SI{15.108}{kN}.\\
-			Try~\theta = 50^o:~ & F = \frac{0.75 \times 25 }{\cos(50) + 0.75 \sin(50)} = \SI{15.403}{kN}.\\
-			Try~\theta = 40^o:~ & F = \frac{0.75 \times 25 }{\cos(40) + 0.75 \sin(40)} = \SI{15.022}{kN}.\\
-			Try~\theta = 35^o:~ & F = \frac{0.75 \times 25 }{\cos(35) + 0.75 \sin(35)} = \SI{15.008}{kN}.\\
-			Try~\theta = 37.5^o:~ & F = \frac{0.75 \times 25 }{\cos(37.5) + 0.75 \sin(37.5)} = \SI{15.001}{kN}.			
+				Try~\theta = 60^o:~ & F = \frac{0.75 \times 25 }{\cos(60) + 0.75 \sin(60)} = \SI{16.31}{kN}.\\
+				Try~\theta = 70^o:~ & F = \frac{0.75 \times 25 }{\cos(70) + 0.75 \sin(70)} = \SI{17.91}{kN}.\\
+				Try~\theta = 65^o:~ & F = \frac{0.75 \times 25 }{\cos(65) + 0.75 \sin(65)} = \SI{17.00}{kN}.\\
+				Try~\theta = 67.5^o:~ & F = \frac{0.75 \times 25 }{\cos(67.5) + 0.75 \sin(67.5)} = \SI{17.43}{kN}.
 			\end{align*}
 			This is \textbf{bisection method!}
 		}
