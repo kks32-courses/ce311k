@@ -20,9 +20,9 @@
 \begin{centering}
 	\textbf{
 		Project: Civil Engineering\\
-		Assigned: 29th October 2019\\
-		Partial code deadline (Qs 1 - 4): 15th November 2019 at 5 PM\\
-		Reports due: 29th November 2019 at 5 PM\\
+		%Assigned: 29th October 2019\\
+		Partial code deadline (Qs 1 - 4): 3rd November 2020 at 5 PM\\
+		Reports due: 20th November 2020 at 5 PM\\
 		This is a group project ($ 1 < size \le 3$), please submit individual reports\\
 	}
 \end{centering}
@@ -152,48 +152,48 @@ Note: Please upload your code as .py, and ipynb files and your report as a pdf t
 	
 	Write a function to solve the cumulative infiltration of water using the Green-Ampt equation. Use \textit{Newton's method} and start at an initial value of $F = Kt$. Derive the nonlinear function to solve. Compute the number of iterations to solve the nonlinear function with a tolerance of 1.e-5.
  	
- 	\subsection*{Transportation engineering}
- 	\subsubsection*{Taylor series}
- 	\item A tranportation engineer involved in the evaluation of emission from vehicles uses an experimental system for studying the motion of a wide variety of cars in a full-scale laboratory environment. One particular test involves an accurate measurement of the displacement x of the vehicle as a function of time $t$. This information is then used to determine the velocity $v$ (first derivative), and acceleration $a$ (second derivative). In a given experiment, the displacement $x$ was measured over a time range of 0 - 10s, at steps of 1s. Some of the results obtained are given as follows:
- 	
-	\begin{table}[!h]
-		\centering
- 		\begin{tabular}{l c}
- 			\toprule
- 			\textbf{t (s)} & x(m) \\
- 			\midrule
- 			0 &	0 \\
- 			1 &	3.5 \\
- 			2 &	7.29 \\
- 			3 &	11.45 \\
- 			4 &	16.3 \\
- 			5 &	21.1 \\
- 			6 &	26.6 \\
- 			7 &	39.5 \\
- 			8 &	56.1 \\
- 			9 &	75.1 \\
- 			\bottomrule
- 		\end{tabular}
-		\caption{Vehicle distance data}
-	 	\label{table:traffic}
-	 \end{table}
- 
- 	Using the finite difference approximation of the first and second derivative estimate the velocity and acceleration of the car at 8s.
- 	
- 	\begin{align*}
- 		f^\prime(a) & \approx \frac{f(a) - f(a - h)}{h} \\
- 		f^{\prime\prime}(a) & \approx \frac{f(a + h) - 2 f(a) + f (a - h)}{h^2}
- 	\end{align*}
- 	
- 	where $h$ is the interval. 
- 	
- 	Using the velocity and acceleration computed at 8s, compute how far the car moves at the end of 10s with a second-degree Taylor polynomial. Position at time $t$ is given by: $x(t) = \frac{1}{2}at^2 + v_0t + x_0$. 
- 	
- 	\begin{enumerate}
- 		\item Develop the second-degree Taylor polynomial. 
- 		\item Compute the distance traveled at the end of 10s.
- 		\item Would it be reasonable to use this polynomial to estimate the distance traveled during the next minute? Explain.
- 	\end{enumerate}
+% 	\subsection*{Transportation engineering}
+% 	\subsubsection*{Taylor series}
+% 	\item A tranportation engineer involved in the evaluation of emission from vehicles uses an experimental system for studying the motion of a wide variety of cars in a full-scale laboratory environment. One particular test involves an accurate measurement of the displacement x of the vehicle as a function of time $t$. This information is then used to determine the velocity $v$ (first derivative), and acceleration $a$ (second derivative). In a given experiment, the displacement $x$ was measured over a time range of 0 - 10s, at steps of 1s. Some of the results obtained are given as follows:
+% 	
+%	\begin{table}[!h]
+%		\centering
+% 		\begin{tabular}{l c}
+% 			\toprule
+% 			\textbf{t (s)} & x(m) \\
+% 			\midrule
+% 			0 &	0 \\
+% 			1 &	3.5 \\
+% 			2 &	7.29 \\
+% 			3 &	11.45 \\
+% 			4 &	16.3 \\
+% 			5 &	21.1 \\
+% 			6 &	26.6 \\
+% 			7 &	39.5 \\
+% 			8 &	56.1 \\
+% 			9 &	75.1 \\
+% 			\bottomrule
+% 		\end{tabular}
+%		\caption{Vehicle distance data}
+%	 	\label{table:traffic}
+%	 \end{table}
+% 
+% 	Using the finite difference approximation of the first and second derivative estimate the velocity and acceleration of the car at 8s.
+% 	
+% 	\begin{align*}
+% 		f^\prime(a) & \approx \frac{f(a) - f(a - h)}{h} \\
+% 		f^{\prime\prime}(a) & \approx \frac{f(a + h) - 2 f(a) + f (a - h)}{h^2}
+% 	\end{align*}
+% 	
+% 	where $h$ is the interval. 
+% 	
+% 	Using the velocity and acceleration computed at 8s, compute how far the car moves at the end of 10s with a second-degree Taylor polynomial. Position at time $t$ is given by: $x(t) = \frac{1}{2}at^2 + v_0t + x_0$. 
+% 	
+% 	\begin{enumerate}
+% 		\item Develop the second-degree Taylor polynomial. 
+% 		\item Compute the distance traveled at the end of 10s.
+% 		\item Would it be reasonable to use this polynomial to estimate the distance traveled during the next minute? Explain.
+% 	\end{enumerate}
  
 
 \end{enumerate}
