@@ -63,7 +63,7 @@ University of Texas at Austin \\
 \medskip
 \href{mailto:krishnak@utexas.edu}{krishnak@utexas.edu} % email address
 }
-\date{\today} % Date, can be changed to a custom date
+\date{} % Date, can be changed to a custom date
 
 \begin{document}
 
@@ -93,7 +93,16 @@ University of Texas at Austin \\
 	\frametitle{Linear System of Equations}
 	\begin{figure}[ht]
 		\centering
-		\includegraphics[width=0.7\textwidth]{figs/fluid-flow.png}
+		\includegraphics[width=0.7\textwidth]{figs/linear-systems.png}
+	\end{figure}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+	\frametitle{Linear System of Equations: Traffic flow}
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=0.7\textwidth]{figs/traffic-flow.png}
 	\end{figure}
 \end{frame}
 
@@ -385,6 +394,41 @@ x_3 & = \frac{3 - x_1 - x_2}{3} = \frac{3 - 1 - 0.8}{3} = 0.4 \\
 		\vspace*{3cm}
 	}
 \end{frame}
+
+%------------------------------------------------
+\begin{frame}
+	\frametitle{Gauss Seidel Iterative approach}
+	Using Gauss-Seidel solve for [x]
+	\mode<beamer>{
+		End of first iteration:  $x_1, x_2, x_3 = 1, 0.8, 0.4$
+		\begin{align*}
+			x_1 & = \frac{4 - x_2 - 2x_3}{4} = \frac{4 - 0.8 - 2*0.4}{4} = 0.6 \\
+			x_2 & = \frac{7 - 3x_1 - x_3}{5} = \frac{7 - 3 * 0.6 - 0.4}{5} = 0.96 \\
+			x_3 & = \frac{3 - x_1 - x_2}{3} = \frac{3 - 0.6 - 0.96}{3} = 0.48 \\
+		\end{align*}
+		End of first iteration:  $x_1, x_2, x_3 = 0.6, 0.96, 0.48$
+		\begin{align*}
+			x_1 & = \frac{4 - x_2 - 2x_3}{4} = \frac{4 - 0.96 - 2*0.48}{4} = 0.52 \\
+			x_2 & = \frac{7 - 3x_1 - x_3}{5} = \frac{7 - 3 * 0.52 - 0.48}{5} = 0.992 \\
+			x_3 & = \frac{3 - x_1 - x_2}{3} = \frac{3 - 0.52 - 0.992}{3} = 0.496 \\
+		\end{align*}
+	}
+	\mode<handout>{
+	End of first iteration:  $x_1, x_2, x_3 = 1, 0.8, 0.4$
+	\begin{align*}
+		x_1 & = \frac{4 - x_2 - 2x_3}{4} =  \\
+		x_2 & = \frac{7 - 3x_1 - x_3}{5} = \\
+		x_3 & = \frac{3 - x_1 - x_2}{3} = \\
+	\end{align*}
+	End of first iteration:  $x_1, x_2, x_3 = 0.6, 0.96, 0.48$
+	\begin{align*}
+		x_1 & = \frac{4 - x_2 - 2x_3}{4} = \\
+		x_2 & = \frac{7 - 3x_1 - x_3}{5} = \\
+		x_3 & = \frac{3 - x_1 - x_2}{3} =  \\
+	\end{align*}
+	}
+\end{frame}
+
 
 %------------------------------------------------
 \begin{frame}

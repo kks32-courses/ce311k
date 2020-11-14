@@ -1,0 +1,96 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{graphicx}
+\usepackage[left=30mm, right=30mm, top=30mm, bottom=35mm]{geometry}
+\usepackage{amsmath}
+\usepackage{siunitx}
+\usepackage{fancyhdr}
+\usepackage{url}
+\pagestyle{fancy}
+%-------------------------------------------------------------------------------
+\lhead{\textbf{UT}}
+\rhead{\textbf{CE311K Intro to Computer Methods}}
+\cfoot{\thepage}
+%-------------------------------------------------------------------------------
+
+\begin{document}
+\begin{centering}
+	\textbf{
+		Assignment 05: Vectors and Matrices\\
+		Assigned: 19th November 2019\\
+		Due: 6th December 2019 at 5 PM\\
+	}
+\end{centering}
+
+
+Note: Please upload your solution as an ipynb file to the Canvas page.
+
+\vspace{1em}
+ 
+ The purpose of this assignment is to develop your skills in using Numpy arrays and doing vector and matrix operations.
+ 
+\begin{enumerate}
+	\item Write custom individual functions to perform the following matrix operations, without using the in-built numpy functions. Add checks on suitability of the shape of matrices whenever possible 
+	\begin{enumerate}
+		\item Add two matrices
+		\item Subtract two matrices
+		\item Scalar product of a matrix
+		\item Multiply two matrices
+		\item Sum of all elements in a matrix
+		\item Check if a given matrix is symmetric and square.
+	\end{enumerate}
+	\item Let $A$ be a 4 x 4 matrix and B a 2 x 1 matrix. The symbol $\cdot$ represents a dot product. Using the shape of the matrix as a guide, indicate if the following expressions are valid or not.
+	\begin{enumerate}
+		\item $ A + B$
+		\item $ A \cdot B$
+		\item $ A \cdot A$
+		\item $ B \cdot B$
+		\item $ B^T \cdot B \cdot A$
+	\end{enumerate}
+
+	\item Using the following matrices and vectors. Compute the following.
+	
+	\begin{align*}
+	A & =  \begin{bmatrix}
+		1 & 4 & -2 \\
+		4 & 8 & 6 \\
+		-2 & 6 & 12 
+    	\end{bmatrix} \\
+	%
+	B & =  \begin{bmatrix}
+	6 & 2 & -2 \\
+	4 & 8 & 3 \\
+	-1 & 6 & 9 
+	\end{bmatrix} \\
+	c & = \left[6, -4, 3\right]\\
+	d & = \left[3, -1, 5\right]
+	\end{align*}
+	\begin{enumerate}
+		\item $ A - A^T$
+		\item $A \cdot B$
+		\item $8A - 4B$
+		\item $B^T \cdot B$
+		\item $c^T \cdot B$
+		\item $A\cdot B \cdot c \cdot d^T$
+		\item $c \times d$
+		\item Inverse $A^{-1}$ and check if $A * A^{-1} = I$
+	\end{enumerate}
+	\item Find a a unit vector (i.e., vector of magnitude equal to 1) that is perpendicular to both $c$ and $d$. Hint: \textit{use the cross product definition}.
+	\item Using array slicing on matrix A
+	\begin{align*}
+	A = \begin{bmatrix}
+4.0 & 7.0 & -2.43 & 67.1 \\
+-4.0 & 64.0 & 54.7 & -3.33 \\
+2.43 & 23.2 & 3.64 & 4.11 \\
+1.2 & 2.5 & -113.2 & 323.22
+	\end{bmatrix}
+	\end{align*}
+	\begin{enumerate}
+		\item Extract the third column as a 1D array
+		\item Extract the first two rows as a 2D sub-array
+		\item Extract the bottom-right $2 \times 2$ block as a 2D sub-array
+		\item Sum the last column
+	\end{enumerate}
+\end{enumerate}
+
+\end{document}
+
