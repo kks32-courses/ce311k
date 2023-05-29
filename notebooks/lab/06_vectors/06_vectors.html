@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Exercise 07.1 (indexing and timing) &#8212; Introduction to Programming with Python</title>
+    <title>Lab 06.1 Vectors &#8212; Introduction to Programming with Python</title>
   
   
   
@@ -163,6 +163,10 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/04_data_structures/04_data_structures_solution.html">Lecture 04: Data structures (Solution)</a></li>
 
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/05_numerical_diff_taylor_series_newton_raphson/05_finite_difference_taylor_series_solution.html">Lecture 05: Numerical differentiation</a></li>
 
 
 
@@ -393,7 +397,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Exercise 07.1 (indexing and timing)</h1>
+    <h1>Lab 06.1 Vectors</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -403,15 +407,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exercise 07.1 (indexing and timing)</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-extension-just-in-time-jit-compilation">Optional extension: just-in-time (JIT) compilation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-07-2-member-functions">Exercise 07.2 (member functions)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-07-3-angle-between-two-vectors">Exercise 07.3 (angle between two vectors)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-07-2-member-functions">Exercise 07.2 (member functions)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-07-3-angle-between-two-vectors">Exercise 07.3 (angle between two vectors)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a></li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -422,7 +422,9 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="cell docutils container">
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-06-1-vectors">
+<h1>Lab 06.1 Vectors<a class="headerlink" href="#lab-06-1-vectors" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize Otter</span>
 <span class="kn">import</span> <span class="nn">otter</span>
@@ -440,8 +442,6 @@ document.write(`
 </div>
 </div>
 <!-- BEGIN QUESTION -->
-<section id="exercise-07-1-indexing-and-timing">
-<h1>Exercise 07.1 (indexing and timing)<a class="headerlink" href="#exercise-07-1-indexing-and-timing" title="Permalink to this heading">#</a></h1>
 <p>Create two very long NumPy arrays <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> and sum the arrays using:</p>
 <ol class="arabic simple">
 <li><p>The NumPy addition syntax, <code class="docutils literal notranslate"><span class="pre">z</span> <span class="pre">=</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">y</span></code>; and</p></li>
@@ -575,9 +575,8 @@ the timing). The values of the array entries are not important for this test. Us
 </div>
 <!-- END QUESTION -->
 </section>
-</section>
 <section id="exercise-07-2-member-functions">
-<h1>Exercise 07.2 (member functions)<a class="headerlink" href="#exercise-07-2-member-functions" title="Permalink to this heading">#</a></h1>
+<h2>Exercise 07.2 (member functions)<a class="headerlink" href="#exercise-07-2-member-functions" title="Permalink to this heading">#</a></h2>
 <p>Anonymised scores (out of 60) for an examination are stored in a NumPy array. Write:</p>
 <ol class="arabic">
 <li><p>A function that takes a NumPy array of the raw scores and returns the scores as percentages(60 will returns 100; 30 will return 50), sorted from
@@ -646,7 +645,7 @@ the first and the last entries.</p>
 </div>
 </section>
 <section id="exercise-07-3-angle-between-two-vectors">
-<h1>Exercise 07.3 (angle between two vectors)<a class="headerlink" href="#exercise-07-3-angle-between-two-vectors" title="Permalink to this heading">#</a></h1>
+<h2>Exercise 07.3 (angle between two vectors)<a class="headerlink" href="#exercise-07-3-angle-between-two-vectors" title="Permalink to this heading">#</a></h2>
 <p>Compute the angle between two vectors <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>. Using:
 $<span class="math notranslate nohighlight">\(\alpha = \cos^{-1}\left( \frac{a \cdot b}{|a| \cdot |b|} \right)\)</span>$</p>
 <p>Where <span class="math notranslate nohighlight">\(|a|\)</span> is the magnitude of the vector.</p>
@@ -681,7 +680,7 @@ $<span class="math notranslate nohighlight">\(\alpha = \cos^{-1}\left( \frac{a \
 </div>
 </section>
 <section id="submission">
-<h1>Submission<a class="headerlink" href="#submission" title="Permalink to this heading">#</a></h1>
+<h2>Submission<a class="headerlink" href="#submission" title="Permalink to this heading">#</a></h2>
 <p>Make sure you have run all cells in your notebook in order before running the cell below, so that all images/graphs appear in the output. The cell below will generate a zip file for you to submit. <strong>Please save before exporting!</strong></p>
 <p>These are some submission instructions.</p>
 <div class="cell docutils container">
@@ -692,6 +691,7 @@ $<span class="math notranslate nohighlight">\(\alpha = \cos^{-1}\left( \frac{a \
 </div>
 </div>
 </div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -743,15 +743,11 @@ $<span class="math notranslate nohighlight">\(\alpha = \cos^{-1}\left( \frac{a \
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exercise 07.1 (indexing and timing)</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-extension-just-in-time-jit-compilation">Optional extension: just-in-time (JIT) compilation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-07-2-member-functions">Exercise 07.2 (member functions)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-07-3-angle-between-two-vectors">Exercise 07.3 (angle between two vectors)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-07-2-member-functions">Exercise 07.2 (member functions)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-07-3-angle-between-two-vectors">Exercise 07.3 (angle between two vectors)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a></li>
-</ul>
-
   </nav></div>
 
 </div></div>

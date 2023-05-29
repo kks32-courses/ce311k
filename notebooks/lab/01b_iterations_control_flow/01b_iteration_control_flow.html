@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Exercise 01b.0 (infinite series) &#8212; Introduction to Programming with Python</title>
+    <title>Lab 1b: Roots &#8212; Introduction to Programming with Python</title>
   
   
   
@@ -163,6 +163,10 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/04_data_structures/04_data_structures_solution.html">Lecture 04: Data structures (Solution)</a></li>
 
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/05_numerical_diff_taylor_series_newton_raphson/05_finite_difference_taylor_series_solution.html">Lecture 05: Numerical differentiation</a></li>
 
 
 
@@ -393,7 +397,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Exercise 01b.0 (infinite series)</h1>
+    <h1>Lab 1b: Roots</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -403,9 +407,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exercise 01b.0 (infinite series)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-01b-2-compute-the-prime-factors-for-a-number-n">Exercise 01b.2: Compute the prime factors for a number <code class="docutils literal notranslate"><span class="pre">n</span></code></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-01b-3-shipping-costs">Exercise 01b.3: Shipping costs</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lab 1b: Roots</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-01b-2-compute-the-prime-factors-for-a-number-n">Exercise 01b.2: Compute the prime factors for a number <code class="docutils literal notranslate"><span class="pre">n</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-01b-3-shipping-costs">Exercise 01b.3: Shipping costs</a></li>
+</ul>
+</li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-01b-4-bisection-approach">Exercise 01b.4: Bisection approach</a></li>
 </ul>
 
@@ -419,9 +425,18 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <p>The purpose of this lab is to develop your skills in writing iterations (for) and control flow (if/else).</p>
-<section id="exercise-01b-0-infinite-series">
-<h1>Exercise 01b.0 (infinite series)<a class="headerlink" href="#exercise-01b-0-infinite-series" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-1b-roots">
+<h1>Lab 1b: Roots<a class="headerlink" href="#lab-1b-roots" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize Otter</span>
+<span class="kn">import</span> <span class="nn">otter</span>
+<span class="n">grader</span> <span class="o">=</span> <span class="n">otter</span><span class="o">.</span><span class="n">Notebook</span><span class="p">(</span><span class="s2">&quot;02a_roots_errors.ipynb&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The purpose of this lab is to develop your skills in writing iterations (for) and control flow (if/else).</p>
 <p>Write a python code to calculate the sum of first <span class="math notranslate nohighlight">\(n\)</span> elements for the following series. Use <span class="math notranslate nohighlight">\(n = 100\)</span>.</p>
 <p>a. Arithmetic sum: <span class="math notranslate nohighlight">\(arithmetic =  1 + 2 + 3 + 4 + 5 + 6 + 7 + \dots + n\)</span></p>
 <div class="cell docutils container">
@@ -477,9 +492,8 @@ document.write(`
 </div>
 </div>
 </div>
-</section>
 <section id="exercise-01b-2-compute-the-prime-factors-for-a-number-n">
-<h1>Exercise 01b.2: Compute the prime factors for a number <code class="docutils literal notranslate"><span class="pre">n</span></code><a class="headerlink" href="#exercise-01b-2-compute-the-prime-factors-for-a-number-n" title="Permalink to this heading">#</a></h1>
+<h2>Exercise 01b.2: Compute the prime factors for a number <code class="docutils literal notranslate"><span class="pre">n</span></code><a class="headerlink" href="#exercise-01b-2-compute-the-prime-factors-for-a-number-n" title="Permalink to this heading">#</a></h2>
 <p>When checking if a number is prime, it is sufficient to check if it is divisble by numbers between 2 and it’s square root. Use <code class="docutils literal notranslate"><span class="pre">math.sqrt(x)</span></code> to get the square root of the number <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p>
 <p>Hint: You may need to use a nested for-loop and use <code class="docutils literal notranslate"><span class="pre">break</span></code> to exit the code earlier, when a condition is not met.</p>
 <div class="cell docutils container">
@@ -504,7 +518,7 @@ document.write(`
 </div>
 </section>
 <section id="exercise-01b-3-shipping-costs">
-<h1>Exercise 01b.3: Shipping costs<a class="headerlink" href="#exercise-01b-3-shipping-costs" title="Permalink to this heading">#</a></h1>
+<h2>Exercise 01b.3: Shipping costs<a class="headerlink" href="#exercise-01b-3-shipping-costs" title="Permalink to this heading">#</a></h2>
 <p>Write a Python code to compute the cost of shipping a package according to the following price schedule:</p>
 <p><img alt="Shipping costs" src="https://raw.githubusercontent.com/kks32-courses/ce311k/master/notebooks/lab/01b_iterations_control_flow/shipping-costs.png" /></p>
 <p><strong>Write the code for all possible cases</strong></p>
@@ -527,6 +541,7 @@ document.write(`
 </div>
 </div>
 </div>
+</section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="exercise-01b-4-bisection-approach">
 <h1>Exercise 01b.4: Bisection approach<a class="headerlink" href="#exercise-01b-4-bisection-approach" title="Permalink to this heading">#</a></h1>
@@ -589,9 +604,11 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exercise 01b.0 (infinite series)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-01b-2-compute-the-prime-factors-for-a-number-n">Exercise 01b.2: Compute the prime factors for a number <code class="docutils literal notranslate"><span class="pre">n</span></code></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-01b-3-shipping-costs">Exercise 01b.3: Shipping costs</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lab 1b: Roots</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-01b-2-compute-the-prime-factors-for-a-number-n">Exercise 01b.2: Compute the prime factors for a number <code class="docutils literal notranslate"><span class="pre">n</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-01b-3-shipping-costs">Exercise 01b.3: Shipping costs</a></li>
+</ul>
+</li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-01b-4-bisection-approach">Exercise 01b.4: Bisection approach</a></li>
 </ul>
 

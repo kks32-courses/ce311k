@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Exercise 02a.1 (bisection) &#8212; Introduction to Programming with Python</title>
+    <title>Lab 2 Roots and errors &#8212; Introduction to Programming with Python</title>
   
   
   
@@ -163,6 +163,10 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/04_data_structures/04_data_structures_solution.html">Lecture 04: Data structures (Solution)</a></li>
 
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/05_numerical_diff_taylor_series_newton_raphson/05_finite_difference_taylor_series_solution.html">Lecture 05: Numerical differentiation</a></li>
 
 
 
@@ -393,7 +397,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Exercise 02a.1 (bisection)</h1>
+    <h1>Lab 2 Roots and errors</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -403,17 +407,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exercise 02a.1 (bisection)</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task">Task</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-02a-2-series-expansion">Exercise 02a.2 (series expansion)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hints">Hints</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-02a-2-series-expansion">Exercise 02a.2 (series expansion)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hints">Hints</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a></li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -424,7 +424,9 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="cell docutils container">
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-2-roots-and-errors">
+<h1>Lab 2 Roots and errors<a class="headerlink" href="#lab-2-roots-and-errors" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize Otter</span>
 <span class="kn">import</span> <span class="nn">otter</span>
@@ -433,8 +435,6 @@ document.write(`
 </div>
 </div>
 </div>
-<section id="exercise-02a-1-bisection">
-<h1>Exercise 02a.1 (bisection)<a class="headerlink" href="#exercise-02a-1-bisection" title="Permalink to this heading">#</a></h1>
 <p>Bisection is an iterative method for finding approximate roots of a function. Say we know that the function <span class="math notranslate nohighlight">\(f(x)\)</span> has one root between <span class="math notranslate nohighlight">\(x_{0}\)</span> and <span class="math notranslate nohighlight">\(x_{1}\)</span> (<span class="math notranslate nohighlight">\(x_{0} &lt; x_{1}\)</span>). We then:</p>
 <ul>
 <li><p>Evaluate <span class="math notranslate nohighlight">\(f\)</span> at the midpoint <span class="math notranslate nohighlight">\(x_{\rm mid} = (x_0 + x_1)/2\)</span>, i.e. compute
@@ -526,9 +526,8 @@ required (use a <code class="docutils literal notranslate"><span class="pre">for
 </div>
 </div>
 </section>
-</section>
 <section id="exercise-02a-2-series-expansion">
-<h1>Exercise 02a.2 (series expansion)<a class="headerlink" href="#exercise-02a-2-series-expansion" title="Permalink to this heading">#</a></h1>
+<h2>Exercise 02a.2 (series expansion)<a class="headerlink" href="#exercise-02a-2-series-expansion" title="Permalink to this heading">#</a></h2>
 <p>The power series expansion for the sine function is:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -542,7 +541,7 @@ required (use a <code class="docutils literal notranslate"><span class="pre">for
 <p>Store the absolute value of the error in the variable <code class="docutils literal notranslate"><span class="pre">error</span></code>.</p>
 <p><em>Note:</em> Calculators and computers use iterative or series expansions to compute trigonometric functions, similar to the one above (although they use more efficient formulations than the above series).</p>
 <section id="hints">
-<h2>Hints<a class="headerlink" href="#hints" title="Permalink to this heading">#</a></h2>
+<h3>Hints<a class="headerlink" href="#hints" title="Permalink to this heading">#</a></h3>
 <p>To compute the factorial and to get a good approximation of <span class="math notranslate nohighlight">\(\pi\)</span>, use the Python <code class="docutils literal notranslate"><span class="pre">math</span></code> module:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
 <span class="n">nfact</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
@@ -643,7 +642,7 @@ required (use a <code class="docutils literal notranslate"><span class="pre">for
 </section>
 </section>
 <section id="submission">
-<h1>Submission<a class="headerlink" href="#submission" title="Permalink to this heading">#</a></h1>
+<h2>Submission<a class="headerlink" href="#submission" title="Permalink to this heading">#</a></h2>
 <p>Make sure you have run all cells in your notebook in order before running the cell below, so that all images/graphs appear in the output. The cell below will generate a zip file for you to submit. <strong>Please save before exporting!</strong></p>
 <p>These are some submission instructions.</p>
 <div class="cell docutils container">
@@ -654,6 +653,7 @@ required (use a <code class="docutils literal notranslate"><span class="pre">for
 </div>
 </div>
 </div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -705,17 +705,13 @@ required (use a <code class="docutils literal notranslate"><span class="pre">for
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exercise 02a.1 (bisection)</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task">Task</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-02a-2-series-expansion">Exercise 02a.2 (series expansion)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hints">Hints</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-02a-2-series-expansion">Exercise 02a.2 (series expansion)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hints">Hints</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a></li>
-</ul>
-
   </nav></div>
 
 </div></div>

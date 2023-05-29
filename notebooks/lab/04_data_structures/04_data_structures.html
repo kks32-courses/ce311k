@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Exercise 04.1 (selecting and passing data structures) &#8212; Introduction to Programming with Python</title>
+    <title>Lab 04: Data structures &#8212; Introduction to Programming with Python</title>
   
   
   
@@ -163,6 +163,10 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/04_data_structures/04_data_structures_solution.html">Lecture 04: Data structures (Solution)</a></li>
 
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/05_numerical_diff_taylor_series_newton_raphson/05_finite_difference_taylor_series_solution.html">Lecture 05: Numerical differentiation</a></li>
 
 
 
@@ -393,7 +397,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Exercise 04.1 (selecting and passing data structures)</h1>
+    <h1>Lab 04: Data structures</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -403,17 +407,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exercise 04.1 (selecting and passing data structures)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-04-2-selecting-data-structures">Exercise 04.2 (selecting data structures)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-04-3-indexing">Exercise 04.3 (indexing)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hint-you-can-create-a-list-of-zeros-of-length-n-by">Hint: You can create a list of zeros of length <code class="docutils literal notranslate"><span class="pre">n</span></code> by</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-advanced">Optional (advanced)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-1-selecting-and-passing-data-structures">Q4.1 (selecting and passing data structures)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-04-2-selecting-data-structures">Exercise 04.2 (selecting data structures)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-04-3-indexing">Exercise 04.3 (indexing)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hint-you-can-create-a-list-of-zeros-of-length-n-by">Hint: You can create a list of zeros of length <code class="docutils literal notranslate"><span class="pre">n</span></code> by</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-advanced">Optional (advanced)</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-04-4-dictionaries">Exercise 04.4 (dictionaries)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-04-4-dictionaries">Exercise 04.4 (dictionaries)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -424,7 +427,9 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="cell docutils container">
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-04-data-structures">
+<h1>Lab 04: Data structures<a class="headerlink" href="#lab-04-data-structures" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize Otter</span>
 <span class="kn">import</span> <span class="nn">otter</span>
@@ -433,8 +438,8 @@ document.write(`
 </div>
 </div>
 </div>
-<section id="exercise-04-1-selecting-and-passing-data-structures">
-<h1>Exercise 04.1 (selecting and passing data structures)<a class="headerlink" href="#exercise-04-1-selecting-and-passing-data-structures" title="Permalink to this heading">#</a></h1>
+<section id="q4-1-selecting-and-passing-data-structures">
+<h2>Q4.1 (selecting and passing data structures)<a class="headerlink" href="#q4-1-selecting-and-passing-data-structures" title="Permalink to this heading">#</a></h2>
 <p>Given the coordinates of the vertices of a triangle, <span class="math notranslate nohighlight">\((x_0, y_0)\)</span>, <span class="math notranslate nohighlight">\((x_1, y_1)\)</span> and <span class="math notranslate nohighlight">\((x_2, y_2)\)</span>, the area <span class="math notranslate nohighlight">\(A\)</span> of the triangle is given by:
 $<span class="math notranslate nohighlight">\(
 A = \left| \frac{x_0(y_1  - y_2) + x_1(y_2 - y_0) + x_2(y_0 - y_1)}{2} \right|
@@ -496,7 +501,7 @@ There is an old function named `area` that computes the area of a triangle given
 </div>
 </section>
 <section id="exercise-04-2-selecting-data-structures">
-<h1>Exercise 04.2 (selecting data structures)<a class="headerlink" href="#exercise-04-2-selecting-data-structures" title="Permalink to this heading">#</a></h1>
+<h2>Exercise 04.2 (selecting data structures)<a class="headerlink" href="#exercise-04-2-selecting-data-structures" title="Permalink to this heading">#</a></h2>
 <p>For a simple (non-intersecting) polygon with <span class="math notranslate nohighlight">\(n\)</span> vertices, <span class="math notranslate nohighlight">\((x_0, y_0)\)</span>, <span class="math notranslate nohighlight">\((x_1, y_1)\)</span>, . . , <span class="math notranslate nohighlight">\((x_{n-1}, y_{n-1})\)</span>, the area <span class="math notranslate nohighlight">\(A\)</span> is given by
 $<span class="math notranslate nohighlight">\(
 A = \left| \frac{1}{2} \sum_{i=0}^{n-1} \left(x_{i} y _{i+1} - x_{i+1} y_{i} \right) \right|
@@ -535,17 +540,17 @@ and where \)</span>(x_n, y_n) = (x_0, y_0)$. The vertices should be ordered as y
 </div>
 </section>
 <section id="exercise-04-3-indexing">
-<h1>Exercise 04.3 (indexing)<a class="headerlink" href="#exercise-04-3-indexing" title="Permalink to this heading">#</a></h1>
+<h2>Exercise 04.3 (indexing)<a class="headerlink" href="#exercise-04-3-indexing" title="Permalink to this heading">#</a></h2>
 <p>Write a function that uses list indexing to add two vectors of arbitrary length, and returns the new vector. Include a check that the vector sizes match, and print a warning message if there is a size mismatch. The more error information you provide, the easier it would be for someone using your function to debug their code.</p>
 <p>Add some tests of your code.</p>
 <section id="hint-you-can-create-a-list-of-zeros-of-length-n-by">
-<h2>Hint: You can create a list of zeros of length <code class="docutils literal notranslate"><span class="pre">n</span></code> by<a class="headerlink" href="#hint-you-can-create-a-list-of-zeros-of-length-n-by" title="Permalink to this heading">#</a></h2>
+<h3>Hint: You can create a list of zeros of length <code class="docutils literal notranslate"><span class="pre">n</span></code> by<a class="headerlink" href="#hint-you-can-create-a-list-of-zeros-of-length-n-by" title="Permalink to this heading">#</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>z = [0]*n
 </pre></div>
 </div>
 </section>
 <section id="optional-advanced">
-<h2>Optional (advanced)<a class="headerlink" href="#optional-advanced" title="Permalink to this heading">#</a></h2>
+<h3>Optional (advanced)<a class="headerlink" href="#optional-advanced" title="Permalink to this heading">#</a></h3>
 <p>Try writing a one-line version of this operation using list comprehension and the built-in function <a class="reference external" href="https://docs.python.org/3/library/functions.html#zip"><code class="docutils literal notranslate"><span class="pre">zip</span></code></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -576,7 +581,7 @@ and where \)</span>(x_n, y_n) = (x_0, y_0)$. The vertices should be ordered as y
 </section>
 </section>
 <section id="exercise-04-4-dictionaries">
-<h1>Exercise 04.4 (dictionaries)<a class="headerlink" href="#exercise-04-4-dictionaries" title="Permalink to this heading">#</a></h1>
+<h2>Exercise 04.4 (dictionaries)<a class="headerlink" href="#exercise-04-4-dictionaries" title="Permalink to this heading">#</a></h2>
 <p>Create a dictionary that maps build names (the key) to building abbreviations for at least 5 buildings
 (you can find abbreviations at <a class="reference external" href="https://utdirect.utexas.edu/apps/campus/buildings/nlogon/facilities/UTM/">https://utdirect.utexas.edu/apps/campus/buildings/nlogon/facilities/UTM/</a>).
 From the dictionary, produce and print</p>
@@ -684,7 +689,7 @@ From the dictionary, produce and print</p>
 </div>
 </section>
 <section id="submission">
-<h1>Submission<a class="headerlink" href="#submission" title="Permalink to this heading">#</a></h1>
+<h2>Submission<a class="headerlink" href="#submission" title="Permalink to this heading">#</a></h2>
 <p>Make sure you have run all cells in your notebook in order before running the cell below, so that all images/graphs appear in the output. The cell below will generate a zip file for you to submit. <strong>Please save before exporting!</strong></p>
 <p>These are some submission instructions.</p>
 <div class="cell docutils container">
@@ -695,6 +700,7 @@ From the dictionary, produce and print</p>
 </div>
 </div>
 </div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -746,17 +752,16 @@ From the dictionary, produce and print</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exercise 04.1 (selecting and passing data structures)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-04-2-selecting-data-structures">Exercise 04.2 (selecting data structures)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-04-3-indexing">Exercise 04.3 (indexing)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hint-you-can-create-a-list-of-zeros-of-length-n-by">Hint: You can create a list of zeros of length <code class="docutils literal notranslate"><span class="pre">n</span></code> by</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-advanced">Optional (advanced)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-1-selecting-and-passing-data-structures">Q4.1 (selecting and passing data structures)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-04-2-selecting-data-structures">Exercise 04.2 (selecting data structures)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-04-3-indexing">Exercise 04.3 (indexing)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hint-you-can-create-a-list-of-zeros-of-length-n-by">Hint: You can create a list of zeros of length <code class="docutils literal notranslate"><span class="pre">n</span></code> by</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-advanced">Optional (advanced)</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-04-4-dictionaries">Exercise 04.4 (dictionaries)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-04-4-dictionaries">Exercise 04.4 (dictionaries)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>
