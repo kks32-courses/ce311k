@@ -1,0 +1,1434 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Lecture 01a: Control statements (Solution) &#8212; Introduction to Programming with Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/lectures/01_control_flow/01_control_statements_solution';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Lecture 01b: Control statement example" href="01_friction_sliding_block.html" />
+    <link rel="prev" title="Lecture 01a: Control statement" href="01_control_statements.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../README.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Introduction to Programming with Python</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../README.html">
+                    CE 311K: Introduction to Computer Methods (Python)
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../00_intro/00_variables_assignment_operator-precedence.html">Lecture 00: Variables and assignment</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="01_control_statements.html">Lecture 01a: Control statement</a></li>
+
+
+
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="01_friction_sliding_block.html">Lecture 01b: Control statement example</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="01_friction_sliding_block_solution.html">Lecture 01b: Example of control statement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cantilever_beam_uvl_solution.html">Deflection of a cantilever beam subjected to uniformly varying load</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../02_errors/02_errors.html">Lecture 02: Errors</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../03_functions/03_functions.html">Lecture 03: Functions</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../04_data_structures/04_data_structures.html">Lecture 04: Data structures</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../06_exceptions/06_error_handling_testing.html">Lecture 06: Error handling</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../07_vectors/07_vectors.html">Lecture 07: Vectors</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../08_matrices/08_matrices.html">Lecture 08: Matrices</a></li>
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../09_linear_algebra/09_linear_algebra.html">Lecture 09: Linear Algebra</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../09_linear_algebra/09_linear_algebra_solution.html">Lecture 09: Linear Algebra (Solution)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../10_useful_libs/10_useful_libs.html">Lecture 10: Useful libraries in Python</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/kks32-courses/ce311k/blob/main/docs/notebooks/lectures/01_control_flow/01_control_statements_solution.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/kks32-courses/ce311k" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/kks32-courses/ce311k/issues/new?title=Issue%20on%20page%20%2Fnotebooks/lectures/01_control_flow/01_control_statements_solution.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/notebooks/lectures/01_control_flow/01_control_statements_solution.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lecture 01a: Control statements (Solution)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lecture 01a: Control statements (Solution)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-a-control-statement-in-pseudo-code">Example of a control statement in pseudo code</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#booleans">Booleans</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-operators">Comparison operators</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#boolean-operators">Boolean operators</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-comparison-operators">Multiple comparison operators</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#control-statements">Control statements</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#if-statements"><code class="docutils literal notranslate"><span class="pre">if</span></code> statements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-if-a-number-is-divisible-by-2-and-3-or-print-if-is-divisible-by-either-2-or-3">Check if a number is divisible by 2 and 3, or print if is divisible by either 2 or 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-taylor-series-expansion-for-cos-x-is">The Taylor series expansion for cos(x) is</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-if-a-number-is-prime">Check if a number is prime</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iterate-through-a-loop-and-find-the-optimal-solution-using-an-if-condition">Iterate through a loop and find the optimal solution using an <code class="docutils literal notranslate"><span class="pre">if</span></code> condition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loops-break-and-continue">Loops: <code class="docutils literal notranslate"><span class="pre">break</span></code> and <code class="docutils literal notranslate"><span class="pre">continue</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#break"><code class="docutils literal notranslate"><span class="pre">break</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#continue"><code class="docutils literal notranslate"><span class="pre">continue</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Continue</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bisection-approach-for-computing-the-angle-for-a-given-force">Bisection approach for computing the angle for a given force</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#forces-on-a-sliding-block-with-multiple-friction-angles">Forces on a sliding block with multiple friction angles</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lecture-01a-control-statements-solution">
+<h1>Lecture 01a: Control statements (Solution)<a class="headerlink" href="#lecture-01a-control-statements-solution" title="Permalink to this heading">#</a></h1>
+<p>Control statements allow a program to change what it does depending on input or other data.
+Typical flows in a computer program involve structures like:</p>
+<ul class="simple">
+<li><p>if ‘X’ do task ‘A’, else if ‘Y’ do task ‘B’</p></li>
+<li><p>perform the task ‘A’ ‘N’ times</p></li>
+<li><p>perform the task ‘B’ until ‘X’ is true</p></li>
+</ul>
+<p>These flows are implemented using what are called ‘control statements’. They are also known as branching - the path a program follows depends on the input data. Control statements are a major part of all non-trivial computer programs.</p>
+<section id="objectives">
+<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Introduce Boolean types</p></li>
+<li><p>Introduce comparison operators</p></li>
+<li><p>Learn to use control statements</p></li>
+</ul>
+</section>
+<section id="example-of-a-control-statement-in-pseudo-code">
+<h2>Example of a control statement in pseudo code<a class="headerlink" href="#example-of-a-control-statement-in-pseudo-code" title="Permalink to this heading">#</a></h2>
+<p>An electric window opener, attached to a rain sensor and a temperature
+gauge, might be controlled by the following program:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>if raining:  # If raining, close the window
+    close_window()
+else if temperature &gt; 80:  # If the temperature is over 26 deg, open window
+    open_window()
+else if temperature &lt; 66:  # If the temperature is below 19 deg, close window
+    close_window()
+else:  # Otherwise, do nothing and leave window as it is
+    pass
+</pre></div>
+</div>
+<p>It is easy to imagine the program being made more sophisticated using the time of the day and the day of the week, if the air-conditioning is on or being attached to a smoke alarm.</p>
+<p>We will look at different types of control statements, but first we need to introduce boolean types and comparison operators.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="booleans">
+<h1>Booleans<a class="headerlink" href="#booleans" title="Permalink to this heading">#</a></h1>
+<p>Before starting with control statements, we need to introduce booleans.
+A Boolean is a type of variable that can take on one of two values - true or false.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+False
+</pre></div>
+</div>
+</div>
+</div>
+<p>Booleans are used extensively in control statements.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="comparison-operators">
+<h1>Comparison operators<a class="headerlink" href="#comparison-operators" title="Permalink to this heading">#</a></h1>
+<p>We often want to check in a program how two variables are related to each other, for example if one is less than the other, or if two variables are equal. We do this with ‘comparison operators’, such as <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> and <code class="docutils literal notranslate"><span class="pre">==</span></code>.</p>
+<p>Below is an example checking if a number <code class="docutils literal notranslate"><span class="pre">a</span></code> is less than or greater than a number <code class="docutils literal notranslate"><span class="pre">b</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">10.0</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">9.9</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+True
+</pre></div>
+</div>
+</div>
+</div>
+<p>Equality is checked using ‘<code class="docutils literal notranslate"><span class="pre">==</span></code>’, and ‘<code class="docutils literal notranslate"><span class="pre">!=</span></code>’ is used to test if two variables are not equal. Below are some examples to read through.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">14</span>
+<span class="n">b</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9</span>
+<span class="n">c</span> <span class="o">=</span> <span class="mi">14</span>
+
+<span class="c1"># Check if a is equal to b </span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Is a equal to b?&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">)</span>
+
+<span class="c1"># Check if a is equal to c </span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Is a equal to c?&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">c</span><span class="p">)</span>
+
+<span class="c1"># Check if a is not equal to c </span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Is a not equal to c?&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">!=</span> <span class="n">c</span><span class="p">)</span>
+
+<span class="c1"># Check if a is less than or equal to b </span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Is a less than or equal to b?&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">&lt;=</span> <span class="n">b</span><span class="p">)</span>
+
+<span class="c1"># Check if a is less than or equal to c </span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Is a less than or equal to c?&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">&lt;=</span> <span class="n">c</span><span class="p">)</span>
+
+<span class="c1"># Check if two colours are the same</span>
+<span class="n">colour0</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span>
+<span class="n">colour1</span> <span class="o">=</span> <span class="s1">&#39;green&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Is colour0 the same as colour1?&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">colour0</span> <span class="o">==</span> <span class="n">colour1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Is a equal to b?
+False
+Is a equal to c?
+True
+Is a not equal to c?
+False
+Is a less than or equal to b?
+False
+Is a less than or equal to c?
+True
+Is colour0 the same as colour1?
+False
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="boolean-operators">
+<h1>Boolean operators<a class="headerlink" href="#boolean-operators" title="Permalink to this heading">#</a></h1>
+<p>In the above we have only used one comparison at a time. Boolean operators allow us to ‘string’ together multiple checks using the operators ‘<code class="docutils literal notranslate"><span class="pre">and</span></code>’, ‘<code class="docutils literal notranslate"><span class="pre">or</span></code>’ and ‘<code class="docutils literal notranslate"><span class="pre">not</span></code>’.
+The operators ‘<code class="docutils literal notranslate"><span class="pre">and</span></code>’ and ‘<code class="docutils literal notranslate"><span class="pre">or</span></code>’ take a boolean on either side, and the code</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="ow">and</span> <span class="n">Y</span>
+</pre></div>
+</div>
+<p>will evaluate to <code class="docutils literal notranslate"><span class="pre">True</span></code> if <code class="docutils literal notranslate"><span class="pre">X</span></code> <em>and</em> <code class="docutils literal notranslate"><span class="pre">Y</span></code> are both true, and otherwise will evaluate to <code class="docutils literal notranslate"><span class="pre">False</span></code>. The code</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="ow">or</span> <span class="n">Y</span>
+</pre></div>
+</div>
+<p>will evaluate to <code class="docutils literal notranslate"><span class="pre">True</span></code> if <code class="docutils literal notranslate"><span class="pre">X</span></code> <em>or</em> <code class="docutils literal notranslate"><span class="pre">Y</span></code> is true, and otherwise will evaluate to <code class="docutils literal notranslate"><span class="pre">False</span></code>.
+Here are some examples:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># If 10 &lt; 9 (false) and 15 &lt; 20 (true) -&gt; false</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">10</span> <span class="o">&lt;</span> <span class="mi">9</span> <span class="ow">and</span> <span class="mi">15</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check if 10 &lt; 9 (false) or 15 &lt; 20 (true) -&gt; true</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">10</span> <span class="o">&lt;</span> <span class="mi">9</span> <span class="ow">or</span> <span class="mi">15</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>The meaning of the statement becomes clear if read it left-to-right.</p>
+<p>Note that the comparison operators (<code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>) are evaluated before the Boolean operators (<code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">or</span></code>).</p>
+<p>In Python, the ‘<code class="docutils literal notranslate"><span class="pre">not</span></code>’ operator negates a statement, e.g.:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Is 12 *not* less than 7 -&gt; true</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="nb">print</span><span class="p">(</span><span class="ow">not</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>Only use ‘<code class="docutils literal notranslate"><span class="pre">not</span></code>’ when it makes a program easy to read. For example, the following is not good practice.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="ow">not</span> <span class="mi">12</span> <span class="o">==</span> <span class="mi">7</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>Better is</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">12</span> <span class="o">!=</span> <span class="mi">7</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here is a double-negation, which is very cryptic (and poor programming):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="ow">not</span> <span class="ow">not</span> <span class="mi">12</span> <span class="o">==</span> <span class="mi">7</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<section id="multiple-comparison-operators">
+<h2>Multiple comparison operators<a class="headerlink" href="#multiple-comparison-operators" title="Permalink to this heading">#</a></h2>
+<p>The examples so far use at most two comparison operators. In some cases we might want to perform more checks. We can control the order of evaluation using brackets. For example, if we want to check if a number is strictly between 100 and 200, or between 10 and 50:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">value</span> <span class="o">=</span> <span class="mf">150.5</span>
+<span class="nb">print</span> <span class="p">((</span><span class="n">value</span> <span class="o">&gt;</span> <span class="mi">100</span> <span class="ow">and</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="mi">200</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">value</span> <span class="o">&gt;</span> <span class="mi">10</span> <span class="ow">and</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">))</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>The two checks in the brackets are evaluated first (each evaluates to <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>), and then the ‘<code class="docutils literal notranslate"><span class="pre">or</span></code>’ checks if one of the two is true.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="control-statements">
+<h1>Control statements<a class="headerlink" href="#control-statements" title="Permalink to this heading">#</a></h1>
+<p>Now that we’ve covered comparison, we are ready to look at control statements. These are a central part of computing. Here is a control statement in pseudo code:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>if A is true
+    Perform task X (only)
+else if B is true
+    Perform task Y (only)
+else   
+    Perform task Z (only)
+</pre></div>
+</div>
+<p>The above is an ‘if’ statement. Another type of control statement is</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>do task X 10 times
+</pre></div>
+</div>
+<p>We make this concrete below with some examples.</p>
+<section id="if-statements">
+<h2><code class="docutils literal notranslate"><span class="pre">if</span></code> statements<a class="headerlink" href="#if-statements" title="Permalink to this heading">#</a></h2>
+<p>Below is a simple example that demonstrates the Python syntax for an if-else control statement.</p>
+<p>Let’s say we are writing a simple banking software. An account holder in our bank would like to withdraw money from their bank account. We need to check if their <code class="docutils literal notranslate"><span class="pre">balance</span></code> is greater than amount of money they would like to <code class="docutils literal notranslate"><span class="pre">withdraw</span></code>. If <code class="docutils literal notranslate"><span class="pre">balance</span> <span class="pre">&gt;</span> <span class="pre">withdraw</span></code> then they can go ahead with the transaction and we reduce the balance by the withdrawn amount. We also need to display a message with their balance after withdrawing the money. On the other hand, if the <code class="docutils literal notranslate"><span class="pre">balance</span></code> is less than <code class="docutils literal notranslate"><span class="pre">withdraw</span></code>, we can’t allow them to withdraw any money and this transaction will fail with the corresponding error message. Finally, we need to tell the account holder if the <code class="docutils literal notranslate"><span class="pre">balance</span></code> and <code class="docutils literal notranslate"><span class="pre">withdraw</span></code> are the same and it leads to zero cash left in the bank account. This is an important case and we need to let the user know that they have no money left in their account. Let’s look at these cases:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">balance</span> <span class="o">=</span> <span class="mf">1000.0</span>  <span class="c1"># Initial balance</span>
+
+<span class="n">withdraw</span> <span class="o">=</span> <span class="mf">400.0</span>
+
+<span class="n">new_balance</span> <span class="o">=</span> <span class="n">balance</span> <span class="o">-</span> <span class="n">withdraw</span>
+
+<span class="k">if</span> <span class="n">new_balance</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">:</span>  
+    <span class="n">balance</span> <span class="o">=</span> <span class="n">new_balance</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The new balance after withdrawal of &#39;</span> \
+          <span class="s1">&#39;</span><span class="si">{:.2f}</span><span class="s1"> is </span><span class="si">{:.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">withdraw</span><span class="p">,</span> <span class="n">balance</span><span class="p">))</span>
+<span class="k">elif</span> <span class="n">new_balance</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>  
+    <span class="n">balance</span> <span class="o">=</span> <span class="n">new_balance</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;You have no more money left after withdrawal of &#39;</span> \
+          <span class="s1">&#39;</span><span class="si">{:.2f}</span><span class="s1"> is </span><span class="si">{:.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">withdraw</span><span class="p">,</span> <span class="n">balance</span><span class="p">))</span>
+<span class="k">else</span><span class="p">:</span> 
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Insufficient funds for transaction withdrawal of &#39;</span> \
+          <span class="s1">&#39;</span><span class="si">{:.2f}</span><span class="s1"> when balance is </span><span class="si">{:.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">withdraw</span><span class="p">,</span> <span class="n">balance</span><span class="p">))</span>
+
+<span class="c1"># Print new x value</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;New balance is:&quot;</span><span class="p">,</span> <span class="n">balance</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The new balance after withdrawal of 400.00 is 600.00
+New balance is: 600.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Try changing the value of <code class="docutils literal notranslate"><span class="pre">withdraw</span></code> and re-running the cell to see the different paths the code can follow.</p>
+<p>We now dissect the control statement example. The control statement begins with an <code class="docutils literal notranslate"><span class="pre">if</span></code>, followed by the expression to check, followed by ‘<code class="docutils literal notranslate"><span class="pre">:</span></code>’</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">new_balance</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">:</span>  
+</pre></div>
+</div>
+<p>Below that is a block of code, indented by four spaces, that is executed if the check (<code class="docutils literal notranslate"><span class="pre">new_balance</span> <span class="pre">&gt;</span> <span class="pre">0.0</span></code>) is true:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">balance</span> <span class="o">=</span> <span class="n">new_balance</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The new balance after withdrawal of &#39;</span> \
+          <span class="s1">&#39;</span><span class="si">{:.2f}</span><span class="s1"> is </span><span class="si">{:.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">withdraw</span><span class="p">,</span> <span class="n">balance</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>and in which case the program will then move beyond the end of the control statement. If the check evaluates to false, then the <code class="docutils literal notranslate"><span class="pre">elif</span></code> (else if) check</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">elif</span> <span class="n">new_balance</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>  
+    <span class="n">balance</span> <span class="o">=</span> <span class="n">new_balance</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;You have no more money left after withdrawal of &#39;</span> \
+          <span class="s1">&#39;</span><span class="si">{:.2f}</span><span class="s1"> is </span><span class="si">{:.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">withdraw</span><span class="p">,</span> <span class="n">balance</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>is performed, and if true ‘<code class="docutils literal notranslate"><span class="pre">print('You</span> <span class="pre">have</span> <span class="pre">no</span> <span class="pre">money</span> <span class="pre">left</span> <span class="pre">after</span> <span class="pre">withdrawal')</span></code>’ is executed and the control block is exited. The code following the <code class="docutils literal notranslate"><span class="pre">else</span></code> statement is executed</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Insufficient funds for transaction withdrawal of &#39;</span> \
+          <span class="s1">&#39;</span><span class="si">{:.2f}</span><span class="s1"> when balance is </span><span class="si">{:.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">withdraw</span><span class="p">,</span> <span class="n">balance</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>if none of the preceding statements were true.</p>
+</section>
+<section id="check-if-a-number-is-divisible-by-2-and-3-or-print-if-is-divisible-by-either-2-or-3">
+<h2>Check if a number is divisible by 2 and 3, or print if is divisible by either 2 or 3<a class="headerlink" href="#check-if-a-number-is-divisible-by-2-and-3-or-print-if-is-divisible-by-either-2-or-3" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Check if a number is divisible by 2 and 3, or print if is divisible by either 2 or 3</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">6</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="s2">&quot;is divisible by 2 and 3&quot;</span><span class="p">)</span>
+<span class="k">elif</span><span class="p">(</span><span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="s2">&quot;is divisible only by 2&quot;</span><span class="p">)</span>
+<span class="k">elif</span><span class="p">(</span><span class="n">n</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="s2">&quot;is divisible only by 3&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="s2">&quot;is not divisible by either 2 or 3&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6 is divisible by 2 and 3
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-taylor-series-expansion-for-cos-x-is">
+<h2>The Taylor series expansion for cos(x) is<a class="headerlink" href="#the-taylor-series-expansion-for-cos-x-is" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[ \cos(x) = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!}+ \dots = \sum_{n = 0}^{\infty}\frac{(-1)^n}{(2n)!}x^{2n}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+<span class="n">cos</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">j</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">j</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">cos</span> <span class="o">+=</span> <span class="n">j</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="n">i</span><span class="o">/</span><span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">cos</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="k">assert</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">cos</span> <span class="o">-</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+4
+6
+8
+10
+0.8775825618898637
+0.8775825618903728
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="check-if-a-number-is-prime">
+<h2>Check if a number is prime<a class="headerlink" href="#check-if-a-number-is-prime" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">47</span>
+
+<span class="c1"># Assume that n is prime</span>
+<span class="n">n_is_prime</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># Check if n can be divided by m, where m ranges from 2 to n (excluding n)</span>
+<span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="n">m</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># This is true if the remainder for n/m is equal to zero</span>
+        <span class="c1"># We&#39;ve found that n is divisable by m, so it can&#39;t be a prime number. </span>
+        <span class="c1"># No need to check for more values of m, so set n_is_prime = False and</span>
+        <span class="c1"># exit the &#39;m&#39; loop.</span>
+        <span class="n">n_is_prime</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="c1">#  If n is prime, print to screen        </span>
+<span class="k">if</span> <span class="n">n_is_prime</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="s2">&quot;is prime&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="s2">&quot;is not prime&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>47 is prime
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="iterate-through-a-loop-and-find-the-optimal-solution-using-an-if-condition">
+<h2>Iterate through a loop and find the optimal solution using an <code class="docutils literal notranslate"><span class="pre">if</span></code> condition<a class="headerlink" href="#iterate-through-a-loop-and-find-the-optimal-solution-using-an-if-condition" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Iterate through angles using range and identify the optimum angle</span>
+
+<span class="c1"># Import module</span>
+<span class="kn">import</span> <span class="nn">math</span> <span class="c1"># trignometric functions</span>
+<span class="kn">import</span> <span class="nn">sys</span> <span class="c1"># maximum int</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="c1"># Assign variables</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="mf">0.75</span>   <span class="c1"># friction coefficient</span>
+<span class="n">weight</span> <span class="o">=</span> <span class="mi">25</span> <span class="c1"># Weight of the block in kN</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="mi">45</span>  <span class="c1"># angle in degrees</span>
+
+<span class="c1"># Create an empty list of forces</span>
+<span class="n">forces</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Create a list of angles from 0 to 90, arange(0, 91, 1)</span>
+<span class="n">angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">91</span><span class="p">)</span>
+
+<span class="n">min_force</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">maxsize</span>
+<span class="n">min_theta</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># Iterate through all angles</span>
+<span class="k">for</span> <span class="n">theta</span> <span class="ow">in</span> <span class="n">angles</span><span class="p">:</span>
+    <span class="c1"># Compute pulling force: F = (mu * W) / (cos(theta) + mu * sin(theta))</span>
+    <span class="n">force</span> <span class="o">=</span> <span class="p">(</span><span class="n">mu</span> <span class="o">*</span> <span class="n">weight</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta</span><span class="p">))</span> <span class="o">+</span>
+                                       <span class="n">mu</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta</span><span class="p">)))</span>
+
+    <span class="n">forces</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">force</span><span class="p">)</span>
+    <span class="c1"># If the minimum force is greater than the current force, replace with current force</span>
+    <span class="k">if</span> <span class="n">min_force</span> <span class="o">&gt;</span> <span class="n">force</span><span class="p">:</span>
+        <span class="n">min_force</span> <span class="o">=</span> <span class="n">force</span>
+        <span class="n">min_theta</span> <span class="o">=</span> <span class="n">theta</span>
+
+<span class="c1"># Plot angles vs forces</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">angles</span><span class="p">,</span> <span class="n">forces</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">min_theta</span><span class="p">,</span> <span class="n">min_force</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>37 15.000038671163749
+</pre></div>
+</div>
+<img alt="../../../_images/ff0a8492d950b581c83fc1ac070e14003f5fbc489b81325dc0361306cd3f74e7.png" src="../../../_images/ff0a8492d950b581c83fc1ac070e14003f5fbc489b81325dc0361306cd3f74e7.png" />
+</div>
+</div>
+</section>
+<section id="loops-break-and-continue">
+<h2>Loops: <code class="docutils literal notranslate"><span class="pre">break</span></code> and <code class="docutils literal notranslate"><span class="pre">continue</span></code><a class="headerlink" href="#loops-break-and-continue" title="Permalink to this heading">#</a></h2>
+<section id="break">
+<h3><code class="docutils literal notranslate"><span class="pre">break</span></code><a class="headerlink" href="#break" title="Permalink to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">break</span></code> statement is used to terminate the loop prematurely when a certain condition is met. When break statement is encountered inside the body of the loop, the current iteration stops and program control immediately jumps to the statement following the loop.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check if we have a negative number in our list of numbers</span>
+
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">19</span><span class="p">,</span> <span class="mi">21</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The list has a negative number&quot;</span><span class="p">)</span>
+        <span class="k">break</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5
+11
+18
+4
+3
+-8
+The list has a negative number
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sometimes we want to break out of a <code class="docutils literal notranslate"><span class="pre">for</span></code>. Maybe in a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop we can check if something is true, and then exit the loop prematurely. Below is a program for finding prime numbers that uses a <code class="docutils literal notranslate"><span class="pre">break</span></code> statement. Take some time to understand what it does. It might be helpful to add some print statements to understand the flow.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">50</span>  <span class="c1"># Check numbers up 50 for primes (excludes 50)</span>
+
+<span class="c1"># Loop over all numbers from 2 to 50 (excluding 50)</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+
+    <span class="c1"># Assume that n is prime</span>
+    <span class="n">n_is_prime</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="c1"># Check if n can be divided by m, where m ranges from 2 to n (excluding n)</span>
+    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="n">m</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># This is true if the remainder for n/m is equal to zero</span>
+            <span class="c1"># We&#39;ve found that n is divisable by m, so it can&#39;t be a prime number. </span>
+            <span class="c1"># No need to check for more values of m, so set n_is_prime = False and</span>
+            <span class="c1"># exit the &#39;m&#39; loop.</span>
+            <span class="n">n_is_prime</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">break</span>
+
+    <span class="c1">#  If n is prime, print to screen        </span>
+    <span class="k">if</span> <span class="n">n_is_prime</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+3
+5
+7
+11
+13
+17
+19
+23
+29
+31
+37
+41
+43
+47
+</pre></div>
+</div>
+</div>
+</div>
+<p>Try modifying the code for finding prime numbers such that it finds the first <span class="math notranslate nohighlight">\(N\)</span> prime numbers (since you do not know how many numbers you need to check to find <span class="math notranslate nohighlight">\(N\)</span> primes).</p>
+</section>
+<section id="continue">
+<h3><code class="docutils literal notranslate"><span class="pre">continue</span></code><a class="headerlink" href="#continue" title="Permalink to this heading">#</a></h3>
+<p>Sometimes we want to go prematurely to the next iteration in a loop, skipping the remaining code.
+For this we use <code class="docutils literal notranslate"><span class="pre">continue</span></code>. Here is an example of the prime number calculator, except we now exit the loop if the number is divisible by 2 (even). If it is divisible by 2 it moves to the next value. If it is not divisible by 2 it advances the loop.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="mi">50</span>  <span class="c1"># Check numbers up 50 for primes (excludes 50)</span>
+
+<span class="c1"># Loop over all numbers from 2 to 50 (excluding 50)</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+
+    <span class="c1"># Assume that n is prime</span>
+    <span class="n">n_is_prime</span> <span class="o">=</span> <span class="kc">True</span>
+    
+    <span class="c1"># Check if n is divisible by 2</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">n</span> <span class="o">!=</span><span class="mi">2</span><span class="p">:</span>
+        <span class="k">continue</span>
+
+    <span class="c1"># Check if n can be divided by m, where m ranges from 2 to n (excluding n)</span>
+    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="n">m</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># This is true if the remainder for n/m is equal to zero</span>
+            <span class="c1"># We&#39;ve found that n is divisable by m, so it can&#39;t be a prime number. </span>
+            <span class="c1"># No need to check for more values of m, so set n_is_prime = False and</span>
+            <span class="c1"># exit the &#39;m&#39; loop.</span>
+            <span class="n">n_is_prime</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">break</span>
+
+    <span class="c1">#  If n is prime, print to screen        </span>
+    <span class="k">if</span> <span class="n">n_is_prime</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+3
+5
+7
+11
+13
+17
+19
+23
+29
+31
+37
+41
+43
+47
+</pre></div>
+</div>
+</div>
+</div>
+<p>It finds factors for numbers between 2 to 10. Now for the fun part. We can add an additional else block which catches the numbers which have no factors and are therefore prime numbers:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+         <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="s1">&#39;equals&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">//</span><span class="n">x</span><span class="p">)</span>
+            <span class="k">break</span>
+    <span class="k">else</span><span class="p">:</span> <span class="c1">#nobreak</span>
+        <span class="c1"># loop fell through without finding a factor</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="s1">&#39;is a prime number&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 is a prime number
+3 is a prime number
+4 equals 2 * 2
+5 is a prime number
+6 equals 2 * 3
+7 is a prime number
+8 equals 2 * 4
+9 equals 3 * 3
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id1">
+<h3>Continue<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>The continue statement is used to move ahead to the next iteration without executing the remaining statement in the body of the loop.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sum of all positive numbers in the list</span>
+
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">19</span><span class="p">,</span> <span class="mi">21</span><span class="p">]</span>
+
+<span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">continue</span>
+    <span class="nb">sum</span> <span class="o">+=</span> <span class="n">number</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Adding&quot;</span><span class="p">,</span> <span class="n">number</span><span class="p">,</span> <span class="s2">&quot;new sum&quot;</span><span class="p">,</span> <span class="nb">sum</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Adding 5 new sum 5
+Adding 11 new sum 16
+Adding 18 new sum 34
+Adding 4 new sum 38
+Adding 3 new sum 41
+Adding 7 new sum 48
+Adding 0 new sum 48
+Adding 1 new sum 49
+Adding 6 new sum 55
+Adding 3 new sum 58
+Adding 21 new sum 79
+79
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="bisection-approach-for-computing-the-angle-for-a-given-force">
+<h2>Bisection approach for computing the angle for a given force<a class="headerlink" href="#bisection-approach-for-computing-the-angle-for-a-given-force" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import modules</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Initial guess</span>
+<span class="n">theta1</span> <span class="o">=</span> <span class="mi">60</span>
+<span class="n">theta2</span> <span class="o">=</span> <span class="mi">90</span>
+
+<span class="c1"># Assign variables</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="mf">0.75</span>   <span class="c1"># friction coefficient</span>
+<span class="n">weight</span> <span class="o">=</span> <span class="mi">25</span> <span class="c1"># Weight of the block in kN</span>
+<span class="n">force</span> <span class="o">=</span> <span class="mf">17.5</span> <span class="c1"># kN</span>
+
+<span class="n">theta</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># angle in degrees</span>
+
+<span class="c1"># Set a tolerance</span>
+<span class="n">tolerance</span> <span class="o">=</span> <span class="mf">1e-5</span>
+
+<span class="c1"># Iterate to a maximum of 1000 iterations</span>
+<span class="n">max_iterations</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="n">iterations</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">max_iterations</span><span class="p">):</span>
+
+    <span class="c1"># Compute forces for theta1 and theta2</span>
+    <span class="n">delta1</span> <span class="o">=</span> <span class="n">force</span> <span class="o">-</span> <span class="p">(</span><span class="n">mu</span> <span class="o">*</span> <span class="n">weight</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta1</span><span class="p">))</span> <span class="o">+</span>
+                                       <span class="n">mu</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta1</span><span class="p">)))</span>
+    
+    <span class="n">delta2</span> <span class="o">=</span> <span class="n">force</span> <span class="o">-</span> <span class="p">(</span><span class="n">mu</span> <span class="o">*</span> <span class="n">weight</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta2</span><span class="p">))</span> <span class="o">+</span>
+                                       <span class="n">mu</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta2</span><span class="p">)))</span>
+    
+    <span class="c1"># Compute the mid-value of theta</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="p">(</span><span class="n">theta1</span> <span class="o">+</span> <span class="n">theta2</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+    
+    <span class="c1"># Calculate the difference delta for the mid-theta   </span>
+    <span class="n">delta</span> <span class="o">=</span> <span class="n">force</span> <span class="o">-</span> <span class="p">(</span><span class="n">mu</span> <span class="o">*</span> <span class="n">weight</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta</span><span class="p">))</span> <span class="o">+</span>
+                                       <span class="n">mu</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta</span><span class="p">)))</span>
+    
+    <span class="k">if</span><span class="p">((</span><span class="n">delta</span> <span class="o">*</span> <span class="n">delta1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="n">theta1</span> <span class="o">=</span> <span class="n">theta</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">theta2</span> <span class="o">=</span>  <span class="n">theta</span>
+    
+    <span class="c1"># Final values at the end of iterations</span>
+    <span class="n">iterations</span> <span class="o">=</span> <span class="n">i</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">tolerance</span><span class="p">):</span>
+        <span class="k">break</span>
+
+<span class="k">else</span><span class="p">:</span> <span class="c1">#No break</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Solution did not converge!&quot;</span><span class="p">)</span>
+    
+<span class="n">final_force</span> <span class="o">=</span> <span class="p">(</span><span class="n">mu</span> <span class="o">*</span> <span class="n">weight</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta</span><span class="p">))</span> <span class="o">+</span>
+                                       <span class="n">mu</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta</span><span class="p">)))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;After&#39;</span><span class="p">,</span> <span class="n">iterations</span><span class="p">,</span> <span class="s1">&#39;iterations the angle is </span><span class="si">{:.6f}</span><span class="s1"> deg, </span><span class="se">\</span>
+<span class="s1">which gives a force of </span><span class="si">{:.10f}</span><span class="s1"> kN at a tolerance of </span><span class="si">{:.2E}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">final_force</span><span class="p">,</span> <span class="n">tolerance</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After 14 iterations the angle is 67.872620 deg, which gives a force of 17.5000005229 kN at a tolerance of 1.00E-05
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that the initial guess of 60 and 90 gave a result of 67.87 degrees, but an initial guess of 0 would give a value of theta equals 5.8672 degrees.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="forces-on-a-sliding-block-with-multiple-friction-angles">
+<h1>Forces on a sliding block with multiple friction angles<a class="headerlink" href="#forces-on-a-sliding-block-with-multiple-friction-angles" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import matplotlib for plotting</span>
+<span class="c1"># Import math for trignometric functions</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="c1"># Set plot size</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mf">7.5</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+
+<span class="c1"># Weight of the block</span>
+<span class="n">weight</span> <span class="o">=</span> <span class="mi">25</span>  <span class="c1"># kN, A typical pyramid block is 2500 kg</span>
+<span class="c1"># Friction on the bottom plane</span>
+<span class="n">frictions</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;rs&#39;</span><span class="p">,</span> <span class="s1">&#39;b*&#39;</span><span class="p">,</span> <span class="s1">&#39;go&#39;</span><span class="p">]</span>
+<span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="s1">&#39;g-.&#39;</span><span class="p">]</span>
+<span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">friction</span> <span class="ow">in</span> <span class="n">frictions</span><span class="p">:</span>
+    <span class="n">force_min</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">maxsize</span>
+
+    <span class="c1"># Create an empty list of angles and forces</span>
+    <span class="n">angles</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">forces</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># for angles between 0 and 90*</span>
+    <span class="k">for</span> <span class="n">theta</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+
+        <span class="c1"># Compute pulling force: F = (mu * W) / (cos(theta) + mu * sin(theta))</span>
+        <span class="n">force</span> <span class="o">=</span> <span class="p">(</span><span class="n">friction</span> <span class="o">*</span> <span class="n">weight</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta</span><span class="p">))</span> <span class="o">+</span>
+                                       <span class="n">friction</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta</span><span class="p">)))</span>
+
+        <span class="c1"># Add to list of angles and forces</span>
+        <span class="n">angles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+        <span class="n">forces</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">force</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">force</span> <span class="o">&lt;</span> <span class="n">force_min</span><span class="p">:</span>
+            <span class="n">force_min</span> <span class="o">=</span> <span class="n">force</span>  <span class="c1"># Minimum force</span>
+            <span class="n">theta_min</span> <span class="o">=</span> <span class="n">theta</span>  <span class="c1"># Pulling angle that yields the minimum force</span>
+
+    <span class="c1"># Plot force and angles</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">angles</span><span class="p">,</span> <span class="n">forces</span><span class="p">,</span> <span class="n">lines</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;mu = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">friction</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">theta_min</span><span class="p">,</span> <span class="n">force_min</span><span class="p">,</span> <span class="n">colors</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+    <span class="c1"># Increase index for color and lines</span>
+    <span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="c1"># Configure labels and legends</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;pulling angle (degrees)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;required pulling force (kN)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="c1"># Display plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/1d16a9a23b2e24ec2680783d56b1477dae4cce6bd578468613228e32ecc331db.png" src="../../../_images/1d16a9a23b2e24ec2680783d56b1477dae4cce6bd578468613228e32ecc331db.png" />
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/lectures/01_control_flow"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01_control_statements.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lecture 01a: Control statement</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="01_friction_sliding_block.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lecture 01b: Control statement example</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lecture 01a: Control statements (Solution)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-a-control-statement-in-pseudo-code">Example of a control statement in pseudo code</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#booleans">Booleans</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-operators">Comparison operators</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#boolean-operators">Boolean operators</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-comparison-operators">Multiple comparison operators</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#control-statements">Control statements</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#if-statements"><code class="docutils literal notranslate"><span class="pre">if</span></code> statements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-if-a-number-is-divisible-by-2-and-3-or-print-if-is-divisible-by-either-2-or-3">Check if a number is divisible by 2 and 3, or print if is divisible by either 2 or 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-taylor-series-expansion-for-cos-x-is">The Taylor series expansion for cos(x) is</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-if-a-number-is-prime">Check if a number is prime</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iterate-through-a-loop-and-find-the-optimal-solution-using-an-if-condition">Iterate through a loop and find the optimal solution using an <code class="docutils literal notranslate"><span class="pre">if</span></code> condition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loops-break-and-continue">Loops: <code class="docutils literal notranslate"><span class="pre">break</span></code> and <code class="docutils literal notranslate"><span class="pre">continue</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#break"><code class="docutils literal notranslate"><span class="pre">break</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#continue"><code class="docutils literal notranslate"><span class="pre">continue</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Continue</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bisection-approach-for-computing-the-angle-for-a-given-force">Bisection approach for computing the angle for a given force</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#forces-on-a-sliding-block-with-multiple-friction-angles">Forces on a sliding block with multiple friction angles</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Krishna Kumar
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

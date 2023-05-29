@@ -1,0 +1,647 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Google page ranking &#8212; Introduction to Programming with Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/lectures/09_linear_algebra/class-exercises';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../README.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Introduction to Programming with Python</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../README.html">
+                    CE 311K: Introduction to Computer Methods (Python)
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../00_intro/00_variables_assignment_operator-precedence.html">Lecture 00: Variables and assignment</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../01_control_flow/01_control_statements.html">Lecture 01a: Control statement</a></li>
+
+
+
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01_control_flow/01_friction_sliding_block.html">Lecture 01b: Control statement example</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01_control_flow/01_friction_sliding_block_solution.html">Lecture 01b: Example of control statement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_control_flow/cantilever_beam_uvl_solution.html">Deflection of a cantilever beam subjected to uniformly varying load</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../02_errors/02_errors.html">Lecture 02: Errors</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../03_functions/03_functions.html">Lecture 03: Functions</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../04_data_structures/04_data_structures.html">Lecture 04: Data structures</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../06_exceptions/06_error_handling_testing.html">Lecture 06: Error handling</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../07_vectors/07_vectors.html">Lecture 07: Vectors</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../08_matrices/08_matrices.html">Lecture 08: Matrices</a></li>
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="09_linear_algebra.html">Lecture 09: Linear Algebra</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="09_linear_algebra_solution.html">Lecture 09: Linear Algebra (Solution)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../10_useful_libs/10_useful_libs.html">Lecture 10: Useful libraries in Python</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/kks32-courses/ce311k/blob/main/docs/notebooks/lectures/09_linear_algebra/class-exercises.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/kks32-courses/ce311k" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/kks32-courses/ce311k/issues/new?title=Issue%20on%20page%20%2Fnotebooks/lectures/09_linear_algebra/class-exercises.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/notebooks/lectures/09_linear_algebra/class-exercises.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Google page ranking</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="google-page-ranking">
+<h1>Google page ranking<a class="headerlink" href="#google-page-ranking" title="Permalink to this heading">#</a></h1>
+<p><a class="reference external" href="https://www.math.arizona.edu/~glickenstein/math443f08/bryanleise.pdf">https://www.math.arizona.edu/~glickenstein/math443f08/bryanleise.pdf</a></p>
+<p>Naive algorithm of ranking: $<span class="math notranslate nohighlight">\(x_1 = 2, x_2 = 1, x_3 = 3, x_4 = 2\)</span>$</p>
+<p>Page ranking: $<span class="math notranslate nohighlight">\( x_k = \sum_{j \in L_k} x_j / n_j\)</span>$</p>
+<p><img alt="image.png" src="data:image/png;base64,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" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">web</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">]])</span>
+<span class="n">value</span><span class="p">,</span> <span class="n">vector</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">web</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="n">eigv</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">real</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">vector</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">eigv</span><span class="p">)</span>
+<span class="n">eigv</span> <span class="o">=</span> <span class="n">eigv</span> <span class="o">/</span> <span class="nb">sum</span><span class="p">(</span><span class="n">eigv</span><span class="p">)</span>
+<span class="c1"># Ranking of web pages</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">eigv</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 1.        +0.j         -0.36062333+0.41097555j -0.36062333-0.41097555j
+ -0.27875333+0.j        ]
+[0.7210101217513317, 0.24033670725044398, 0.5407575913134985, 0.36050506087566603]
+[0.38709677 0.12903226 0.29032258 0.19354839]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">60</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">800</span><span class="p">,</span> <span class="mi">475</span><span class="p">,</span> <span class="mi">100</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+<span class="n">Ainv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Ainv</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[100   1   0]
+ [ 60  -1   1]
+ [ 15   0  -1]]
+[800 475 100]
+[ 7.85714286 14.28571429 17.85714286]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">b</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 7.85714286 14.28571429 17.85714286]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="k">def</span> <span class="nf">seidel</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">max_iter</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">):</span>    
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">for</span> <span class="nb">iter</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iter</span><span class="p">):</span> 
+        <span class="c1"># Loop through each row</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>         
+            <span class="c1"># temp variable d to store b[j] </span>
+            <span class="n">d</span> <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="c1">#d = b[i] - np.dot(A[i,:],x) + A[i][i]*x[i]</span>
+            <span class="c1"># Iterate through the columns</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>      
+                <span class="k">if</span><span class="p">(</span><span class="n">i</span> <span class="o">!=</span> <span class="n">j</span><span class="p">):</span> 
+                    <span class="n">d</span><span class="o">-=</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> 
+            <span class="c1"># updating the value of our solution         </span>
+            <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span> <span class="o">/</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> 
+        
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">x</span><span class="p">),</span> <span class="n">b</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">):</span>
+            <span class="k">break</span>
+
+    <span class="k">else</span><span class="p">:</span> <span class="c1"># no break</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Insufficient number of iterations&quot;</span><span class="p">)</span>
+        
+    <span class="n">error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">b</span>
+    <span class="c1"># returning our updated solution            </span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span> <span class="nb">iter</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">60</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">800</span><span class="p">,</span> <span class="mi">475</span><span class="p">,</span> <span class="mi">100</span><span class="p">])</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span> <span class="nb">iter</span> <span class="o">=</span> <span class="n">seidel</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Gauss-Seidel iterations </span><span class="si">{}</span><span class="s2">,</span><span class="se">\n</span><span class="s2">x: </span><span class="si">{}</span><span class="s2">,</span><span class="se">\n</span><span class="s2">error: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">iter</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">error</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[100   1   0]
+ [ 60  -1   1]
+ [ 15   0  -1]]
+Gauss-Seidel iterations 17,
+x: [ 7.8571428  14.28571324 17.85714207],
+error: [-6.29043939e-06 -2.89344086e-06  0.00000000e+00]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 7.85714286, 14.28571429, 17.85714286])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/lectures/09_linear_algebra"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Krishna Kumar
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1592 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Introduction &#8212; Introduction to Programming with Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/lectures/02_errors/02_errors_solutions';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../README.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Introduction to Programming with Python</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../README.html">
+                    CE 311K: Introduction to Computer Methods (Python)
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../00_intro/00_variables_assignment_operator-precedence.html">Lecture 00: Variables and assignment</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../01_control_flow/01_control_statements.html">Lecture 01a: Control statement</a></li>
+
+
+
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01_control_flow/01_friction_sliding_block.html">Lecture 01b: Control statement example</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01_control_flow/01_friction_sliding_block_solution.html">Lecture 01b: Example of control statement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_control_flow/cantilever_beam_uvl_solution.html">Deflection of a cantilever beam subjected to uniformly varying load</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="02_errors.html">Lecture 02: Errors</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../03_functions/03_functions.html">Lecture 03: Functions</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../04_data_structures/04_data_structures.html">Lecture 04: Data structures</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../06_exceptions/06_error_handling_testing.html">Lecture 06: Error handling</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../07_vectors/07_vectors.html">Lecture 07: Vectors</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../08_matrices/08_matrices.html">Lecture 08: Matrices</a></li>
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../09_linear_algebra/09_linear_algebra.html">Lecture 09: Linear Algebra</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../09_linear_algebra/09_linear_algebra_solution.html">Lecture 09: Linear Algebra (Solution)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../10_useful_libs/10_useful_libs.html">Lecture 10: Useful libraries in Python</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/kks32-courses/ce311k/blob/main/docs/notebooks/lectures/02_errors/02_errors_solutions.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/kks32-courses/ce311k" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/kks32-courses/ce311k/issues/new?title=Issue%20on%20page%20%2Fnotebooks/lectures/02_errors/02_errors_solutions.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/notebooks/lectures/02_errors/02_errors_solutions.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introduction</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background-bits-and-bytes">Background: bits and bytes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-representation-and-floating-point-arithmetic">Binary representation and floating point arithmetic</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-base-2-representation">Binary (base 2) representation</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-type">What is type?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#numeric-types">Numeric types</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integers">Integers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integer-storage-and-overflow">Integer storage and overflow</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#integer-overflow">Integer overflow</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#gangnam-style">Gangnam Style</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#boeing-787-dreamliner-bug">Boeing 787 Dreamliner bug</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#floating-point-storage">Floating point storage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#floats">Floats</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-numbers">Complex numbers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#type-conversions-casting">Type conversions (casting)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-type-conversion">Explicit type conversion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ariane-5-rocket-explosion-and-type-conversion">Ariane 5 rocket explosion and type conversion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-few-words-about-using-floats">A few words about using Floats</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inexact-representation">Inexact representation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#round-off-errors">Round-off errors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-inexact-representation">Example: inexact representation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#patriot-missile-failure">Patriot Missile Failure</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bisection-approach-specifying-an-allowable-error">Bisection approach specifying an allowable error</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h1>
+<p>We have thus far avoided discussing directly <em>types</em>. The ‘<em>type</em>’ is the type of object that a variable is associated with. This affects how a computer stores the object in memory, and how operations, such as multiplication and division, are performed.</p>
+<p>In <em>statically typed</em> languages, like C and C++, types come up from the very beginning because
+you usually need to specify types explicitly in your programs. Python is a <em>dynamically typed</em> language, which means types are deduced when a program is run. This is why we have been able to postpone the discussion until now.
+It is important to have a basic understanding of types, and how types can affect how your programs behave. One can go very deep into this topic, especially for numerical computations, but we will cover the general concept from a high level,
+show some examples, and highlight some potential pitfalls for engineering computations.</p>
+<p>This is a dry topic - it contains important background information that you need to know for later, so hang in there. The below account highlights what can go wrong without an awareness of types and how computers process numbers.</p>
+<section id="background-bits-and-bytes">
+<h2>Background: bits and bytes<a class="headerlink" href="#background-bits-and-bytes" title="Permalink to this heading">#</a></h2>
+<p>An important part of understanding types is appreciating how computer storage works. Computer memory is made up of <em>bits</em>, and each bit can take on one of two
+values - 0 or 1. A bit is the smallest building block of memory.
+Bits are very fine-grained, so for many computer architectures the smallest ‘block’ we can normally work with is a <em>byte</em>. One byte is made up of 8 bits. This why when we talk about bits, e.g. a 64-bit operating system, the number of bits will almost always be a multiple of 8 (one byte).</p>
+<p>The ‘bigger’ a thing we want to store, the more bytes we need. This is important for engineering computations since the the number of bytes used to store a number determines the accuracy with which the number can be stored,
+and how big or small the number can be. The more bytes the greater the accuracy, but the price to be paid is higher memory usage. Also, it can be more expensive to perform operations like multiplication and division when using more bytes.</p>
+</section>
+<section id="objectives">
+<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Introduce primitive data types (booleans, strings and numerical types)</p></li>
+<li><p>Type inspection</p></li>
+<li><p>Basic type conversion</p></li>
+<li><p>Introduction to pitfalls of floating point arithmetic</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="binary-representation-and-floating-point-arithmetic">
+<h1>Binary representation and floating point arithmetic<a class="headerlink" href="#binary-representation-and-floating-point-arithmetic" title="Permalink to this heading">#</a></h1>
+<section id="binary-base-2-representation">
+<h2>Binary (base 2) representation<a class="headerlink" href="#binary-base-2-representation" title="Permalink to this heading">#</a></h2>
+<p>Computers store data using ‘bits’, and a bit is a switch that can have a value of 0 or 1. This means that computers store numbers in binary (base 2), whereas we almost always work with decimal numbers (base 10).
+For example, the binary number <span class="math notranslate nohighlight">\(110\)</span> is equal to <span class="math notranslate nohighlight">\(0 \times 2^{0} + 1 \times 2^{1} + 1 \times 2^{2} = 6\)</span>
+(read <span class="math notranslate nohighlight">\(110\)</span> right-to-left).
+Below is a table with decimal (base 10) and the corresponding binary (base 2) representation of some numbers. See <a class="reference external" href="https://en.wikipedia.org/wiki/Binary_number">https://en.wikipedia.org/wiki/Binary_number</a> if you want to learn more.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Decimal</p></th>
+<th class="head"><p>Binary</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>10</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>11</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>101</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>110</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>111</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>1000</p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>1001</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>1010</p></td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p>1011</p></td>
+</tr>
+<tr class="row-even"><td><p>12</p></td>
+<td><p>1100</p></td>
+</tr>
+<tr class="row-odd"><td><p>13</p></td>
+<td><p>1101</p></td>
+</tr>
+<tr class="row-even"><td><p>14</p></td>
+<td><p>1110</p></td>
+</tr>
+<tr class="row-odd"><td><p>15</p></td>
+<td><p>1111</p></td>
+</tr>
+</tbody>
+</table>
+<p>To represent any integer, all we need are enough bits to store the binary representation. If we have <span class="math notranslate nohighlight">\(n\)</span> bits, the largest number we can store is <span class="math notranslate nohighlight">\(2^{n -1} - 1\)</span> (the power is <span class="math notranslate nohighlight">\(n - 1\)</span> because we use one bit to store the sign of the integer).</p>
+<p>We can display the binary representation of an integer in Python using the function <code class="docutils literal notranslate"><span class="pre">bin</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="mi">110</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0b10
+0b110
+0b1101110
+2
+</pre></div>
+</div>
+</div>
+</div>
+<p>The prefix <code class="docutils literal notranslate"><span class="pre">0b</span></code> is to denote that the representation is binary.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="what-is-type">
+<h1>What is type?<a class="headerlink" href="#what-is-type" title="Permalink to this heading">#</a></h1>
+<p>All variables have a ‘type’, which indicates what the variable is, e.g. a number, a string of characters, etc. In ‘statically typed’ languages we usually need to be explicit in declaring the type of a variable in a program. In a dynamically typed language, such as Python, variables still have types but the interpreter can determine types dynamically.</p>
+<p>Type is important because it determines how a variable is stored, how it behaves when we perform operations on it, and how it interacts with other variables. For example, multiplication of two real numbers is different from multiplication of two complex numbers.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="numeric-types">
+<h1>Numeric types<a class="headerlink" href="#numeric-types" title="Permalink to this heading">#</a></h1>
+<p>Numeric types are important in many computing applications, and particularly in scientific and engineering programs. Python 3 has three native numerical types:</p>
+<ul class="simple">
+<li><p>integers (<code class="docutils literal notranslate"><span class="pre">int</span></code>)</p></li>
+<li><p>floating point numbers (<code class="docutils literal notranslate"><span class="pre">float</span></code>)</p></li>
+<li><p>complex numbers (<code class="docutils literal notranslate"><span class="pre">complex</span></code>)</p></li>
+</ul>
+<p>This is typical for most programming languages, although there can be some subtle differences.</p>
+<section id="integers">
+<h2>Integers<a class="headerlink" href="#integers" title="Permalink to this heading">#</a></h2>
+<p>Integers (<code class="docutils literal notranslate"><span class="pre">int</span></code>) are whole numbers, and can be postive or negative. Integers should be used when a value can only take on a whole number, e.g. the year, or the number of students following this course. Python infers the type of a number from the way we input it. It will infer an <code class="docutils literal notranslate"><span class="pre">int</span></code> if we assign a number with no decimal place:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;int&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we add a decimal point, the variable type becomes a <code class="docutils literal notranslate"><span class="pre">float</span></code> (more on this later)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;float&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Integer operations that result in an integer, such as multiplying or adding two integers, are performed exactly (there is no error). This does however depend on a variable having enough memory (sufficient bytes) to represent the result.</p>
+<section id="integer-storage-and-overflow">
+<h3>Integer storage and overflow<a class="headerlink" href="#integer-storage-and-overflow" title="Permalink to this heading">#</a></h3>
+<p>In most languages, a fixed number of bits are used to store a given type of integer. In C and C++ a standard integer (<code class="docutils literal notranslate"><span class="pre">int</span></code>) is usually stored using 32 bits (it is possible to declare shorter and longer integer types).
+The largest integer that can be stored using 32 bits is <span class="math notranslate nohighlight">\(2^{31} - 1 = 2,147,483,647\)</span>.
+We explain later where this comes from. The message for now is that for a fixed number of bits, there is a bound on the largest number that can be represented/stored.</p>
+<section id="integer-overflow">
+<h4>Integer overflow<a class="headerlink" href="#integer-overflow" title="Permalink to this heading">#</a></h4>
+<p>Integer overflow is when an operation creates an integer that is too big to be represented by the given integer type. For example, attempting to assign <span class="math notranslate nohighlight">\(2^{31} + 1\)</span> to a 32-bit integer will cause an overflow and potentially unpredictable program response. This would usually be a <em>bug</em>.</p>
+<p>The Ariane 5 rocket explosion in 1996 was caused by integer overflow. The rocket navigation software was taken from the older, slower Ariane 4 rocket. The program assigned the rocket speed to a 16-bit integer (the largest number a 16-bit integer can store is <span class="math notranslate nohighlight">\(2^{15} - 1 = 32767\)</span>), but the Ariane 5 could travel faster than the older generation of rocket and the speed value exceeded <span class="math notranslate nohighlight">\(32767\)</span>. The resulting integer overflow led to
+failure of the rocket’s navigation system and
+explosion of the rocket; a very costly rocket and a very expensive payload were destroyed.
+We will reproduce the error that caused this failure when we look at <em>type conversions</em>.</p>
+<p>Python avoids integer overflows by dynamically changing the number of bits used to represent an integer. You can inspect the number of bits required to store an integer in binary (not including the bit for the sign) using the function <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#int.bit_length">bit_length</a>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">bit_length</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>63
+&lt;class &#39;int&#39;&gt;
+4
+</pre></div>
+</div>
+</div>
+</div>
+<p>We see that 4 bits are necessary to represent the number 8. If we increase the size of the number dramatically by raising it to the power of 12:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="mi">8</span><span class="o">**</span><span class="mi">12</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">bit_length</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>68719476736
+&lt;class &#39;int&#39;&gt;
+37
+</pre></div>
+</div>
+</div>
+</div>
+<p>We see that 37 bits are required to represent the number. If the <code class="docutils literal notranslate"><span class="pre">int</span></code> type was limited to 32 bits for storing the value, this operation would have caused an overflow.</p>
+</section>
+<section id="gangnam-style">
+<h4>Gangnam Style<a class="headerlink" href="#gangnam-style" title="Permalink to this heading">#</a></h4>
+<p>In 2014, Google switched from 32-bit integers to 64-bit integers to count views when the video “Gangnam Style” was viewed more than 2,147,483,647 times, which is the limit of 32-bit integers (see <a class="reference external" href="https://plus.google.com/+YouTube/posts/BUXfdWqu86Q">https://plus.google.com/+YouTube/posts/BUXfdWqu86Q</a>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gangam</span> <span class="o">=</span> <span class="mi">2147483647</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">gangam</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">gangam</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">gangam</span><span class="o">.</span><span class="n">bit_length</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2147483647
+&lt;class &#39;int&#39;&gt;
+31
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="boeing-787-dreamliner-bug">
+<h4>Boeing 787 Dreamliner bug<a class="headerlink" href="#boeing-787-dreamliner-bug" title="Permalink to this heading">#</a></h4>
+<p>If the four main generator control units (associated with the engine-mounted generators) on Boeing 787 Dreamliner were powered up at the same time, after 248 days of continuous power, all four GCUs will go into failsafe mode at the same time, resulting in a loss of all AC electrical power regardless of flight phase. This is due to an integer overflow bug. The ‘quick fix’ was to make sure that generator control units do not operate for more than 248 days.</p>
+<p>See
+<a class="reference external" href="https://www.theguardian.com/business/2015/may/01/us-aviation-authority-boeing-787-dreamliner-bug-could-cause-loss-of-control">https://www.theguardian.com/business/2015/may/01/us-aviation-authority-boeing-787-dreamliner-bug-could-cause-loss-of-control</a> and
+<a class="reference external" href="https://s3.amazonaws.com/public-inspection.federalregister.gov/2015-10066.pdf">https://s3.amazonaws.com/public-inspection.federalregister.gov/2015-10066.pdf</a> for background.</p>
+</section>
+</section>
+</section>
+<section id="floating-point-storage">
+<h2>Floating point storage<a class="headerlink" href="#floating-point-storage" title="Permalink to this heading">#</a></h2>
+<p>Most engineering calculations involve numbers that cannot be represented as integers. Numbers that have a
+decimal point are stored using the <code class="docutils literal notranslate"><span class="pre">float</span></code> type. Computers store floating point numbers by storing the sign, the significand (also known as the mantissa) and the exponent, e.g.: for <span class="math notranslate nohighlight">\(10.45\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+10.45 = \underbrace{+}_{\text{sign}} \underbrace{1045}_{\text{significand}} \times \underbrace{10^{-2}}_{\text{exponent} = -2}
+\]</div>
+<p>Python uses 64 bits to store a <code class="docutils literal notranslate"><span class="pre">float</span></code> (in C and C++ this is known as a <code class="docutils literal notranslate"><span class="pre">double</span></code>). The sign requires one bit, and there are standards that specify how many bits should be used for the significand and how many for the exponent.</p>
+<p>Since a finite number of bits are used to store a number, the precision with which numbers can be represented is limited. As a guide, using 64 bits a floating point number is precise to 15 to 17 significant figures.
+More on this, and why the Patriot missile failed, later.</p>
+<section id="floats">
+<h3>Floats<a class="headerlink" href="#floats" title="Permalink to this heading">#</a></h3>
+<p>We can declare a float by adding a decimal point:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="mf">3.</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.0
+&lt;class &#39;float&#39;&gt;
+3.0
+&lt;class &#39;float&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>or by using <code class="docutils literal notranslate"><span class="pre">e</span></code> or <code class="docutils literal notranslate"><span class="pre">E</span></code> (the choice between <code class="docutils literal notranslate"><span class="pre">e</span></code> and <code class="docutils literal notranslate"><span class="pre">E</span></code> is just a matter of taste):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">2e0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="mf">2e3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="mf">2.1E3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.0 &lt;class &#39;float&#39;&gt;
+2000.0 &lt;class &#39;float&#39;&gt;
+2100.0 &lt;class &#39;float&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="complex-numbers">
+<h3>Complex numbers<a class="headerlink" href="#complex-numbers" title="Permalink to this heading">#</a></h3>
+<p>A complex number is a more elaborate float with two parts - the real and imaginary components. We can declare a complex number in Python by adding <code class="docutils literal notranslate"><span class="pre">j</span></code> or <code class="docutils literal notranslate"><span class="pre">J</span></code> after the complex part of the number:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span><span class="n">j</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">-</span> <span class="mi">3</span><span class="n">j</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2j &lt;class &#39;complex&#39;&gt;
+(4-3j) &lt;class &#39;complex&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>The usual addition, subtraction, multiplication and division operations can all be performed on complex numbers. The real and imaginary parts can be extracted:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">real</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-3.0
+4.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>and the complex conjugate can be taken:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">conjugate</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4+3j)
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can compute the modulus of a complex number using <code class="docutils literal notranslate"><span class="pre">abs</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>More generally, <code class="docutils literal notranslate"><span class="pre">abs</span></code> returns the absolute value, e.g.:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">-</span><span class="mf">21.6</span>
+<span class="n">a</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>21.6
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="type-conversions-casting">
+<h1>Type conversions (casting)<a class="headerlink" href="#type-conversions-casting" title="Permalink to this heading">#</a></h1>
+<p>We can often change between types. This is called <em>type conversion</em> or <em>type casting</em>. In some cases it happens implicitly, and in other cases we can instruct our program to change the type.</p>
+<p>If we add two integers, the results will be an integer:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>19 &lt;class &#39;int&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>However, if we add an <code class="docutils literal notranslate"><span class="pre">int</span></code> and a <code class="docutils literal notranslate"><span class="pre">float</span></code>, the result will be a float:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">15.0</span>  <span class="c1"># Adding the &#39;.0&#39; tells Python that it is a float</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>19.0 &lt;class &#39;float&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we divide two integers, the result will be a <code class="docutils literal notranslate"><span class="pre">float</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">/</span><span class="n">b</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.0 &lt;class &#39;float&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>When dividing two integers, we can do ‘integer division’ using <code class="docutils literal notranslate"><span class="pre">//</span></code>, e.g.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">//</span><span class="n">b</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5 &lt;class &#39;int&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>in which case the result is an <code class="docutils literal notranslate"><span class="pre">int</span></code>.</p>
+<p>In general, operations that mix an <code class="docutils literal notranslate"><span class="pre">int</span></code> and <code class="docutils literal notranslate"><span class="pre">float</span></code> will generate a <code class="docutils literal notranslate"><span class="pre">float</span></code>, and operations that mix an <code class="docutils literal notranslate"><span class="pre">int</span></code> or a <code class="docutils literal notranslate"><span class="pre">float</span></code> with <code class="docutils literal notranslate"><span class="pre">complex</span></code> will return a <code class="docutils literal notranslate"><span class="pre">complex</span></code> type. If in doubt, use <code class="docutils literal notranslate"><span class="pre">type</span></code> to experiment and check.</p>
+<section id="explicit-type-conversion">
+<h2>Explicit type conversion<a class="headerlink" href="#explicit-type-conversion" title="Permalink to this heading">#</a></h2>
+<p>We can explicitly change the type (perform a cast), e.g. cast from an <code class="docutils literal notranslate"><span class="pre">int</span></code> to a <code class="docutils literal notranslate"><span class="pre">float</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>  <span class="c1"># This converts the int associated with &#39;a&#39; to a float, and assigns the result to the variable &#39;a&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 &lt;class &#39;int&#39;&gt;
+1.0 &lt;class &#39;float&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Going the other way,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="mf">1.99</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+
+<span class="n">z</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">z</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.99 &lt;class &#39;float&#39;&gt;
+1 &lt;class &#39;int&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that rounding is applied when converting from a <code class="docutils literal notranslate"><span class="pre">float</span></code> to an <code class="docutils literal notranslate"><span class="pre">int</span></code>; the values after the decimal point are discarded. This type of rounding is called ‘round towards zero’ or ‘truncation’.</p>
+<p>A common task is converting numerical types to-and-from strings. We might read a number from a file as a string, or a user might input a value which Python reads in as a string. Converting a float to a string:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">1.023</span>
+<span class="n">b</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.023 &lt;class &#39;str&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>and in the other direction:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;15.07&quot;</span>
+<span class="n">b</span> <span class="o">=</span> <span class="s2">&quot;18.07&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">+</span> <span class="nb">float</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15.0718.07
+33.14
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we tried</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>we could get an error that the strings could not be converted to <code class="docutils literal notranslate"><span class="pre">int</span></code>. It works in the case:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;15&quot;</span>
+<span class="n">b</span> <span class="o">=</span> <span class="s2">&quot;18&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>33
+</pre></div>
+</div>
+</div>
+</div>
+<p>since these strings can be correctly cast to integers.</p>
+</section>
+<section id="ariane-5-rocket-explosion-and-type-conversion">
+<h2>Ariane 5 rocket explosion and type conversion<a class="headerlink" href="#ariane-5-rocket-explosion-and-type-conversion" title="Permalink to this heading">#</a></h2>
+<p>Poor programming related to how computers store numbers led in 1996 to a European Space Agency <em>Ariane 5</em>
+unmanned rocket exploding shortly after lift-off. The rocket payload, worth US$500 M,
+was destroyed. You can find background at <a class="reference external" href="https://en.wikipedia.org/wiki/Cluster_(spacecraft)#Launch_failure">https://en.wikipedia.org/wiki/Cluster_(spacecraft)#Launch_failure</a>.
+We will reproduce their mistake, and show how a few lines code would have saved over US$500 M.</p>
+   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Ariane_5ES_with_ATV_4_on_its_way_to_ELA-3.jpg/320px-Ariane_5ES_with_ATV_4_on_its_way_to_ELA-3.jpg" width="200" />
+<p>The Ariane 5 rocket explosion was caused by an integer overflow. The speed of the rocket was stored as a 64-bit float, and this was converted in the navigation software to a 16-bit integer. However, the value of the float was greater than <span class="math notranslate nohighlight">\(32767\)</span>, the largest number a 16-bit integer can represent, and this led to an overflow that in turn caused the navigation system to fail and the rocket to explode.</p>
+<p>We can demonstrate what happened in the rocket program. We consider a speed of <span class="math notranslate nohighlight">\(40000.54\)</span> (units are not relevant to what is being demonstrated), stored as a <code class="docutils literal notranslate"><span class="pre">float</span></code> (64 bits):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">speed_float</span> <span class="o">=</span> <span class="mf">40000.54</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we first convert the float to a 32-bit <code class="docutils literal notranslate"><span class="pre">int</span></code> (we use NumPy to get integers with a fixed number of bits, more on NumPy in a later notebook):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">speed_int</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">(</span><span class="n">speed_float</span><span class="p">)</span>  <span class="c1"># Convert the speed to a 32-bit int</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">speed_int</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>40000
+</pre></div>
+</div>
+</div>
+</div>
+<p>The conversion behaves as we would expect. Now, if we convert the speed from the <code class="docutils literal notranslate"><span class="pre">float</span></code> to a 16-bit integer:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">speed_int</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">(</span><span class="n">speed_float</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">speed_int</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-25536
+</pre></div>
+</div>
+</div>
+</div>
+<p>We see clearly the result of an integer overflow since the 16-bit integer has too few bits to represent the number
+40000.</p>
+<p>The Ariane 5 failure would have been averted with pre-launch testing and the following few lines:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">speed_float</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">iinfo</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;***Error, cannot assign speed to 16-bit int. Will cause overflow.&quot;</span><span class="p">)</span>
+    <span class="c1"># Call command here to exit program</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">speed_int</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">(</span><span class="n">speed_float</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>***Error, cannot assign speed to 16-bit int. Will cause overflow.
+</pre></div>
+</div>
+</div>
+</div>
+<p>These few lines and careful testing would have saved the $500M payload and the cost of the rocket.</p>
+<p>The Ariane 5 incident is an example not only of a poor piece of programming, but also very poor testing and software engineering. Careful pre-launch testing of the software would have detected this problem. The program should have checked the value of the velocity before performing the conversion, and triggered an error message that the type conversion would cause an overflow.</p>
+</section>
+<section id="a-few-words-about-using-floats">
+<h2>A few words about using Floats<a class="headerlink" href="#a-few-words-about-using-floats" title="Permalink to this heading">#</a></h2>
+<p>We introduced the representation</p>
+<div class="math notranslate nohighlight">
+\[
+10.45 = \underbrace{+}_{\text{sign}} \underbrace{1045}_{\text{significand}} \times \underbrace{10^{-2}}_{\text{exponent}}
+\]</div>
+<p>earlier. However, this was a little misleading because computers do not use base 10
+to store the significand and the exponent, but base 2.</p>
+<p>When using the familiar base 10, we cannot represent <span class="math notranslate nohighlight">\(1/3\)</span> exactly as a decimal. If we liked using base 3 (ternary numeral system) for our mental arithmetic (which we really don’t), we could represent <span class="math notranslate nohighlight">\(1/3\)</span> exactly. However, fractions that are simple to represent exactly in base 10 might not be representable in another base.
+A consequence is that fractions that are simple in base 10 cannot necessarily be represented exactly by computers using binary.</p>
+<p>A classic example is <span class="math notranslate nohighlight">\(1/10 = 0.1\)</span>. This simple number cannot be represented exactly in
+binary. On the contrary, <span class="math notranslate nohighlight">\(1/2 = 0.5\)</span> can be represented exactly. To explore this, let’s assign the number 0.1 to the variable <code class="docutils literal notranslate"><span class="pre">x</span></code> and print the result:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.1
+</pre></div>
+</div>
+</div>
+</div>
+<p>This looks fine, but the <code class="docutils literal notranslate"><span class="pre">print</span></code> statement is hiding some details. Asking the <code class="docutils literal notranslate"><span class="pre">print</span></code> statement to use 30 characters we see that <code class="docutils literal notranslate"><span class="pre">x</span></code> is not exactly 0.1:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0:.30f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.100000000000000005551115123126
+</pre></div>
+</div>
+</div>
+</div>
+<p>The difference between 0.1 and the binary representation is the <em>roundoff error</em> (we’ll look at print formatting syntax in a later activity). From the above, we can see that the representation is accurate to about 17 significant figures.</p>
+<p>Checking for 0.5, we see that it appears to be represented exactly:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0:.30f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.500000000000000000000000000000
+</pre></div>
+</div>
+</div>
+</div>
+<p>The round-off error for the 0.1 case is small, and in many cases will not present a problem. However, sometimes round-off errors can accumulate and destroy accuracy.</p>
+<section id="inexact-representation">
+<h3>Inexact representation<a class="headerlink" href="#inexact-representation" title="Permalink to this heading">#</a></h3>
+<p>Most of the time, numbers of type <code class="docutils literal notranslate"><span class="pre">float</span></code> provide a resonably good approximation to real numbers.
+But “most of the time” is not all of the time, and when they don’t it can lead to surprising consequences.
+For example, try doing the folowing.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mf">0.1</span>
+
+<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mf">1.0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot;is = 1.0&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot;is not 1.0&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9999999999999999 is not 1.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Perhaps you, like most people, find it surprising that it prints <code class="docutils literal notranslate"><span class="pre">0.9999999999999999</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">1.0</span></code>. Why does it get to the <code class="docutils literal notranslate"><span class="pre">else</span></code> clause in the first place? To understand why this happens, we need to understand how floating point numbers are represented in the computer during a computation. To understand that, we need to understand <strong>binary numbers</strong>.</p>
+</section>
+<section id="round-off-errors">
+<h3>Round-off errors<a class="headerlink" href="#round-off-errors" title="Permalink to this heading">#</a></h3>
+<p>Round-off errors originate from the fact that computers retain only a fixed number of significant figures during a calculation. Numbers such as <span class="math notranslate nohighlight">\(\pi\)</span>, <span class="math notranslate nohighlight">\(e\)</span>, or <span class="math notranslate nohighlight">\(\sqrt{7}\)</span> cannot be expressed by a fixed number of significant figures. Therefore, they cannot be represented exactly by the computer. In addition, because computers use a
+base-2 representation, they cannot precisely represent certain exact base-10 numbers. The discrepancy introduced by this omission of significant figures is called <em>round-off error</em>.</p>
+</section>
+<section id="example-inexact-representation">
+<h3>Example: inexact representation<a class="headerlink" href="#example-inexact-representation" title="Permalink to this heading">#</a></h3>
+<p>It is trivial that</p>
+<div class="math notranslate nohighlight">
+\[
+x = 11x - 10x
+\]</div>
+<p>If <span class="math notranslate nohighlight">\(x = 0.1\)</span>, we can  write</p>
+<div class="math notranslate nohighlight">
+\[
+x = 11x - 1
+\]</div>
+<p>Now, starting with <span class="math notranslate nohighlight">\(x = 0.1\)</span> we evaluate the right-hand side to get a ‘new’ <span class="math notranslate nohighlight">\(x\)</span>, and use this new <span class="math notranslate nohighlight">\(x\)</span> to then evaluate the right-hand side again. The arithmetic is trivial: <span class="math notranslate nohighlight">\(x\)</span> should remain equal to <span class="math notranslate nohighlight">\(0.1\)</span>.
+We test this in a program that repeats this process 20 times:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="mi">11</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.10000000000000009
+0.10000000000000098
+0.10000000000001075
+0.10000000000011822
+0.10000000000130038
+0.1000000000143042
+0.10000000015734622
+0.10000000173080847
+0.10000001903889322
+0.10000020942782539
+0.10000230370607932
+0.10002534076687253
+0.10027874843559781
+0.1030662327915759
+0.13372856070733485
+0.4710141677806834
+4.181155845587517
+44.992714301462684
+493.9198573160895
+5432.118430476985
+</pre></div>
+</div>
+</div>
+</div>
+<p>The solution blows up and deviates widely from <span class="math notranslate nohighlight">\(x = 0.1\)</span>. Round-off errors are amplified at each step, leading to a completely wrong answer. The computer representation of <span class="math notranslate nohighlight">\(0.1\)</span> is not exact, and every time we multiply <span class="math notranslate nohighlight">\(0.1\)</span> by <span class="math notranslate nohighlight">\(11\)</span>, we increase the error by around a factor of 10 (we can see above that we lose a digit of accuracy in each step).
+You can observe the same issue using spreadsheet programs.</p>
+<p>If we use <span class="math notranslate nohighlight">\(x = 0.5\)</span>, which can be represented exactly in binary:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="mi">11</span> <span class="o">-</span> <span class="mi">5</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+</pre></div>
+</div>
+</div>
+</div>
+<p>The result is exact in this case.</p>
+<p>By default, Python uses 64 bits to store a float. We can use the module NumPy to create a
+float that uses only 32 bits. Testing this for the <span class="math notranslate nohighlight">\(x = 0.1\)</span> case:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="mi">11</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.10000001639127731
+0.10000018030405045
+0.1000019833445549
+0.10002181679010391
+0.10023998469114304
+0.1026398316025734
+0.12903814762830734
+0.41941962391138077
+3.6136158630251884
+38.74977449327707
+425.2475194260478
+4676.722713686526
+51442.949850551784
+565871.4483560696
+6224584.931916766
+68470433.25108442
+753174764.7619286
+8284922411.381214
+91134146524.19336
+1002475611765.127
+</pre></div>
+</div>
+</div>
+</div>
+<p>The error blows up faster in this case compared to the 64 bit case - using 32 bits leads to a poorer approximation of <span class="math notranslate nohighlight">\(0.1\)</span> than when using 64 bits.</p>
+<p><em>Note:</em> Some languages have special tools for performing decimal (base 10) arithmetic (e.g., <a class="reference external" href="https://docs.python.org/3/library/decimal.html">https://docs.python.org/3/library/decimal.html</a>). This would, for example, allow <span class="math notranslate nohighlight">\(0.1\)</span> to be represented exactly. However, decimal is not the ‘natural’ arithmetic of computers so operations in decimal could be expected to be much slower.</p>
+</section>
+</section>
+<section id="patriot-missile-failure">
+<h2>Patriot Missile Failure<a class="headerlink" href="#patriot-missile-failure" title="Permalink to this heading">#</a></h2>
+<p>In 1991, a US Patriot missile failed to intercept an Iraqi Scud missile at Dhahran in Saudi Arabi, leading to    a loss of life. The subsequent investigation found that the Patriot missile failed to intercept the Scud missile due to a software flaw. The software developers did not account for the effects of ‘floating point arithmetic’.   This led to a small error in computing the time, which in turn caused the Patriot to miss the incoming Scud missile.</p>
+   <img src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Patriot_System_2.jpg" width="300" />
+<p>We will reproduce the precise mistake the developers of the Patriot Missile software made. See
+<a class="reference external" href="https://en.wikipedia.org/wiki/MIM-104_Patriot#Failure_at_Dhahran">https://en.wikipedia.org/wiki/MIM-104_Patriot#Failure_at_Dhahran</a> for more background on the interception
+failure.</p>
+<p>The inexact representation of <span class="math notranslate nohighlight">\(0.1\)</span> was the cause of the software error in the Patriot missile system.</p>
+<p>The missile system tracked time from boot (system start) using an integer counter that was incremented every <span class="math notranslate nohighlight">\(1/10\)</span> of a second. To
+get the time in seconds, the missile software multiplied the counter by the float representation of <span class="math notranslate nohighlight">\(0.1\)</span>.
+The control software used 24 bits to store floats. The round-off error due to the inexact representation of <span class="math notranslate nohighlight">\(0.1\)</span> lead to an error of <span class="math notranslate nohighlight">\(0.32\)</span> s after 100 hours of operation (time since boot), which due to the high velocity of the missile was enough to cause failure to intercept the incoming Scud.</p>
+<p>We don’t have 24-bit floats in Python, but we can test with 16, 32 and 64 bit floats.
+We first compute what the system counter (an integer) would be after 100 hours:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute internal system counter after 100 hours (counter increments every 1/10 s)</span>
+<span class="n">num_hours</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">num_seconds</span> <span class="o">=</span> <span class="n">num_hours</span><span class="o">*</span><span class="mi">60</span><span class="o">*</span><span class="mi">60</span>
+<span class="n">system_counter</span> <span class="o">=</span> <span class="n">num_seconds</span><span class="o">*</span><span class="mi">10</span>  <span class="c1"># system clock counter</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Converting the system counter to seconds using different representations of 0.1:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Test with 16 bit float</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float16</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">time</span> <span class="o">=</span> <span class="n">dt</span><span class="o">*</span><span class="n">system_counter</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Time error after 100 hours using 16 bit float (s):&quot;</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">time</span> <span class="o">-</span> <span class="n">num_seconds</span><span class="p">))</span>
+
+<span class="c1"># Test with 32 bit float</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">time</span> <span class="o">=</span> <span class="n">dt</span><span class="o">*</span><span class="n">system_counter</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Time error after 100 hours using 32 bit float (s):&quot;</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">time</span> <span class="o">-</span> <span class="n">num_seconds</span><span class="p">))</span>
+
+<span class="c1"># Test with 64 bit float</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">time</span> <span class="o">=</span> <span class="n">dt</span><span class="o">*</span><span class="n">system_counter</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Time error after 100 hours using 64 bit float (s):&quot;</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">time</span> <span class="o">-</span> <span class="n">num_seconds</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time error after 100 hours using 16 bit float (s): 87.890625
+Time error after 100 hours using 32 bit float (s): 0.005364418029785156
+Time error after 100 hours using 64 bit float (s): 0.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>The time computation with 16-bit floats is more than a minute off after 100 hours! The stop-gap measure
+for the Patriot missiles at the time was to reboot the missile systems frequently, thereby resetting the system counter and reducing the time error.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="bisection-approach-specifying-an-allowable-error">
+<h1>Bisection approach specifying an allowable error<a class="headerlink" href="#bisection-approach-specifying-an-allowable-error" title="Permalink to this heading">#</a></h1>
+<p>Using an absolute error <span class="math notranslate nohighlight">\(\Delta = \varepsilon_x = \Delta_{x} = \left\Vert x^* - x\right\Vert\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import modules</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="c1"># Initial guess</span>
+<span class="n">theta1</span> <span class="o">=</span> <span class="mi">60</span>
+<span class="n">theta2</span> <span class="o">=</span> <span class="mi">90</span>
+
+<span class="c1"># Assign variables</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="mf">0.75</span>   <span class="c1"># friction coefficient</span>
+<span class="n">weight</span> <span class="o">=</span> <span class="mi">25</span> <span class="c1"># Weight of the block in kN</span>
+<span class="n">force</span> <span class="o">=</span> <span class="mf">17.5</span> <span class="c1"># kN</span>
+
+<span class="n">theta</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># angle in degrees</span>
+
+<span class="c1"># Set a tolerance</span>
+<span class="n">tolerance</span> <span class="o">=</span> <span class="mf">1e-5</span>
+
+<span class="c1"># Absolute and relative errors</span>
+<span class="n">error</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">relative_error</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># Iterate to a maximum of 1000 iterations</span>
+<span class="n">max_iterations</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="n">iterations</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iterations</span><span class="p">):</span>
+
+    <span class="c1"># Compute forces for theta1 and theta2</span>
+    <span class="n">delta1</span> <span class="o">=</span> <span class="n">force</span> <span class="o">-</span> <span class="p">(</span><span class="n">mu</span> <span class="o">*</span> <span class="n">weight</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta1</span><span class="p">))</span> <span class="o">+</span>
+                                       <span class="n">mu</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta1</span><span class="p">)))</span>
+    
+    <span class="n">delta2</span> <span class="o">=</span> <span class="n">force</span> <span class="o">-</span> <span class="p">(</span><span class="n">mu</span> <span class="o">*</span> <span class="n">weight</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta2</span><span class="p">))</span> <span class="o">+</span>
+                                       <span class="n">mu</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta2</span><span class="p">)))</span>
+    
+    <span class="c1"># Compute the mid-value of theta</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="p">(</span><span class="n">theta1</span> <span class="o">+</span> <span class="n">theta2</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+    
+    <span class="c1"># Calculate the difference delta for the mid-theta   </span>
+    <span class="n">delta</span> <span class="o">=</span> <span class="n">force</span> <span class="o">-</span> <span class="p">(</span><span class="n">mu</span> <span class="o">*</span> <span class="n">weight</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta</span><span class="p">))</span> <span class="o">+</span>
+                                       <span class="n">mu</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta</span><span class="p">)))</span>
+    
+    <span class="k">if</span><span class="p">((</span><span class="n">delta</span> <span class="o">*</span> <span class="n">delta1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="n">theta1</span> <span class="o">=</span> <span class="n">theta</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">theta2</span> <span class="o">=</span>  <span class="n">theta</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">tolerance</span><span class="p">):</span>
+        <span class="k">break</span>
+
+<span class="k">else</span><span class="p">:</span> <span class="c1">#No break</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Solution did not converge!&quot;</span><span class="p">)</span>
+    
+<span class="n">final_force</span> <span class="o">=</span> <span class="p">(</span><span class="n">mu</span> <span class="o">*</span> <span class="n">weight</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta</span><span class="p">))</span> <span class="o">+</span>
+                                       <span class="n">mu</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta</span><span class="p">)))</span>
+
+<span class="c1"># Absolute error</span>
+<span class="n">error</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">force</span> <span class="o">-</span> <span class="n">final_force</span><span class="p">)</span> 
+
+<span class="c1"># Relative error</span>
+<span class="n">relative_error</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">error</span> <span class="o">/</span> <span class="n">final_force</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;After&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s1">&#39;iterations the angle is </span><span class="si">{:.6f}</span><span class="s1"> deg, </span><span class="se">\n</span><span class="s1"> </span><span class="se">\</span>
+<span class="s1">        which gives a force of </span><span class="si">{:.10f}</span><span class="s1"> kN, </span><span class="se">\n</span><span class="s1"> </span><span class="se">\</span>
+<span class="s1">        and an absolute error of </span><span class="si">{:.10E}</span><span class="s1">, </span><span class="se">\n</span><span class="s1"> </span><span class="se">\</span>
+<span class="s1">        and a relative error of </span><span class="si">{:.10E}</span><span class="s1"> %.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">final_force</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span> <span class="n">relative_error</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After 14 iterations the angle is 67.872620 deg, 
+         which gives a force of 17.5000005229 kN, 
+         and an absolute error of 5.2294620545E-07, 
+         and a relative error of 2.9882639418E-06 %.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="summary">
+<h1>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h1>
+<p>The key points are:</p>
+<ul class="simple">
+<li><p>The size of an integer that a computer can store is determined by the number of bits used to represent the
+integer.</p></li>
+<li><p>Computers do not perform exact arithmetic with non-integer numbers. This does not usually cause a problem, but
+it can in cases. Problems can often be avoided with careful programming.</p></li>
+<li><p>Be thoughtful when converting between types - undesirable consequences can follow when careless with
+conversions.</p></li>
+</ul>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/lectures/02_errors"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background-bits-and-bytes">Background: bits and bytes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-representation-and-floating-point-arithmetic">Binary representation and floating point arithmetic</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-base-2-representation">Binary (base 2) representation</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-type">What is type?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#numeric-types">Numeric types</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integers">Integers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integer-storage-and-overflow">Integer storage and overflow</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#integer-overflow">Integer overflow</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#gangnam-style">Gangnam Style</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#boeing-787-dreamliner-bug">Boeing 787 Dreamliner bug</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#floating-point-storage">Floating point storage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#floats">Floats</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-numbers">Complex numbers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#type-conversions-casting">Type conversions (casting)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-type-conversion">Explicit type conversion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ariane-5-rocket-explosion-and-type-conversion">Ariane 5 rocket explosion and type conversion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-few-words-about-using-floats">A few words about using Floats</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inexact-representation">Inexact representation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#round-off-errors">Round-off errors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-inexact-representation">Example: inexact representation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#patriot-missile-failure">Patriot Missile Failure</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bisection-approach-specifying-an-allowable-error">Bisection approach specifying an allowable error</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Krishna Kumar
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

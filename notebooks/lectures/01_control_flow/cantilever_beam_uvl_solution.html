@@ -1,0 +1,611 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Deflection of a cantilever beam subjected to uniformly varying load &#8212; Introduction to Programming with Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/lectures/01_control_flow/cantilever_beam_uvl_solution';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="atm.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="break_continue_solutions.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../README.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Introduction to Programming with Python</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../README.html">
+                    CE 311K: Introduction to Computer Methods (Python)
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../00_intro/00_variables_assignment_operator-precedence.html">Lecture 00: Variables and assignment</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="01_control_statements.html">Lecture 01a: Control statement</a></li>
+
+
+
+
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="01_friction_sliding_block.html">Lecture 01b: Control statement example</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01_friction_sliding_block_solution.html">Lecture 01b: Example of control statement</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Deflection of a cantilever beam subjected to uniformly varying load</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../02_errors/02_errors.html">Lecture 02: Errors</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../03_functions/03_functions.html">Lecture 03: Functions</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../04_data_structures/04_data_structures.html">Lecture 04: Data structures</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../06_exceptions/06_error_handling_testing.html">Lecture 06: Error handling</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../07_vectors/07_vectors.html">Lecture 07: Vectors</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../08_matrices/08_matrices.html">Lecture 08: Matrices</a></li>
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../09_linear_algebra/09_linear_algebra.html">Lecture 09: Linear Algebra</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../09_linear_algebra/09_linear_algebra_solution.html">Lecture 09: Linear Algebra (Solution)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../10_useful_libs/10_useful_libs.html">Lecture 10: Useful libraries in Python</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/kks32-courses/ce311k/blob/main/docs/notebooks/lectures/01_control_flow/cantilever_beam_uvl_solution.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/kks32-courses/ce311k" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/kks32-courses/ce311k/issues/new?title=Issue%20on%20page%20%2Fnotebooks/lectures/01_control_flow/cantilever_beam_uvl_solution.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/notebooks/lectures/01_control_flow/cantilever_beam_uvl_solution.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Deflection of a cantilever beam subjected to uniformly varying load</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="deflection-of-a-cantilever-beam-subjected-to-uniformly-varying-load">
+<h1>Deflection of a cantilever beam subjected to uniformly varying load<a class="headerlink" href="#deflection-of-a-cantilever-beam-subjected-to-uniformly-varying-load" title="Permalink to this heading">#</a></h1>
+<p><img alt="main-qimg-bd1c81fe3b3596340ba6ee95b50d02c3.webp" src="data:image/webp;base64,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" /></p>
+<p>Deflection at any point in <span class="math notranslate nohighlight">\(x\)</span> is given as: $<span class="math notranslate nohighlight">\(y = \frac{w_0 x^2}{120l EI} \left(10l^3 -10l^2x + 5 lx^2 -x^3\right)\)</span>$</p>
+<p>The moment of inertia of a rectangular corss section of width (<span class="math notranslate nohighlight">\(b\)</span>) and depth (<span class="math notranslate nohighlight">\(d\)</span>) is:</p>
+<div class="math notranslate nohighlight">
+\[I = \frac{bd^3}{12}\]</div>
+<p>Plot the deflection of a 2m long cantilever beam subjected to a uniformly varying load of <span class="math notranslate nohighlight">\(5 kN/m\)</span>. The beam has a stiffness of <span class="math notranslate nohighlight">\(2*10^7 kPa\)</span> and has a width of 0.4 m and a depth of 0.5 m.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># initial load (kN/m)</span>
+<span class="n">w0</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="c1"># Length of cantilever beam (m)</span>
+<span class="n">l</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="c1"># Stiffness</span>
+<span class="n">E</span> <span class="o">=</span> <span class="mf">2E5</span>
+<span class="c1"># width (b) is 0.4 m and depth (d) is 0.5m</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">0.4</span>
+<span class="n">d</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="c1"># Moment of inertia</span>
+<span class="n">I</span> <span class="o">=</span> <span class="n">b</span><span class="o">*</span><span class="n">d</span><span class="o">**</span><span class="mi">3</span><span class="o">/</span><span class="mi">12</span>
+<span class="c1"># Location for deflection</span>
+<span class="n">xlist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.01</span><span class="p">,</span><span class="mf">0.01</span><span class="p">)</span> <span class="o">*</span> <span class="n">l</span>
+
+<span class="c1"># Deflections</span>
+<span class="n">deflections</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">def_ratio</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Maximum deflection</span>
+<span class="n">def_max</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">w0</span> <span class="o">*</span> <span class="n">l</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">30</span> <span class="o">*</span> <span class="n">E</span> <span class="o">*</span> <span class="n">I</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e3</span>
+
+<span class="c1"># Iterate through all possible locations</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xlist</span><span class="p">:</span>
+  <span class="c1"># Deflection</span>
+  <span class="n">defl</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">w0</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">120</span><span class="o">*</span><span class="n">l</span><span class="o">*</span><span class="n">E</span><span class="o">*</span><span class="n">I</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">10</span> <span class="o">*</span> <span class="n">l</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">l</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">5</span> <span class="o">*</span> <span class="n">l</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span>
+  <span class="n">deflections</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">defl</span><span class="p">)</span>
+  <span class="n">def_ratio</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">defl</span><span class="o">/</span><span class="n">def_max</span><span class="p">)</span>
+  <span class="c1">#print(x, defl, defl / def_max)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Cantilever beam (m)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Deflection in (mm)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xlist</span><span class="p">,</span> <span class="n">deflections</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f142924cc50&gt;]
+</pre></div>
+</div>
+<img alt="../../../_images/dda239863e495eded358514f758a1734bf49af2bfe94d7319dc3b68804d1c26e.png" src="../../../_images/dda239863e495eded358514f758a1734bf49af2bfe94d7319dc3b68804d1c26e.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Cantilever beam (m)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Normalized deflection d/d_max&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xlist</span><span class="p">,</span> <span class="n">def_ratio</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f14290bfd30&gt;]
+</pre></div>
+</div>
+<img alt="../../../_images/e9f964f94c5260bb7c268e9d3135a3143ee8548720c6a6476dcc8a878083ee29.png" src="../../../_images/e9f964f94c5260bb7c268e9d3135a3143ee8548720c6a6476dcc8a878083ee29.png" />
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/lectures/01_control_flow"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="break_continue_solutions.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="atm.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Krishna Kumar
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

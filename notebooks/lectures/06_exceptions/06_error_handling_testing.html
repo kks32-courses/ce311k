@@ -1,0 +1,990 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Lecture 06: Error handling &#8212; Introduction to Programming with Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/lectures/06_exceptions/06_error_handling_testing';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Lecture 06: Error handling (Solution)" href="06_error_handling_testing_solution.html" />
+    <link rel="prev" title="Lecture 04: Data structures (Solution)" href="../04_data_structures/04_data_structures_solution.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../README.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Introduction to Programming with Python</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../README.html">
+                    CE 311K: Introduction to Computer Methods (Python)
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../00_intro/00_variables_assignment_operator-precedence.html">Lecture 00: Variables and assignment</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../01_control_flow/01_control_statements.html">Lecture 01a: Control statement</a></li>
+
+
+
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01_control_flow/01_friction_sliding_block.html">Lecture 01b: Control statement example</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01_control_flow/01_friction_sliding_block_solution.html">Lecture 01b: Example of control statement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_control_flow/cantilever_beam_uvl_solution.html">Deflection of a cantilever beam subjected to uniformly varying load</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../02_errors/02_errors.html">Lecture 02: Errors</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../03_functions/03_functions.html">Lecture 03: Functions</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../04_data_structures/04_data_structures.html">Lecture 04: Data structures</a></li>
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 06: Error handling</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../07_vectors/07_vectors.html">Lecture 07: Vectors</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../08_matrices/08_matrices.html">Lecture 08: Matrices</a></li>
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../09_linear_algebra/09_linear_algebra.html">Lecture 09: Linear Algebra</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../09_linear_algebra/09_linear_algebra_solution.html">Lecture 09: Linear Algebra (Solution)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../10_useful_libs/10_useful_libs.html">Lecture 10: Useful libraries in Python</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/kks32-courses/ce311k/blob/main/docs/notebooks/lectures/06_exceptions/06_error_handling_testing.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/kks32-courses/ce311k" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/kks32-courses/ce311k/issues/new?title=Issue%20on%20page%20%2Fnotebooks/lectures/06_exceptions/06_error_handling_testing.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/notebooks/lectures/06_exceptions/06_error_handling_testing.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lecture 06: Error handling</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lecture 06: Error handling</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bugs-and-testing">Bugs and testing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#errors-and-exceptions">Errors and exceptions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#syntax-errors">Syntax errors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exceptions">Exceptions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uss-yorktown-smart-ship">USS Yorktown Smart Ship</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#raising-exceptions">Raising exceptions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameter-validity-checking">Parameter validity checking</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exception-types">Exception types</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#averting-the-ariane-5-explosion">Averting the Ariane 5 explosion</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#catching-and-handling-exceptions">Catching and handling exceptions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exception-handling-and-the-uss-yorktown">Exception handling and the USS Yorktown</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-interactive-user-input">Checking interactive user input</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-integer-type-conversion">Example: integer type conversion</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#testing">Testing</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lecture-06-error-handling">
+<h1>Lecture 06: Error handling<a class="headerlink" href="#lecture-06-error-handling" title="Permalink to this heading">#</a></h1>
+<p>It is bad when a program crashes without an error message. It is even worse when a program used in
+engineering, science or finance computes an erroneous result. A crash without an informative error message causes
+frustration, and it costs time because we get no information on what went wrong, and this makes it hard to fix.
+An erroneous result used in an engineering design could risk life.
+With good software engineering we can mitigate these risks.</p>
+<section id="bugs-and-testing">
+<h2>Bugs and testing<a class="headerlink" href="#bugs-and-testing" title="Permalink to this heading">#</a></h2>
+<p>Programs have bugs and users make mistakes. It is important to minimise the number of bugs,
+and where possible detect user mistakes. We do this through careful engineering of a program,
+error checking and extensive (automated) testing. Testing is critical in engineering programs to build confidence that
+a program computes the ‘right’ thing. Good software engineering and thorough testing would have prevented both the Patriot missile and Ariane 5 failures that were discussed before.</p>
+<p>Testing is not a one-off exercise. As you develop programs, it is good practice to add tests as you go. It is also good to test very small units of a program so that if a test fails you can quickly narrow down the possible causes.
+Modern software development uses <em>continuous integration</em>, in which a suite of tests is run every time a change is made to a code. This helps catch issues early. It also helps tremendously when more than one person is working on a program. You may add a feature today and test it, but tomorrow your colleague might make a seemingly unrelated change that breaks your feature. Continuous testing helps in this case.</p>
+</section>
+<section id="objectives">
+<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Introduction to raising exceptions</p></li>
+<li><p>Use exception handling</p></li>
+<li><p>Creation of tests</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="errors-and-exceptions">
+<h1>Errors and exceptions<a class="headerlink" href="#errors-and-exceptions" title="Permalink to this heading">#</a></h1>
+<p>There are two types of program errors: <em>syntax errors</em> and <em>exceptions</em>.</p>
+<section id="syntax-errors">
+<h2>Syntax errors<a class="headerlink" href="#syntax-errors" title="Permalink to this heading">#</a></h2>
+<p>Syntax errors are when the syntax of a program does not conform to the rules of the language. These are (generally) easy to detect because the interpreter/compiler will print an error. You will have seen plenty of syntax error messages by now!</p>
+</section>
+<section id="exceptions">
+<h2>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this heading">#</a></h2>
+<p>Exceptions are when something unexpected or anomalous occurs during the execution of a program. The syntax is correct, but something goes
+wrong while a program is running. Simple examples, where a well-engineered program will <em>raise an exception</em>, include:</p>
+<ul class="simple">
+<li><p>Attempting to divide by zero;</p></li>
+<li><p>Receiving negative data when only positive data is permitted, e.g. taking the
+log of a negative number, or a negative integer for the number students in a class;</p></li>
+<li><p>Unexpected integer overflows; and</p></li>
+<li><p>Attempting to compute the dot product between two vectors of different lengths.</p></li>
+</ul>
+<p>These are all cases that can be tested in a program. We should check
+for invalid data and attempts to use our programs beyond the limits of their designs,
+and in these cases raise an exception with an informative message.</p>
+<section id="uss-yorktown-smart-ship">
+<h3>USS Yorktown Smart Ship<a class="headerlink" href="#uss-yorktown-smart-ship" title="Permalink to this heading">#</a></h3>
+<p>USS Yorktown was used for the US Navy Smart Ship program. A computer system was fitted to operate a control
+centre from the bridge. In 1997, a crew member entered data into the system that led to an attempted division
+by zero. This caused the ship’s computer systems and the ship’s propulsion systems to shut down.
+This would have been avoided with good software engineering and exception handling.
+You can find more at <a class="reference external" href="https://en.wikipedia.org/wiki/USS_Yorktown_(CG-48)#Smart_ship_testbed">https://en.wikipedia.org/wiki/USS_Yorktown_(CG-48)#Smart_ship_testbed</a>.</p>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Ticonderoga%2C_Yorktown_and_Thomas_S._Gates_at_Philadelphia.jpg/440px-Ticonderoga%2C_Yorktown_and_Thomas_S._Gates_at_Philadelphia.jpg" width="400" /></section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="raising-exceptions">
+<h1>Raising exceptions<a class="headerlink" href="#raising-exceptions" title="Permalink to this heading">#</a></h1>
+<p><em>Raising an exception</em> is what happens when we trigger an exception. It is sometimes called <em>throwing an exception</em>. Python peforms some checks for us. For example, if we have a list of length 5:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">colours</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;yellow&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="p">]</span>
+<span class="c1"># Attempt to access beyond the range</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>we will see the error message:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">---------------------------------------------------------------------------</span>
+<span class="ne">IndexError</span>                                <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">26</span><span class="o">-</span><span class="mf">322e6</span><span class="n">eedcde5</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="p">()</span>
+      <span class="mi">1</span> <span class="n">colours</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;yellow&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="p">]</span>
+<span class="o">----&gt;</span> <span class="mi">2</span> <span class="n">c</span> <span class="o">=</span> <span class="n">colours</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+<span class="ne">IndexError</span><span class="p">:</span> <span class="nb">list</span> <span class="n">index</span> <span class="n">out</span> <span class="n">of</span> <span class="nb">range</span>
+</pre></div>
+</div>
+<p>Python can check for some errors, but not all. We need to include checks in our programs to raise exceptions when something unexpected happens or invalid input is received. This reduces the likelihood of our engineering programs computing incorrect results, which could have serious consequences, and it makes it easier to debug programs.</p>
+<p>Below we build on some examples from earlier notebooks to add exception handling.</p>
+<section id="parameter-validity-checking">
+<h2>Parameter validity checking<a class="headerlink" href="#parameter-validity-checking" title="Permalink to this heading">#</a></h2>
+<p>In the first notebook we looked at the gravitational potential <span class="math notranslate nohighlight">\(V\)</span> of a body of mass <span class="math notranslate nohighlight">\(m\)</span> (point mass) at a distance <span class="math notranslate nohighlight">\(r\)</span> from a body of mass <span class="math notranslate nohighlight">\(M\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+V = \frac{G M m}{r}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(G\)</span> is the <em>gravitational constant</em>. This expression makes sense only for <span class="math notranslate nohighlight">\(G, M, m \ge 0\)</span> and <span class="math notranslate nohighlight">\(r &gt; 0\)</span>. Implementing computation of the gravitational potential as a function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gravity_potential</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">G</span><span class="o">*</span><span class="n">M</span><span class="o">*</span><span class="n">m</span><span class="o">/</span><span class="n">r</span>
+    
+<span class="n">V</span> <span class="o">=</span> <span class="n">gravity_potential</span><span class="p">(</span><span class="mf">6.674e-11</span><span class="p">,</span> <span class="mf">1.65e12</span><span class="p">,</span> <span class="mf">6.1e2</span><span class="p">,</span> <span class="mf">7e3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9.59625857142857
+</pre></div>
+</div>
+</div>
+</div>
+<p>A user could easily make a typographical error and make <span class="math notranslate nohighlight">\(G\)</span>, <span class="math notranslate nohighlight">\(M\)</span>, or <span class="math notranslate nohighlight">\(m\)</span> negative, or we might encounter a case where <span class="math notranslate nohighlight">\(r\)</span> becomes zero. In any of these cases, the computed gravitational potential would not be sensible but the above program would return a value and proceed.</p>
+<p>Rather than return an obviously wrong result, we can guard against easy-to-detect errors by checking the validity of the arguments and raising exceptions in the case of invalid data, e.g.:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gravity_potential</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">G</span><span class="o">*</span><span class="n">M</span><span class="o">*</span><span class="n">m</span><span class="o">/</span><span class="n">r</span>
+
+<span class="n">V</span> <span class="o">=</span> <span class="n">gravity_potential</span><span class="p">(</span><span class="mf">6.674e-11</span><span class="p">,</span> <span class="mf">1.65e12</span><span class="p">,</span> <span class="mf">6.1e2</span><span class="p">,</span> <span class="mf">7e3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, if we attempt</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">V</span> <span class="o">=</span> <span class="n">gravity_potential</span><span class="p">(</span><span class="o">-</span><span class="mf">6.674e-11</span><span class="p">,</span> <span class="mf">1.65e12</span><span class="p">,</span> <span class="mf">6.1e2</span><span class="p">,</span> <span class="mf">7e3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>we would see:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span>                                <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">20</span><span class="o">-</span><span class="n">ef1cff047ffd</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="p">()</span>
+     <span class="mi">10</span>     <span class="k">return</span> <span class="n">G</span><span class="o">*</span><span class="n">M</span><span class="o">*</span><span class="n">m</span><span class="o">/</span><span class="n">r</span>
+     <span class="mi">11</span> 
+<span class="o">---&gt;</span> <span class="mi">12</span> <span class="n">V</span> <span class="o">=</span> <span class="n">gravity_potential</span><span class="p">(</span><span class="o">-</span><span class="mf">6.674e-11</span><span class="p">,</span> <span class="mf">1.65e12</span><span class="p">,</span> <span class="mf">6.1e2</span><span class="p">,</span> <span class="mf">7e3</span><span class="p">)</span>
+
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">20</span><span class="o">-</span><span class="n">ef1cff047ffd</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="n">gravity_potential</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+      <span class="mi">1</span> <span class="k">def</span> <span class="nf">gravity_potential</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+      <span class="mi">2</span>     <span class="k">if</span> <span class="n">G</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="o">----&gt;</span> <span class="mi">3</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Gravitational constant must be greater than or equal to zero&quot;</span><span class="p">)</span>
+      <span class="mi">4</span>     <span class="k">if</span> <span class="n">M</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="mi">5</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Mass M must be greater than or equal to zero&quot;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ne">ValueError</span><span class="p">:</span> <span class="n">Gravitational</span> <span class="n">constant</span> <span class="n">must</span> <span class="n">be</span> <span class="n">greater</span> <span class="n">than</span> <span class="ow">or</span> <span class="n">equal</span> <span class="n">to</span> <span class="n">zero</span>
+</pre></div>
+</div>
+<p>The error is detected and a message is printed that makes clear what the problem is. The message also shows where in the program the exception was raised.</p>
+<p>Be liberal with the addition of checks in your programs.</p>
+<section id="exception-types">
+<h3>Exception types<a class="headerlink" href="#exception-types" title="Permalink to this heading">#</a></h3>
+<p>Above we have used the exception type ‘<code class="docutils literal notranslate"><span class="pre">ValueError</span></code>’. There are multiple built-in exception types (see <a class="reference external" href="https://docs.python.org/3/library/exceptions.html">https://docs.python.org/3/library/exceptions.html</a> ), and we can even write our own. Pick the exception type that
+best describes the type of error encountered. Above, we have used the exception type <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> because it describes what we were checking for. If none of the specific built-in exceptions accurately describe the error, ‘<code class="docutils literal notranslate"><span class="pre">RuntimeError</span></code>’ is often the best choice.</p>
+</section>
+</section>
+<section id="averting-the-ariane-5-explosion">
+<h2>Averting the Ariane 5 explosion<a class="headerlink" href="#averting-the-ariane-5-explosion" title="Permalink to this heading">#</a></h2>
+<p>Recall that an Ariane 5 rocket exploded shortly after takeoff due to an integer overflow - the navigation software attempted to convert a 64-bit float (it was a velocity component) to a 16-bit integer. The largest value a 16-bit integer can store is 32767, and the velocity of the rocket exceeded 32767.</p>
+<p>The below snippet of code would have raised an informative exception in pre-launch testing, which could then have been easily fixed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">cast_velocity</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+    <span class="s2">&quot;Cast velocity to 16-bit with checking for overflow&quot;</span>
+    
+    <span class="c1"># Largest number a 16-bit int can store (http://docs.scipy.org/doc/numpy/reference/generated/numpy.iinfo.html)</span>
+    <span class="n">max16_it</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">iinfo</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">)</span><span class="o">.</span><span class="n">max</span>
+
+    <span class="c1"># Assign float velocity to 16-bit int if safe, otherwise raise exception</span>
+    
+    <span class="c1"># Return the 16 bit integer value</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+
+        
+<span class="c1"># Cast rocket velocity to 16-bit int. If velocity is greater than 32767 an exception will be raised.</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">cast_velocity</span><span class="p">(</span><span class="mf">32767.0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>32767
+</pre></div>
+</div>
+</div>
+</div>
+<p>Increase the velocity to over 32767 to see what happens.</p>
+<p>This bug should have been detected during pre-launch testing. However,
+unexpected issues could arise during rocket flight and we cannot just shut down the control software.
+The program needs to attempt to recover the situation.
+Next we look at how to handle problems that arise during execution of a program.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="catching-and-handling-exceptions">
+<h1>Catching and handling exceptions<a class="headerlink" href="#catching-and-handling-exceptions" title="Permalink to this heading">#</a></h1>
+<p>When an exception is raised, by default a program will exit. However, we do not always want to exit a program
+when we encounter an exception. Sometimes we want to ‘catch’ the exception and do something else.</p>
+<section id="exception-handling-and-the-uss-yorktown">
+<h2>Exception handling and the USS Yorktown<a class="headerlink" href="#exception-handling-and-the-uss-yorktown" title="Permalink to this heading">#</a></h2>
+<p>In the case of the USS Yorktown, the ship’s software should not stop if input data
+leads to a divide-by-zero, nor should it proceed erroneously and without warning.
+The software needs to ‘catch’ the divide-by-zero exception, and do something else.
+This might be reducing propulsion and asking for revised input.</p>
+<p>In Python we catch exceptions with</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="c1"># Attempt to do something here that might raise an exception</span>
+<span class="k">except</span> <span class="n">FooError</span><span class="p">:</span>
+    <span class="c1"># If a &#39;FooError&#39; exception is raised above, do something here. For other exception types</span>
+    <span class="c1"># the program will exit (if FooError is left out, any exception will end up here)</span>
+</pre></div>
+</div>
+<p>This is the basic and most common construct. It can be made more elaborate.</p>
+</section>
+<section id="checking-interactive-user-input">
+<h2>Checking interactive user input<a class="headerlink" href="#checking-interactive-user-input" title="Permalink to this heading">#</a></h2>
+<p>Say our program asks the user to enter the number of revolutions of the propeller blade, and they enter an invalid value (negative number, something other than a number, etc). A program should raise an exception when an invalid value is input, but rather than exiting it would be better to ask the user to enter the number of revolutions again. Here is an example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="k">def</span> <span class="nf">generate_torque</span><span class="p">():</span>
+    <span class="s2">&quot;Function that asks for number of revolutions. If input is invalid, user is prompted to try again&quot;</span>
+    <span class="c1"># Get nrevolutions from user input - if conversion to int fails Python raises an exception</span>
+    <span class="n">nrevolutions</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter the number of revolutions &#39;</span><span class="p">))</span>
+
+    <span class="c1"># Conversion to int has been successful, but we need to check that nrevolutions is positive. Raise</span>
+    <span class="c1"># exception if nrevolutions is less than 0</span>
+    
+    <span class="n">P</span> <span class="o">=</span> <span class="mi">500</span>
+    <span class="n">torque</span> <span class="o">=</span> <span class="n">P</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">nrevolutions</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">torque</span>
+    
+    
+<span class="c1"># Uncomment the below lines to test</span>
+<span class="n">torque</span> <span class="o">=</span> <span class="n">generate_torque</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;USS Yorktown is generating a torque of </span><span class="si">{}</span><span class="s2"> units&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">torque</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Enter the number of revolutions str
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-4-98a03ae7de3b&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span> 
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="c1"># Uncomment the below lines to test</span>
+<span class="ne">---&gt; </span><span class="mi">16</span> <span class="n">torque</span> <span class="o">=</span> <span class="n">generate_torque</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;USS Yorktown is generating a torque of </span><span class="si">{}</span><span class="s2"> units&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">torque</span><span class="p">))</span>
+
+<span class="nn">&lt;ipython-input-4-98a03ae7de3b&gt;</span> in <span class="ni">generate_torque</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="s2">&quot;Function that asks for number of revolutions. If input is invalid, user is prompted to try again&quot;</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="c1"># Get nrevolutions from user input - if conversion to int fails Python raises an exception</span>
+<span class="ne">----&gt; </span><span class="mi">5</span>     <span class="n">nrevolutions</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter the number of revolutions &#39;</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> 
+<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="c1"># Conversion to int has been successful, but we need to check that nrevolutions is positive. Raise</span>
+
+<span class="ne">ValueError</span>: invalid literal for int() with base 10: &#39;str&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="example-integer-type-conversion">
+<h2>Example: integer type conversion<a class="headerlink" href="#example-integer-type-conversion" title="Permalink to this heading">#</a></h2>
+<p>Below is another (contrived) take on the Ariane 5 rocket. Our preference is to cast the velocity
+component (float) to a 16-bit integer, but if the value is too large for a 16-bit integer we want to cast to a 32-bit integer. If the float is too large for a 32-bit integer we want to exit the program with an error message.</p>
+<p>We first provide two functions for converting to a integer: the first to a 16-bit integer and the second to a 32-bit integer:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cast_velocity16</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+    <span class="s2">&quot;Convert to a 16-bit int. Raise exception if this will cause an overflow&quot;</span>
+    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">np</span><span class="o">.</span><span class="n">iinfo</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">:</span>
+         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">OverflowError</span><span class="p">(</span><span class="s2">&quot;Cannot safely cast velocity to 16-bit int.&quot;</span><span class="p">)</span>
+
+        
+<span class="k">def</span> <span class="nf">cast_velocity32</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+    <span class="s2">&quot;Convert to a 32-bit int. Raise exception if this will cause an overflow&quot;</span>
+    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">np</span><span class="o">.</span><span class="n">iinfo</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">:</span>
+         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">OverflowError</span><span class="p">(</span><span class="s2">&quot;Cannot safely cast velocity to 32-bit int.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We now perform a conversion, trying first to convert to a 16-bit integer, and if that is unsuccessful we attempt
+a conversion to a 32-bit integer:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cast_velocity</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+    <span class="c1"># Try to cast v to a 16-bit int</span>
+    <span class="k">return</span> <span class="n">cast_velocity16</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+
+<span class="c1"># Velocity to cast (too large for a 16-bit int)</span>
+<span class="n">v_int</span> <span class="o">=</span> <span class="n">cast_velocity</span><span class="p">(</span><span class="mf">42767.0</span><span class="p">)</span>            
+<span class="nb">print</span><span class="p">(</span><span class="n">v_int</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">v_int</span><span class="p">))</span>
+
+<span class="c1"># Velocity to cast (small enough for a 16-bit int)</span>
+<span class="n">v_int</span> <span class="o">=</span> <span class="n">cast_velocity</span><span class="p">(</span><span class="mf">3210.0</span><span class="p">)</span>            
+<span class="nb">print</span><span class="p">(</span><span class="n">v_int</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">v_int</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">OverflowError</span><span class="g g-Whitespace">                             </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-20-1208847b1486&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> 
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># Velocity to cast (too large for a 16-bit int)</span>
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">v_int</span> <span class="o">=</span> <span class="n">cast_velocity</span><span class="p">(</span><span class="mf">42767.0</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="nb">print</span><span class="p">(</span><span class="n">v_int</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">v_int</span><span class="p">))</span>
+
+<span class="nn">&lt;ipython-input-20-1208847b1486&gt;</span> in <span class="ni">cast_velocity</span><span class="nt">(v)</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">def</span> <span class="nf">cast_velocity</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="c1"># Try to cast v to a 16-bit int</span>
+<span class="ne">----&gt; </span><span class="mi">3</span>     <span class="k">return</span> <span class="n">cast_velocity16</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> 
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># Velocity to cast (too large for a 16-bit int)</span>
+
+<span class="nn">&lt;ipython-input-19-5fa48f970cb5&gt;</span> in <span class="ni">cast_velocity16</span><span class="nt">(v)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>          <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="k">else</span><span class="p">:</span>
+<span class="ne">----&gt; </span><span class="mi">6</span>         <span class="k">raise</span> <span class="ne">OverflowError</span><span class="p">(</span><span class="s2">&quot;Cannot safely cast velocity to 16-bit int.&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> 
+<span class="g g-Whitespace">      </span><span class="mi">8</span> 
+
+<span class="ne">OverflowError</span>: Cannot safely cast velocity to 16-bit int.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="testing">
+<h1>Testing<a class="headerlink" href="#testing" title="Permalink to this heading">#</a></h1>
+<p>Testing is a critical part of software engineering for enhancing program quality, and for building the
+confidence we
+and others will have in a program. Testing is not only performed when developing a new program. Programs should
+come
+with a suite of tests that can be run regularly. This helps detect errors that might inadvertently creep into a program. For large projects, these tests might be run nightly or even every time a change is made to a program (the latter is known as <em>continuous integration</em>).
+Any program used for engineering analysis and design should have an
+extensive suite of tests.
+It would be negligent to use a program in real-life engineering analysis that is not covered by extensive testing.</p>
+<p>When testing a program, we should test for both valid and invalid input data. For the valid cases the
+computed result should be checked against a known correct solution. For the invalid data cases, tests should check that an exception is raised. We will consider the former, and address the latter in an optional section.</p>
+<p>Ideally, tests for a large program should have different levels of granularity. Some tests should test small blocks (individual functions), ideally in isolation from other parts of a program. The cause of unexpected behaviour in a large program can then be pin-pointed quickly. Higher level tests should test a program as a whole, and would typically represent user cases.</p>
+<p>The programming examples in the preceding notebooks included little or no checking/testing. From now, we want
+to add more checks to our programs. Test function for computing square of a number:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">square</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> 
+    <span class="s2">&quot;Compute the square of a number&quot;</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">n</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To build our confidence that the function is correct, we can check a number of computed terms in the series against
+known results. A helpful tool for this is the <code class="docutils literal notranslate"><span class="pre">assert</span></code> keyword:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">square</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">assert</span> <span class="n">square</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="mi">25</span>
+<span class="k">assert</span> <span class="n">square</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If all the assertions are true, there should be no output. Try changing one of the checks to trigger an assertion failure.</p>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/lectures/06_exceptions"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../04_data_structures/04_data_structures_solution.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lecture 04: Data structures (Solution)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="06_error_handling_testing_solution.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lecture 06: Error handling (Solution)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lecture 06: Error handling</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bugs-and-testing">Bugs and testing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#errors-and-exceptions">Errors and exceptions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#syntax-errors">Syntax errors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exceptions">Exceptions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uss-yorktown-smart-ship">USS Yorktown Smart Ship</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#raising-exceptions">Raising exceptions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameter-validity-checking">Parameter validity checking</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exception-types">Exception types</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#averting-the-ariane-5-explosion">Averting the Ariane 5 explosion</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#catching-and-handling-exceptions">Catching and handling exceptions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exception-handling-and-the-uss-yorktown">Exception handling and the USS Yorktown</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-interactive-user-input">Checking interactive user input</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-integer-type-conversion">Example: integer type conversion</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#testing">Testing</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Krishna Kumar
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
