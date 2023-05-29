@@ -64,7 +64,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'README';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Lecture 00: Variables and assignment" href="notebooks/lectures/00_intro/00_variables_assignment_operator-precedence.html" />
+    <link rel="next" title="Lecture 01a: Control statements (Solution)" href="notebooks/lectures/01_control_flow/01_control_statements_solution.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -150,54 +150,33 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="notebooks/lectures/00_intro/00_variables_assignment_operator-precedence.html">Lecture 00: Variables and assignment</a></li>
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="notebooks/lectures/01_control_flow/01_control_statements.html">Lecture 01a: Control statement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/lectures/01_control_flow/01_control_statements_solution.html">Lecture 01a: Control statements (Solution)</a></li>
 
 
 
 
-<li class="toctree-l1 has-children"><a class="reference internal" href="notebooks/lectures/01_control_flow/01_friction_sliding_block.html">Lecture 01b: Control statement example</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/lectures/01_control_flow/01_friction_sliding_block_solution.html">Lecture 01b: Example of control statement</a></li>
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="notebooks/lectures/01_control_flow/01_friction_sliding_block_solution.html">Lecture 01b: Example of control statement</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="notebooks/lectures/01_control_flow/cantilever_beam_uvl_solution.html">Deflection of a cantilever beam subjected to uniformly varying load</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/lectures/02_errors/02_errors.html">Lecture 02: Errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/lectures/04_data_structures/04_data_structures_solution.html">Lecture 04: Data structures (Solution)</a></li>
 
 
 
 
-
-
-<li class="toctree-l1"><a class="reference internal" href="notebooks/lectures/03_functions/03_functions.html">Lecture 03: Functions</a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="notebooks/lectures/06_exceptions/06_error_handling_testing_solution.html">Lecture 06: Error handling (Solution)</a></li>
 
 
 
 
-
-<li class="toctree-l1"><a class="reference internal" href="notebooks/lectures/04_data_structures/04_data_structures.html">Lecture 04: Data structures</a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="notebooks/lectures/07_vectors/07_vectors_solution.html">Lecture 07: Vectors (Solution)</a></li>
 
 
+<li class="toctree-l1"><a class="reference internal" href="notebooks/lectures/08_matrices/08_matrices_solution.html">Lecture 08: Matrices (solution)</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="notebooks/lectures/06_exceptions/06_error_handling_testing.html">Lecture 06: Error handling</a></li>
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="notebooks/lectures/07_vectors/07_vectors.html">Lecture 07: Vectors</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="notebooks/lectures/08_matrices/08_matrices.html">Lecture 08: Matrices</a></li>
-
-<li class="toctree-l1 has-children"><a class="reference internal" href="notebooks/lectures/09_linear_algebra/09_linear_algebra.html">Lecture 09: Linear Algebra</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/lectures/09_linear_algebra/09_linear_algebra_solution.html">Lecture 09: Linear Algebra (Solution)</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/lectures/10_useful_libs/10_useful_libs.html">Lecture 10: Useful libraries in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/lectures/09_linear_algebra/09_linear_algebra_solution.html">Lecture 09: Linear Algebra (Solution)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/lectures/10_useful_libs/10_useful_libs_solution.html">Lecture 10: Useful libraries in Python (Solution)</a></li>
 
 </ul>
 
@@ -369,7 +348,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -385,6 +366,15 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#video-lectures">Video lectures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-outline">Course outline</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -400,7 +390,16 @@ document.write(`
 <div><p>Krishna Kumar, Assistant Professor, UT Austin</p>
 </div></blockquote>
 <p><a class="reference external" href="https://raw.githubusercontent.com/kks32-courses/ce311k/master/LICENSE.md"><img alt="License" src="https://img.shields.io/badge/license-CC--By--SA--4.0-brightgreen.svg" /></a></p>
+<section id="video-lectures">
+<h2>Video lectures<a class="headerlink" href="#video-lectures" title="Permalink to this heading">#</a></h2>
 <p><a class="reference external" href="https://www.youtube.com/watch?v=eVKPCWBlY8A&amp;list=PLF6FCo2wh5eXt-r324VAXFdP2z1IJUbqs"><img alt="IMAGE_ALT" src="https://img.youtube.com/vi/eVKPCWBlY8A/0.jpg" /></a></p>
+</section>
+<section id="course-outline">
+<h2>Course outline<a class="headerlink" href="#course-outline" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Lecture 00: Variables and assignment operator <a class="reference external" href="https://colab.research.google.com/github/kks32-courses/accelerating-python/blob/main/notebooks/lectures/00_intro/00_variables_assignment_operator-precedence.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p></li>
+</ul>
+</section>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -437,11 +436,11 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="right-next"
-       href="notebooks/lectures/00_intro/00_variables_assignment_operator-precedence.html"
+       href="notebooks/lectures/01_control_flow/01_control_statements_solution.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lecture 00: Variables and assignment</p>
+        <p class="prev-next-title">Lecture 01a: Control statements (Solution)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -454,6 +453,21 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#video-lectures">Video lectures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-outline">Course outline</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
