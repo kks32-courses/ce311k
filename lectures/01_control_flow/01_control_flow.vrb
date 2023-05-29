@@ -1,0 +1,18 @@
+\frametitle{Designing a smart window: if condition}
+	\begin{lstlisting}
+# If raining, close the window
+if raining:
+	close_window()
+
+# If the temperature is over 80 F, open window
+elif temperature > 80: # else if
+	open_window()
+
+# If the temperature is below 66 F, close window
+elif temperature < 66:
+	close_window()
+
+# Otherwise, do nothing and leave window as it is
+else:
+	continue
+	\end{lstlisting}

@@ -1,0 +1,19 @@
+\frametitle{Naming matters}
+	\textcolor{blue}{\faQuestionCircleO ~What's wrong with the following code segment?}
+	\begin{minipage}[t]{0.49\linewidth}
+	\begin{lstlisting}[language=Python]
+a = 3.14159
+b = 11.2
+c = a*(b**2)
+print(c)
+\end{lstlisting}
+	\end{minipage}%
+	\hfill%
+	\begin{minipage}[t]{0.49\linewidth}
+	\begin{lstlisting}[language=Python]
+pi = 3.14159
+diameter = 11.2
+area = pi*(diameter**2)
+print(area)
+\end{lstlisting}
+	\end{minipage}

@@ -1,0 +1,46 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: README
+chapters:
+  - file: notebooks/lectures/00_intro/00_variables_assignment_operator-precedence
+    sections:
+    - file: notebooks/lectures/00_intro/00-variables_assignment_operator-precedence_solution
+  - file: notebooks/lectures/01_control_flow/01_control_statements
+    sections:
+    - file: notebooks/lectures/01_control_flow/01_control_statements_solution
+  - file: notebooks/lectures/01_control_flow/01_friction_sliding_block
+    sections:
+    - file: notebooks/lectures/01_control_flow/01_friction_sliding_block_solution
+    - file: notebooks/lectures/01_control_flow/break_continue_solutions
+    - file: notebooks/lectures/01_control_flow/cantilever_beam_uvl_solution
+    - file: notebooks/lectures/01_control_flow/atm
+  - file: notebooks/lectures/02_errors/02_errors
+    sections:
+    - file: notebooks/lectures/02_errors/02_errors_solution
+  - file: notebooks/lectures/03_functions/03_functions
+    sections:
+    - file: notebooks/lectures/03_functions/03_functions_solution
+  - file: notebooks/lectures/04_data_structures/04_data_structures
+    sections:
+    - file: notebooks/lectures/04_data_structures/04_data_structures_solution
+  - file: notebooks/lectures/05_numerical_diff_taylor_series_newton_raphson/05_numerical_diff_taylor_series_newton_raphson
+    sections:
+    - file: notebooks/lectures/05_numerical_diff_taylor_series_newton_raphson/05_numerical_diff_taylor_series_newton_raphson_solution
+    - file: notebooks/lectures/05_numerical_diff_taylor_series_newton_raphson/newton_raphson
+  - file: notebooks/lectures/06_exceptions/06_error_handling_testing
+    sections:
+    - file: notebooks/lectures/06_exceptions/06_error_handling_testing_solution
+  - file: notebooks/lectures/07_vectors/07_vectors
+    sections:
+    - file: notebooks/lectures/07_vectors/07_vectors_solution
+  - file: notebooks/lectures/08_matrices/08_matrices
+    sections:
+    - file: notebooks/lectures/08_matrices/08_matrices_solution
+  - file: notebooks/lectures/09_linear_algebra/09_linear_algebra
+    sections:
+    - file: notebooks/lectures/09_linear_algebra/09_linear_algebra_solution
+  - file: notebooks/lectures/10_useful_libs/10_useful_libs
+    sections:
+    - file: notebooks/lectures/10_useful_libs/10_useful_libs_solution
