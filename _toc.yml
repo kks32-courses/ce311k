@@ -14,7 +14,7 @@ chapters:
   - file: notebooks/lectures/02_errors/02_errors_solution
   - file: notebooks/lectures/03_functions/03_functions_solution
   - file: notebooks/lectures/04_data_structures/04_data_structures_solution
-  - file: notebooks/lectures/05_numerical_diff_taylor_series_newton_raphson/05_numerical_diff_taylor_series_newton_raphson_solution
+  - file: notebooks/lectures/05_numerical_diff_taylor_series_newton_raphson/05_finite_difference_taylor_series_solution
     sections:
     - file: notebooks/lectures/05_numerical_diff_taylor_series_newton_raphson/newton_raphson
   - file: notebooks/lectures/06_exceptions/06_error_handling_testing_solution
