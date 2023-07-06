@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>&lt;no title&gt; &#8212; Introduction to Programming with Python</title>
+    <title>Break continue (solution) &#8212; Introduction to Programming with Python</title>
   
   
   
@@ -64,8 +64,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/lectures/01_control_flow/break_continue_solutions';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Deflection of a cantilever beam subjected to uniformly varying load" href="cantilever_beam_uvl_solution.html" />
-    <link rel="prev" title="Lecture 01b: Example of control statement" href="01_friction_sliding_block_solution.html" />
+    <link rel="next" title="Cantilever beam uvl (solution)" href="cantilever_beam_uvl_solutions.html" />
+    <link rel="prev" title="Lecture 01b: Example of control statement" href="01_friction_sliding_block_solutions.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -150,38 +150,59 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="01_control_statements_solution.html">Lecture 01a: Control statements (Solution)</a></li>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../00_intro/00_variables_assignment_operator-precedence_solutions.html">Lecture 00: Variable and assignment (Solution)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="01_control_statements_solutions.html">Lecture 01a: Control statements (Solution)</a></li>
 
 
 
 
 
-<li class="toctree-l1 has-children"><a class="reference internal" href="01_friction_sliding_block_solution.html">Lecture 01b: Example of control statement</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="cantilever_beam_uvl_solution.html">Deflection of a cantilever beam subjected to uniformly varying load</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="01_friction_sliding_block_solutions.html">Lecture 01b: Example of control statement</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Break continue (solution)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cantilever_beam_uvl_solutions.html">Cantilever beam uvl (solution)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="atm.html">ATM</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../04_data_structures/04_data_structures_solution.html">Lecture 04: Data structures (Solution)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_errors/02_errors_solutions.html">Lecture 02: Errors</a></li>
 
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="../05_numerical_diff_taylor_series_newton_raphson/05_finite_difference_taylor_series_solution.html">Lecture 05: Numerical differentiation</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../03_functions/03_functions_solutions.html">Lecture 03: Functions (Solutions)</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="../06_exceptions/06_error_handling_testing_solution.html">Lecture 06: Error handling (Solution)</a></li>
 
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="../07_vectors/07_vectors_solution.html">Lecture 07: Vectors (Solution)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_data_structures/04_data_structures_solutions.html">Lecture 04: Data structures (Solution)</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="../08_matrices/08_matrices_solution.html">Lecture 08: Matrices (solution)</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../09_linear_algebra/09_linear_algebra_solution.html">Lecture 09: Linear Algebra (Solution)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../10_useful_libs/10_useful_libs_solution.html">Lecture 10: Useful libraries in Python (Solution)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../05_numerical_diff_taylor_series_newton_raphson/05_finite_difference_taylor_series_solutions.html">Lecture 05: Numerical differentiation</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../06_exceptions/06_error_handling_testing_solutions.html">Lecture 06: Error handling (Solution)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../07_vectors/07_vectors_solutions.html">Lecture 07: Vectors (Solution)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../08_matrices/08_matrices_solutions.html">Lecture 08: Matrices (solution)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../09_linear_algebra/09_linear_algebra_solutions.html">Lecture 09: Linear Algebra (Solution)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_useful_libs/10_useful_libs_solutions.html">Lecture 10: Useful libraries in Python (Solution)</a></li>
 
 </ul>
 
@@ -384,9 +405,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -397,19 +416,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>Break continue (solution)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -419,7 +430,9 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <p><code class="docutils literal notranslate"><span class="pre">continue</span></code>:
+  <section class="tex2jax_ignore mathjax_ignore" id="break-continue-solution">
+<h1>Break continue (solution)<a class="headerlink" href="#break-continue-solution" title="Permalink to this heading">#</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">continue</span></code>:
 A program to print sum of odd numbers between 0 to 100</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -430,7 +443,7 @@ sum = 0
 for i in np.arange(0, 100, 1):
   if i % 2 == 0:
     continue
-  
+
   sum = sum + i
 
 print(sum)
@@ -478,7 +491,7 @@ for n in np.arange(2, N):
 
     # Assume that n is prime
     n_is_prime = True
-    
+
     # Check if n is divisible by 2
     if n % 2 == 0 and n !=2:
         continue
@@ -486,7 +499,7 @@ for n in np.arange(2, N):
     # Check if n can be divided by m, where m ranges from 2 to n (excluding n)
     for m in np.arange(2, n):
         if n % m == 0:  # This is true if the remainder for n/m is equal to zero
-            # We&#39;ve found that n is divisable by m, so it can&#39;t be a prime number. 
+            # We&#39;ve found that n is divisable by m, so it can&#39;t be a prime number.
             # No need to check for more values of m, so set n_is_prime = False and
             # exit the &#39;m&#39; loop.
             n_is_prime = False
@@ -507,6 +520,7 @@ print(primes)
 </div>
 </div>
 </div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -540,7 +554,7 @@ print(primes)
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="01_friction_sliding_block_solution.html"
+       href="01_friction_sliding_block_solutions.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
@@ -549,11 +563,11 @@ print(primes)
       </div>
     </a>
     <a class="right-next"
-       href="cantilever_beam_uvl_solution.html"
+       href="cantilever_beam_uvl_solutions.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Deflection of a cantilever beam subjected to uniformly varying load</p>
+        <p class="prev-next-title">Cantilever beam uvl (solution)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -566,20 +580,6 @@ print(primes)
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-  </nav></div>
-
-</div></div>
               
             
           </div>

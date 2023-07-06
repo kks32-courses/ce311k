@@ -66,6 +66,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/lectures/03_functions/03_functions_solutions';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Lecture 04: Data structures (Solution)" href="../04_data_structures/04_data_structures_solutions.html" />
+    <link rel="prev" title="Lecture 02: Errors" href="../02_errors/02_errors_solutions.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -150,38 +152,59 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../01_control_flow/01_control_statements_solution.html">Lecture 01a: Control statements (Solution)</a></li>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../00_intro/00_variables_assignment_operator-precedence_solutions.html">Lecture 00: Variable and assignment (Solution)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../01_control_flow/01_control_statements_solutions.html">Lecture 01a: Control statements (Solution)</a></li>
 
 
 
 
 
-<li class="toctree-l1 has-children"><a class="reference internal" href="../01_control_flow/01_friction_sliding_block_solution.html">Lecture 01b: Example of control statement</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../01_control_flow/cantilever_beam_uvl_solution.html">Deflection of a cantilever beam subjected to uniformly varying load</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01_control_flow/01_friction_sliding_block_solutions.html">Lecture 01b: Example of control statement</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01_control_flow/break_continue_solutions.html">Break continue (solution)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_control_flow/cantilever_beam_uvl_solutions.html">Cantilever beam uvl (solution)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_control_flow/atm.html">ATM</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../04_data_structures/04_data_structures_solution.html">Lecture 04: Data structures (Solution)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_errors/02_errors_solutions.html">Lecture 02: Errors</a></li>
 
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="../05_numerical_diff_taylor_series_newton_raphson/05_finite_difference_taylor_series_solution.html">Lecture 05: Numerical differentiation</a></li>
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 03: Functions (Solutions)</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="../06_exceptions/06_error_handling_testing_solution.html">Lecture 06: Error handling (Solution)</a></li>
 
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="../07_vectors/07_vectors_solution.html">Lecture 07: Vectors (Solution)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_data_structures/04_data_structures_solutions.html">Lecture 04: Data structures (Solution)</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="../08_matrices/08_matrices_solution.html">Lecture 08: Matrices (solution)</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../09_linear_algebra/09_linear_algebra_solution.html">Lecture 09: Linear Algebra (Solution)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../10_useful_libs/10_useful_libs_solution.html">Lecture 10: Useful libraries in Python (Solution)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../05_numerical_diff_taylor_series_newton_raphson/05_finite_difference_taylor_series_solutions.html">Lecture 05: Numerical differentiation</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../06_exceptions/06_error_handling_testing_solutions.html">Lecture 06: Error handling (Solution)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../07_vectors/07_vectors_solutions.html">Lecture 07: Vectors (Solution)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../08_matrices/08_matrices_solutions.html">Lecture 08: Matrices (solution)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../09_linear_algebra/09_linear_algebra_solutions.html">Lecture 09: Linear Algebra (Solution)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_useful_libs/10_useful_libs_solutions.html">Lecture 10: Useful libraries in Python (Solution)</a></li>
 
 </ul>
 
@@ -475,14 +498,14 @@ rather than the details of <em>how</em> it does it. Low-level implementation det
             <span class="k">break</span>
     <span class="k">else</span><span class="p">:</span> <span class="c1">#nobreak</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error, sin(x) did not converge&quot;</span><span class="p">)</span>
-        
-            
-    
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Case A: 3 values&quot;</span><span class="p">)</span>    
+
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Case A: 3 values&quot;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">approx_sin</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mf">1e-3</span><span class="p">))</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Case B: 12 values&quot;</span><span class="p">)</span>    
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Case B: 12 values&quot;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">12</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">approx_sin</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mf">1e-6</span><span class="p">))</span>
 </pre></div>
@@ -629,20 +652,20 @@ is a function, <code class="docutils literal notranslate"><span class="pre">is_p
         <span class="k">return</span> <span class="kc">True</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">False</span>
-    
+
 <span class="nb">print</span><span class="p">(</span><span class="n">is_f_p</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
 
 <span class="k">def</span> <span class="nf">is_positive</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
     <span class="s2">&quot;Check if the function value f(x) is positive&quot;</span>
 
-    <span class="c1"># Evaluate the function passed into the function for the value of x </span>
+    <span class="c1"># Evaluate the function passed into the function for the value of x</span>
     <span class="c1"># passed into the function</span>
     <span class="k">if</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">True</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">False</span>
 
-    
+
 <span class="c1"># Value of x for which we want to test a function sign</span>
 <span class="n">x</span> <span class="o">=</span> <span class="mf">4.5</span>
 
@@ -678,7 +701,7 @@ r = r_0 + v_0 t + \frac{1}{2} a t^{2}
     <span class="s2">&quot;Compute position of an accelerating particle.&quot;</span>
     <span class="k">return</span> <span class="n">r0</span> <span class="o">+</span> <span class="n">v0</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">t</span><span class="o">*</span><span class="n">t</span>
 
-<span class="c1"># Position after 0.2 s (t) when dropped from a height of 1 m (r0) </span>
+<span class="c1"># Position after 0.2 s (t) when dropped from a height of 1 m (r0)</span>
 <span class="c1"># with v0=0.0 and a=-9.81</span>
 <span class="n">p</span> <span class="o">=</span> <span class="n">position</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
@@ -730,7 +753,7 @@ r = r_0 + v_0 t + \frac{1}{2} a t^{2}
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_max_min_mean</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">):</span>
     <span class="s2">&quot;Return maximum, minimum and mean values&quot;</span>
-    
+
     <span class="n">x_min</span> <span class="o">=</span> <span class="n">x0</span>
     <span class="k">if</span> <span class="n">x1</span> <span class="o">&lt;</span> <span class="n">x_min</span><span class="p">:</span>
         <span class="n">x_min</span> <span class="o">=</span> <span class="n">x1</span>
@@ -743,8 +766,8 @@ r = r_0 + v_0 t + \frac{1}{2} a t^{2}
     <span class="k">if</span> <span class="n">x2</span> <span class="o">&gt;</span> <span class="n">x_max</span><span class="p">:</span>
         <span class="n">x_max</span> <span class="o">=</span> <span class="n">x2</span>
 
-    <span class="n">x_mean</span> <span class="o">=</span> <span class="p">(</span><span class="n">x0</span> <span class="o">+</span> <span class="n">x1</span> <span class="o">+</span> <span class="n">x2</span><span class="p">)</span><span class="o">/</span><span class="mi">3</span>    
-        
+    <span class="n">x_mean</span> <span class="o">=</span> <span class="p">(</span><span class="n">x0</span> <span class="o">+</span> <span class="n">x1</span> <span class="o">+</span> <span class="n">x2</span><span class="p">)</span><span class="o">/</span><span class="mi">3</span>
+
     <span class="k">return</span> <span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">,</span> <span class="n">x_mean</span>
 
 
@@ -783,7 +806,7 @@ in a later notebook.</p>
 <span class="n">z</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;z = &quot;</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
 
-<span class="c1"># Check that the function declaration of &#39;x&#39; has not affected </span>
+<span class="c1"># Check that the function declaration of &#39;x&#39; has not affected</span>
 <span class="c1"># the variable &#39;x&#39; outside of the function</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x = &quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y = &quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -833,13 +856,13 @@ f_n = f_{n-1} + f_{n-2}
         <span class="k">return</span> <span class="mi">0</span>
     <span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">1</span>
-    
-    <span class="c1"># Start loop (from n = 2)    </span>
+
+    <span class="c1"># Start loop (from n = 2)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
         <span class="c1"># Compute next term in sequence</span>
         <span class="n">f</span> <span class="o">=</span> <span class="n">f1</span> <span class="o">+</span> <span class="n">f0</span>
 
-        <span class="c1"># Update f0 and f1    </span>
+        <span class="c1"># Update f0 and f1</span>
         <span class="n">f0</span> <span class="o">=</span> <span class="n">f1</span>
         <span class="n">f1</span> <span class="o">=</span> <span class="n">f</span>
 
@@ -859,12 +882,12 @@ f_n = f_{n-1} + f_{n-2}
 <p>Since the Fibonacci sequence has a recursive structure, with the <span class="math notranslate nohighlight">\(n\)</span>th term computed from the <span class="math notranslate nohighlight">\(n-1\)</span> and <span class="math notranslate nohighlight">\(n-2\)</span> terms, we could write a function that uses this recursive structure:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="s2">&quot;Compute the nth Fibonacci number using recursion&quot;</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">n</span>  <span class="c1"># This doesn&#39;t call f, so it breaks out of the recursion loop</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># This calls f for n-1 and n-2 (recursion), and returns the sum </span>
+        <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># This calls f for n-1 and n-2 (recursion), and returns the sum</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
 </pre></div>
@@ -968,6 +991,24 @@ example, the code</p>
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../02_errors/02_errors_solutions.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lecture 02: Errors</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../04_data_structures/04_data_structures_solutions.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lecture 04: Data structures (Solution)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>

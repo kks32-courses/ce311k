@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Introduction &#8212; Introduction to Programming with Python</title>
+    <title>Lecture 02: Errors &#8212; Introduction to Programming with Python</title>
   
   
   
@@ -66,6 +66,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/lectures/02_errors/02_errors_solutions';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Lecture 03: Functions (Solutions)" href="../03_functions/03_functions_solutions.html" />
+    <link rel="prev" title="ATM" href="../01_control_flow/atm.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -150,38 +152,59 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../01_control_flow/01_control_statements_solution.html">Lecture 01a: Control statements (Solution)</a></li>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../00_intro/00_variables_assignment_operator-precedence_solutions.html">Lecture 00: Variable and assignment (Solution)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../01_control_flow/01_control_statements_solutions.html">Lecture 01a: Control statements (Solution)</a></li>
 
 
 
 
 
-<li class="toctree-l1 has-children"><a class="reference internal" href="../01_control_flow/01_friction_sliding_block_solution.html">Lecture 01b: Example of control statement</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../01_control_flow/cantilever_beam_uvl_solution.html">Deflection of a cantilever beam subjected to uniformly varying load</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01_control_flow/01_friction_sliding_block_solutions.html">Lecture 01b: Example of control statement</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01_control_flow/break_continue_solutions.html">Break continue (solution)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_control_flow/cantilever_beam_uvl_solutions.html">Cantilever beam uvl (solution)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_control_flow/atm.html">ATM</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../04_data_structures/04_data_structures_solution.html">Lecture 04: Data structures (Solution)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 02: Errors</a></li>
 
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="../05_numerical_diff_taylor_series_newton_raphson/05_finite_difference_taylor_series_solution.html">Lecture 05: Numerical differentiation</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../03_functions/03_functions_solutions.html">Lecture 03: Functions (Solutions)</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="../06_exceptions/06_error_handling_testing_solution.html">Lecture 06: Error handling (Solution)</a></li>
 
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="../07_vectors/07_vectors_solution.html">Lecture 07: Vectors (Solution)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_data_structures/04_data_structures_solutions.html">Lecture 04: Data structures (Solution)</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="../08_matrices/08_matrices_solution.html">Lecture 08: Matrices (solution)</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../09_linear_algebra/09_linear_algebra_solution.html">Lecture 09: Linear Algebra (Solution)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../10_useful_libs/10_useful_libs_solution.html">Lecture 10: Useful libraries in Python (Solution)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../05_numerical_diff_taylor_series_newton_raphson/05_finite_difference_taylor_series_solutions.html">Lecture 05: Numerical differentiation</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../06_exceptions/06_error_handling_testing_solutions.html">Lecture 06: Error handling (Solution)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../07_vectors/07_vectors_solutions.html">Lecture 07: Vectors (Solution)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../08_matrices/08_matrices_solutions.html">Lecture 08: Matrices (solution)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../09_linear_algebra/09_linear_algebra_solutions.html">Lecture 09: Linear Algebra (Solution)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_useful_libs/10_useful_libs_solutions.html">Lecture 10: Useful libraries in Python (Solution)</a></li>
 
 </ul>
 
@@ -397,7 +420,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Introduction</h1>
+    <h1>Lecture 02: Errors</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -407,7 +430,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lecture 02: Errors</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background-bits-and-bytes">Background: bits and bytes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
 </ul>
@@ -460,14 +484,17 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="lecture-02-errors">
+<h1>Lecture 02: Errors<a class="headerlink" href="#lecture-02-errors" title="Permalink to this heading">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>We have thus far avoided discussing directly <em>types</em>. The ‘<em>type</em>’ is the type of object that a variable is associated with. This affects how a computer stores the object in memory, and how operations, such as multiplication and division, are performed.</p>
 <p>In <em>statically typed</em> languages, like C and C++, types come up from the very beginning because
 you usually need to specify types explicitly in your programs. Python is a <em>dynamically typed</em> language, which means types are deduced when a program is run. This is why we have been able to postpone the discussion until now.
 It is important to have a basic understanding of types, and how types can affect how your programs behave. One can go very deep into this topic, especially for numerical computations, but we will cover the general concept from a high level,
 show some examples, and highlight some potential pitfalls for engineering computations.</p>
 <p>This is a dry topic - it contains important background information that you need to know for later, so hang in there. The below account highlights what can go wrong without an awareness of types and how computers process numbers.</p>
+</section>
 <section id="background-bits-and-bytes">
 <h2>Background: bits and bytes<a class="headerlink" href="#background-bits-and-bytes" title="Permalink to this heading">#</a></h2>
 <p>An important part of understanding types is appreciating how computer storage works. Computer memory is made up of <em>bits</em>, and each bit can take on one of two
@@ -1367,33 +1394,33 @@ for the Patriot missiles at the time was to reboot the missile systems frequentl
     <span class="c1"># Compute forces for theta1 and theta2</span>
     <span class="n">delta1</span> <span class="o">=</span> <span class="n">force</span> <span class="o">-</span> <span class="p">(</span><span class="n">mu</span> <span class="o">*</span> <span class="n">weight</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta1</span><span class="p">))</span> <span class="o">+</span>
                                        <span class="n">mu</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta1</span><span class="p">)))</span>
-    
+
     <span class="n">delta2</span> <span class="o">=</span> <span class="n">force</span> <span class="o">-</span> <span class="p">(</span><span class="n">mu</span> <span class="o">*</span> <span class="n">weight</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta2</span><span class="p">))</span> <span class="o">+</span>
                                        <span class="n">mu</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta2</span><span class="p">)))</span>
-    
+
     <span class="c1"># Compute the mid-value of theta</span>
     <span class="n">theta</span> <span class="o">=</span> <span class="p">(</span><span class="n">theta1</span> <span class="o">+</span> <span class="n">theta2</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
-    
-    <span class="c1"># Calculate the difference delta for the mid-theta   </span>
+
+    <span class="c1"># Calculate the difference delta for the mid-theta</span>
     <span class="n">delta</span> <span class="o">=</span> <span class="n">force</span> <span class="o">-</span> <span class="p">(</span><span class="n">mu</span> <span class="o">*</span> <span class="n">weight</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta</span><span class="p">))</span> <span class="o">+</span>
                                        <span class="n">mu</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta</span><span class="p">)))</span>
-    
+
     <span class="k">if</span><span class="p">((</span><span class="n">delta</span> <span class="o">*</span> <span class="n">delta1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
         <span class="n">theta1</span> <span class="o">=</span> <span class="n">theta</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">theta2</span> <span class="o">=</span>  <span class="n">theta</span>
-    
+
     <span class="k">if</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">tolerance</span><span class="p">):</span>
         <span class="k">break</span>
 
 <span class="k">else</span><span class="p">:</span> <span class="c1">#No break</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Solution did not converge!&quot;</span><span class="p">)</span>
-    
+
 <span class="n">final_force</span> <span class="o">=</span> <span class="p">(</span><span class="n">mu</span> <span class="o">*</span> <span class="n">weight</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta</span><span class="p">))</span> <span class="o">+</span>
                                        <span class="n">mu</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta</span><span class="p">)))</span>
 
 <span class="c1"># Absolute error</span>
-<span class="n">error</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">force</span> <span class="o">-</span> <span class="n">final_force</span><span class="p">)</span> 
+<span class="n">error</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">force</span> <span class="o">-</span> <span class="n">final_force</span><span class="p">)</span>
 
 <span class="c1"># Relative error</span>
 <span class="n">relative_error</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">error</span> <span class="o">/</span> <span class="n">final_force</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
@@ -1459,6 +1486,24 @@ conversions.</p></li>
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../01_control_flow/atm.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">ATM</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../03_functions/03_functions_solutions.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lecture 03: Functions (Solutions)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
@@ -1477,7 +1522,8 @@ conversions.</p></li>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lecture 02: Errors</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background-bits-and-bytes">Background: bits and bytes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
 </ul>
