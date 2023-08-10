@@ -7,7 +7,7 @@
 [![IMAGE_ALT](https://img.youtube.com/vi/eVKPCWBlY8A/0.jpg)](https://www.youtube.com/watch?v=eVKPCWBlY8A&list=PLF6FCo2wh5eXt-r324VAXFdP2z1IJUbqs)
 
 ## Course outline
-* Lecture 00: Variables and assignment operator [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/kks32-courses/ce311k/blob/main/notebooks/lectures/00_intro/00-variables_assignment_operator-precedence_solution.ipynb)
+* Lecture 00: Variables and assignment operator [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/kks32-courses/ce311k/blob/main/notebooks/lectures/00_intro/00_variables_assignment_operator-precedence_solutions.ipynb)
 
 * Lecture 01: Control flow [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/kks32-courses/ce311k/blob/main/notebooks/lectures/01_control_flow/01_control_statements_solution.ipynb)
 
