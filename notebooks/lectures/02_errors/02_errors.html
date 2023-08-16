@@ -429,6 +429,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lecture 02: Errors</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background-bits-and-bytes">Background: bits and bytes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
 </ul>
@@ -485,12 +486,15 @@ document.write(`
 <h1>Lecture 02: Errors<a class="headerlink" href="#lecture-02-errors" title="Permalink to this heading">#</a></h1>
 <p><strong>Exercise:</strong> <a class="reference external" href="https://colab.research.google.com/github/kks32-courses/ce311k/blob/main/notebooks/lectures/02_errors/02_errors.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>
 <strong>Solution:</strong> <a class="reference external" href="https://colab.research.google.com/github/kks32-courses/ce311k/blob/main/notebooks/lectures/02_errors/02_errors_solutions.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>We have thus far avoided discussing directly <em>types</em>. The ‘<em>type</em>’ is the type of object that a variable is associated with. This affects how a computer stores the object in memory, and how operations, such as multiplication and division, are performed.</p>
 <p>In <em>statically typed</em> languages, like C and C++, types come up from the very beginning because
 you usually need to specify types explicitly in your programs. Python is a <em>dynamically typed</em> language, which means types are deduced when a program is run. This is why we have been able to postpone the discussion until now.
 It is important to have a basic understanding of types, and how types can affect how your programs behave. One can go very deep into this topic, especially for numerical computations, but we will cover the general concept from a high level,
 show some examples, and highlight some potential pitfalls for engineering computations.</p>
 <p>This is a dry topic - it contains important background information that you need to know for later, so hang in there. The below account highlights what can go wrong without an awareness of types and how computers process numbers.</p>
+</section>
 <section id="background-bits-and-bytes">
 <h2>Background: bits and bytes<a class="headerlink" href="#background-bits-and-bytes" title="Permalink to this heading">#</a></h2>
 <p>An important part of understanding types is appreciating how computer storage works. Computer memory is made up of <em>bits</em>, and each bit can take on one of two
@@ -507,7 +511,8 @@ and how big or small the number can be. The more bytes the greater the accuracy,
 <li><p>Basic type conversion</p></li>
 <li><p>Introduction to pitfalls of floating point arithmetic</p></li>
 </ul>
-</section>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/TCWd2hrYlNY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/zEZFsURFNss" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="binary-representation-and-floating-point-arithmetic">
 <h1>Binary representation and floating point arithmetic<a class="headerlink" href="#binary-representation-and-floating-point-arithmetic" title="Permalink to this heading">#</a></h1>
@@ -1065,6 +1070,7 @@ conversions.</p></li>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lecture 02: Errors</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background-bits-and-bytes">Background: bits and bytes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
 </ul>
