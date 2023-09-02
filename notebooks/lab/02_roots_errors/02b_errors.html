@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Lab 2b errors &#8212; Introduction to Programming with Python</title>
+    <title>Exercise 02b.0 &#8212; Introduction to Programming with Python</title>
   
   
   
@@ -418,7 +418,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Lab 2b errors</h1>
+    <h1>Exercise 02b.0</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -428,16 +428,18 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-02b-1">Exercise 02b.1</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-02b-2">Exercise 02b.2</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-x-1-times-10-7">(a) <span class="math notranslate nohighlight">\(x = 1 \times 10^{7}\)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-x-1-times-10-9">(b) <span class="math notranslate nohighlight">\(x = 1 \times 10^{9}\)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-32-bit-floating-points-compute-a-x-1-times-10-7">Using 32 bit floating points compute (a) <span class="math notranslate nohighlight">\(x = 1 \times 10^{7}\)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-16-bit-floating-points-compute-a-x-1-times-10-7">Using 16 bit floating points compute (a) <span class="math notranslate nohighlight">\(x = 1 \times 10^{7}\)</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exercise 02b.0</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-02b-1">Exercise 02b.1</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-02b-2">Exercise 02b.2</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-x-1-times-10-7">(a) <span class="math notranslate nohighlight">\(x = 1 \times 10^{7}\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-x-1-times-10-9">(b) <span class="math notranslate nohighlight">\(x = 1 \times 10^{9}\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-32-bit-floating-points-compute-a-x-1-times-10-7">Using 32 bit floating points compute (a) <span class="math notranslate nohighlight">\(x = 1 \times 10^{7}\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-16-bit-floating-points-compute-a-x-1-times-10-7">Using 16 bit floating points compute (a) <span class="math notranslate nohighlight">\(x = 1 \times 10^{7}\)</span></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a></li>
 </ul>
+
             </nav>
         </div>
     </div>
@@ -448,9 +450,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="lab-2b-errors">
-<h1>Lab 2b errors<a class="headerlink" href="#lab-2b-errors" title="Permalink to this heading">#</a></h1>
-<div class="cell docutils container">
+  <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize Otter</span>
 <span class="kn">import</span> <span class="nn">otter</span>
@@ -459,6 +459,8 @@ document.write(`
 </div>
 </div>
 </div>
+<section id="exercise-02b-0">
+<h1>Exercise 02b.0<a class="headerlink" href="#exercise-02b-0" title="Permalink to this heading">#</a></h1>
 <p>Compare the computed values of</p>
 <div class="math notranslate nohighlight">
 \[ 
@@ -494,8 +496,9 @@ d_1 = a \cdot (b + c)
 </div>
 </div>
 </div>
+</section>
 <section id="exercise-02b-1">
-<h2>Exercise 02b.1<a class="headerlink" href="#exercise-02b-1" title="Permalink to this heading">#</a></h2>
+<h1>Exercise 02b.1<a class="headerlink" href="#exercise-02b-1" title="Permalink to this heading">#</a></h1>
 <p>For the polynomial
 \begin{align}
 f(x, y) &amp;= (x + y)^{6}
@@ -525,10 +528,9 @@ Which approach would you recommend for computing this expression?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
-<span class="n">f0_1</span> <span class="o">=</span> <span class="n">f0</span>
-<span class="n">f1_1</span> <span class="o">=</span> <span class="n">f1</span>
-<span class="k">assert</span> <span class="n">math</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">f0_1</span><span class="p">,</span> <span class="mf">65944160.60120103</span><span class="p">,</span> <span class="n">rel_tol</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">)</span>
-<span class="k">assert</span> <span class="n">math</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">f1_1</span><span class="p">,</span> <span class="mf">65944160.601201</span><span class="p">,</span> <span class="n">rel_tol</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">)</span>
+<span class="n">ans1</span> <span class="o">=</span> <span class="p">[</span><span class="n">f0</span><span class="p">,</span> <span class="n">f1</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">math</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">ans1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mf">65944160.60120103</span><span class="p">,</span> <span class="n">rel_tol</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">math</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">ans1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mf">65944160.601201</span><span class="p">,</span> <span class="n">rel_tol</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -548,10 +550,9 @@ Which approach would you recommend for computing this expression?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
-<span class="n">f0_2</span> <span class="o">=</span> <span class="n">f0</span>
-<span class="n">f1_2</span> <span class="o">=</span> <span class="n">f1</span>
-<span class="k">assert</span> <span class="n">math</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">f0_2</span><span class="p">,</span> <span class="mf">1.0e-6</span><span class="p">,</span> <span class="n">rel_tol</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">)</span>
-<span class="k">assert</span> <span class="n">math</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">f1_2</span><span class="p">,</span> <span class="mf">1.0e-6</span><span class="p">,</span> <span class="n">rel_tol</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">)</span>
+<span class="n">ans2</span> <span class="o">=</span> <span class="p">[</span><span class="n">f0</span><span class="p">,</span> <span class="n">f1</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">math</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">ans2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mf">1.0e-6</span><span class="p">,</span> <span class="n">rel_tol</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">math</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">ans2</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mf">1.0e-6</span><span class="p">,</span> <span class="n">rel_tol</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -571,10 +572,9 @@ Which approach would you recommend for computing this expression?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
-<span class="n">f0_3</span> <span class="o">=</span> <span class="n">f0</span>
-<span class="n">f1_3</span> <span class="o">=</span> <span class="n">f1</span>
-<span class="k">assert</span> <span class="n">math</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">f0_3</span><span class="p">,</span> <span class="mf">65821226.05029293</span><span class="p">,</span> <span class="n">rel_tol</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">)</span>
-<span class="k">assert</span> <span class="n">math</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">f1_3</span><span class="p">,</span> <span class="mf">65974924.11685877</span><span class="p">,</span> <span class="n">rel_tol</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">)</span>
+<span class="n">ans3</span> <span class="o">=</span> <span class="p">[</span><span class="n">f0</span><span class="p">,</span> <span class="n">f1</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">math</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">ans3</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mf">65821226.05029293</span><span class="p">,</span> <span class="n">rel_tol</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">math</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">ans3</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mf">65974924.11685877</span><span class="p">,</span> <span class="n">rel_tol</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -594,10 +594,9 @@ Which approach would you recommend for computing this expression?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
-<span class="n">f0_4</span> <span class="o">=</span> <span class="n">f0</span>
-<span class="n">f1_4</span> <span class="o">=</span> <span class="n">f1</span>
-<span class="k">assert</span> <span class="n">math</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">f0_4</span><span class="p">,</span> <span class="mf">1.0974893029924715e-06</span><span class="p">,</span> <span class="n">rel_tol</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">)</span>
-<span class="k">assert</span> <span class="n">math</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">f1_4</span><span class="p">,</span> <span class="mf">1.0977964848279953e-06</span><span class="p">,</span> <span class="n">rel_tol</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">)</span>
+<span class="n">ans4</span> <span class="o">=</span> <span class="p">[</span><span class="n">f0</span><span class="p">,</span> <span class="n">f1</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">math</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">ans4</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mf">1.0974893029924715e-06</span><span class="p">,</span> <span class="n">rel_tol</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">math</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">ans4</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mf">1.0977964848279953e-06</span><span class="p">,</span> <span class="n">rel_tol</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -612,7 +611,7 @@ Which approach would you recommend for computing this expression?</p>
 <!-- BEGIN QUESTION -->
 </section>
 <section id="exercise-02b-2">
-<h2>Exercise 02b.2<a class="headerlink" href="#exercise-02b-2" title="Permalink to this heading">#</a></h2>
+<h1>Exercise 02b.2<a class="headerlink" href="#exercise-02b-2" title="Permalink to this heading">#</a></h1>
 <p>Consider the expression</p>
 <div class="math notranslate nohighlight">
 \[
@@ -624,7 +623,7 @@ f = \frac{1}{\sqrt{x^2 - 1} - x}
 <p>(b) <span class="math notranslate nohighlight">\(x = 1 \times 10^{9}\)</span> (You may get a Python error for this case. Why?)</p>
 <p>Store the answer for the original version using the variable <code class="docutils literal notranslate"><span class="pre">f0</span></code>, and using the variable <code class="docutils literal notranslate"><span class="pre">f1</span></code> for the rephrased version.</p>
 <section id="a-x-1-times-10-7">
-<h3>(a) <span class="math notranslate nohighlight">\(x = 1 \times 10^{7}\)</span><a class="headerlink" href="#a-x-1-times-10-7" title="Permalink to this heading">#</a></h3>
+<h2>(a) <span class="math notranslate nohighlight">\(x = 1 \times 10^{7}\)</span><a class="headerlink" href="#a-x-1-times-10-7" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE HERE</span>
@@ -642,7 +641,7 @@ f = \frac{1}{\sqrt{x^2 - 1} - x}
 </div>
 </section>
 <section id="b-x-1-times-10-9">
-<h3>(b) <span class="math notranslate nohighlight">\(x = 1 \times 10^{9}\)</span><a class="headerlink" href="#b-x-1-times-10-9" title="Permalink to this heading">#</a></h3>
+<h2>(b) <span class="math notranslate nohighlight">\(x = 1 \times 10^{9}\)</span><a class="headerlink" href="#b-x-1-times-10-9" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE HERE</span>
@@ -660,7 +659,7 @@ f = \frac{1}{\sqrt{x^2 - 1} - x}
 </div>
 </section>
 <section id="using-32-bit-floating-points-compute-a-x-1-times-10-7">
-<h3>Using 32 bit floating points compute (a) <span class="math notranslate nohighlight">\(x = 1 \times 10^{7}\)</span><a class="headerlink" href="#using-32-bit-floating-points-compute-a-x-1-times-10-7" title="Permalink to this heading">#</a></h3>
+<h2>Using 32 bit floating points compute (a) <span class="math notranslate nohighlight">\(x = 1 \times 10^{7}\)</span><a class="headerlink" href="#using-32-bit-floating-points-compute-a-x-1-times-10-7" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE HERE</span>
@@ -678,7 +677,7 @@ f = \frac{1}{\sqrt{x^2 - 1} - x}
 </div>
 </section>
 <section id="using-16-bit-floating-points-compute-a-x-1-times-10-7">
-<h3>Using 16 bit floating points compute (a) <span class="math notranslate nohighlight">\(x = 1 \times 10^{7}\)</span><a class="headerlink" href="#using-16-bit-floating-points-compute-a-x-1-times-10-7" title="Permalink to this heading">#</a></h3>
+<h2>Using 16 bit floating points compute (a) <span class="math notranslate nohighlight">\(x = 1 \times 10^{7}\)</span><a class="headerlink" href="#using-16-bit-floating-points-compute-a-x-1-times-10-7" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE HERE</span>
@@ -695,30 +694,20 @@ f = \frac{1}{\sqrt{x^2 - 1} - x}
 </div>
 </div>
 <!-- END QUESTION -->
-<hr class="docutils" />
-<p>To double-check your work, the cell below will rerun all of the autograder tests.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grader</span><span class="o">.</span><span class="n">check_all</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
 </section>
 </section>
 <section id="submission">
-<h2>Submission<a class="headerlink" href="#submission" title="Permalink to this heading">#</a></h2>
+<h1>Submission<a class="headerlink" href="#submission" title="Permalink to this heading">#</a></h1>
 <p>Make sure you have run all cells in your notebook in order before running the cell below, so that all images/graphs appear in the output. The cell below will generate a zip file for you to submit. <strong>Please save before exporting!</strong></p>
 <p>These are some submission instructions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save your notebook first, then run this cell to export your submission.</span>
-<span class="n">grader</span><span class="o">.</span><span class="n">export</span><span class="p">()</span>
+<span class="n">grader</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="n">run_tests</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -770,16 +759,18 @@ f = \frac{1}{\sqrt{x^2 - 1} - x}
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-02b-1">Exercise 02b.1</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-02b-2">Exercise 02b.2</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-x-1-times-10-7">(a) <span class="math notranslate nohighlight">\(x = 1 \times 10^{7}\)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-x-1-times-10-9">(b) <span class="math notranslate nohighlight">\(x = 1 \times 10^{9}\)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-32-bit-floating-points-compute-a-x-1-times-10-7">Using 32 bit floating points compute (a) <span class="math notranslate nohighlight">\(x = 1 \times 10^{7}\)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-16-bit-floating-points-compute-a-x-1-times-10-7">Using 16 bit floating points compute (a) <span class="math notranslate nohighlight">\(x = 1 \times 10^{7}\)</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exercise 02b.0</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-02b-1">Exercise 02b.1</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-02b-2">Exercise 02b.2</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-x-1-times-10-7">(a) <span class="math notranslate nohighlight">\(x = 1 \times 10^{7}\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-x-1-times-10-9">(b) <span class="math notranslate nohighlight">\(x = 1 \times 10^{9}\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-32-bit-floating-points-compute-a-x-1-times-10-7">Using 32 bit floating points compute (a) <span class="math notranslate nohighlight">\(x = 1 \times 10^{7}\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-16-bit-floating-points-compute-a-x-1-times-10-7">Using 16 bit floating points compute (a) <span class="math notranslate nohighlight">\(x = 1 \times 10^{7}\)</span></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a></li>
 </ul>
+
   </nav></div>
 
 </div></div>

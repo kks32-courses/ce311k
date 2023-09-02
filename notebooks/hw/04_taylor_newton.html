@@ -447,9 +447,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="assignment-04-taylor-series-and-newton-raphson">
-<h1>Assignment 04: Taylor series and Newton Raphson<a class="headerlink" href="#assignment-04-taylor-series-and-newton-raphson" title="Permalink to this heading">#</a></h1>
-<div class="cell docutils container">
+  <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize Otter</span>
 <span class="kn">import</span> <span class="nn">otter</span>
@@ -458,6 +456,8 @@ document.write(`
 </div>
 </div>
 </div>
+<section class="tex2jax_ignore mathjax_ignore" id="assignment-04-taylor-series-and-newton-raphson">
+<h1>Assignment 04: Taylor series and Newton Raphson<a class="headerlink" href="#assignment-04-taylor-series-and-newton-raphson" title="Permalink to this heading">#</a></h1>
 <p>The purpose of this assignment is to develop your skills in creating approximate functions using Taylor series and find roots of functions using the Newton’s iterations.</p>
 <p>Taylor series expansion of
 <span class="math notranslate nohighlight">\( f(x) = sin(ax) \)</span> near 0, where a is a known constant:</p>
@@ -549,15 +549,6 @@ where <span class="math notranslate nohighlight">\(a \ne 0\)</span> is a known c
 </div>
 </div>
 </div>
-<hr class="docutils" />
-<p>To double-check your work, the cell below will rerun all of the autograder tests.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grader</span><span class="o">.</span><span class="n">check_all</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
 </section>
 <section id="submission">
 <h2>Submission<a class="headerlink" href="#submission" title="Permalink to this heading">#</a></h2>
@@ -566,7 +557,7 @@ where <span class="math notranslate nohighlight">\(a \ne 0\)</span> is a known c
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save your notebook first, then run this cell to export your submission.</span>
-<span class="n">grader</span><span class="o">.</span><span class="n">export</span><span class="p">()</span>
+<span class="n">grader</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="n">run_tests</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Lab 2 Roots and errors &#8212; Introduction to Programming with Python</title>
+    <title>Exercise 02a.1 (bisection) &#8212; Introduction to Programming with Python</title>
   
   
   
@@ -418,7 +418,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Lab 2 Roots and errors</h1>
+    <h1>Exercise 02a.1 (bisection)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -428,13 +428,17 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exercise 02a.1 (bisection)</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task">Task</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-02a-2-series-expansion">Exercise 02a.2 (series expansion)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hints">Hints</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-02a-2-series-expansion">Exercise 02a.2 (series expansion)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hints">Hints</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a></li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -445,9 +449,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="lab-2-roots-and-errors">
-<h1>Lab 2 Roots and errors<a class="headerlink" href="#lab-2-roots-and-errors" title="Permalink to this heading">#</a></h1>
-<div class="cell docutils container">
+  <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize Otter</span>
 <span class="kn">import</span> <span class="nn">otter</span>
@@ -456,6 +458,8 @@ document.write(`
 </div>
 </div>
 </div>
+<section id="exercise-02a-1-bisection">
+<h1>Exercise 02a.1 (bisection)<a class="headerlink" href="#exercise-02a-1-bisection" title="Permalink to this heading">#</a></h1>
 <p>Bisection is an iterative method for finding approximate roots of a function. Say we know that the function <span class="math notranslate nohighlight">\(f(x)\)</span> has one root between <span class="math notranslate nohighlight">\(x_{0}\)</span> and <span class="math notranslate nohighlight">\(x_{1}\)</span> (<span class="math notranslate nohighlight">\(x_{0} &lt; x_{1}\)</span>). We then:</p>
 <ul>
 <li><p>Evaluate <span class="math notranslate nohighlight">\(f\)</span> at the midpoint <span class="math notranslate nohighlight">\(x_{\rm mid} = (x_0 + x_1)/2\)</span>, i.e. compute
@@ -490,7 +494,7 @@ f(x) = x^3 - 6x^2 + 4x + 12
 <span class="math notranslate nohighlight">\(\left| f(x_{r}) \right| &lt; 1 \times 10^{-6}\)</span> and report the number of iterations
 required (use a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop with a large number of iterations).</p></li>
 </ol>
-<p>Store the approximate root using the variable <code class="docutils literal notranslate"><span class="pre">x_mid</span></code>, and store <span class="math notranslate nohighlight">\(f(x_{\rm mid})\)</span> using the variable <code class="docutils literal notranslate"><span class="pre">f</span></code>.</p>
+<p>Store the approximate root using the variable <code class="docutils literal notranslate"><span class="pre">x_mid</span></code>, and store <span class="math notranslate nohighlight">\(f(x_{\rm mid})\)</span> using the variable <code class="docutils literal notranslate"><span class="pre">f</span></code>. And store them in the list <code class="docutils literal notranslate"><span class="pre">ans</span></code>= [<code class="docutils literal notranslate"><span class="pre">x_mid</span></code>, <code class="docutils literal notranslate"><span class="pre">f</span></code>]</p>
 <p><em>Hint:</em> Use  <code class="docutils literal notranslate"><span class="pre">abs</span></code> to compute the absolute value of a number, e.g. <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">abs(x)</span></code> assigns the absolute value of <code class="docutils literal notranslate"><span class="pre">x</span></code> to <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -498,20 +502,20 @@ required (use a <code class="docutils literal notranslate"><span class="pre">for
 <span class="c1"># Initial end points</span>
 <span class="n">x0</span> <span class="o">=</span> <span class="mf">3.0</span>
 <span class="n">x1</span> <span class="o">=</span> <span class="mf">6.0</span>
-<span class="n">x_mid_1</span> <span class="o">=</span> <span class="p">(</span><span class="n">x0</span> <span class="o">+</span> <span class="n">x1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
 
 <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">...</span><span class="p">):</span>
     <span class="o">...</span>
+<span class="n">ans1</span> <span class="o">=</span> <span class="p">[</span><span class="n">x_mid</span><span class="p">,</span> <span class="n">f</span><span class="p">]</span> <span class="c1"># store answers in the list</span>
 <span class="c1"># Print the number of iterations, final x and final f value</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">x_mid_1</span><span class="p">,</span> <span class="n">f_1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">ans1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ans1</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="nb">round</span><span class="p">(</span><span class="n">x_mid_1</span> <span class="o">-</span> <span class="mf">4.534149169921875</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mf">0.0</span>
-<span class="k">assert</span> <span class="nb">abs</span><span class="p">(</span><span class="n">f_1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.0009</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="nb">round</span><span class="p">(</span><span class="n">ans1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mf">4.534149169921875</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mf">0.0</span>
+<span class="k">assert</span> <span class="nb">abs</span><span class="p">(</span><span class="n">ans1</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">&lt;</span> <span class="mf">0.0009</span>
 </pre></div>
 </div>
 </div>
@@ -522,11 +526,11 @@ required (use a <code class="docutils literal notranslate"><span class="pre">for
 <span class="c1"># Initial end points</span>
 <span class="n">x0</span> <span class="o">=</span> <span class="mf">3.0</span>
 <span class="n">x1</span> <span class="o">=</span> <span class="mf">6.0</span>
-
 <span class="n">tol</span> <span class="o">=</span> <span class="mf">1.0e-6</span>
-<span class="n">counter</span> <span class="o">=</span> <span class="o">...</span> <span class="c1">#number of iteration</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">counter</span><span class="p">,</span> <span class="n">x_mid_2</span><span class="p">,</span> <span class="n">f_2</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
+<span class="n">counter</span> <span class="o">=</span> <span class="o">...</span> <span class="c1">#number of iteration</span>
+<span class="n">ans2</span> <span class="o">=</span> <span class="p">[</span><span class="n">x_mid</span><span class="p">,</span> <span class="n">f</span><span class="p">]</span> <span class="c1"># store answers in the list</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">counter</span><span class="p">,</span> <span class="n">ans2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ans2</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> 
 </pre></div>
 </div>
 </div>
@@ -534,7 +538,8 @@ required (use a <code class="docutils literal notranslate"><span class="pre">for
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">counter</span> <span class="o">==</span> <span class="mi">23</span>
-<span class="k">assert</span> <span class="nb">abs</span><span class="p">(</span><span class="n">f_2</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1.0e-6</span>
+<span class="k">assert</span> <span class="nb">round</span><span class="p">(</span><span class="n">ans2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mf">4.534149169921875</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="mf">0.0</span>
+<span class="k">assert</span> <span class="nb">abs</span><span class="p">(</span><span class="n">ans2</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">&lt;</span> <span class="mf">1.0e-6</span>
 </pre></div>
 </div>
 </div>
@@ -547,8 +552,9 @@ required (use a <code class="docutils literal notranslate"><span class="pre">for
 </div>
 </div>
 </section>
+</section>
 <section id="exercise-02a-2-series-expansion">
-<h2>Exercise 02a.2 (series expansion)<a class="headerlink" href="#exercise-02a-2-series-expansion" title="Permalink to this heading">#</a></h2>
+<h1>Exercise 02a.2 (series expansion)<a class="headerlink" href="#exercise-02a-2-series-expansion" title="Permalink to this heading">#</a></h1>
 <p>The power series expansion for the sine function is:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -562,7 +568,7 @@ required (use a <code class="docutils literal notranslate"><span class="pre">for
 <p>Store the absolute value of the error in the variable <code class="docutils literal notranslate"><span class="pre">error</span></code>.</p>
 <p><em>Note:</em> Calculators and computers use iterative or series expansions to compute trigonometric functions, similar to the one above (although they use more efficient formulations than the above series).</p>
 <section id="hints">
-<h3>Hints<a class="headerlink" href="#hints" title="Permalink to this heading">#</a></h3>
+<h2>Hints<a class="headerlink" href="#hints" title="Permalink to this heading">#</a></h2>
 <p>To compute the factorial and to get a good approximation of <span class="math notranslate nohighlight">\(\pi\)</span>, use the Python <code class="docutils literal notranslate"><span class="pre">math</span></code> module:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
 <span class="n">nfact</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
@@ -574,7 +580,7 @@ required (use a <code class="docutils literal notranslate"><span class="pre">for
 <span class="n">s</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>to get an accurate computation of sine to check the error.</p>
+<p>to get an accurate computation of sine to check the absolute error.</p>
 <p><em>Type your answer here, replacing this text.</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -619,7 +625,7 @@ required (use a <code class="docutils literal notranslate"><span class="pre">for
 <span class="n">approx_sin</span> <span class="o">=</span> <span class="mf">0.0</span>
 
 <span class="c1"># Initialise counter</span>
-<span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">n_term</span> <span class="o">=</span> <span class="mi">0</span>
 
 <span class="c1"># Loop until error satisfies tolerance or a fixed number of iterations is reached</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1001</span><span class="p">):</span>
@@ -632,7 +638,7 @@ required (use a <code class="docutils literal notranslate"><span class="pre">for
 <span class="nb">print</span><span class="p">(</span><span class="n">error_3</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of terms in series:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">n_term</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -640,6 +646,7 @@ required (use a <code class="docutils literal notranslate"><span class="pre">for
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">error_3</span> <span class="o">&lt;=</span> <span class="mf">1.0e-8</span>
+<span class="k">assert</span> <span class="n">n_term</span> <span class="o">==</span> <span class="mi">12</span>
 </pre></div>
 </div>
 </div>
@@ -651,30 +658,20 @@ required (use a <code class="docutils literal notranslate"><span class="pre">for
 </div>
 </div>
 </div>
-<hr class="docutils" />
-<p>To double-check your work, the cell below will rerun all of the autograder tests.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grader</span><span class="o">.</span><span class="n">check_all</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
 </section>
 </section>
 <section id="submission">
-<h2>Submission<a class="headerlink" href="#submission" title="Permalink to this heading">#</a></h2>
+<h1>Submission<a class="headerlink" href="#submission" title="Permalink to this heading">#</a></h1>
 <p>Make sure you have run all cells in your notebook in order before running the cell below, so that all images/graphs appear in the output. The cell below will generate a zip file for you to submit. <strong>Please save before exporting!</strong></p>
 <p>These are some submission instructions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save your notebook first, then run this cell to export your submission.</span>
-<span class="n">grader</span><span class="o">.</span><span class="n">export</span><span class="p">()</span>
+<span class="n">grader</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="n">run_tests</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -726,13 +723,17 @@ required (use a <code class="docutils literal notranslate"><span class="pre">for
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exercise 02a.1 (bisection)</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task">Task</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-02a-2-series-expansion">Exercise 02a.2 (series expansion)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hints">Hints</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-02a-2-series-expansion">Exercise 02a.2 (series expansion)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hints">Hints</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a></li>
+</ul>
+
   </nav></div>
 
 </div></div>

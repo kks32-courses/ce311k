@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Assignment 02: Errors &#8212; Introduction to Programming with Python</title>
+    <title>Submission &#8212; Introduction to Programming with Python</title>
   
   
   
@@ -405,9 +405,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -418,19 +416,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Assignment 02: Errors</h1>
+    <h1>Submission</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -440,9 +430,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="assignment-02-errors">
-<h1>Assignment 02: Errors<a class="headerlink" href="#assignment-02-errors" title="Permalink to this heading">#</a></h1>
-<div class="cell docutils container">
+  <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize Otter</span>
 <span class="kn">import</span> <span class="nn">otter</span>
@@ -451,6 +439,7 @@ document.write(`
 </div>
 </div>
 </div>
+<center><h2> Assignment 02: Errors </h2></center>
 <p>Note: Please upload your solution as an ipynb file to the Gradescope page.</p>
 <p><justify> The purpose of this assignment is to develop your skills in computing absolute and relative errors. Use 64 bit floating point representation unless otherwise specified (this is the default in Python).</justify></p>
 <p><strong>Question 1:</strong> <br>
@@ -460,6 +449,10 @@ For this series, compute for $x = -0.1$ the absolute and relative errors for 3, 
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">q1_abs_err</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1">#store the answers in order of absolute errors for 3, 5, and 7 terms</span>
 <span class="n">q1_rel_err</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1">#store the answers in order of relative errors for 3, 5, and 7 terms</span>
+<span class="n">terms</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;abs error for </span><span class="si">{</span><span class="n">terms</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s1"> terms: </span><span class="si">{</span><span class="n">q1_abs_err</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;rel error for </span><span class="si">{</span><span class="n">terms</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s1"> terms: </span><span class="si">{</span><span class="n">q1_rel_err</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -484,6 +477,12 @@ compare with the true value of <span class="math notranslate nohighlight">\(6.73
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># store answers in the lists</span>
 <span class="n">q2_abs_err</span> <span class="o">=</span> <span class="p">[]</span> 
 <span class="n">q2_rel_err</span> <span class="o">=</span> <span class="p">[]</span> 
+<span class="c1"># print approach 1 errors</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;abs_err for approach 1: </span><span class="si">{</span><span class="n">q2_abs_err</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;rel_err for approach 1: </span><span class="si">{</span><span class="n">q2_rel_err</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="c1"># print approach 2 errors</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;abs_err for approach 2: </span><span class="si">{</span><span class="n">q2_abs_err</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;rel_err for approach 2: </span><span class="si">{</span><span class="n">q2_rel_err</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -514,6 +513,11 @@ The function <span class="math notranslate nohighlight">\(\cos(x)\)</span> can b
 <span class="n">q3_rel_err</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="c1"># number of terms for 10 significant figures</span>
 <span class="n">num_terms</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;abs error for </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1"> term: </span><span class="si">{</span><span class="n">q3_abs_err</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;rel error for </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1"> term: </span><span class="si">{</span><span class="n">q3_rel_err</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;It requires </span><span class="si">{</span><span class="n">num_terms</span><span class="si">}</span><span class="s1"> terms to have a solution that is accurate for 10 significant figures&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -537,19 +541,25 @@ by computing the sum from <span class="math notranslate nohighlight">\(i = 1\)</
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">q4_abs_err</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># store answers in order of the following results</span>
+
 <span class="c1">#use np.float16() inside iteration</span>
 <span class="n">sums</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="k">for</span> <span class="o">...</span><span class="p">:</span>
     <span class="n">sums</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">float16</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">q4_abs_err</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
 <span class="c1">#use np.float32() inside iteration </span>
 <span class="n">sums</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
 <span class="c1">#use np.float64() inside iteration</span>
 <span class="n">sums</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="c1">#use np.float16() for the final summation</span>
 <span class="n">sums</span> <span class="o">=</span> <span class="mi">0</span>
+
 <span class="c1">#use np.float32() for the final summation</span>
 <span class="n">sums</span> <span class="o">=</span> <span class="mi">0</span>
+
 <span class="c1">#use np.float64() for the final summation</span>
 <span class="n">sums</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
@@ -659,28 +669,18 @@ The recipe for deducing the square root of a number <span class="math notranslat
 </div>
 </div>
 </div>
-<hr class="docutils" />
-<p>To double-check your work, the cell below will rerun all of the autograder tests.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grader</span><span class="o">.</span><span class="n">check_all</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
 <section id="submission">
-<h2>Submission<a class="headerlink" href="#submission" title="Permalink to this heading">#</a></h2>
+<h1>Submission<a class="headerlink" href="#submission" title="Permalink to this heading">#</a></h1>
 <p>Make sure you have run all cells in your notebook in order before running the cell below, so that all images/graphs appear in the output. The cell below will generate a zip file for you to submit. <strong>Please save before exporting!</strong></p>
 <p>These are some submission instructions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save your notebook first, then run this cell to export your submission.</span>
-<span class="n">grader</span><span class="o">.</span><span class="n">export</span><span class="p">()</span>
+<span class="n">grader</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="n">run_tests</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -723,20 +723,6 @@ The recipe for deducing the square root of a number <span class="math notranslat
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>

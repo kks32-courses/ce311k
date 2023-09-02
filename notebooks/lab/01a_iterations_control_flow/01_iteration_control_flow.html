@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Lab 1: Iteration and control flow &#8212; Introduction to Programming with Python</title>
+    <title>Exercise 01.0 (if-else) &#8212; Introduction to Programming with Python</title>
   
   
   
@@ -418,7 +418,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Lab 1: Iteration and control flow</h1>
+    <h1>Exercise 01.0 (if-else)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -428,10 +428,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-01-1-for-and-if-else">Exercise 01.1 (for and if-else)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-01-2-cartesian-to-polar-coordinates">Exercise 01.2: Cartesian to polar coordinates</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exercise 01.0 (if-else)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-01-1-for-and-if-else">Exercise 01.1 (for and if-else)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-01-2-cartesian-to-polar-coordinates">Exercise 01.2: Cartesian to polar coordinates</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a></li>
 </ul>
+
             </nav>
         </div>
     </div>
@@ -442,9 +444,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="lab-1-iteration-and-control-flow">
-<h1>Lab 1: Iteration and control flow<a class="headerlink" href="#lab-1-iteration-and-control-flow" title="Permalink to this heading">#</a></h1>
-<div class="cell docutils container">
+  <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize Otter</span>
 <span class="kn">import</span> <span class="nn">otter</span>
@@ -453,6 +453,8 @@ document.write(`
 </div>
 </div>
 </div>
+<section id="exercise-01-0-if-else">
+<h1>Exercise 01.0 (if-else)<a class="headerlink" href="#exercise-01-0-if-else" title="Permalink to this heading">#</a></h1>
 <p>Consider the following assessment criteria which map a score out of 100 to an assessment grade for CE311K:</p>
 <table class="table">
 <thead>
@@ -522,8 +524,7 @@ document.write(`
 <span class="c1"># Output grades as a string list</span>
 <span class="n">grades</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="c1"># Write your code here and remove the exception below</span>
-<span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+<span class="c1"># Write your code here</span>
 </pre></div>
 </div>
 </div>
@@ -543,8 +544,9 @@ document.write(`
 </div>
 </div>
 </div>
+</section>
 <section id="exercise-01-1-for-and-if-else">
-<h2>Exercise 01.1 (for and if-else)<a class="headerlink" href="#exercise-01-1-for-and-if-else" title="Permalink to this heading">#</a></h2>
+<h1>Exercise 01.1 (for and if-else)<a class="headerlink" href="#exercise-01-1-for-and-if-else" title="Permalink to this heading">#</a></h1>
 <p>Consider a list of numbers shown below. Classify the list into the following separate lists allowing for a number to appear on multiple lists (e.g., 9 could be on odd and squares): even numbers, odd numbers, and squares.</p>
 <p><code class="docutils literal notranslate"><span class="pre">numbers</span> <span class="pre">=</span> <span class="pre">[0,</span> <span class="pre">2,</span> <span class="pre">5,</span> <span class="pre">7,</span> <span class="pre">9,</span> <span class="pre">11,</span> <span class="pre">4,</span> <span class="pre">6,</span> <span class="pre">25,</span> <span class="pre">16,</span> <span class="pre">39,</span> <span class="pre">43]</span></code></p>
 <div class="cell docutils container">
@@ -556,8 +558,7 @@ document.write(`
 <span class="n">odd</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">squares</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">primes</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="c1"># Write your code here and remove the exception statement below</span>
-<span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+<span class="c1"># Write your code here</span>
 </pre></div>
 </div>
 </div>
@@ -567,7 +568,7 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">even</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">16</span><span class="p">]</span>
 <span class="k">assert</span> <span class="n">odd</span> <span class="o">==</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">39</span><span class="p">,</span> <span class="mi">43</span><span class="p">]</span>
 <span class="k">assert</span> <span class="n">primes</span> <span class="o">==</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">43</span><span class="p">]</span>
-<span class="k">assert</span> <span class="n">squares</span> <span class="o">==</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">16</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">squares</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">16</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -581,7 +582,7 @@ document.write(`
 </div>
 </section>
 <section id="exercise-01-2-cartesian-to-polar-coordinates">
-<h2>Exercise 01.2: Cartesian to polar coordinates<a class="headerlink" href="#exercise-01-2-cartesian-to-polar-coordinates" title="Permalink to this heading">#</a></h2>
+<h1>Exercise 01.2: Cartesian to polar coordinates<a class="headerlink" href="#exercise-01-2-cartesian-to-polar-coordinates" title="Permalink to this heading">#</a></h1>
 <p>Convert the x and y coordinates of a point in a plane to polar coordinates (r, φ) in which φ is measured from
 (-π, π) with φ = 0 defined as the x-axis. To function correctly, the calculations must appropriately evaluate which quadrant the point is in and it must prevent division by zero, otherwise the program will experience an error. The expressions required to compute the appropriate φ are:</p>
 <p><span class="math notranslate nohighlight">\(r = \sqrt(x^2 + y^2)\)</span></p>
@@ -598,8 +599,7 @@ document.write(`
 <span class="n">y</span> <span class="o">=</span> <span class="mf">4.5</span>
 
 <span class="c1"># Define variables r and θ (to define \theta and hit tab)</span>
-<span class="c1"># Write your code here and remove the exception below</span>
-<span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+<span class="c1"># Write your code here</span>
 </pre></div>
 </div>
 </div>
@@ -619,29 +619,19 @@ document.write(`
 </div>
 </div>
 </div>
-<hr class="docutils" />
-<p>To double-check your work, the cell below will rerun all of the autograder tests.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grader</span><span class="o">.</span><span class="n">check_all</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
 </section>
 <section id="submission">
-<h2>Submission<a class="headerlink" href="#submission" title="Permalink to this heading">#</a></h2>
+<h1>Submission<a class="headerlink" href="#submission" title="Permalink to this heading">#</a></h1>
 <p>Make sure you have run all cells in your notebook in order before running the cell below, so that all images/graphs appear in the output. The cell below will generate a zip file for you to submit. <strong>Please save before exporting!</strong></p>
 <p>These are some submission instructions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save your notebook first, then run this cell to export your submission.</span>
-<span class="n">grader</span><span class="o">.</span><span class="n">export</span><span class="p">()</span>
+<span class="n">grader</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="n">run_tests</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -693,10 +683,12 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-01-1-for-and-if-else">Exercise 01.1 (for and if-else)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-01-2-cartesian-to-polar-coordinates">Exercise 01.2: Cartesian to polar coordinates</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exercise 01.0 (if-else)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-01-1-for-and-if-else">Exercise 01.1 (for and if-else)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-01-2-cartesian-to-polar-coordinates">Exercise 01.2: Cartesian to polar coordinates</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a></li>
 </ul>
+
   </nav></div>
 
 </div></div>

@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Assignment 01: Iterations and control flow &#8212; Introduction to Programming with Python</title>
+    <title>Submission &#8212; Introduction to Programming with Python</title>
   
   
   
@@ -405,9 +405,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -418,19 +416,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Assignment 01: Iterations and control flow</h1>
+    <h1>Submission</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -440,9 +430,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="assignment-01-iterations-and-control-flow">
-<h1>Assignment 01: Iterations and control flow<a class="headerlink" href="#assignment-01-iterations-and-control-flow" title="Permalink to this heading">#</a></h1>
-<div class="cell docutils container">
+  <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize Otter</span>
 <span class="kn">import</span> <span class="nn">otter</span>
@@ -451,6 +439,7 @@ document.write(`
 </div>
 </div>
 </div>
+<center><h2> Assignment 01: Iterations and control flow </h2></center>
 <p>Note: Please upload your solution as an ipynb file to the Gradescope page.</p>
 <p><justify>The purpose of this assignment is to develop your skills in writing iterations (for) and control flow (if/else).</justify></p>
 <p><strong>Question 1:</strong><br>
@@ -522,13 +511,12 @@ Note that $x < 0$ and $x > L$ are invalid locations. Use the following values fo
 <p>Using these values, obtain the deflection <span class="math notranslate nohighlight">\((ft)\)</span> at 3 locations: <span class="math notranslate nohighlight">\(x = L/4, L/2, 3L/4\)</span>.<br></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># storage the answers in the following variables</span>
-<span class="c1"># x at L/4</span>
-<span class="n">deflection1</span> <span class="o">=</span> <span class="o">...</span>
-<span class="c1"># x at L/2</span>
-<span class="n">deflection2</span> <span class="o">=</span> <span class="o">...</span>
-<span class="c1"># x at 3L/4</span>
-<span class="n">deflection3</span> <span class="o">=</span> <span class="o">...</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># storage the answers in the following list</span>
+<span class="n">deflections</span> <span class="o">=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">deflections</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># deflection at x = L/4</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">deflections</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># deflection at x = L/3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">deflections</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="c1"># deflection at x = 3L/4</span>
 </pre></div>
 </div>
 </div>
@@ -574,28 +562,18 @@ Note that $x < 0$ and $x > L$ are invalid locations. Use the following values fo
 </div>
 </div>
 <!-- END QUESTION -->
-<hr class="docutils" />
-<p>To double-check your work, the cell below will rerun all of the autograder tests.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grader</span><span class="o">.</span><span class="n">check_all</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
 <section id="submission">
-<h2>Submission<a class="headerlink" href="#submission" title="Permalink to this heading">#</a></h2>
+<h1>Submission<a class="headerlink" href="#submission" title="Permalink to this heading">#</a></h1>
 <p>Make sure you have run all cells in your notebook in order before running the cell below, so that all images/graphs appear in the output. The cell below will generate a zip file for you to submit. <strong>Please save before exporting!</strong></p>
 <p>These are some submission instructions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save your notebook first, then run this cell to export your submission.</span>
-<span class="n">grader</span><span class="o">.</span><span class="n">export</span><span class="p">()</span>
+<span class="n">grader</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="n">run_tests</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -638,20 +616,6 @@ Note that $x < 0$ and $x > L$ are invalid locations. Use the following values fo
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>
