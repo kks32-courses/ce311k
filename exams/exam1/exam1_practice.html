@@ -660,6 +660,64 @@ document.write(`
 </div>
 </div>
 </div>
+<ol class="arabic simple" start="10">
+<li><p>Errors in Bisection</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># y = f(x)=x^2 - 2x-2</span>
+<span class="c1"># Import modules</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Initial guess</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="c1"># Mid guess</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>  
+
+<span class="c1"># Set a tolerance</span>
+<span class="n">tolerance</span> <span class="o">=</span> <span class="mf">1e-5</span>
+
+<span class="c1"># Iterate to a maximum of 1000 iterations</span>
+<span class="n">max_iterations</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="n">iterations</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_iterations</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+    <span class="c1"># Compute forces for theta1 and theta2</span>
+    <span class="c1"># f(x)=x^2 - 2x-2</span>
+    <span class="n">delta1</span> <span class="o">=</span> <span class="n">x1</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x1</span> <span class="o">-</span><span class="mi">2</span>
+    
+    <span class="n">delta2</span> <span class="o">=</span> <span class="n">x2</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x2</span> <span class="o">-</span><span class="mi">2</span>
+    
+    <span class="c1"># Compute the mid-value of theta</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">x1</span> <span class="o">-</span> <span class="n">x2</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+    
+    <span class="c1"># Calculate the difference delta for the mid-theta   </span>
+    <span class="n">delta</span> <span class="o">=</span>  <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">2</span>
+    
+    <span class="k">if</span><span class="p">((</span><span class="n">delta1</span> <span class="o">*</span> <span class="n">delta2</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="n">delta</span> <span class="o">=</span> <span class="n">delta1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">delta2</span> <span class="o">=</span>  <span class="n">delta</span>
+    
+    <span class="c1"># Final values at the end of iterations</span>
+    <span class="n">iterations</span> <span class="o">=</span> <span class="n">i</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">tolerance</span><span class="p">):</span>
+        <span class="k">break</span>
+
+    <span class="k">else</span><span class="p">:</span> <span class="c1">#No break</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Solution did not converge!&quot;</span><span class="p">)</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;After </span><span class="si">{}</span><span class="s1"> iterations the root of f(x) </span><span class="si">{}</span><span class="s1"> </span><span class="si">{:.2E}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">iterations</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">delta</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 </section>
