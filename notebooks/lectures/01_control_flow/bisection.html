@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
 
   
-  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,8 +38,9 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
@@ -76,6 +77,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -390,10 +400,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -401,7 +411,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -444,25 +454,43 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="find-the-roots-of-a-function">
 <h1>Find the roots of a function<a class="headerlink" href="#find-the-roots-of-a-function" title="Permalink to this heading">#</a></h1>
-<p><span class="math notranslate nohighlight">\(y = f(x)=x^3-x-2\)</span></p>
+<p><span class="math notranslate nohighlight">\(y = f(x)=x^3-3x^2+1\)</span></p>
 <section id="brute-force">
 <h2>Brute-force<a class="headerlink" href="#brute-force" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import numpy as np
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-# tolerance
-tol = 1e-3
-iterations = 0
-for x in np.arange(1,2,0.0001):
-  y = x**3 - x - 2
-  iterations = iterations + 1
-  if abs(y) &lt; tol:
-    print(&quot;The root of the function is {} found after {} iterations&quot;.format(x, iterations))
-    break
-else:
-  print(&quot;Solution did not converge to our criteria&quot;)
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span>
 
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x16258d250&gt;]
+</pre></div>
+</div>
+<img alt="../../../_images/044ba4f4040fed62ce31d6baf091c2f84bff7836c57f7a65bdfce2b541fd50e7.png" src="../../../_images/044ba4f4040fed62ce31d6baf091c2f84bff7836c57f7a65bdfce2b541fd50e7.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># tolerance</span>
+<span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-3</span>
+<span class="n">iterations</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.0001</span><span class="p">):</span>
+  <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">2</span>
+  <span class="n">iterations</span> <span class="o">=</span> <span class="n">iterations</span> <span class="o">+</span> <span class="mi">1</span>
+  <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">tol</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The root of the function is </span><span class="si">{}</span><span class="s2"> found after </span><span class="si">{}</span><span class="s2"> iterations&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">iterations</span><span class="p">))</span>
+    <span class="k">break</span>
+<span class="k">else</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Solution did not converge to our criteria&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -478,55 +506,55 @@ else:
 <p><span class="math notranslate nohighlight">\(y = f(x)=x^3-x-2\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># y = f(x)=x^3-x-2
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># y = f(x)=x^3-x-2</span>
 
-# Import modules
-import math
-import numpy as np
+<span class="c1"># Import modules</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-# Initial guess
-x1 = 1
-x2 = 2
+<span class="c1"># Initial guess</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="mi">2</span>
 
-# Mid guess
-x = 0  
+<span class="c1"># Mid guess</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>  
 
-# Set a tolerance
-tolerance = 1e-5
+<span class="c1"># Set a tolerance</span>
+<span class="n">tolerance</span> <span class="o">=</span> <span class="mf">1e-5</span>
 
-# Iterate to a maximum of 1000 iterations
-max_iterations = 100
+<span class="c1"># Iterate to a maximum of 1000 iterations</span>
+<span class="n">max_iterations</span> <span class="o">=</span> <span class="mi">100</span>
 
-iterations = 0
+<span class="n">iterations</span> <span class="o">=</span> <span class="mi">0</span>
 
-for i in np.arange(max_iterations):
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">max_iterations</span><span class="p">):</span>
 
-    # Compute forces for theta1 and theta2
-    delta1 = x1**3 - x1 -2
+    <span class="c1"># Compute forces for theta1 and theta2</span>
+    <span class="n">delta1</span> <span class="o">=</span> <span class="n">x1</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span> <span class="n">x1</span> <span class="o">-</span><span class="mi">2</span>
     
-    delta2 = x2**3 - x2 -2
+    <span class="n">delta2</span> <span class="o">=</span> <span class="n">x2</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span> <span class="n">x2</span> <span class="o">-</span><span class="mi">2</span>
     
-    # Compute the mid-value of theta
-    x = (x1 + x2)/2
+    <span class="c1"># Compute the mid-value of theta</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">x1</span> <span class="o">+</span> <span class="n">x2</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
     
-    # Calculate the difference delta for the mid-theta   
-    delta =  x**3 - x -2
+    <span class="c1"># Calculate the difference delta for the mid-theta   </span>
+    <span class="n">delta</span> <span class="o">=</span>  <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span> <span class="n">x</span> <span class="o">-</span><span class="mi">2</span>
     
-    if((delta * delta1) &gt; 0):
-        x1 = x
-    else:
-        x2 =  x
+    <span class="k">if</span><span class="p">((</span><span class="n">delta</span> <span class="o">*</span> <span class="n">delta1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="n">x1</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">x2</span> <span class="o">=</span>  <span class="n">x</span>
     
-    # Final values at the end of iterations
-    iterations = i
+    <span class="c1"># Final values at the end of iterations</span>
+    <span class="n">iterations</span> <span class="o">=</span> <span class="n">i</span>
     
-    if (abs(delta) &lt;= tolerance):
-        break
+    <span class="k">if</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">tolerance</span><span class="p">):</span>
+        <span class="k">break</span>
 
-else: #No break
-    print(&quot;Solution did not converge!&quot;)
+<span class="k">else</span><span class="p">:</span> <span class="c1">#No break</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Solution did not converge!&quot;</span><span class="p">)</span>
     
-print(&#39;After {} iterations the root of f(x) {} {:.2E}&#39;.format(iterations, x, delta))
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;After </span><span class="si">{}</span><span class="s1"> iterations the root of f(x) </span><span class="si">{}</span><span class="s1"> </span><span class="si">{:.2E}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">iterations</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">delta</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -547,18 +575,18 @@ print(&#39;After {} iterations the root of f(x) {} {:.2E}&#39;.format(iterations
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># f(x) = x**2 = 0
-import matplotlib.pyplot as plt
-import numpy as np
-def f(x):
-    with np.errstate(divide=&#39;ignore&#39;, invalid=&#39;ignore&#39;):
-        return x**2
-fx_name = r&#39;$f(x)=x^2$&#39;
-x = np.arange(-1,1.1,0.1)
-y = f(x)
-plt.plot(x, y, label=fx_name)
-plt.legend(loc=&#39;upper left&#39;)
-plt.show()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># f(x) = x**2 = 0</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">errstate</span><span class="p">(</span><span class="n">divide</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">invalid</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">fx_name</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$f(x)=x^2$&#39;</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mf">1.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">fx_name</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -568,19 +596,19 @@ plt.show()
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import numpy as np
-import matplotlib.pyplot as plt
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-def f(x):
-    with np.errstate(divide=&#39;ignore&#39;, invalid=&#39;ignore&#39;):
-        return 1/x
-fx_name = r&#39;$f(x)=\frac{1}{x}$&#39;
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">errstate</span><span class="p">(</span><span class="n">divide</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">invalid</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="o">/</span><span class="n">x</span>
+<span class="n">fx_name</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$f(x)=\frac</span><span class="si">{1}{x}</span><span class="s1">$&#39;</span>
 
-x=np.linspace(-10,10,101)
-y=f(x)
-plt.plot(x, y, label=fx_name)
-plt.legend(loc=&#39;upper left&#39;)
-plt.show()
+<span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>
+<span class="n">y</span><span class="o">=</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">fx_name</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -616,16 +644,12 @@ plt.show()
 
               
               
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -690,8 +714,8 @@ By Krishna Kumar
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
 
   <footer class="bd-footer">
   </footer>
