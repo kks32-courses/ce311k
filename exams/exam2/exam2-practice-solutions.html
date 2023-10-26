@@ -1,0 +1,816 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Q2 Errors &#8212; Introduction to Programming with Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=c5ced968eda925caa686" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=c5ced968eda925caa686"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'exams/exam2/exam2-practice-solutions';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Introduction to Programming with Python</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../README.html">
+                    CE 311K: Introduction to Computer Methods (Python)
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/lectures/00_intro/00_variables_assignment_operator-precedence_solutions.html">Lecture 00: Variable and assignment (Solution)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/lectures/01_control_flow/01_control_statements_solutions.html">Lecture 01a: Control statements (Solution)</a></li>
+
+
+
+
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../notebooks/lectures/01_control_flow/01_friction_sliding_block_solutions.html">Lecture 01b: Example of control statement</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/lectures/01_control_flow/break_continue_solutions.html">Break continue (solution)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/lectures/01_control_flow/cantilever_beam_uvl_solutions.html">Cantilever beam uvl (solution)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/lectures/01_control_flow/atm.html">ATM</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/lectures/02_errors/02_errors_solutions.html">Lecture 02: Errors</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/lectures/03_functions/03_functions_solutions.html">Lecture 03: Functions (Solutions)</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/lectures/04_data_structures/04_data_structures_solutions.html">Lecture 04: Data structures (Solution)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/lectures/05_numerical_diff_taylor_series_newton_raphson/05_finite_difference_taylor_series_solutions.html">Lecture 05: Numerical differentiation</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/lectures/06_exceptions/06_error_handling_testing_solutions.html">Lecture 06: Error handling (Solution)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/lectures/07_vectors/07_vectors_solutions.html">Lecture 07: Vectors (Solution)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/lectures/08_matrices/08_matrices_solutions.html">Lecture 08: Matrices (solution)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/lectures/09_linear_algebra/09_linear_algebra_solutions.html">Lecture 09: Linear Algebra (Solution)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/lectures/10_useful_libs/10_useful_libs_solutions.html">Lecture 10: Useful libraries in Python (Solution)</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/kks32-courses/ce311k/blob/main/docs/exams/exam2/exam2-practice-solutions.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/kks32-courses/ce311k" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/kks32-courses/ce311k/issues/new?title=Issue%20on%20page%20%2Fexams/exam2/exam2-practice-solutions.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/exams/exam2/exam2-practice-solutions.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Q2 Errors</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Q2 Errors</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-1-absolute-relative-errors">Q2.1 Absolute &amp; relative errors</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-2-absolute-and-relative-errors-x-y">Q2.2 absolute and relative errors x+y</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-3-frac-1-x-y">Q2.3  <span class="math notranslate nohighlight">\(\frac{1}{x + y}\)</span></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-function-errors"><strong>Q3 Function &amp; errors</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-write-a-function-for-calculating-derivatives"><strong>Q4 Write a function for calculating derivatives</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-functions">Q5 Functions</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-1-which-of-the-following-statements-are-true">Q5.1 Which of the following statements are true?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-2-default-values-in-a-function">Q5.2 Default values in a function</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-3-which-of-the-following-function-calls-returns-a-value-of-8">Q5.3 Which of the following function calls returns a value of 8?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-4-what-is-the-output-of-the-print-statement-in-the-following-code-and-explain-your-reasoning">Q5.4 What is the output of the <strong>print</strong> statement in the following code and explain your reasoning?</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="q2-errors">
+<h1><strong>Q2 Errors</strong><a class="headerlink" href="#q2-errors" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="q2-1-absolute-relative-errors">
+<h1>Q2.1 Absolute &amp; relative errors<a class="headerlink" href="#q2-1-absolute-relative-errors" title="Permalink to this heading">#</a></h1>
+<p>The absolute error has the same units as the measurement. Relative error is defined as the absolute error relative to the size of the measurement</p>
+<p>(you can have other reasonable answer)</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="q2-2-absolute-and-relative-errors-x-y">
+<h1>Q2.2 absolute and relative errors x+y<a class="headerlink" href="#q2-2-absolute-and-relative-errors-x-y" title="Permalink to this heading">#</a></h1>
+<p>Given <span class="math notranslate nohighlight">\(x = 9.0\)</span> and <span class="math notranslate nohighlight">\(y = 10.0\)</span> and are stored to two significant figures, so the error in x and y is <span class="math notranslate nohighlight">\(\pm 0.05\)</span>.</p>
+<p>Compute the absolute error and relative errors in computing: <span class="math notranslate nohighlight">\(x + y\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="mf">9.0</span>
+<span class="n">y</span><span class="o">=</span><span class="mf">10.0</span>
+<span class="n">e_x</span><span class="o">=</span><span class="mf">0.05</span>
+<span class="n">e_y</span><span class="o">=</span><span class="mf">0.05</span>
+
+<span class="n">e_abs</span><span class="o">=</span><span class="n">e_x</span><span class="o">+</span><span class="n">e_y</span>
+<span class="n">e_abs</span><span class="o">==</span><span class="mf">0.1</span> <span class="c1"># 0.05 + 0.05</span>
+<span class="n">e_rel</span><span class="o">=</span><span class="n">e_abs</span><span class="o">/</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">)</span>
+<span class="n">e_rel</span><span class="o">==</span><span class="mf">0.00526</span> <span class="c1"># 0.1 / (9+10)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="q2-3-frac-1-x-y">
+<h1>Q2.3  <span class="math notranslate nohighlight">\(\frac{1}{x + y}\)</span><a class="headerlink" href="#q2-3-frac-1-x-y" title="Permalink to this heading">#</a></h1>
+<p>Given <span class="math notranslate nohighlight">\(x = 9.0\)</span> and <span class="math notranslate nohighlight">\(y = 10.0\)</span> and are stored to two significant figures, so the error in x and y is <span class="math notranslate nohighlight">\(\pm 0.05\)</span>.</p>
+<p>What is the absolute error range in calculating <span class="math notranslate nohighlight">\(\frac{1}{x + y}\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="mf">9.0</span>
+<span class="n">y</span><span class="o">=</span><span class="mf">10.0</span>
+<span class="n">e_x</span><span class="o">=</span><span class="mf">0.05</span>
+<span class="n">e_y</span><span class="o">=</span><span class="mf">0.05</span>
+
+
+<span class="n">e_abs</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">e_x</span><span class="o">+</span><span class="n">e_y</span><span class="p">)</span> <span class="c1"># 1/0.1</span>
+<span class="n">e_abs</span><span class="o">==</span><span class="mf">10.0</span> <span class="c1"># 1/0.1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="q3-function-errors">
+<h2><strong>Q3 Function &amp; errors</strong><a class="headerlink" href="#q3-function-errors" title="Permalink to this heading">#</a></h2>
+<p>The power series expansion for the sine function is:</p>
+<div class="math notranslate nohighlight">
+\[
+\sin(x) = \sum_{n = 0}^{\infty} (-1)^n \frac{x^{2n +1}}{(2n+1)!}
+\]</div>
+<p>(See mathematics data book for a less compact version; this compact version is preferred here as it is simpler to program.)</p>
+<p>Using a <code class="docutils literal notranslate"><span class="pre">for</span></code> statement, compute how many terms in the series are required to approximate <span class="math notranslate nohighlight">\(\sin(3\pi/2)\)</span> to within <span class="math notranslate nohighlight">\(1 \times 10^{-8}\)</span>. <strong>Set the default number of iterations as 1000 and default tolerance as <span class="math notranslate nohighlight">\(1.0e-8\)</span></strong> Fix the following code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import the math module to access math.sin and math.factorial</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="n">let</span> <span class="n">approximate_sin</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">max_iterations</span><span class="p">)</span>
+    <span class="c1"># Value at which to approximate sine</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span>
+
+    <span class="c1"># Tolerance and initial error</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="mf">1.0e-8</span>
+    <span class="n">tol</span> <span class="o">=</span> <span class="n">error</span> <span class="o">+</span> <span class="mf">1.0</span>
+
+    <span class="c1"># Intialise approximation of sine</span>
+    <span class="n">approx_sin</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+    <span class="c1"># Initialise counter</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># Loop until error satisfies tolerance</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iterations</span><span class="p">):</span>
+    
+          <span class="c1"># This sin calculation is correct</span>
+          <span class="n">approx_sin</span> <span class="o">=</span> <span class="n">approx_sin</span> <span class="o">+</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="n">i</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">error</span> <span class="o">=</span> <span class="n">approx_sin</span> <span class="o">-</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">error</span> <span class="o">&gt;</span> <span class="n">tol</span><span class="p">:</span>
+        <span class="k">continue</span>
+
+<span class="k">return</span> <span class="n">approx_sin</span>
+    
+
+<span class="c1"># Function call</span>
+<span class="n">appsin</span> <span class="o">=</span> <span class="n">approximate_sin</span><span class="p">(</span><span class="mf">1.5</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;approximate value of sin: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">appsin</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="k">def</span> <span class="nf">approximate_sin</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">max_iterations</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span><span class="n">tol</span> <span class="o">=</span> <span class="mf">1.0e-8</span><span class="p">):</span>
+    <span class="c1"># Value at which to approximate sine</span>
+
+
+    <span class="c1"># Tolerance and initial error</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="n">tol</span> <span class="o">+</span> <span class="mf">1.0</span>
+
+    <span class="c1"># Intialise approximation of sine</span>
+    <span class="n">approx_sin</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># Initialise counter</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># Loop until error satisfies tolerance</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iterations</span><span class="p">):</span>
+          <span class="n">n</span><span class="o">+=</span><span class="mi">1</span>
+          <span class="c1"># This sin calculation is correct</span>
+          <span class="n">approx_sin</span> <span class="o">=</span> <span class="n">approx_sin</span> <span class="o">+</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="n">i</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+          <span class="n">error</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">approx_sin</span> <span class="o">-</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+          <span class="k">if</span> <span class="n">error</span> <span class="o">&lt;</span> <span class="n">tol</span><span class="p">:</span>
+              <span class="k">break</span>
+
+    <span class="k">return</span> <span class="n">approx_sin</span><span class="p">,</span><span class="n">n</span>
+
+
+<span class="c1"># Function call</span>
+<span class="n">appsin</span><span class="p">,</span><span class="n">n</span> <span class="o">=</span> <span class="n">approximate_sin</span><span class="p">(</span><span class="mf">1.5</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;approximate value of sin: </span><span class="si">{</span><span class="n">appsin</span><span class="si">}</span><span class="s2">, and numbers of iteration :</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> exact value of sin: </span><span class="si">{</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mf">1.5</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>approximate value of sin: -1.0000000042344912, and numbers of iteration :12 exact value of sin: -1.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="q4-write-a-function-for-calculating-derivatives">
+<h2><strong>Q4 Write a function for calculating derivatives</strong><a class="headerlink" href="#q4-write-a-function-for-calculating-derivatives" title="Permalink to this heading">#</a></h2>
+<p>Write a function that calculates the first or the second derivative of a function at a specific point x. The function should take 4 arguments: the function <span class="math notranslate nohighlight">\(fn\)</span>, <span class="math notranslate nohighlight">\(x\)</span> (location), <span class="math notranslate nohighlight">\(h\)</span> (increment), and <span class="math notranslate nohighlight">\(n\)</span> (derivative). The default arguments are <span class="math notranslate nohighlight">\(h=1e-6\)</span> and <span class="math notranslate nohighlight">\(n=1\)</span>. If <span class="math notranslate nohighlight">\(n=1\)</span> the function should return the first derivative, if <span class="math notranslate nohighlight">\(n=2\)</span> the function should return the second derivative, if an invalid <span class="math notranslate nohighlight">\(n\)</span> is passed, the function should print an error message and return 0.</p>
+<p><strong>Hints</strong>:</p>
+<ul class="simple">
+<li><p>Use if-else condition to return either the first derivative or second derivative or error.</p></li>
+<li><p>The function <code class="docutils literal notranslate"><span class="pre">derivative</span></code> should take 4 arguments, 2 of which are default arguments. Default arguments are listed at the end of the function.</p></li>
+<li><p>The first derivative is calculated as <span class="math notranslate nohighlight">\(f^\prime(x) = \frac{f(x+h) - f(x)}{h}\)</span></p></li>
+<li><p>The second derivative is calculated as <span class="math notranslate nohighlight">\(f^{\prime\prime}(x) = \frac{f(x+h) - 2 f(x) + f(x-h)}{h^2}\)</span></p></li>
+<li><p>Use keyword <code class="docutils literal notranslate"><span class="pre">def</span></code> to define a function.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Return the first or second derivative of a given function at x.</span>
+
+</pre></div>
+</div>
+<p>Your code should pass the following assertions:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Test functions</span>
+<span class="c1"># A function f(x) = x^2 + 3x</span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">x</span>
+
+
+<span class="k">assert</span> <span class="nb">round</span><span class="p">(</span><span class="n">derivative</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mf">5.00000</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="mf">0.0</span>
+<span class="k">assert</span> <span class="nb">round</span><span class="p">(</span><span class="n">derivative</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">-</span> <span class="mf">4.00000000</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="mf">0.0</span>
+<span class="k">assert</span> <span class="nb">round</span><span class="p">(</span><span class="n">derivative</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="mf">1.99995</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">==</span> <span class="mf">0.0</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">derivative</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">h</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+  <span class="k">if</span> <span class="n">n</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+    <span class="n">ret</span><span class="o">=</span><span class="p">(</span><span class="n">fn</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">h</span><span class="p">)</span><span class="o">-</span><span class="n">fn</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">/</span><span class="n">h</span>
+  <span class="k">elif</span> <span class="n">n</span><span class="o">==</span><span class="mi">2</span><span class="p">:</span>
+    <span class="n">ret</span><span class="o">=</span><span class="p">(</span><span class="n">fn</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">h</span><span class="p">)</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">fn</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="n">fn</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">h</span><span class="p">))</span><span class="o">/</span><span class="n">h</span><span class="o">**</span><span class="mi">2</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;error: invalid n&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="mi">0</span>
+  <span class="k">return</span> <span class="n">ret</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">x</span>
+
+<span class="k">assert</span> <span class="nb">round</span><span class="p">(</span><span class="n">derivative</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mf">5.00000</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">==</span> <span class="mf">0.0</span>
+<span class="k">assert</span> <span class="nb">round</span><span class="p">(</span><span class="n">derivative</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">-</span> <span class="mf">4.00000000</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="mf">0.0</span>
+<span class="k">assert</span> <span class="nb">round</span><span class="p">(</span><span class="n">derivative</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="mf">1.99995</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">==</span> <span class="mf">0.0</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="q5-functions">
+<h2>Q5 Functions<a class="headerlink" href="#q5-functions" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="q5-1-which-of-the-following-statements-are-true">
+<h1>Q5.1 Which of the following statements are true?<a class="headerlink" href="#q5-1-which-of-the-following-statements-are-true" title="Permalink to this heading">#</a></h1>
+<p>( ) A function needs at least one argument</p>
+<p>( ) There is no limit on the maximum number of arguments</p>
+<p>(X) A function can have multiple return values</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="q5-2-default-values-in-a-function">
+<h1>Q5.2 Default values in a function<a class="headerlink" href="#q5-2-default-values-in-a-function" title="Permalink to this heading">#</a></h1>
+<p>What is the value of <span class="math notranslate nohighlight">\(x\)</span> on line #4 inside the function?</p>
+<p>( ) 2</p>
+<p>( ) 8</p>
+<p>(X) 5</p>
+<p>( ) 3</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="q5-3-which-of-the-following-function-calls-returns-a-value-of-8">
+<h1>Q5.3 Which of the following function calls returns a value of 8?<a class="headerlink" href="#q5-3-which-of-the-following-function-calls-returns-a-value-of-8" title="Permalink to this heading">#</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fn</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span><span class="o">-</span><span class="n">b</span><span class="o">+</span><span class="n">c</span>
+</pre></div>
+</div>
+<p>[ ] <code class="docutils literal notranslate"><span class="pre">fn(2,</span> <span class="pre">4)</span></code></p>
+<p>[X] <code class="docutils literal notranslate"><span class="pre">fn(2,</span> <span class="pre">0,</span> <span class="pre">4)</span></code></p>
+<p>[X] <code class="docutils literal notranslate"><span class="pre">fn(2,</span> <span class="pre">c=4)</span></code></p>
+<p>[ ] <code class="docutils literal notranslate"><span class="pre">fn(2,</span> <span class="pre">b=0,</span> <span class="pre">4)</span></code></p>
+<p>[X] <code class="docutils literal notranslate"><span class="pre">fn(2,</span> <span class="pre">b=0,</span> <span class="pre">c=4)</span></code></p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="q5-4-what-is-the-output-of-the-print-statement-in-the-following-code-and-explain-your-reasoning">
+<h1>Q5.4 What is the output of the <strong>print</strong> statement in the following code and explain your reasoning?<a class="headerlink" href="#q5-4-what-is-the-output-of-the-print-statement-in-the-following-code-and-explain-your-reasoning" title="Permalink to this heading">#</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fn</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+   <span class="k">return</span> <span class="n">num</span><span class="o">+</span><span class="mi">25</span>
+
+<span class="n">fun</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>(X) Error</p>
+<p>( ) 5</p>
+<p>( ) 25</p>
+<p>( ) 30</p>
+<p>Explain your reasoning</p>
+<p>num is a argument of the function, which serve as a placeholder, since it is not defined outside of the function, this is a undefined variable name, thus error occur when try to print it</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./exams/exam2"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Q2 Errors</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-1-absolute-relative-errors">Q2.1 Absolute &amp; relative errors</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-2-absolute-and-relative-errors-x-y">Q2.2 absolute and relative errors x+y</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-3-frac-1-x-y">Q2.3  <span class="math notranslate nohighlight">\(\frac{1}{x + y}\)</span></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-function-errors"><strong>Q3 Function &amp; errors</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-write-a-function-for-calculating-derivatives"><strong>Q4 Write a function for calculating derivatives</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-functions">Q5 Functions</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-1-which-of-the-following-statements-are-true">Q5.1 Which of the following statements are true?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-2-default-values-in-a-function">Q5.2 Default values in a function</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-3-which-of-the-following-function-calls-returns-a-value-of-8">Q5.3 Which of the following function calls returns a value of 8?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-4-what-is-the-output-of-the-print-statement-in-the-following-code-and-explain-your-reasoning">Q5.4 What is the output of the <strong>print</strong> statement in the following code and explain your reasoning?</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Krishna Kumar
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=c5ced968eda925caa686"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
