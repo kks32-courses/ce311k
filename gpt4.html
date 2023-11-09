@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=c5ced968eda925caa686" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,9 +38,9 @@
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=c5ced968eda925caa686" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=c5ced968eda925caa686"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -459,13 +459,53 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting openai
+  Downloading openai-1.1.2-py3-none-any.whl (217 kB)
+?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/217.9 kB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸━━━━━━━━ <span class=" -Color -Color-Green">174.1/217.9 kB</span> <span class=" -Color -Color-Red">5.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">217.9/217.9 kB</span> <span class=" -Color -Color-Red">4.5 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: anyio&lt;4,&gt;=3.5.0 in /usr/local/lib/python3.10/dist-packages (from openai) (3.7.1)
+Requirement already satisfied: distro&lt;2,&gt;=1.7.0 in /usr/lib/python3/dist-packages (from openai) (1.7.0)
+Collecting httpx&lt;1,&gt;=0.23.0 (from openai)
+  Downloading httpx-0.25.1-py3-none-any.whl (75 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">75.0/75.0 kB</span> <span class=" -Color -Color-Red">7.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: pydantic&lt;3,&gt;=1.9.0 in /usr/local/lib/python3.10/dist-packages (from openai) (1.10.13)
+Requirement already satisfied: tqdm&gt;4 in /usr/local/lib/python3.10/dist-packages (from openai) (4.66.1)
+Requirement already satisfied: typing-extensions&lt;5,&gt;=4.5 in /usr/local/lib/python3.10/dist-packages (from openai) (4.5.0)
+Requirement already satisfied: idna&gt;=2.8 in /usr/local/lib/python3.10/dist-packages (from anyio&lt;4,&gt;=3.5.0-&gt;openai) (3.4)
+Requirement already satisfied: sniffio&gt;=1.1 in /usr/local/lib/python3.10/dist-packages (from anyio&lt;4,&gt;=3.5.0-&gt;openai) (1.3.0)
+Requirement already satisfied: exceptiongroup in /usr/local/lib/python3.10/dist-packages (from anyio&lt;4,&gt;=3.5.0-&gt;openai) (1.1.3)
+Requirement already satisfied: certifi in /usr/local/lib/python3.10/dist-packages (from httpx&lt;1,&gt;=0.23.0-&gt;openai) (2023.7.22)
+Collecting httpcore (from httpx&lt;1,&gt;=0.23.0-&gt;openai)
+  Downloading httpcore-1.0.1-py3-none-any.whl (76 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">76.9/76.9 kB</span> <span class=" -Color -Color-Red">7.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hCollecting h11&lt;0.15,&gt;=0.13 (from httpcore-&gt;httpx&lt;1,&gt;=0.23.0-&gt;openai)
+  Downloading h11-0.14.0-py3-none-any.whl (58 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">58.3/58.3 kB</span> <span class=" -Color -Color-Red">5.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hInstalling collected packages: h11, httpcore, httpx, openai
+<span class=" -Color -Color-Red">ERROR: pip&#39;s dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.</span>
+<span class=" -Color -Color-Red">llmx 0.0.15a0 requires cohere, which is not installed.</span>
+<span class=" -Color -Color-Red">llmx 0.0.15a0 requires tiktoken, which is not installed.</span>
+Successfully installed h11-0.14.0 httpcore-1.0.1 httpx-0.25.1 openai-1.1.2
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">openai</span>
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="c1"># Enter the API Key provided in Canvas here as a string &#39;sk-&#39;</span>
-<span class="n">openai</span><span class="o">.</span><span class="n">api_key</span> <span class="o">=</span> <span class="s1">&#39;sk-&#39;</span>
+<span class="n">OPENAI_API_KEY</span><span class="o">=</span><span class="s1">&#39;sk-&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">openai</span> <span class="kn">import</span> <span class="n">OpenAI</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">OpenAI</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">OPENAI_API_KEY</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -478,13 +518,13 @@ document.write(`
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gpt4</span><span class="p">(</span><span class="n">question</span><span class="p">,</span> <span class="n">tokens</span><span class="o">=</span><span class="mi">500</span><span class="p">):</span>
     <span class="n">messages</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">question</span><span class="p">}]</span>
 
-    <span class="n">response</span> <span class="o">=</span> <span class="n">openai</span><span class="o">.</span><span class="n">ChatCompletion</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4&quot;</span><span class="p">,</span>
-                                        <span class="n">max_tokens</span><span class="o">=</span><span class="n">tokens</span><span class="p">,</span>
-                                        <span class="n">temperature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-                                        <span class="n">messages</span><span class="o">=</span><span class="n">messages</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4&quot;</span><span class="p">,</span>
+                                             <span class="n">max_tokens</span><span class="o">=</span><span class="n">tokens</span><span class="p">,</span>
+                                             <span class="n">temperature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                                             <span class="n">messages</span><span class="o">=</span><span class="n">messages</span><span class="p">)</span>
 
     <span class="c1"># Extract the content</span>
-    <span class="n">content</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;choices&quot;</span><span class="p">,</span> <span class="p">[{}])[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;message&quot;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;content&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span>
 
     <span class="c1"># Split the content into text and code</span>
     <span class="n">text_parts</span> <span class="o">=</span> <span class="p">[]</span>
@@ -523,6 +563,39 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">gpt4</span><span class="p">(</span><span class="s1">&#39;Write a Python code for computing deflection of a simply supported beam with a uniformly distributed load.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>In order to compute the deflection of a simply supported beam with a uniformly distributed load, we can use the formula:
+
+    y_max = (5/384) * (w*l^4) / (E*I)
+
+where:
+- y_max is the maximum deflection,
+- w is the load per unit length,
+- l is the length of the beam,
+- E is the modulus of elasticity, and
+- I is the moment of inertia.
+
+Here is a Python function that computes the deflection:
+
+
+This function takes as input the load per unit length, the length of the beam, the modulus of elasticity, and the moment of inertia, and returns the maximum deflection of the beam.
+
+--------------------------------------------------
+
+def compute_deflection(w, l, E, I):
+    y_max = (5/384) * (w*l**4) / (E*I)
+    return y_max
+
+# Example usage:
+w = 10  # load per unit length
+l = 5   # length of the beam
+E = 200 # modulus of elasticity
+I = 50  # moment of inertia
+
+print(&quot;Maximum deflection: &quot;, compute_deflection(w, l, E, I))
 </pre></div>
 </div>
 </div>
@@ -624,8 +697,8 @@ By Krishna Kumar
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=c5ced968eda925caa686"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686"></script>
+  <script src="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
 
   <footer class="bd-footer">
   </footer>
