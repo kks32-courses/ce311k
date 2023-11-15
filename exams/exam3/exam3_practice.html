@@ -447,6 +447,9 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-aliasing-mutation">5. List Aliasing/Mutation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#taylor-series">6. Taylor Series</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-comprehension">7. List comprehension</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-manipulation">8. List Manipulation:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#given-a-matrix-a-of-size-3x3-and-a-vector-b-of-size-3x1-compute-the-shape-output-of-the-following-operations-are-valid">9. Given a matrix <span class="math notranslate nohighlight">\(A\)</span> of size 3x3 and a vector <span class="math notranslate nohighlight">\(b\)</span> of size 3x1. Compute the shape/output of the following operations are valid.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-raphson">10: Newton Raphson</a></li>
 </ul>
 </li>
 </ul>
@@ -577,6 +580,69 @@ document.write(`
 </div>
 </div>
 </section>
+<section id="list-manipulation">
+<h3>8. List Manipulation:<a class="headerlink" href="#list-manipulation" title="Permalink to this heading">#</a></h3>
+<p>Manipulate the following two lists using list functions in Python to generate the following outputs.~\hfill [\textbf{4 points}]</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">lang1</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Python&#39;</span><span class="p">,</span> <span class="s1">&#39;C++&#39;</span><span class="p">,</span> <span class="s1">&#39;Go&#39;</span><span class="p">,</span> <span class="s1">&#39;Java&#39;</span><span class="p">,</span> <span class="s1">&#39;Rust&#39;</span><span class="p">]</span>
+<span class="n">lang2</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;FORTRAN&#39;</span><span class="p">,</span> <span class="s1">&#39;JavaScript&#39;</span><span class="p">,</span> <span class="s1">&#39;PERL&#39;</span><span class="p">,</span> <span class="s1">&#39;Swift&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li><p>[[‘Python’, ‘C++’, ‘Go’, ‘Java’, ‘Rust’], [‘FORTRAN’, ‘JavaScript’, ‘PERL’, ‘Swift’]]`</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">['Python',</span> <span class="pre">'C++',</span> <span class="pre">'Go',</span> <span class="pre">'Java',</span> <span class="pre">'Rust',</span> <span class="pre">'FORTRAN',</span> <span class="pre">'JavaScript',</span> <span class="pre">'PERL',</span> <span class="pre">'Swift']</span></code></p></li>
+<li><p>[`FORTRAN’, `PHP’, `PERL’, `Swift’, `COBOL’]
+[`Python’, `C++’, `Java’, `Rust’]</p></li>
+</ol>
+</section>
+<section id="given-a-matrix-a-of-size-3x3-and-a-vector-b-of-size-3x1-compute-the-shape-output-of-the-following-operations-are-valid">
+<h3>9. Given a matrix <span class="math notranslate nohighlight">\(A\)</span> of size 3x3 and a vector <span class="math notranslate nohighlight">\(b\)</span> of size 3x1. Compute the shape/output of the following operations are valid.<a class="headerlink" href="#given-a-matrix-a-of-size-3x3-and-a-vector-b-of-size-3x1-compute-the-shape-output-of-the-following-operations-are-valid" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A: </span><span class="se">\n</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">A</span><span class="p">))</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">b: = </span><span class="si">{}</span><span class="s2"> and has the shape: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <span class="math notranslate nohighlight">\(A^T \cdot A\)</span></p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <span class="math notranslate nohighlight">\(b^T \times b\)</span></p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <span class="math notranslate nohighlight">\(A^T \cdot A \cdot b^T\)</span></p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <span class="math notranslate nohighlight">\(A^T \cdot b\)</span></p></li>
+</ul>
+</section>
+<section id="newton-raphson">
+<h3>10: Newton Raphson<a class="headerlink" href="#newton-raphson" title="Permalink to this heading">#</a></h3>
+<p>Consider the following code Newton Raphson code to compute the roots of a function. Fix the errors in the code below. The correct function call should be: <code class="docutils literal notranslate"><span class="pre">newton_raphson(x0,</span> <span class="pre">fx,</span> <span class="pre">dfx,</span> <span class="pre">tol)</span></code>. Please satisfy the following conditions:</p>
+<ul class="simple">
+<li><p>The function should <code class="docutils literal notranslate"><span class="pre">return</span></code> the value of <span class="math notranslate nohighlight">\(x\)</span> and the error.</p></li>
+<li><p>Newton Raphson should exit the calculation once the error at each iteration <span class="math notranslate nohighlight">\(f(x)/f^\prime(x)\)</span> is below the <em>default</em> tolerance of <span class="math notranslate nohighlight">\(1e-6\)</span>.</p></li>
+<li><p>If the Newton Raphson doesn’t converge in 30 steps, print an error message</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Function to find the root </span>
+<span class="k">def</span> <span class="nf">newton_raphson</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> 
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">):</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="n">dfn</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> 
+        <span class="n">x</span> <span class="o">+=</span> <span class="n">h</span> 
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">h</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.0001</span><span class="p">:</span>
+           <span class="k">break</span>   
+           <span class="k">return</span> <span class="n">x</span>
+
+
+
+
+<span class="c1"># The code below is correct, please don&#39;t fix this part</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">error</span> <span class="o">=</span> <span class="n">newton_raphson</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">fn</span><span class="p">,</span> <span class="n">dfn</span><span class="p">,</span> <span class="mf">1e-6</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The root of fn is: </span><span class="si">{}</span><span class="s2"> and an error of </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">error</span><span class="p">))</span>
+
+</pre></div>
+</div>
+</section>
 </section>
 </section>
 
@@ -633,6 +699,9 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-aliasing-mutation">5. List Aliasing/Mutation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#taylor-series">6. Taylor Series</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-comprehension">7. List comprehension</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-manipulation">8. List Manipulation:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#given-a-matrix-a-of-size-3x3-and-a-vector-b-of-size-3x1-compute-the-shape-output-of-the-following-operations-are-valid">9. Given a matrix <span class="math notranslate nohighlight">\(A\)</span> of size 3x3 and a vector <span class="math notranslate nohighlight">\(b\)</span> of size 3x1. Compute the shape/output of the following operations are valid.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-raphson">10: Newton Raphson</a></li>
 </ul>
 </li>
 </ul>
