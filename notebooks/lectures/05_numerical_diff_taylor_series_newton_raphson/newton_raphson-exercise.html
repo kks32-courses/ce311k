@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,9 +38,9 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
-  <script src="../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
@@ -139,6 +139,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../../../README.html">
@@ -399,6 +400,7 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -408,6 +410,7 @@ document.write(`
   </button>
 `);
 </script>
+
 
 <script>
 document.write(`
@@ -466,7 +469,7 @@ F = \frac{\mu W}{\cos \theta + \mu \sin \theta} = \frac{\mu mg}{\cos \theta + \m
 <p>Python has a lot of useful standard library functions which are defined in modules. A Python code can gain access to the code in another module by the process of importing it. The import statement is the most common way of invoking the import machinery, but it is not the only way. We need to import a module called <code class="docutils literal notranslate"><span class="pre">math</span></code>, which has predefined trignometric functions using <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">math</span></code>, this makes available all the functions in <code class="docutils literal notranslate"><span class="pre">math</span></code> module. To use the <code class="docutils literal notranslate"><span class="pre">cos</span></code> function in <code class="docutils literal notranslate"><span class="pre">math</span></code> module, we do <code class="docutils literal notranslate"><span class="pre">math.cos(angle)</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
 <span class="n">mu</span> <span class="o">=</span> <span class="mf">0.75</span>
 <span class="n">angle</span> <span class="o">=</span> <span class="mi">45</span>
 <span class="n">theta</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
@@ -484,7 +487,7 @@ G(\theta) =  \frac{\mu mg}{\cos \theta + \mu \sin \theta} - F
 \]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gfn</span><span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="mf">0.75</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="mi">25</span><span class="p">,</span> <span class="n">F</span> <span class="o">=</span> <span class="mf">17.5</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">gfn</span><span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="mf">0.75</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="mi">25</span><span class="p">,</span> <span class="n">F</span> <span class="o">=</span> <span class="mf">17.5</span><span class="p">):</span>
   <span class="n">theta</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
   <span class="k">return</span> <span class="p">(</span><span class="n">mu</span> <span class="o">*</span> <span class="n">W</span> <span class="o">/</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">+</span> <span class="n">mu</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)))</span> <span class="o">-</span> <span class="n">F</span>
 
@@ -495,7 +498,7 @@ G(\theta) =  \frac{\mu mg}{\cos \theta + \mu \sin \theta} - F
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="c1"># Define bisection</span>
 </pre></div>
 </div>
@@ -562,7 +565,7 @@ G(\theta) =  \frac{\mu W}{\cos \theta + \mu \sin \theta} - F
 \[G'(\theta) = \frac{\mu W (\sin \theta - \mu \cos \theta)}{(\cos \theta + \mu \sin \theta)^2}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sym</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sym</span>
 <span class="c1"># Symbolic differentiation</span>
 </pre></div>
 </div>
@@ -570,7 +573,7 @@ G(\theta) =  \frac{\mu W}{\cos \theta + \mu \sin \theta} - F
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dgn</span><span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="mi">25</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="mf">0.75</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">dgn</span><span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="mi">25</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="mf">0.75</span><span class="p">):</span>
   <span class="n">theta</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
   <span class="k">return</span> <span class="p">(</span><span class="n">W</span> <span class="o">*</span> <span class="n">mu</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="n">mu</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">mu</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
@@ -579,7 +582,7 @@ G(\theta) =  \frac{\mu W}{\cos \theta + \mu \sin \theta} - F
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gfn</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="mf">0.75</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="mi">25</span><span class="p">,</span> <span class="n">F</span> <span class="o">=</span> <span class="mf">17.5</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">gfn</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="mf">0.75</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="mi">25</span><span class="p">,</span> <span class="n">F</span> <span class="o">=</span> <span class="mf">17.5</span><span class="p">):</span>
   <span class="k">return</span> <span class="p">(</span><span class="n">mu</span> <span class="o">*</span> <span class="n">W</span> <span class="o">/</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">+</span> <span class="n">mu</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)))</span> <span class="o">-</span> <span class="n">F</span>
 </pre></div>
 </div>
@@ -587,7 +590,7 @@ G(\theta) =  \frac{\mu W}{\cos \theta + \mu \sin \theta} - F
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.misc</span> <span class="kn">import</span> <span class="n">derivative</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.misc</span><span class="w"> </span><span class="kn">import</span> <span class="n">derivative</span>
 
 <span class="n">derivative</span><span class="p">(</span><span class="n">gfn</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">45</span><span class="p">),</span> <span class="n">dx</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
@@ -596,7 +599,7 @@ G(\theta) =  \frac{\mu W}{\cos \theta + \mu \sin \theta} - F
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">newton</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">newton</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">):</span>
 </pre></div>
 </div>
 </div>
@@ -639,7 +642,7 @@ G(\theta) =  \frac{\mu W}{\cos \theta + \mu \sin \theta} - F
               
               
                 <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                  
 <div class="prev-next-area">
 </div>
                 </footer>
@@ -682,6 +685,7 @@ By Krishna Kumar
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2022.
@@ -708,8 +712,8 @@ By Krishna Kumar
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>

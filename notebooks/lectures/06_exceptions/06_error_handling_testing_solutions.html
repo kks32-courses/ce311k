@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,9 +38,9 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
-  <script src="../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
@@ -141,6 +141,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../../../README.html">
@@ -401,6 +402,7 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -410,6 +412,7 @@ document.write(`
   </button>
 `);
 </script>
+
 
 <script>
 document.write(`
@@ -572,7 +575,7 @@ V = \frac{G M m}{r}
 <p>where <span class="math notranslate nohighlight">\(G\)</span> is the <em>gravitational constant</em>. This expression makes sense only for <span class="math notranslate nohighlight">\(G, M, m \ge 0\)</span> and <span class="math notranslate nohighlight">\(r &gt; 0\)</span>. Implementing computation of the gravitational potential as a function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gravity_potential</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">gravity_potential</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">G</span><span class="o">*</span><span class="n">M</span><span class="o">*</span><span class="n">m</span><span class="o">/</span><span class="n">r</span>
     
 <span class="n">V</span> <span class="o">=</span> <span class="n">gravity_potential</span><span class="p">(</span><span class="mf">6.674e-11</span><span class="p">,</span> <span class="mf">1.65e12</span><span class="p">,</span> <span class="mf">6.1e2</span><span class="p">,</span> <span class="mf">7e3</span><span class="p">)</span>
@@ -590,7 +593,7 @@ V = \frac{G M m}{r}
 <p>Rather than return an obviously wrong result, we can guard against easy-to-detect errors by checking the validity of the arguments and raising exceptions in the case of invalid data, e.g.:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gravity_potential</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">gravity_potential</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">G</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Gravitational constant must be greater than or equal to zero&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">M</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
@@ -619,7 +622,7 @@ V = \frac{G M m}{r}
 <span class="o">---&gt;</span> <span class="mi">12</span> <span class="n">V</span> <span class="o">=</span> <span class="n">gravity_potential</span><span class="p">(</span><span class="o">-</span><span class="mf">6.674e-11</span><span class="p">,</span> <span class="mf">1.65e12</span><span class="p">,</span> <span class="mf">6.1e2</span><span class="p">,</span> <span class="mf">7e3</span><span class="p">)</span>
 
 <span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">20</span><span class="o">-</span><span class="n">ef1cff047ffd</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="n">gravity_potential</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
-      <span class="mi">1</span> <span class="k">def</span> <span class="nf">gravity_potential</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+      <span class="mi">1</span> <span class="k">def</span><span class="w"> </span><span class="nf">gravity_potential</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
       <span class="mi">2</span>     <span class="k">if</span> <span class="n">G</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
 <span class="o">----&gt;</span> <span class="mi">3</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Gravitational constant must be greater than or equal to zero&quot;</span><span class="p">)</span>
       <span class="mi">4</span>     <span class="k">if</span> <span class="n">M</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
@@ -644,9 +647,9 @@ best describes the type of error encountered. Above, we have used the exception 
 <p>The below snippet of code would have raised an informative exception in pre-launch testing, which could then have been easily fixed.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="k">def</span> <span class="nf">cast_velocity</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">cast_velocity</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
     <span class="s2">&quot;Cast velocity to 16-bit with checking for overflow&quot;</span>
     
     <span class="c1"># Largest number a 16-bit int can store (http://docs.scipy.org/doc/numpy/reference/generated/numpy.iinfo.html)</span>
@@ -703,8 +706,8 @@ This might be reducing propulsion and asking for revised input.</p>
 <p>Say our program asks the user to enter the number of revolutions of the propeller blade, and they enter an invalid value (negative number, something other than a number, etc). A program should raise an exception when an invalid value is input, but rather than exiting it would be better to ask the user to enter the number of revolutions again. Here is an example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
-<span class="k">def</span> <span class="nf">generate_torque</span><span class="p">():</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_torque</span><span class="p">():</span>
     <span class="s2">&quot;Function that asks for number of revolutions. If input is invalid, user is prompted to try again&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="c1"># Get nrevolutions from user input - if conversion to int fails Python raises an exception</span>
@@ -752,8 +755,8 @@ component (float) to a 16-bit integer, but if the value is too large for a 16-bi
 <p>We first provide two functions for converting to a integer: the first to a 16-bit integer and the second to a 32-bit integer:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="k">def</span> <span class="nf">cast_velocity16</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">cast_velocity16</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
     <span class="s2">&quot;Convert to a 16-bit int. Raise exception if this will cause an overflow&quot;</span>
     <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">np</span><span class="o">.</span><span class="n">iinfo</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Numpy 16-bit casting&quot;</span><span class="p">)</span>
@@ -762,7 +765,7 @@ component (float) to a 16-bit integer, but if the value is too large for a 16-bi
         <span class="k">raise</span> <span class="ne">OverflowError</span><span class="p">(</span><span class="s2">&quot;Cannot safely cast velocity to 16-bit int.&quot;</span><span class="p">)</span>
 
         
-<span class="k">def</span> <span class="nf">cast_velocity32</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">cast_velocity32</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
     <span class="s2">&quot;Convert to a 32-bit int. Raise exception if this will cause an overflow&quot;</span>
     <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">np</span><span class="o">.</span><span class="n">iinfo</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Numpy 32-bit casting&quot;</span><span class="p">)</span>
@@ -777,7 +780,7 @@ component (float) to a 16-bit integer, but if the value is too large for a 16-bi
 a conversion to a 32-bit integer:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cast_velocity</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">cast_velocity</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="c1"># Try to cast v to a 16-bit int</span>
         <span class="k">return</span> <span class="n">cast_velocity16</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
@@ -831,7 +834,7 @@ computed result should be checked against a known correct solution. For the inva
 to add more checks to our programs. Test function for computing square of a number:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">square</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">square</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> 
     <span class="s2">&quot;Compute the square of a number&quot;</span>
     <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">n</span>
 </pre></div>
@@ -880,7 +883,7 @@ known results. A helpful tool for this is the <code class="docutils literal notr
               
               
                 <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="../05_numerical_diff_taylor_series_newton_raphson/newton_raphson.html"
@@ -965,6 +968,7 @@ By Krishna Kumar
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2022.
@@ -991,8 +995,8 @@ By Krishna Kumar
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>

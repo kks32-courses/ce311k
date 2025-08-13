@@ -1,0 +1,1558 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Austin Traffic Data Analysis: Part 1 - Fundamentals &#8212; Introduction to Programming with Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/lectures/00_intro/01_austin_traffic_fundamentals';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../../README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Introduction to Programming with Python</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../README.html">
+                    CE 311K: Introduction to Computer Methods (Python)
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="00_variables_assignment_operator-precedence_solutions.html">Lecture 00: Variable and assignment (Solution)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../01_control_flow/01_control_statements_solutions.html">Lecture 01a: Control statements (Solution)</a></li>
+
+
+
+
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01_control_flow/01_friction_sliding_block_solutions.html">Lecture 01b: Example of control statement</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01_control_flow/break_continue_solutions.html">Break continue (solution)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_control_flow/cantilever_beam_uvl_solutions.html">Cantilever beam uvl (solution)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_control_flow/atm.html">ATM</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../02_errors/02_errors_solutions.html">Lecture 02: Errors</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../03_functions/03_functions_solutions.html">Lecture 03: Functions (Solutions)</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../04_data_structures/04_data_structures_solutions.html">Lecture 04: Data structures (Solution)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../05_numerical_diff_taylor_series_newton_raphson/05_finite_difference_taylor_series_solutions.html">Lecture 05: Numerical differentiation</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../06_exceptions/06_error_handling_testing_solutions.html">Lecture 06: Error handling (Solution)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../07_vectors/07_vectors_solutions.html">Lecture 07: Vectors (Solution)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../08_matrices/08_matrices_solutions.html">Lecture 08: Matrices (solution)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../09_linear_algebra/09_linear_algebra_solutions.html">Lecture 09: Linear Algebra (Solution)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_useful_libs/10_useful_libs_solutions.html">Lecture 10: Useful libraries in Python (Solution)</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/kks32-courses/ce311k/blob/main/docs/notebooks/lectures/00_intro/01_austin_traffic_fundamentals.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/kks32-courses/ce311k" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/kks32-courses/ce311k/issues/new?title=Issue%20on%20page%20%2Fnotebooks/lectures/00_intro/01_austin_traffic_fundamentals.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/notebooks/lectures/00_intro/01_austin_traffic_fundamentals.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Austin Traffic Data Analysis: Part 1 - Fundamentals</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-and-data-discovery">Variables and Data Discovery</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-storing-information">Variables: Storing Information</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-types-define-what-we-can-do">Data Types Define What We Can Do</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lists-storing-multiple-values">Lists: Storing Multiple Values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#csv-comma-separated-values">CSV: Comma Separated Values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframes-smart-tables-for-engineering-data">DataFrames: Smart Tables for Engineering Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-time-information">Extracting Time Information</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-all-incidents-what-could-go-wrong">Plotting All Incidents: What Could Go Wrong?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-quality-issues-revealed">Data Quality Issues Revealed</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-statements-for-data-cleaning">Conditional Statements for Data Cleaning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boolean-values-making-decisions">Boolean Values: Making Decisions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-operators-create-booleans">Comparison Operators Create Booleans</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-boolean-masks-for-austin-area">Creating Boolean Masks for Austin Area</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boolean-indexing-selecting-valid-data">Boolean Indexing: Selecting Valid Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#control-statements-program-decision-making">Control Statements: Program Decision Making</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-by-incident-type">Filtering by Incident Type</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparative-incident-maps">Comparative Incident Maps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-patterns-revealed">Spatial Patterns Revealed</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loops-for-automation">Loops for Automation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-problem-with-manual-analysis">The Problem with Manual Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-loop-structure">For Loop Structure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#storing-results-from-loops">Storing Results from Loops</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tuples-immutable-sequences">Tuples: Immutable Sequences</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries-structured-data-storage">Dictionaries: Structured Data Storage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nested-loops-multiple-dimensions">Nested Loops: Multiple Dimensions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loop-based-hourly-analysis">Loop-based Hourly Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-peak-incident-types-by-year">Finding Peak Incident Types by Year</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#engineering-summary">Engineering Summary</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="austin-traffic-data-analysis-part-1-fundamentals">
+<h1>Austin Traffic Data Analysis: Part 1 - Fundamentals<a class="headerlink" href="#austin-traffic-data-analysis-part-1-fundamentals" title="Permalink to this heading">#</a></h1>
+<p>Austin generates over 400,000 traffic incidents per year. During the 2020 pandemic, traffic patterns changed dramatically - but not in ways you might expect.</p>
+<p>We’ll use computational methods to uncover these hidden patterns and learn what they tell us about urban infrastructure resilience.</p>
+<section id="variables-and-data-discovery">
+<h2>Variables and Data Discovery<a class="headerlink" href="#variables-and-data-discovery" title="Permalink to this heading">#</a></h2>
+<section id="variables-storing-information">
+<h3>Variables: Storing Information<a class="headerlink" href="#variables-storing-information" title="Permalink to this heading">#</a></h3>
+<p>Variables are handles for values. When we write:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">incident_count</span> <span class="o">=</span> <span class="mi">432444</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The expression on the right (432444) is evaluated and stored in the variable on the left (incident_count). This follows the mathematical notation: variable ← value</p>
+<p>In engineering, we need variables to track:</p>
+<ul class="simple">
+<li><p>Measurements that change over time</p></li>
+<li><p>Parameters we want to adjust</p></li>
+<li><p>Results we need to reference later</p></li>
+</ul>
+</section>
+<section id="data-types-define-what-we-can-do">
+<h3>Data Types Define What We Can Do<a class="headerlink" href="#data-types-define-what-we-can-do" title="Permalink to this heading">#</a></h3>
+<p>Objects have types that determine valid operations:</p>
+<ul class="simple">
+<li><p>Can multiply two numbers</p></li>
+<li><p>Cannot multiply a number and text</p></li>
+<li><p>Each type serves a specific purpose</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Integer: whole numbers for counts</span>
+<span class="n">crashes_2019</span> <span class="o">=</span> <span class="mi">68051</span>
+<span class="n">crashes_2020</span> <span class="o">=</span> <span class="mi">45321</span>
+
+<span class="c1"># Float: decimals for coordinates  </span>
+<span class="n">austin_latitude</span> <span class="o">=</span> <span class="mf">30.2672</span>
+<span class="n">austin_longitude</span> <span class="o">=</span> <span class="o">-</span><span class="mf">97.7431</span>
+
+<span class="c1"># String: text for categories</span>
+<span class="n">incident_type</span> <span class="o">=</span> <span class="s2">&quot;Crash Urgent&quot;</span>
+<span class="n">data_source</span> <span class="o">=</span> <span class="s2">&quot;Austin Open Data Portal&quot;</span>
+
+<span class="c1"># Boolean: True/False for conditions</span>
+<span class="n">is_pandemic_year</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">has_valid_coordinates</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Operations with variables</span>
+<span class="n">change</span> <span class="o">=</span> <span class="n">crashes_2020</span> <span class="o">-</span> <span class="n">crashes_2019</span>
+<span class="n">percent_change</span> <span class="o">=</span> <span class="p">(</span><span class="n">change</span> <span class="o">/</span> <span class="n">crashes_2019</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">change</span><span class="si">}</span><span class="s2"> incidents&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">percent_change</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-22730 incidents
+-33.4%
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="lists-storing-multiple-values">
+<h3>Lists: Storing Multiple Values<a class="headerlink" href="#lists-storing-multiple-values" title="Permalink to this heading">#</a></h3>
+<p>A list is an ordered collection of values. Lists can contain any type of data and can be modified.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># List of years to analyze</span>
+<span class="n">years</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2019</span><span class="p">,</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">2021</span><span class="p">,</span> <span class="mi">2022</span><span class="p">]</span>
+
+<span class="c1"># List of incident types</span>
+<span class="n">incident_types</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Crash Urgent&quot;</span><span class="p">,</span> <span class="s2">&quot;Traffic Hazard&quot;</span><span class="p">,</span> <span class="s2">&quot;COLLISION&quot;</span><span class="p">,</span> <span class="s2">&quot;Stalled Vehicle&quot;</span><span class="p">]</span>
+
+<span class="c1"># Access elements by index (starts at 0)</span>
+<span class="n">first_year</span> <span class="o">=</span> <span class="n">years</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">pandemic_year</span> <span class="o">=</span> <span class="n">years</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;First year: </span><span class="si">{</span><span class="n">first_year</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pandemic year: </span><span class="si">{</span><span class="n">pandemic_year</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>First year: 2019
+Pandemic year: 2020
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lists can be modified</span>
+<span class="n">years</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">2023</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Updated years: </span><span class="si">{</span><span class="n">years</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Get length of list</span>
+<span class="n">num_years</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">years</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Analyzing </span><span class="si">{</span><span class="n">num_years</span><span class="si">}</span><span class="s2"> years&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Updated years: [2019, 2020, 2021, 2022, 2023]
+Analyzing 5 years
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="csv-comma-separated-values">
+<h3>CSV: Comma Separated Values<a class="headerlink" href="#csv-comma-separated-values" title="Permalink to this heading">#</a></h3>
+<p>A CSV file is like a spreadsheet stored as text:</p>
+<ul class="simple">
+<li><p>Each row = one traffic incident</p></li>
+<li><p>Each column = one attribute (date, location, type)</p></li>
+<li><p>Commas separate the values</p></li>
+</ul>
+<p>Example row:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">03</span><span class="o">/</span><span class="mi">06</span><span class="o">/</span><span class="mi">2024</span> <span class="mi">01</span><span class="p">:</span><span class="mi">29</span><span class="p">:</span><span class="mi">39</span> <span class="n">AM</span><span class="p">,</span><span class="n">Stalled</span> <span class="n">Vehicle</span><span class="p">,</span><span class="mf">30.32358</span><span class="p">,</span><span class="o">-</span><span class="mf">97.705874</span><span class="p">,</span><span class="n">IH</span> <span class="mi">35</span><span class="p">,</span><span class="n">AUSTIN</span> <span class="n">PD</span>
+</pre></div>
+</div>
+</section>
+<section id="dataframes-smart-tables-for-engineering-data">
+<h3>DataFrames: Smart Tables for Engineering Data<a class="headerlink" href="#dataframes-smart-tables-for-engineering-data" title="Permalink to this heading">#</a></h3>
+<p>With 400,000+ incidents and 10+ attributes each, we need structure. A DataFrame is a 2D labeled data structure that:</p>
+<ul class="simple">
+<li><p>Handles different data types per column</p></li>
+<li><p>Provides powerful filtering and analysis methods</p></li>
+<li><p>Scales to millions of rows efficiently</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># Load Austin traffic incidents</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Real-Time_Traffic_Incident_Reports_20250805.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Basic exploration</span>
+<span class="n">num_incidents</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">num_attributes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dataset: </span><span class="si">{</span><span class="n">num_incidents</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> incidents&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Attributes per incident: </span><span class="si">{</span><span class="n">num_attributes</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dataset: 432,444 incidents
+Attributes per incident: 10
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Display column names</span>
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Traffic Report ID&#39;, &#39;Published Date&#39;, &#39;Issue Reported&#39;, &#39;Location&#39;,
+       &#39;Latitude&#39;, &#39;Longitude&#39;, &#39;Address&#39;, &#39;Status&#39;, &#39;Status Date&#39;, &#39;Agency&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Show first few incidents</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Traffic Report ID</th>
+      <th>Published Date</th>
+      <th>Issue Reported</th>
+      <th>Location</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Address</th>
+      <th>Status</th>
+      <th>Status Date</th>
+      <th>Agency</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>F350D780EA8AAA48030B4DB64F790C14DBCD757F_17096...</td>
+      <td>03/06/2024 01:29:39 AM +0000</td>
+      <td>Stalled Vehicle</td>
+      <td>POINT (-97.705874 30.32358)</td>
+      <td>30.323580</td>
+      <td>-97.705874</td>
+      <td>E 290 Svrd Wb To Ih 35 Nb Ramp / N Ih 35 Svrd ...</td>
+      <td>ARCHIVED</td>
+      <td>03/06/2024 02:10:12 AM +0000</td>
+      <td>AUSTIN PD</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>042338D46C2028808F298DEC735DC7ADF0C162F6_17096...</td>
+      <td>03/06/2024 01:26:42 AM +0000</td>
+      <td>Crash Urgent</td>
+      <td>POINT (-97.698567 30.342505)</td>
+      <td>30.342505</td>
+      <td>-97.698567</td>
+      <td>8024 N Ih 35 Svrd Sb</td>
+      <td>ARCHIVED</td>
+      <td>03/06/2024 02:45:13 AM +0000</td>
+      <td>AUSTIN PD</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>BE73E73B642ECB6C6EDB4A52875A8017F69DFE5E_17080...</td>
+      <td>02/15/2024 10:17:48 PM +0000</td>
+      <td>LOOSE LIVESTOCK</td>
+      <td>POINT (-97.717911 30.0578)</td>
+      <td>30.057800</td>
+      <td>-97.717911</td>
+      <td>12400 Glass Rd</td>
+      <td>ARCHIVED</td>
+      <td>02/15/2024 11:33:08 PM +0000</td>
+      <td>TRAVIS COUNTY SHERIF</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="extracting-time-information">
+<h3>Extracting Time Information<a class="headerlink" href="#extracting-time-information" title="Permalink to this heading">#</a></h3>
+<p>Traffic patterns vary by time. We need to extract:</p>
+<ul class="simple">
+<li><p>Year: for pandemic comparison</p></li>
+<li><p>Month: for seasonal patterns</p></li>
+<li><p>Hour: for daily patterns</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert string dates to datetime objects</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Published Date&#39;</span><span class="p">])</span>
+
+<span class="c1"># Extract components</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Month&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Hour&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">hour</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Count incidents per year</span>
+<span class="n">yearly_counts</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+<span class="n">yearly_counts</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Year
+2017    17194
+2018    70070
+2019    68051
+2020    45321
+2021    51338
+2022    53109
+2023    51109
+2024    48285
+2025    27967
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Most common incident types</span>
+<span class="n">incident_type_counts</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Issue Reported&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">incident_type_counts</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Issue Reported
+Traffic Hazard       127772
+Crash Urgent         105530
+Crash Service         59219
+COLLISION             44902
+TRFC HAZD/ DEBRIS     33386
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plotting-all-incidents-what-could-go-wrong">
+<h3>Plotting All Incidents: What Could Go Wrong?<a class="headerlink" href="#plotting-all-incidents-what-could-go-wrong" title="Permalink to this heading">#</a></h3>
+<p>Let’s visualize all traffic incidents on a map. Since we have latitude and longitude for each incident, this should be straightforward…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Longitude</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">Latitude</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Longitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;All Traffic Incidents - Notice Anything Strange?&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/66dc358eb29c48ebbeaeffa2052658ee2443ed1b513687b8a76305dad5a4823d.png" src="../../../_images/66dc358eb29c48ebbeaeffa2052658ee2443ed1b513687b8a76305dad5a4823d.png" />
+</div>
+</div>
+</section>
+<section id="data-quality-issues-revealed">
+<h3>Data Quality Issues Revealed<a class="headerlink" href="#data-quality-issues-revealed" title="Permalink to this heading">#</a></h3>
+<p>The plot shows:</p>
+<ol class="arabic simple">
+<li><p>Points at (0, 0) - missing coordinates</p></li>
+<li><p>Points far from Austin - data entry errors</p></li>
+<li><p>Extreme outliers at -100 longitude</p></li>
+</ol>
+<p>This is real-world data: messy and requiring cleaning before analysis.</p>
+</section>
+</section>
+<section id="conditional-statements-for-data-cleaning">
+<h2>Conditional Statements for Data Cleaning<a class="headerlink" href="#conditional-statements-for-data-cleaning" title="Permalink to this heading">#</a></h2>
+<section id="boolean-values-making-decisions">
+<h3>Boolean Values: Making Decisions<a class="headerlink" href="#boolean-values-making-decisions" title="Permalink to this heading">#</a></h3>
+<p>Booleans are True or False values used for decision-making. They result from comparisons and control program flow.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Simple boolean examples</span>
+<span class="n">year</span> <span class="o">=</span> <span class="mi">2020</span>
+<span class="n">is_pandemic</span> <span class="o">=</span> <span class="n">year</span> <span class="o">==</span> <span class="mi">2020</span>  <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Is 2020 the pandemic year? </span><span class="si">{</span><span class="n">is_pandemic</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">latitude</span> <span class="o">=</span> <span class="mf">30.2672</span>
+<span class="n">is_in_austin</span> <span class="o">=</span> <span class="n">latitude</span> <span class="o">&gt;</span> <span class="mf">30.0</span> <span class="ow">and</span> <span class="n">latitude</span> <span class="o">&lt;</span> <span class="mf">30.6</span>  <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Is latitude </span><span class="si">{</span><span class="n">latitude</span><span class="si">}</span><span class="s2"> in Austin? </span><span class="si">{</span><span class="n">is_in_austin</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Check data quality</span>
+<span class="n">lat_is_zero</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">lon_is_zero</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">is_missing_data</span> <span class="o">=</span> <span class="p">(</span><span class="n">lat_is_zero</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">lon_is_zero</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Are coordinates missing? </span><span class="si">{</span><span class="n">is_missing_data</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Is 2020 the pandemic year? True
+Is latitude 30.2672 in Austin? True
+Are coordinates missing? True
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="comparison-operators-create-booleans">
+<h3>Comparison Operators Create Booleans<a class="headerlink" href="#comparison-operators-create-booleans" title="Permalink to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">==</span>  <span class="n">Equal</span> <span class="n">to</span>
+<span class="o">!=</span>  <span class="n">Not</span> <span class="n">equal</span> <span class="n">to</span>
+<span class="o">&lt;</span>   <span class="n">Less</span> <span class="n">than</span>  
+<span class="o">&gt;</span>   <span class="n">Greater</span> <span class="n">than</span>
+<span class="o">&lt;=</span>  <span class="n">Less</span> <span class="n">than</span> <span class="ow">or</span> <span class="n">equal</span>
+<span class="o">&gt;=</span>  <span class="n">Greater</span> <span class="n">than</span> <span class="ow">or</span> <span class="n">equal</span>
+</pre></div>
+</div>
+<p>Combine with:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">and</span></code> - Both must be True</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">or</span></code> - Either can be True</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">not</span></code> - Negates the condition</p></li>
+</ul>
+</section>
+<section id="creating-boolean-masks-for-austin-area">
+<h3>Creating Boolean Masks for Austin Area<a class="headerlink" href="#creating-boolean-masks-for-austin-area" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define Austin&#39;s approximate boundaries</span>
+<span class="n">austin_lat_min</span> <span class="o">=</span> <span class="mf">30.0</span>
+<span class="n">austin_lat_max</span> <span class="o">=</span> <span class="mf">30.6</span>
+<span class="n">austin_lon_min</span> <span class="o">=</span> <span class="o">-</span><span class="mf">98.0</span>
+<span class="n">austin_lon_max</span> <span class="o">=</span> <span class="o">-</span><span class="mf">97.0</span>
+
+<span class="c1"># Create boolean conditions for each coordinate</span>
+<span class="n">valid_latitude</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Latitude&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">austin_lat_min</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Latitude&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">austin_lat_max</span><span class="p">)</span>
+<span class="n">valid_longitude</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Longitude&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">austin_lon_min</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Longitude&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">austin_lon_max</span><span class="p">)</span>
+
+<span class="c1"># Check how many are valid</span>
+<span class="n">num_valid_lat</span> <span class="o">=</span> <span class="n">valid_latitude</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">num_valid_lon</span> <span class="o">=</span> <span class="n">valid_longitude</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Valid latitudes: </span><span class="si">{</span><span class="n">num_valid_lat</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Valid longitudes: </span><span class="si">{</span><span class="n">num_valid_lon</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Valid latitudes: 431,221
+Valid longitudes: 426,769
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="boolean-indexing-selecting-valid-data">
+<h3>Boolean Indexing: Selecting Valid Data<a class="headerlink" href="#boolean-indexing-selecting-valid-data" title="Permalink to this heading">#</a></h3>
+<p>We use boolean arrays to select rows that meet our criteria. <code class="docutils literal notranslate"><span class="pre">df[boolean_condition]</span></code> returns only rows where condition is True.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Combine conditions</span>
+<span class="n">valid_coordinates</span> <span class="o">=</span> <span class="n">valid_latitude</span> <span class="o">&amp;</span> <span class="n">valid_longitude</span>
+
+<span class="c1"># Filter to Austin-only data</span>
+<span class="n">austin_data</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">valid_coordinates</span><span class="p">]</span>
+
+<span class="c1"># Compare before and after</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Original: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> incidents&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Austin only: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">austin_data</span><span class="p">)</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> incidents&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Removed: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">austin_data</span><span class="p">)</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> bad records&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Original: 432,444 incidents
+Austin only: 426,603 incidents
+Removed: 5,841 bad records
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualize cleaned data</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">austin_data</span><span class="o">.</span><span class="n">Longitude</span><span class="p">,</span> <span class="n">austin_data</span><span class="o">.</span><span class="n">Latitude</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Longitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">)</span>  
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Austin Traffic Incidents - After Cleaning&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">97.9</span><span class="p">,</span> <span class="o">-</span><span class="mf">97.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mf">30.1</span><span class="p">,</span> <span class="mf">30.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/c5f6a0e1d3d28bdbe4858b21c9d8a34fa7e78dd3cdd5eabb5000e3eef649f733.png" src="../../../_images/c5f6a0e1d3d28bdbe4858b21c9d8a34fa7e78dd3cdd5eabb5000e3eef649f733.png" />
+</div>
+</div>
+</section>
+<section id="control-statements-program-decision-making">
+<h3>Control Statements: Program Decision Making<a class="headerlink" href="#control-statements-program-decision-making" title="Permalink to this heading">#</a></h3>
+<p>Programs need to make decisions based on data:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">condition</span><span class="p">:</span>
+    <span class="c1"># Do this if True</span>
+<span class="k">elif</span> <span class="n">other_condition</span><span class="p">:</span>
+    <span class="c1"># Do this if first False but this True</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># Do this if all False</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate yearly incidents</span>
+<span class="n">incidents_2019</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">austin_data</span><span class="p">[</span><span class="n">austin_data</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2019</span><span class="p">])</span>
+<span class="n">incidents_2020</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">austin_data</span><span class="p">[</span><span class="n">austin_data</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2020</span><span class="p">])</span>
+<span class="n">incidents_2021</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">austin_data</span><span class="p">[</span><span class="n">austin_data</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2021</span><span class="p">])</span>
+
+<span class="c1"># Analyze pandemic impact</span>
+<span class="k">if</span> <span class="n">incidents_2019</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">change</span> <span class="o">=</span> <span class="n">incidents_2020</span> <span class="o">-</span> <span class="n">incidents_2019</span>
+    <span class="n">percent</span> <span class="o">=</span> <span class="p">(</span><span class="n">change</span> <span class="o">/</span> <span class="n">incidents_2019</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+    
+    <span class="k">if</span> <span class="n">percent</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">30</span><span class="p">:</span>
+        <span class="n">impact</span> <span class="o">=</span> <span class="s2">&quot;Major reduction&quot;</span>
+    <span class="k">elif</span> <span class="n">percent</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">10</span><span class="p">:</span>
+        <span class="n">impact</span> <span class="o">=</span> <span class="s2">&quot;Moderate reduction&quot;</span>
+    <span class="k">elif</span> <span class="n">percent</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="n">impact</span> <span class="o">=</span> <span class="s2">&quot;Increase despite lockdowns&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">impact</span> <span class="o">=</span> <span class="s2">&quot;Relatively stable&quot;</span>
+        
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;2019: </span><span class="si">{</span><span class="n">incidents_2019</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> incidents&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;2020: </span><span class="si">{</span><span class="n">incidents_2020</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> incidents&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Change: </span><span class="si">{</span><span class="n">percent</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">% - </span><span class="si">{</span><span class="n">impact</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2019: 67,278 incidents
+2020: 44,631 incidents
+Change: -33.7% - Major reduction
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="filtering-by-incident-type">
+<h3>Filtering by Incident Type<a class="headerlink" href="#filtering-by-incident-type" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Different incident types</span>
+<span class="n">collision_filter</span> <span class="o">=</span> <span class="n">austin_data</span><span class="p">[</span><span class="s1">&#39;Issue Reported&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;COLLISION&#39;</span>
+<span class="n">crash_filter</span> <span class="o">=</span> <span class="n">austin_data</span><span class="p">[</span><span class="s1">&#39;Issue Reported&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Crash Urgent&#39;</span>
+<span class="n">hazard_filter</span> <span class="o">=</span> <span class="n">austin_data</span><span class="p">[</span><span class="s1">&#39;Issue Reported&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Traffic Hazard&#39;</span>
+
+<span class="c1"># Apply filters</span>
+<span class="n">collisions</span> <span class="o">=</span> <span class="n">austin_data</span><span class="p">[</span><span class="n">collision_filter</span><span class="p">]</span>
+<span class="n">crashes</span> <span class="o">=</span> <span class="n">austin_data</span><span class="p">[</span><span class="n">crash_filter</span><span class="p">]</span>
+<span class="n">hazards</span> <span class="o">=</span> <span class="n">austin_data</span><span class="p">[</span><span class="n">hazard_filter</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Collisions: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">collisions</span><span class="p">)</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Crashes: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">crashes</span><span class="p">)</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hazards: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">hazards</span><span class="p">)</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collisions: 43,256
+Crashes: 105,452
+Hazards: 127,550
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="comparative-incident-maps">
+<h3>Comparative Incident Maps<a class="headerlink" href="#comparative-incident-maps" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create figure with 3 subplots</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># Plot collisions</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">collisions</span><span class="o">.</span><span class="n">Longitude</span><span class="p">,</span> <span class="n">collisions</span><span class="o">.</span><span class="n">Latitude</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Collisions&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">97.9</span><span class="p">,</span> <span class="o">-</span><span class="mf">97.5</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">30.1</span><span class="p">,</span> <span class="mf">30.5</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Longitude&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot crashes  </span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">crashes</span><span class="o">.</span><span class="n">Longitude</span><span class="p">,</span> <span class="n">crashes</span><span class="o">.</span><span class="n">Latitude</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Crash Urgent&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">97.9</span><span class="p">,</span> <span class="o">-</span><span class="mf">97.5</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">30.1</span><span class="p">,</span> <span class="mf">30.5</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Longitude&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot hazards</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">hazards</span><span class="o">.</span><span class="n">Longitude</span><span class="p">,</span> <span class="n">hazards</span><span class="o">.</span><span class="n">Latitude</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Traffic Hazards&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">97.9</span><span class="p">,</span> <span class="o">-</span><span class="mf">97.5</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">30.1</span><span class="p">,</span> <span class="mf">30.5</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Longitude&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/dd3e85985037704c1d2b70787500ce67298220aac44650af47b05471f28e48e8.png" src="../../../_images/dd3e85985037704c1d2b70787500ce67298220aac44650af47b05471f28e48e8.png" />
+</div>
+</div>
+</section>
+<section id="spatial-patterns-revealed">
+<h3>Spatial Patterns Revealed<a class="headerlink" href="#spatial-patterns-revealed" title="Permalink to this heading">#</a></h3>
+<p>Different incident types show distinct geographic patterns:</p>
+<ul class="simple">
+<li><p>Collisions cluster at major intersections</p></li>
+<li><p>Crashes concentrate on highways</p></li>
+<li><p>Hazards spread throughout residential areas</p></li>
+</ul>
+</section>
+</section>
+<section id="loops-for-automation">
+<h2>Loops for Automation<a class="headerlink" href="#loops-for-automation" title="Permalink to this heading">#</a></h2>
+<section id="the-problem-with-manual-analysis">
+<h3>The Problem with Manual Analysis<a class="headerlink" href="#the-problem-with-manual-analysis" title="Permalink to this heading">#</a></h3>
+<p>To analyze 2019, 2020, and 2021 separately:</p>
+<ul class="simple">
+<li><p>Write filtering code 3 times</p></li>
+<li><p>Risk copy-paste errors</p></li>
+<li><p>Hard to extend to more years</p></li>
+</ul>
+<p>Loops automate repetitive tasks - write once, run many times.</p>
+</section>
+<section id="for-loop-structure">
+<h3>For Loop Structure<a class="headerlink" href="#for-loop-structure" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">collection</span><span class="p">:</span>
+    <span class="c1"># Code block executes for each item</span>
+    <span class="c1"># variable takes each value in turn</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Manual approach (tedious)</span>
+<span class="n">year_2019</span> <span class="o">=</span> <span class="n">austin_data</span><span class="p">[</span><span class="n">austin_data</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2019</span><span class="p">]</span>
+<span class="n">count_2019</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">year_2019</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;2019: </span><span class="si">{</span><span class="n">count_2019</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">year_2020</span> <span class="o">=</span> <span class="n">austin_data</span><span class="p">[</span><span class="n">austin_data</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2020</span><span class="p">]</span>
+<span class="n">count_2020</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">year_2020</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;2020: </span><span class="si">{</span><span class="n">count_2020</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">year_2021</span> <span class="o">=</span> <span class="n">austin_data</span><span class="p">[</span><span class="n">austin_data</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2021</span><span class="p">]</span>
+<span class="n">count_2021</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">year_2021</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;2021: </span><span class="si">{</span><span class="n">count_2021</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2019: 67,278
+2020: 44,631
+2021: 50,631
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Loop approach (scalable)</span>
+<span class="n">years</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2019</span><span class="p">,</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">2021</span><span class="p">,</span> <span class="mi">2022</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">:</span>
+    <span class="n">year_data</span> <span class="o">=</span> <span class="n">austin_data</span><span class="p">[</span><span class="n">austin_data</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">year</span><span class="p">]</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">year_data</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">count</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> incidents&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2019: 67,278 incidents
+2020: 44,631 incidents
+2021: 50,631 incidents
+2022: 52,330 incidents
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="storing-results-from-loops">
+<h3>Storing Results from Loops<a class="headerlink" href="#storing-results-from-loops" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using lists to store results</span>
+<span class="n">years</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2019</span><span class="p">,</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">2021</span><span class="p">,</span> <span class="mi">2022</span><span class="p">]</span>
+<span class="n">incident_counts</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">:</span>
+    <span class="n">year_data</span> <span class="o">=</span> <span class="n">austin_data</span><span class="p">[</span><span class="n">austin_data</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">year</span><span class="p">]</span>
+    <span class="n">incident_counts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">year_data</span><span class="p">))</span>
+
+<span class="c1"># Now we can plot the results</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">incident_counts</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Number of Incidents&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Austin Traffic Incidents by Year&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/c2cfc28d1f1478200736cbe0a70af464749ae9226c79e0794dc782fc4b9792f1.png" src="../../../_images/c2cfc28d1f1478200736cbe0a70af464749ae9226c79e0794dc782fc4b9792f1.png" />
+</div>
+</div>
+</section>
+<section id="tuples-immutable-sequences">
+<h3>Tuples: Immutable Sequences<a class="headerlink" href="#tuples-immutable-sequences" title="Permalink to this heading">#</a></h3>
+<p>Tuples are like lists but cannot be modified after creation. Use them when data shouldn’t change.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tuple of Austin&#39;s coordinates (shouldn&#39;t change)</span>
+<span class="n">austin_center</span> <span class="o">=</span> <span class="p">(</span><span class="mf">30.2672</span><span class="p">,</span> <span class="o">-</span><span class="mf">97.7431</span><span class="p">)</span>
+<span class="n">lat</span><span class="p">,</span> <span class="n">lon</span> <span class="o">=</span> <span class="n">austin_center</span>  <span class="c1"># Unpack tuple</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Austin center: </span><span class="si">{</span><span class="n">austin_center</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Latitude: </span><span class="si">{</span><span class="n">lat</span><span class="si">}</span><span class="s2">, Longitude: </span><span class="si">{</span><span class="n">lon</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Tuples are immutable</span>
+<span class="c1"># austin_center[0] = 31.0  # This would cause an error</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Austin center: (30.2672, -97.7431)
+Latitude: 30.2672, Longitude: -97.7431
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="dictionaries-structured-data-storage">
+<h3>Dictionaries: Structured Data Storage<a class="headerlink" href="#dictionaries-structured-data-storage" title="Permalink to this heading">#</a></h3>
+<p>Dictionaries store key-value pairs. Perfect for organizing related data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Simple dictionary for one year</span>
+<span class="n">year_2020_stats</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;total&#39;</span><span class="p">:</span> <span class="mi">45321</span><span class="p">,</span>
+    <span class="s1">&#39;crashes&#39;</span><span class="p">:</span> <span class="mi">12543</span><span class="p">,</span>
+    <span class="s1">&#39;peak_hour&#39;</span><span class="p">:</span> <span class="mi">17</span><span class="p">,</span>
+    <span class="s1">&#39;worst_month&#39;</span><span class="p">:</span> <span class="s1">&#39;October&#39;</span>
+<span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;2020 total incidents: </span><span class="si">{</span><span class="n">year_2020_stats</span><span class="p">[</span><span class="s1">&#39;total&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;2020 peak hour: </span><span class="si">{</span><span class="n">year_2020_stats</span><span class="p">[</span><span class="s1">&#39;peak_hour&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">:00&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2020 total incidents: 45321
+2020 peak hour: 17:00
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Why dictionaries? Store multiple statistics per year</span>
+<span class="n">yearly_analysis</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2019</span><span class="p">,</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">2021</span><span class="p">]:</span>  
+    <span class="n">year_data</span> <span class="o">=</span> <span class="n">austin_data</span><span class="p">[</span><span class="n">austin_data</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">year</span><span class="p">]</span>
+    
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">year_data</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="c1"># Store multiple values for each year</span>
+        <span class="n">yearly_analysis</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;total&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">year_data</span><span class="p">),</span>
+            <span class="s1">&#39;crashes&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">year_data</span><span class="p">[</span><span class="n">year_data</span><span class="p">[</span><span class="s1">&#39;Issue Reported&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Crash Urgent&#39;</span><span class="p">]),</span>
+            <span class="s1">&#39;collisions&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">year_data</span><span class="p">[</span><span class="n">year_data</span><span class="p">[</span><span class="s1">&#39;Issue Reported&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;COLLISION&#39;</span><span class="p">]),</span>
+            <span class="s1">&#39;peak_hour&#39;</span><span class="p">:</span> <span class="n">year_data</span><span class="p">[</span><span class="s1">&#39;Hour&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mode</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">year_data</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="p">}</span>
+
+<span class="c1"># Display results</span>
+<span class="k">for</span> <span class="n">year</span><span class="p">,</span> <span class="n">stats</span> <span class="ow">in</span> <span class="n">yearly_analysis</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Total: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;total&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Crashes: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;crashes&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Collisions: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;collisions&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Peak hour: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;peak_hour&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">:00&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2019:
+  Total: 67,278
+  Crashes: 16,318
+  Collisions: 5,561
+  Peak hour: 22:00
+
+2020:
+  Total: 44,631
+  Crashes: 10,950
+  Collisions: 4,305
+  Peak hour: 22:00
+
+2021:
+  Total: 50,631
+  Crashes: 12,325
+  Collisions: 5,659
+  Peak hour: 22:00
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="nested-loops-multiple-dimensions">
+<h3>Nested Loops: Multiple Dimensions<a class="headerlink" href="#nested-loops-multiple-dimensions" title="Permalink to this heading">#</a></h3>
+<p>Analyze combinations: each location across each year</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find top incident locations</span>
+<span class="n">top_locations</span> <span class="o">=</span> <span class="n">austin_data</span><span class="p">[</span><span class="s1">&#39;Address&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">index</span>
+<span class="n">years</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2019</span><span class="p">,</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">2021</span><span class="p">]</span>
+
+<span class="c1"># Analyze each location across years</span>
+<span class="k">for</span> <span class="n">location</span> <span class="ow">in</span> <span class="n">top_locations</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">location</span><span class="p">[:</span><span class="mi">50</span><span class="p">]</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>  <span class="c1"># Truncate long addresses</span>
+    <span class="n">location_data</span> <span class="o">=</span> <span class="n">austin_data</span><span class="p">[</span><span class="n">austin_data</span><span class="p">[</span><span class="s1">&#39;Address&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">location</span><span class="p">]</span>
+    
+    <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">:</span>
+        <span class="n">year_loc_data</span> <span class="o">=</span> <span class="n">location_data</span><span class="p">[</span><span class="n">location_data</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">year</span><span class="p">]</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">year_loc_data</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2"> incidents&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9300 S Ih 35 Svrd Sb...
+  2019: 47 incidents
+  2020: 20 incidents
+  2021: 19 incidents
+
+E Parmer Ln &amp; Dessau Rd...
+  2019: 42 incidents
+  2020: 33 incidents
+  2021: 49 incidents
+
+710 E Ben White Blvd Svrd Wb...
+  2019: 40 incidents
+  2020: 25 incidents
+  2021: 20 incidents
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="loop-based-hourly-analysis">
+<h3>Loop-based Hourly Analysis<a class="headerlink" href="#loop-based-hourly-analysis" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compare hourly patterns across years</span>
+<span class="n">hours</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">24</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2019</span><span class="p">,</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">2021</span><span class="p">]:</span>
+    <span class="n">year_data</span> <span class="o">=</span> <span class="n">austin_data</span><span class="p">[</span><span class="n">austin_data</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">year</span><span class="p">]</span>
+    <span class="n">hourly_counts</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">for</span> <span class="n">hour</span> <span class="ow">in</span> <span class="n">hours</span><span class="p">:</span>
+        <span class="n">hour_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">year_data</span><span class="p">[</span><span class="n">year_data</span><span class="p">[</span><span class="s1">&#39;Hour&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">hour</span><span class="p">])</span>
+        <span class="n">hourly_counts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hour_count</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hours</span><span class="p">,</span> <span class="n">hourly_counts</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">year</span><span class="p">),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Hour of Day&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Number of Incidents&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Daily Traffic Pattern: Pandemic Impact&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/9063272239d7d8e175ed721c765a8c85ed692f7c16358c3218b3d29f00d9dd0a.png" src="../../../_images/9063272239d7d8e175ed721c765a8c85ed692f7c16358c3218b3d29f00d9dd0a.png" />
+</div>
+</div>
+</section>
+<section id="finding-peak-incident-types-by-year">
+<h3>Finding Peak Incident Types by Year<a class="headerlink" href="#finding-peak-incident-types-by-year" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Track incident types across years</span>
+<span class="n">incident_types_to_track</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Crash Urgent&#39;</span><span class="p">,</span> <span class="s1">&#39;COLLISION&#39;</span><span class="p">,</span> <span class="s1">&#39;Traffic Hazard&#39;</span><span class="p">,</span> <span class="s1">&#39;Stalled Vehicle&#39;</span><span class="p">]</span>
+<span class="n">years</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2019</span><span class="p">,</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">2021</span><span class="p">]</span>
+
+<span class="c1"># Create plot</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">incident_types_to_track</span><span class="p">))</span>
+<span class="n">width</span> <span class="o">=</span> <span class="mf">0.25</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">years</span><span class="p">):</span>
+    <span class="n">year_data</span> <span class="o">=</span> <span class="n">austin_data</span><span class="p">[</span><span class="n">austin_data</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">year</span><span class="p">]</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">for</span> <span class="n">incident_type</span> <span class="ow">in</span> <span class="n">incident_types_to_track</span><span class="p">:</span>
+        <span class="n">type_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">year_data</span><span class="p">[</span><span class="n">year_data</span><span class="p">[</span><span class="s1">&#39;Issue Reported&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">incident_type</span><span class="p">])</span>
+        <span class="n">counts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">type_count</span><span class="p">)</span>
+    
+    <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">i</span><span class="o">*</span><span class="n">width</span><span class="p">,</span> <span class="n">counts</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">year</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Incident Type&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number of Incidents&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Incident Types by Year&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">width</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">incident_types_to_track</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/77b9a2dab055a3a2d0943a09a766473fc26ea625d56d57e9f9e625fcbe4241b2.png" src="../../../_images/77b9a2dab055a3a2d0943a09a766473fc26ea625d56d57e9f9e625fcbe4241b2.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="engineering-summary">
+<h2>Engineering Summary<a class="headerlink" href="#engineering-summary" title="Permalink to this heading">#</a></h2>
+<p>Through computational analysis of Austin’s traffic data, we’ve discovered:</p>
+<ol class="arabic simple">
+<li><p>Data quality issues requiring filtering (invalid coordinates)</p></li>
+<li><p>Pandemic impact on traffic patterns</p></li>
+<li><p>Spatial distribution of different incident types</p></li>
+<li><p>Temporal patterns revealing peak risk hours</p></li>
+</ol>
+<p>These insights enable data-driven infrastructure planning and resource allocation.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/lectures/00_intro"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-and-data-discovery">Variables and Data Discovery</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-storing-information">Variables: Storing Information</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-types-define-what-we-can-do">Data Types Define What We Can Do</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lists-storing-multiple-values">Lists: Storing Multiple Values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#csv-comma-separated-values">CSV: Comma Separated Values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframes-smart-tables-for-engineering-data">DataFrames: Smart Tables for Engineering Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-time-information">Extracting Time Information</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-all-incidents-what-could-go-wrong">Plotting All Incidents: What Could Go Wrong?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-quality-issues-revealed">Data Quality Issues Revealed</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-statements-for-data-cleaning">Conditional Statements for Data Cleaning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boolean-values-making-decisions">Boolean Values: Making Decisions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-operators-create-booleans">Comparison Operators Create Booleans</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-boolean-masks-for-austin-area">Creating Boolean Masks for Austin Area</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boolean-indexing-selecting-valid-data">Boolean Indexing: Selecting Valid Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#control-statements-program-decision-making">Control Statements: Program Decision Making</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-by-incident-type">Filtering by Incident Type</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparative-incident-maps">Comparative Incident Maps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-patterns-revealed">Spatial Patterns Revealed</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loops-for-automation">Loops for Automation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-problem-with-manual-analysis">The Problem with Manual Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-loop-structure">For Loop Structure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#storing-results-from-loops">Storing Results from Loops</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tuples-immutable-sequences">Tuples: Immutable Sequences</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries-structured-data-storage">Dictionaries: Structured Data Storage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nested-loops-multiple-dimensions">Nested Loops: Multiple Dimensions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loop-based-hourly-analysis">Loop-based Hourly Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-peak-incident-types-by-year">Finding Peak Incident Types by Year</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#engineering-summary">Engineering Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Krishna Kumar
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
