@@ -1180,18 +1180,22 @@ Hazards: 127,550
     <span class="n">year_data</span> <span class="o">=</span> <span class="n">austin_data</span><span class="p">[</span><span class="n">austin_data</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">year</span><span class="p">]</span>
     <span class="n">incident_counts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">year_data</span><span class="p">))</span>
 
-<span class="c1"># Now we can plot the results</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">incident_counts</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Number of Incidents&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Austin Traffic Incidents by Year&#39;</span><span class="p">)</span>
+
+<span class="c1"># Fix the x-axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">years</span><span class="p">)</span>  <span class="c1"># This sets the tick positions to exactly match your years</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">2018.5</span><span class="p">,</span> <span class="mf">2022.5</span><span class="p">)</span>  <span class="c1"># Optional: set limits for better spacing</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/c2cfc28d1f1478200736cbe0a70af464749ae9226c79e0794dc782fc4b9792f1.png" src="../../../_images/c2cfc28d1f1478200736cbe0a70af464749ae9226c79e0794dc782fc4b9792f1.png" />
+<img alt="../../../_images/b9a842c8f691aa1834e1af7f301f6622adc41c904f5c3b63957c4575003558ad.png" src="../../../_images/b9a842c8f691aa1834e1af7f301f6622adc41c904f5c3b63957c4575003558ad.png" />
 </div>
 </div>
 </section>
