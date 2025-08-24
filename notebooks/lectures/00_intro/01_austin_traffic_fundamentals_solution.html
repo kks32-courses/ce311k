@@ -62,7 +62,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/lectures/00_intro/01_austin_traffic_fundamentals';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/lectures/00_intro/01_austin_traffic_fundamentals_solution';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -268,7 +268,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://colab.research.google.com/github/kks32-courses/ce311k/blob/main/docs/notebooks/lectures/00_intro/01_austin_traffic_fundamentals.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/kks32-courses/ce311k/blob/main/docs/notebooks/lectures/00_intro/01_austin_traffic_fundamentals_solution.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -316,7 +316,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/kks32-courses/ce311k/issues/new?title=Issue%20on%20page%20%2Fnotebooks/lectures/00_intro/01_austin_traffic_fundamentals.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/kks32-courses/ce311k/issues/new?title=Issue%20on%20page%20%2Fnotebooks/lectures/00_intro/01_austin_traffic_fundamentals_solution.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -346,7 +346,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../../_sources/notebooks/lectures/00_intro/01_austin_traffic_fundamentals.ipynb" target="_blank"
+      <li><a href="../../../_sources/notebooks/lectures/00_intro/01_austin_traffic_fundamentals_solution.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -488,7 +488,7 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="austin-traffic-data-analysis-part-1-fundamentals">
 <h1>Austin Traffic Data Analysis: Part 1 - Fundamentals<a class="headerlink" href="#austin-traffic-data-analysis-part-1-fundamentals" title="Permalink to this heading">#</a></h1>
 <p><strong>Exercise:</strong> <a class="reference external" href="https://colab.research.google.com/github/kks32-courses/ce311k/blob/main/notebooks/lectures/00_intro/01_austin_traffic_fundamentals.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>
-<strong>Solution:</strong> <a class="reference external" href="https://colab.research.google.com/github/kks32-courses/ce311k/blob/main/notebooks/lectures/00_intro/01_austin_traffic_fundamentals_solution.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>`</p>
+<strong>Solution:</strong> <a class="reference external" href="https://colab.research.google.com/github/kks32-courses/ce311k/blob/main/notebooks/lectures/00_intro/01_austin_traffic_fundamentals_solutions.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>`</p>
 <p>Austin generates over 400,000 traffic incidents per year. During the 2020 pandemic, traffic patterns changed dramatically - but not in ways you might expect.</p>
 <p>We’ll use computational methods to uncover these hidden patterns and learn what they tell us about urban infrastructure resilience.</p>
 <section id="variables-and-data-discovery">
@@ -499,6 +499,32 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>https://github.com/kks32-courses/ce311k/raw/refs/heads/main/notebooks/lectures/00_intro/Real-Time_Traffic_Incident_Reports_20250805.csv
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2025-08-24 10:04:25--  https://github.com/kks32-courses/ce311k/raw/refs/heads/main/notebooks/lectures/00_intro/Real-Time_Traffic_Incident_Reports_20250805.csv
+Resolving github.com (github.com)... 140.82.112.3
+Connecting to github.com (github.com)|140.82.112.3|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://raw.githubusercontent.com/kks32-courses/ce311k/refs/heads/main/notebooks/lectures/00_intro/Real-Time_Traffic_Incident_Reports_20250805.csv [following]
+--2025-08-24 10:04:25--  https://raw.githubusercontent.com/kks32-courses/ce311k/refs/heads/main/notebooks/lectures/00_intro/Real-Time_Traffic_Incident_Reports_20250805.csv
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.109.133, 185.199.110.133, 185.199.108.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.109.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 91933660 (88M) [text/plain]
+Saving to: ‘Real-Time_Traffic_Incident_Reports_20250805.csv.1’
+
+Real-Time_Traffic_I 100%[===================&gt;]  87.67M  65.2MB/s    in 1.3s    
+
+2025-08-24 10:04:28 (65.2 MB/s) - ‘Real-Time_Traffic_Incident_Reports_20250805.csv.1’ saved [91933660/91933660]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">incident_count</span> <span class="o">=</span> <span class="mi">432444</span>
 </pre></div>
 </div>
 </div>
@@ -522,13 +548,20 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Integer: whole numbers for counts</span>
-
+<span class="n">crashes_2019</span> <span class="o">=</span> <span class="mi">68051</span>
+<span class="n">crashes_2020</span> <span class="o">=</span> <span class="mi">45321</span>
 
 <span class="c1"># Float: decimals for coordinates  </span>
+<span class="n">austin_latitude</span> <span class="o">=</span> <span class="mf">30.2672</span>
+<span class="n">austin_longitude</span> <span class="o">=</span> <span class="o">-</span><span class="mf">97.7431</span>
 
 <span class="c1"># String: text for categories</span>
+<span class="n">incident_type</span> <span class="o">=</span> <span class="s2">&quot;Crash Urgent&quot;</span>
+<span class="n">data_source</span> <span class="o">=</span> <span class="s2">&quot;Austin Open Data Portal&quot;</span>
 
 <span class="c1"># Boolean: True/False for conditions</span>
+<span class="n">is_pandemic_year</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">has_valid_coordinates</span> <span class="o">=</span> <span class="kc">False</span>
 </pre></div>
 </div>
 </div>
@@ -536,6 +569,17 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Operations with variables</span>
+<span class="n">change</span> <span class="o">=</span> <span class="n">crashes_2020</span> <span class="o">-</span> <span class="n">crashes_2019</span>
+<span class="n">percent_change</span> <span class="o">=</span> <span class="p">(</span><span class="n">change</span> <span class="o">/</span> <span class="n">crashes_2019</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">change</span><span class="si">}</span><span class="s2"> incidents&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">percent_change</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-22730 incidents
+-33.4%
 </pre></div>
 </div>
 </div>
@@ -547,16 +591,23 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># List of years to analyze</span>
-
+<span class="n">years</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2019</span><span class="p">,</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">2021</span><span class="p">,</span> <span class="mi">2022</span><span class="p">]</span>
 
 <span class="c1"># List of incident types</span>
-
+<span class="n">incident_types</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Crash Urgent&quot;</span><span class="p">,</span> <span class="s2">&quot;Traffic Hazard&quot;</span><span class="p">,</span> <span class="s2">&quot;COLLISION&quot;</span><span class="p">,</span> <span class="s2">&quot;Stalled Vehicle&quot;</span><span class="p">]</span>
 
 <span class="c1"># Access elements by index (starts at 0)</span>
-
+<span class="n">first_year</span> <span class="o">=</span> <span class="n">years</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">pandemic_year</span> <span class="o">=</span> <span class="n">years</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;First year: </span><span class="si">{</span><span class="n">first_year</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pandemic year: </span><span class="si">{</span><span class="n">pandemic_year</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>First year: 2019
+Pandemic year: 2020
 </pre></div>
 </div>
 </div>
@@ -564,8 +615,18 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lists can be modified</span>
+<span class="n">years</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">2023</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Updated years: </span><span class="si">{</span><span class="n">years</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="c1"># Get length of list</span>
+<span class="n">num_years</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">years</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Analyzing </span><span class="si">{</span><span class="n">num_years</span><span class="si">}</span><span class="s2"> years&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Updated years: [2019, 2020, 2021, 2022, 2023]
+Analyzing 5 years
 </pre></div>
 </div>
 </div>
@@ -594,7 +655,12 @@ document.write(`
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load Austin traffic incidents</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># Load Austin traffic incidents</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Real-Time_Traffic_Incident_Reports_20250805.csv&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -602,11 +668,17 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Basic exploration</span>
-
-
+<span class="n">num_incidents</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">num_attributes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dataset: </span><span class="si">{</span><span class="n">num_incidents</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> incidents&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Attributes per incident: </span><span class="si">{</span><span class="n">num_attributes</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dataset: 432,444 incidents
+Attributes per incident: 10
 </pre></div>
 </div>
 </div>
@@ -614,6 +686,14 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Display column names</span>
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Traffic Report ID&#39;, &#39;Published Date&#39;, &#39;Issue Reported&#39;, &#39;Location&#39;,
+       &#39;Latitude&#39;, &#39;Longitude&#39;, &#39;Address&#39;, &#39;Status&#39;, &#39;Status Date&#39;, &#39;Agency&#39;],
+      dtype=&#39;object&#39;)
 </pre></div>
 </div>
 </div>
@@ -621,9 +701,84 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Show first few incidents</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Traffic Report ID</th>
+      <th>Published Date</th>
+      <th>Issue Reported</th>
+      <th>Location</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Address</th>
+      <th>Status</th>
+      <th>Status Date</th>
+      <th>Agency</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>F350D780EA8AAA48030B4DB64F790C14DBCD757F_17096...</td>
+      <td>03/06/2024 01:29:39 AM +0000</td>
+      <td>Stalled Vehicle</td>
+      <td>POINT (-97.705874 30.32358)</td>
+      <td>30.323580</td>
+      <td>-97.705874</td>
+      <td>E 290 Svrd Wb To Ih 35 Nb Ramp / N Ih 35 Svrd ...</td>
+      <td>ARCHIVED</td>
+      <td>03/06/2024 02:10:12 AM +0000</td>
+      <td>AUSTIN PD</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>042338D46C2028808F298DEC735DC7ADF0C162F6_17096...</td>
+      <td>03/06/2024 01:26:42 AM +0000</td>
+      <td>Crash Urgent</td>
+      <td>POINT (-97.698567 30.342505)</td>
+      <td>30.342505</td>
+      <td>-97.698567</td>
+      <td>8024 N Ih 35 Svrd Sb</td>
+      <td>ARCHIVED</td>
+      <td>03/06/2024 02:45:13 AM +0000</td>
+      <td>AUSTIN PD</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>BE73E73B642ECB6C6EDB4A52875A8017F69DFE5E_17080...</td>
+      <td>02/15/2024 10:17:48 PM +0000</td>
+      <td>LOOSE LIVESTOCK</td>
+      <td>POINT (-97.717911 30.0578)</td>
+      <td>30.057800</td>
+      <td>-97.717911</td>
+      <td>12400 Glass Rd</td>
+      <td>ARCHIVED</td>
+      <td>02/15/2024 11:33:08 PM +0000</td>
+      <td>TRAVIS COUNTY SHERIF</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 <section id="extracting-time-information">
@@ -637,9 +792,12 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert string dates to datetime objects</span>
-
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Published Date&#39;</span><span class="p">])</span>
 
 <span class="c1"># Extract components</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Month&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Hour&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">hour</span>
 </pre></div>
 </div>
 </div>
@@ -647,6 +805,23 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Count incidents per year</span>
+<span class="n">yearly_counts</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+<span class="n">yearly_counts</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Year
+2017    17194
+2018    70070
+2019    68051
+2020    45321
+2021    51338
+2022    53109
+2023    51109
+2024    48285
+2025    27967
+Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -654,6 +829,19 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Most common incident types</span>
+<span class="n">incident_type_counts</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Issue Reported&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">incident_type_counts</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Issue Reported
+Traffic Hazard       127772
+Crash Urgent         105530
+Crash Service         59219
+COLLISION             44902
+TRFC HAZD/ DEBRIS     33386
+Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -662,6 +850,21 @@ document.write(`
 <section id="plotting-all-incidents-what-could-go-wrong">
 <h3>Plotting All Incidents: What Could Go Wrong?<a class="headerlink" href="#plotting-all-incidents-what-could-go-wrong" title="Permalink to this heading">#</a></h3>
 <p>Let’s visualize all traffic incidents on a map. Since we have latitude and longitude for each incident, this should be straightforward…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Longitude</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">Latitude</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Longitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;All Traffic Incidents - Notice Anything Strange?&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/66dc358eb29c48ebbeaeffa2052658ee2443ed1b513687b8a76305dad5a4823d.png" src="../../../_images/66dc358eb29c48ebbeaeffa2052658ee2443ed1b513687b8a76305dad5a4823d.png" />
+</div>
+</div>
 </section>
 <section id="data-quality-issues-revealed">
 <h3>Data Quality Issues Revealed<a class="headerlink" href="#data-quality-issues-revealed" title="Permalink to this heading">#</a></h3>
@@ -682,11 +885,26 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Simple boolean examples</span>
+<span class="n">year</span> <span class="o">=</span> <span class="mi">2020</span>
+<span class="n">is_pandemic</span> <span class="o">=</span> <span class="n">year</span> <span class="o">==</span> <span class="mi">2020</span>  <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Is 2020 the pandemic year? </span><span class="si">{</span><span class="n">is_pandemic</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
+<span class="n">latitude</span> <span class="o">=</span> <span class="mf">30.2672</span>
+<span class="n">is_in_austin</span> <span class="o">=</span> <span class="n">latitude</span> <span class="o">&gt;</span> <span class="mf">30.0</span> <span class="ow">and</span> <span class="n">latitude</span> <span class="o">&lt;</span> <span class="mf">30.6</span>  <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Is latitude </span><span class="si">{</span><span class="n">latitude</span><span class="si">}</span><span class="s2"> in Austin? </span><span class="si">{</span><span class="n">is_in_austin</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="c1"># Check data quality</span>
-
+<span class="n">lat_is_zero</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">lon_is_zero</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">is_missing_data</span> <span class="o">=</span> <span class="p">(</span><span class="n">lat_is_zero</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">lon_is_zero</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># True</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Are coordinates missing? </span><span class="si">{</span><span class="n">is_missing_data</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Is 2020 the pandemic year? True
+Is latitude 30.2672 in Austin? True
+Are coordinates missing? True
 </pre></div>
 </div>
 </div>
@@ -720,13 +938,21 @@ document.write(`
 <span class="n">austin_lon_max</span> <span class="o">=</span> <span class="o">-</span><span class="mf">97.0</span>
 
 <span class="c1"># Create boolean conditions for each coordinate</span>
+<span class="n">valid_latitude</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Latitude&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">austin_lat_min</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Latitude&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">austin_lat_max</span><span class="p">)</span>
+<span class="n">valid_longitude</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Longitude&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">austin_lon_min</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Longitude&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">austin_lon_max</span><span class="p">)</span>
 
 <span class="c1"># Check how many are valid</span>
-
-
+<span class="n">num_valid_lat</span> <span class="o">=</span> <span class="n">valid_latitude</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">num_valid_lon</span> <span class="o">=</span> <span class="n">valid_longitude</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Valid latitudes: </span><span class="si">{</span><span class="n">num_valid_lat</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Valid longitudes: </span><span class="si">{</span><span class="n">num_valid_lon</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Valid latitudes: 431,221
+Valid longitudes: 426,769
 </pre></div>
 </div>
 </div>
@@ -738,14 +964,22 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Combine conditions</span>
+<span class="n">valid_coordinates</span> <span class="o">=</span> <span class="n">valid_latitude</span> <span class="o">&amp;</span> <span class="n">valid_longitude</span>
 
 <span class="c1"># Filter to Austin-only data</span>
-
+<span class="n">austin_data</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">valid_coordinates</span><span class="p">]</span>
 
 <span class="c1"># Compare before and after</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Original: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> incidents&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Austin only: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">austin_data</span><span class="p">)</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> incidents&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Removed: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">austin_data</span><span class="p">)</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> bad records&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Original: 432,444 incidents
+Austin only: 426,603 incidents
+Removed: 5,841 bad records
 </pre></div>
 </div>
 </div>
@@ -764,6 +998,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/c5f6a0e1d3d28bdbe4858b21c9d8a34fa7e78dd3cdd5eabb5000e3eef649f733.png" src="../../../_images/c5f6a0e1d3d28bdbe4858b21c9d8a34fa7e78dd3cdd5eabb5000e3eef649f733.png" />
+</div>
 </div>
 </section>
 <section id="control-statements-program-decision-making">
@@ -780,8 +1017,34 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate yearly incidents</span>
+<span class="n">incidents_2019</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">austin_data</span><span class="p">[</span><span class="n">austin_data</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2019</span><span class="p">])</span>
+<span class="n">incidents_2020</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">austin_data</span><span class="p">[</span><span class="n">austin_data</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2020</span><span class="p">])</span>
+<span class="n">incidents_2021</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">austin_data</span><span class="p">[</span><span class="n">austin_data</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2021</span><span class="p">])</span>
 
 <span class="c1"># Analyze pandemic impact</span>
+<span class="k">if</span> <span class="n">incidents_2019</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">change</span> <span class="o">=</span> <span class="n">incidents_2020</span> <span class="o">-</span> <span class="n">incidents_2019</span>
+    <span class="n">percent</span> <span class="o">=</span> <span class="p">(</span><span class="n">change</span> <span class="o">/</span> <span class="n">incidents_2019</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+    
+    <span class="k">if</span> <span class="n">percent</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">30</span><span class="p">:</span>
+        <span class="n">impact</span> <span class="o">=</span> <span class="s2">&quot;Major reduction&quot;</span>
+    <span class="k">elif</span> <span class="n">percent</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">10</span><span class="p">:</span>
+        <span class="n">impact</span> <span class="o">=</span> <span class="s2">&quot;Moderate reduction&quot;</span>
+    <span class="k">elif</span> <span class="n">percent</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="n">impact</span> <span class="o">=</span> <span class="s2">&quot;Increase despite lockdowns&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">impact</span> <span class="o">=</span> <span class="s2">&quot;Relatively stable&quot;</span>
+        
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;2019: </span><span class="si">{</span><span class="n">incidents_2019</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> incidents&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;2020: </span><span class="si">{</span><span class="n">incidents_2020</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> incidents&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Change: </span><span class="si">{</span><span class="n">percent</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">% - </span><span class="si">{</span><span class="n">impact</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2019: 67,278 incidents
+2020: 44,631 incidents
+Change: -33.7% - Major reduction
 </pre></div>
 </div>
 </div>
@@ -792,13 +1055,25 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Different incident types</span>
-
+<span class="n">collision_filter</span> <span class="o">=</span> <span class="n">austin_data</span><span class="p">[</span><span class="s1">&#39;Issue Reported&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;COLLISION&#39;</span>
+<span class="n">crash_filter</span> <span class="o">=</span> <span class="n">austin_data</span><span class="p">[</span><span class="s1">&#39;Issue Reported&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Crash Urgent&#39;</span>
+<span class="n">hazard_filter</span> <span class="o">=</span> <span class="n">austin_data</span><span class="p">[</span><span class="s1">&#39;Issue Reported&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Traffic Hazard&#39;</span>
 
 <span class="c1"># Apply filters</span>
+<span class="n">collisions</span> <span class="o">=</span> <span class="n">austin_data</span><span class="p">[</span><span class="n">collision_filter</span><span class="p">]</span>
+<span class="n">crashes</span> <span class="o">=</span> <span class="n">austin_data</span><span class="p">[</span><span class="n">crash_filter</span><span class="p">]</span>
+<span class="n">hazards</span> <span class="o">=</span> <span class="n">austin_data</span><span class="p">[</span><span class="n">hazard_filter</span><span class="p">]</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Collisions: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">collisions</span><span class="p">)</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Crashes: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">crashes</span><span class="p">)</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hazards: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">hazards</span><span class="p">)</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collisions: 43,256
+Crashes: 105,452
+Hazards: 127,550
 </pre></div>
 </div>
 </div>
@@ -840,6 +1115,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/dd3e85985037704c1d2b70787500ce67298220aac44650af47b05471f28e48e8.png" src="../../../_images/dd3e85985037704c1d2b70787500ce67298220aac44650af47b05471f28e48e8.png" />
+</div>
 </div>
 </section>
 <section id="spatial-patterns-revealed">
@@ -874,6 +1152,24 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Manual approach (tedious)</span>
+<span class="n">year_2019</span> <span class="o">=</span> <span class="n">austin_data</span><span class="p">[</span><span class="n">austin_data</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2019</span><span class="p">]</span>
+<span class="n">count_2019</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">year_2019</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;2019: </span><span class="si">{</span><span class="n">count_2019</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">year_2020</span> <span class="o">=</span> <span class="n">austin_data</span><span class="p">[</span><span class="n">austin_data</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2020</span><span class="p">]</span>
+<span class="n">count_2020</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">year_2020</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;2020: </span><span class="si">{</span><span class="n">count_2020</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">year_2021</span> <span class="o">=</span> <span class="n">austin_data</span><span class="p">[</span><span class="n">austin_data</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2021</span><span class="p">]</span>
+<span class="n">count_2021</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">year_2021</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;2021: </span><span class="si">{</span><span class="n">count_2021</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2019: 67,278
+2020: 44,631
+2021: 50,631
 </pre></div>
 </div>
 </div>
@@ -881,6 +1177,20 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Loop approach (scalable)</span>
+<span class="n">years</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2019</span><span class="p">,</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">2021</span><span class="p">,</span> <span class="mi">2022</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">:</span>
+    <span class="n">year_data</span> <span class="o">=</span> <span class="n">austin_data</span><span class="p">[</span><span class="n">austin_data</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">year</span><span class="p">]</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">year_data</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">count</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> incidents&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2019: 67,278 incidents
+2020: 44,631 incidents
+2021: 50,631 incidents
+2022: 52,330 incidents
 </pre></div>
 </div>
 </div>
@@ -891,10 +1201,29 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using lists to store results</span>
+<span class="n">years</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2019</span><span class="p">,</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">2021</span><span class="p">,</span> <span class="mi">2022</span><span class="p">]</span>
+<span class="n">incident_counts</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">:</span>
+    <span class="n">year_data</span> <span class="o">=</span> <span class="n">austin_data</span><span class="p">[</span><span class="n">austin_data</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">year</span><span class="p">]</span>
+    <span class="n">incident_counts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">year_data</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">incident_counts</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Number of Incidents&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Austin Traffic Incidents by Year&#39;</span><span class="p">)</span>
 
 <span class="c1"># Fix the x-axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">years</span><span class="p">)</span>  <span class="c1"># This sets the tick positions to exactly match your years</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">2018.5</span><span class="p">,</span> <span class="mf">2022.5</span><span class="p">)</span>  <span class="c1"># Optional: set limits for better spacing</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/b9a842c8f691aa1834e1af7f301f6622adc41c904f5c3b63957c4575003558ad.png" src="../../../_images/b9a842c8f691aa1834e1af7f301f6622adc41c904f5c3b63957c4575003558ad.png" />
 </div>
 </div>
 </section>
@@ -904,14 +1233,20 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tuple of Austin&#39;s coordinates (shouldn&#39;t change)</span>
-
-
+<span class="n">austin_center</span> <span class="o">=</span> <span class="p">(</span><span class="mf">30.2672</span><span class="p">,</span> <span class="o">-</span><span class="mf">97.7431</span><span class="p">)</span>
+<span class="n">lat</span><span class="p">,</span> <span class="n">lon</span> <span class="o">=</span> <span class="n">austin_center</span>  <span class="c1"># Unpack tuple</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Austin center: </span><span class="si">{</span><span class="n">austin_center</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Latitude: </span><span class="si">{</span><span class="n">lat</span><span class="si">}</span><span class="s2">, Longitude: </span><span class="si">{</span><span class="n">lon</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="c1"># Tuples are immutable</span>
 <span class="c1"># austin_center[0] = 31.0  # This would cause an error</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Austin center: (30.2672, -97.7431)
+Latitude: 30.2672, Longitude: -97.7431
 </pre></div>
 </div>
 </div>
@@ -935,13 +1270,58 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2020 total incidents: 45321
+2020 peak hour: 17:00
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Why dictionaries? Store multiple statistics per year</span>
+<span class="n">yearly_analysis</span> <span class="o">=</span> <span class="p">{}</span>
 
+<span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2019</span><span class="p">,</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">2021</span><span class="p">]:</span>  
+    <span class="n">year_data</span> <span class="o">=</span> <span class="n">austin_data</span><span class="p">[</span><span class="n">austin_data</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">year</span><span class="p">]</span>
+    
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">year_data</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="c1"># Store multiple values for each year</span>
+        <span class="n">yearly_analysis</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;total&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">year_data</span><span class="p">),</span>
+            <span class="s1">&#39;crashes&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">year_data</span><span class="p">[</span><span class="n">year_data</span><span class="p">[</span><span class="s1">&#39;Issue Reported&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Crash Urgent&#39;</span><span class="p">]),</span>
+            <span class="s1">&#39;collisions&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">year_data</span><span class="p">[</span><span class="n">year_data</span><span class="p">[</span><span class="s1">&#39;Issue Reported&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;COLLISION&#39;</span><span class="p">]),</span>
+            <span class="s1">&#39;peak_hour&#39;</span><span class="p">:</span> <span class="n">year_data</span><span class="p">[</span><span class="s1">&#39;Hour&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mode</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">year_data</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="p">}</span>
 
 <span class="c1"># Display results</span>
+<span class="k">for</span> <span class="n">year</span><span class="p">,</span> <span class="n">stats</span> <span class="ow">in</span> <span class="n">yearly_analysis</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Total: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;total&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Crashes: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;crashes&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Collisions: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;collisions&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Peak hour: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;peak_hour&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">:00&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2019:
+  Total: 67,278
+  Crashes: 16,318
+  Collisions: 5,561
+  Peak hour: 22:00
+
+2020:
+  Total: 44,631
+  Crashes: 10,950
+  Collisions: 4,305
+  Peak hour: 22:00
+
+2021:
+  Total: 50,631
+  Crashes: 12,325
+  Collisions: 5,659
+  Peak hour: 22:00
 </pre></div>
 </div>
 </div>
@@ -953,9 +1333,36 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find top incident locations</span>
-
+<span class="n">top_locations</span> <span class="o">=</span> <span class="n">austin_data</span><span class="p">[</span><span class="s1">&#39;Address&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">index</span>
+<span class="n">years</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2019</span><span class="p">,</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">2021</span><span class="p">]</span>
 
 <span class="c1"># Analyze each location across years</span>
+<span class="k">for</span> <span class="n">location</span> <span class="ow">in</span> <span class="n">top_locations</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">location</span><span class="p">[:</span><span class="mi">50</span><span class="p">]</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>  <span class="c1"># Truncate long addresses</span>
+    <span class="n">location_data</span> <span class="o">=</span> <span class="n">austin_data</span><span class="p">[</span><span class="n">austin_data</span><span class="p">[</span><span class="s1">&#39;Address&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">location</span><span class="p">]</span>
+    
+    <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">:</span>
+        <span class="n">year_loc_data</span> <span class="o">=</span> <span class="n">location_data</span><span class="p">[</span><span class="n">location_data</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">year</span><span class="p">]</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">year_loc_data</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2"> incidents&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9300 S Ih 35 Svrd Sb...
+  2019: 47 incidents
+  2020: 20 incidents
+  2021: 19 incidents
+
+E Parmer Ln &amp; Dessau Rd...
+  2019: 42 incidents
+  2020: 33 incidents
+  2021: 49 incidents
+
+710 E Ben White Blvd Svrd Wb...
+  2019: 40 incidents
+  2020: 25 incidents
+  2021: 20 incidents
 </pre></div>
 </div>
 </div>
@@ -966,8 +1373,31 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compare hourly patterns across years</span>
+<span class="n">hours</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">24</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2019</span><span class="p">,</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">2021</span><span class="p">]:</span>
+    <span class="n">year_data</span> <span class="o">=</span> <span class="n">austin_data</span><span class="p">[</span><span class="n">austin_data</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">year</span><span class="p">]</span>
+    <span class="n">hourly_counts</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">for</span> <span class="n">hour</span> <span class="ow">in</span> <span class="n">hours</span><span class="p">:</span>
+        <span class="n">hour_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">year_data</span><span class="p">[</span><span class="n">year_data</span><span class="p">[</span><span class="s1">&#39;Hour&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">hour</span><span class="p">])</span>
+        <span class="n">hourly_counts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hour_count</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hours</span><span class="p">,</span> <span class="n">hourly_counts</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">year</span><span class="p">),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Hour of Day&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Number of Incidents&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Daily Traffic Pattern: Pandemic Impact&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/9063272239d7d8e175ed721c765a8c85ed692f7c16358c3218b3d29f00d9dd0a.png" src="../../../_images/9063272239d7d8e175ed721c765a8c85ed692f7c16358c3218b3d29f00d9dd0a.png" />
 </div>
 </div>
 </section>
@@ -976,8 +1406,37 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Track incident types across years</span>
+<span class="n">incident_types_to_track</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Crash Urgent&#39;</span><span class="p">,</span> <span class="s1">&#39;COLLISION&#39;</span><span class="p">,</span> <span class="s1">&#39;Traffic Hazard&#39;</span><span class="p">,</span> <span class="s1">&#39;Stalled Vehicle&#39;</span><span class="p">]</span>
+<span class="n">years</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2019</span><span class="p">,</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">2021</span><span class="p">]</span>
+
+<span class="c1"># Create plot</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">incident_types_to_track</span><span class="p">))</span>
+<span class="n">width</span> <span class="o">=</span> <span class="mf">0.25</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">years</span><span class="p">):</span>
+    <span class="n">year_data</span> <span class="o">=</span> <span class="n">austin_data</span><span class="p">[</span><span class="n">austin_data</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">year</span><span class="p">]</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">for</span> <span class="n">incident_type</span> <span class="ow">in</span> <span class="n">incident_types_to_track</span><span class="p">:</span>
+        <span class="n">type_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">year_data</span><span class="p">[</span><span class="n">year_data</span><span class="p">[</span><span class="s1">&#39;Issue Reported&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">incident_type</span><span class="p">])</span>
+        <span class="n">counts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">type_count</span><span class="p">)</span>
+    
+    <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">i</span><span class="o">*</span><span class="n">width</span><span class="p">,</span> <span class="n">counts</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">year</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Incident Type&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number of Incidents&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Incident Types by Year&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">width</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">incident_types_to_track</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/77b9a2dab055a3a2d0943a09a766473fc26ea625d56d57e9f9e625fcbe4241b2.png" src="../../../_images/77b9a2dab055a3a2d0943a09a766473fc26ea625d56d57e9f9e625fcbe4241b2.png" />
 </div>
 </div>
 </section>
