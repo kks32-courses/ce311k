@@ -1,0 +1,1040 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Beam Deflection Analysis - Theory and Derivations &#8212; Introduction to Programming with Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/lectures/11_AI/beam_deflection_datastruct';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../../README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Introduction to Programming with Python</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../README.html">
+                    CE 311K: Introduction to Computer Methods (Python)
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../00_intro/00_variables_assignment_operator-precedence_solutions.html">Lecture 00: Variable and assignment (Solution)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../01_control_flow/01_control_statements_solutions.html">Lecture 01a: Control statements (Solution)</a></li>
+
+
+
+
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01_control_flow/01_friction_sliding_block_solutions.html">Lecture 01b: Example of control statement</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01_control_flow/break_continue_solutions.html">Break continue (solution)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_control_flow/cantilever_beam_uvl_solutions.html">Cantilever beam uvl (solution)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_control_flow/atm.html">ATM</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../02_errors/02_errors_solutions.html">Lecture 02: Errors</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../03_functions/03_functions_solutions.html">Lecture 03: Functions (Solutions)</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../04_data_structures/04_data_structures_solutions.html">Lecture 04: Data structures (Solution)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../05_numerical_diff_taylor_series_newton_raphson/05_finite_difference_taylor_series_solutions.html">Lecture 05: Numerical differentiation</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../06_exceptions/06_error_handling_testing_solutions.html">Lecture 06: Error handling (Solution)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../07_vectors/07_vectors_solutions.html">Lecture 07: Vectors (Solution)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../08_matrices/08_matrices_solutions.html">Lecture 08: Matrices (solution)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../09_linear_algebra/09_linear_algebra_solutions.html">Lecture 09: Linear Algebra (Solution)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_useful_libs/10_useful_libs_solutions.html">Lecture 10: Useful libraries in Python (Solution)</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/kks32-courses/ce311k/blob/main/docs/notebooks/lectures/11_AI/beam_deflection_datastruct.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/kks32-courses/ce311k" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/kks32-courses/ce311k/issues/new?title=Issue%20on%20page%20%2Fnotebooks/lectures/11_AI/beam_deflection_datastruct.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/notebooks/lectures/11_AI/beam_deflection_datastruct.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Beam Deflection Analysis - Theory and Derivations</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-physical-problem">1. The Physical Problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deflection-formula-for-a-point-load">2. Deflection Formula for a Point Load</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-equation">2.1 The Equation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-meaning">2.2 Physical Meaning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-overview-optional">2.3 Derivation Overview (Optional)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principle-of-superposition">3. Principle of Superposition</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-concept">3.1 The Concept</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-it-works">3.2 Why It Works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">3.3 Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-implementation">3.4 Practical Implementation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-maximum-deflection-using-finite-differences">4. Finding Maximum Deflection Using Finite Differences</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-problem">4.1 The Problem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-difference-approximation-of-derivatives">4.2 Finite Difference Approximation of Derivatives</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-finite-differences">4.3 Types of Finite Differences</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-understanding">4.4 Visual Understanding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-maximum">4.5 Finding the Maximum</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-not-just-find-minimum-value">4.6 Why Not Just Find Minimum Value?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accuracy-considerations">4.7 Accuracy Considerations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#serviceability-check-l-360-criterion">5. Serviceability Check (L/360 Criterion)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-code-requirement">5.1 Building Code Requirement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.2 Example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-asymmetric-loads-create-off-center-deflection">6. Why Asymmetric Loads Create Off-Center Deflection</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#symmetry-argument">6.1 Symmetry Argument</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#influence-lines">6.2 Influence Lines</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-structures-in-the-code">7. Data Structures in the Code</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-different-types">7.1 Why Different Types?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">8. Summary</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="beam-deflection-analysis-theory-and-derivations">
+<h1>Beam Deflection Analysis - Theory and Derivations<a class="headerlink" href="#beam-deflection-analysis-theory-and-derivations" title="Permalink to this heading">#</a></h1>
+<section id="the-physical-problem">
+<h2>1. The Physical Problem<a class="headerlink" href="#the-physical-problem" title="Permalink to this heading">#</a></h2>
+<p>We have a <strong>simply supported beam</strong> (supported at both ends, free to rotate) with point loads applied at various locations. We want to find:</p>
+<ul class="simple">
+<li><p>How much the beam deflects (bends downward)</p></li>
+<li><p>Where the maximum deflection occurs</p></li>
+<li><p>Whether it exceeds allowable limits</p></li>
+</ul>
+</section>
+<section id="deflection-formula-for-a-point-load">
+<h2>2. Deflection Formula for a Point Load<a class="headerlink" href="#deflection-formula-for-a-point-load" title="Permalink to this heading">#</a></h2>
+<section id="the-equation">
+<h3>2.1 The Equation<a class="headerlink" href="#the-equation" title="Permalink to this heading">#</a></h3>
+<p>For a simply supported beam of length <span class="math notranslate nohighlight">\(L\)</span> with a point load <span class="math notranslate nohighlight">\(P\)</span> at distance <span class="math notranslate nohighlight">\(a\)</span> from the left support, the deflection at any position <span class="math notranslate nohighlight">\(x\)</span> is:</p>
+<p><strong>For <span class="math notranslate nohighlight">\(x \leq a\)</span> (before the load):</strong></p>
+<div class="math notranslate nohighlight">
+\[y(x) = \frac{Pb x}{6LEI}(L^2 - b^2 - x^2)\]</div>
+<p><strong>For <span class="math notranslate nohighlight">\(x &gt; a\)</span> (after the load):</strong></p>
+<div class="math notranslate nohighlight">
+\[y(x) = \frac{Pa(L-x)}{6LEI}[L^2 - a^2 - (L-x)^2]\]</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(y(x)\)</span> = deflection at position <span class="math notranslate nohighlight">\(x\)</span> (negative means downward)</p></li>
+<li><p><span class="math notranslate nohighlight">\(P\)</span> = point load magnitude (N or kN)</p></li>
+<li><p><span class="math notranslate nohighlight">\(a\)</span> = distance of load from left support (m)</p></li>
+<li><p><span class="math notranslate nohighlight">\(b = L - a\)</span> = distance of load from right support (m)</p></li>
+<li><p><span class="math notranslate nohighlight">\(L\)</span> = total beam length (m)</p></li>
+<li><p><span class="math notranslate nohighlight">\(E\)</span> = Young’s modulus (material stiffness, Pa)</p></li>
+<li><p><span class="math notranslate nohighlight">\(I\)</span> = moment of inertia (beam cross-section property, m⁴)</p></li>
+</ul>
+</section>
+<section id="physical-meaning">
+<h3>2.2 Physical Meaning<a class="headerlink" href="#physical-meaning" title="Permalink to this heading">#</a></h3>
+<p>The equation tells us:</p>
+<ul class="simple">
+<li><p>Deflection is <strong>proportional to load</strong> <span class="math notranslate nohighlight">\(P\)</span> (double the load → double the deflection)</p></li>
+<li><p>Deflection is <strong>inversely proportional to stiffness</strong> <span class="math notranslate nohighlight">\(EI\)</span> (stiffer beam → less deflection)</p></li>
+<li><p>Deflection depends on <strong>where you measure</strong> (<span class="math notranslate nohighlight">\(x\)</span>) and <strong>where the load is</strong> (<span class="math notranslate nohighlight">\(a\)</span>)</p></li>
+<li><p>Maximum deflection is NOT necessarily at midspan if load is off-center</p></li>
+</ul>
+</section>
+<section id="derivation-overview-optional">
+<h3>2.3 Derivation Overview (Optional)<a class="headerlink" href="#derivation-overview-optional" title="Permalink to this heading">#</a></h3>
+<p>This formula comes from solving the <strong>beam bending equation</strong>:</p>
+<div class="math notranslate nohighlight">
+\[EI \frac{d^4y}{dx^4} = w(x)\]</div>
+<p>Where <span class="math notranslate nohighlight">\(w(x)\)</span> is the distributed load. For a point load, we integrate this equation four times with appropriate boundary conditions:</p>
+<ul class="simple">
+<li><p>At supports: <span class="math notranslate nohighlight">\(y(0) = 0\)</span> and <span class="math notranslate nohighlight">\(y(L) = 0\)</span> (no deflection)</p></li>
+<li><p>At supports: <span class="math notranslate nohighlight">\(M(0) = 0\)</span> and <span class="math notranslate nohighlight">\(M(L) = 0\)</span> (no moment, free rotation)</p></li>
+</ul>
+<p>The derivation involves calculus (integration) but results in the closed-form equations above.</p>
+</section>
+</section>
+<section id="principle-of-superposition">
+<h2>3. Principle of Superposition<a class="headerlink" href="#principle-of-superposition" title="Permalink to this heading">#</a></h2>
+<section id="the-concept">
+<h3>3.1 The Concept<a class="headerlink" href="#the-concept" title="Permalink to this heading">#</a></h3>
+<p><strong>Superposition Principle</strong>: For linear elastic systems, the total deflection from multiple loads is the <strong>sum</strong> of deflections from each load acting individually.</p>
+<div class="math notranslate nohighlight">
+\[y_{total}(x) = y_1(x) + y_2(x) + y_3(x) + ...\]</div>
+</section>
+<section id="why-it-works">
+<h3>3.2 Why It Works<a class="headerlink" href="#why-it-works" title="Permalink to this heading">#</a></h3>
+<p>The beam equation is <strong>linear</strong> in deflection <span class="math notranslate nohighlight">\(y\)</span>:</p>
+<ul class="simple">
+<li><p>No <span class="math notranslate nohighlight">\(y^2\)</span> or <span class="math notranslate nohighlight">\(y^3\)</span> terms</p></li>
+<li><p>No products like <span class="math notranslate nohighlight">\(y \cdot y'\)</span></p></li>
+<li><p>Just <span class="math notranslate nohighlight">\(y\)</span> and its derivatives</p></li>
+</ul>
+<p>This linearity means:</p>
+<ul class="simple">
+<li><p>If load <span class="math notranslate nohighlight">\(P_1\)</span> causes deflection <span class="math notranslate nohighlight">\(y_1\)</span></p></li>
+<li><p>And load <span class="math notranslate nohighlight">\(P_2\)</span> causes deflection <span class="math notranslate nohighlight">\(y_2\)</span></p></li>
+<li><p>Then loads <span class="math notranslate nohighlight">\(P_1 + P_2\)</span> cause deflection <span class="math notranslate nohighlight">\(y_1 + y_2\)</span></p></li>
+</ul>
+</section>
+<section id="example">
+<h3>3.3 Example<a class="headerlink" href="#example" title="Permalink to this heading">#</a></h3>
+<p>For two loads:</p>
+<ul class="simple">
+<li><p>Load 1: <span class="math notranslate nohighlight">\(P_1 = 5\)</span> kN at <span class="math notranslate nohighlight">\(a_1 = 1.5\)</span> m</p></li>
+<li><p>Load 2: <span class="math notranslate nohighlight">\(P_2 = 8\)</span> kN at <span class="math notranslate nohighlight">\(a_2 = 4.0\)</span> m</p></li>
+</ul>
+<p>At position <span class="math notranslate nohighlight">\(x = 3.0\)</span> m:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">y_total</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span> <span class="o">=</span> <span class="n">y_from_load1</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span> <span class="o">+</span> <span class="n">y_from_load2</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We calculate each deflection separately using the formula, then add them!</p>
+</section>
+<section id="practical-implementation">
+<h3>3.4 Practical Implementation<a class="headerlink" href="#practical-implementation" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize deflection</span>
+<span class="n">deflections</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">*</span> <span class="n">n_points</span>
+
+<span class="c1"># Add contribution from each load</span>
+<span class="k">for</span> <span class="n">position_x</span> <span class="ow">in</span> <span class="n">x_positions</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">load_pos</span><span class="p">,</span> <span class="n">load_mag</span> <span class="ow">in</span> <span class="n">loads</span><span class="p">:</span>
+        <span class="n">deflection_from_this_load</span> <span class="o">=</span> <span class="n">formula</span><span class="p">(</span><span class="n">position_x</span><span class="p">,</span> <span class="n">load_pos</span><span class="p">,</span> <span class="n">load_mag</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+        <span class="n">deflections</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">deflection_from_this_load</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="finding-maximum-deflection-using-finite-differences">
+<h2>4. Finding Maximum Deflection Using Finite Differences<a class="headerlink" href="#finding-maximum-deflection-using-finite-differences" title="Permalink to this heading">#</a></h2>
+<section id="the-problem">
+<h3>4.1 The Problem<a class="headerlink" href="#the-problem" title="Permalink to this heading">#</a></h3>
+<p>We have deflection values at discrete points: <span class="math notranslate nohighlight">\(y_0, y_1, y_2, ..., y_n\)</span></p>
+<p>We need to find where deflection is maximum. At maximum, the <strong>slope must be zero</strong>:</p>
+<div class="math notranslate nohighlight">
+\[\frac{dy}{dx} = 0\]</div>
+</section>
+<section id="finite-difference-approximation-of-derivatives">
+<h3>4.2 Finite Difference Approximation of Derivatives<a class="headerlink" href="#finite-difference-approximation-of-derivatives" title="Permalink to this heading">#</a></h3>
+<p><strong>Calculus Definition</strong> of derivative:</p>
+<div class="math notranslate nohighlight">
+\[\frac{dy}{dx} = \lim_{\Delta x \to 0} \frac{y(x + \Delta x) - y(x)}{\Delta x}\]</div>
+<p><strong>Finite Difference Approximation</strong> (for small but finite <span class="math notranslate nohighlight">\(\Delta x\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[\frac{dy}{dx} \approx \frac{y_{i+1} - y_i}{\Delta x}\]</div>
+<p>This is called the <strong>forward difference</strong> formula.</p>
+</section>
+<section id="types-of-finite-differences">
+<h3>4.3 Types of Finite Differences<a class="headerlink" href="#types-of-finite-differences" title="Permalink to this heading">#</a></h3>
+<p><strong>Forward Difference</strong> (uses points ahead):
+$<span class="math notranslate nohighlight">\(\frac{dy}{dx}\bigg|_i \approx \frac{y_{i+1} - y_i}{\Delta x}\)</span>$</p>
+<p><strong>Backward Difference</strong> (uses points behind):
+$<span class="math notranslate nohighlight">\(\frac{dy}{dx}\bigg|_i \approx \frac{y_i - y_{i-1}}{\Delta x}\)</span>$</p>
+<p><strong>Central Difference</strong> (more accurate, uses both):
+$<span class="math notranslate nohighlight">\(\frac{dy}{dx}\bigg|_i \approx \frac{y_{i+1} - y_{i-1}}{2\Delta x}\)</span>$</p>
+</section>
+<section id="visual-understanding">
+<h3>4.4 Visual Understanding<a class="headerlink" href="#visual-understanding" title="Permalink to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>         y[i+1]
+           ●
+          /
+         /  ← slope ≈ (y[i+1] - y[i])/Δx
+        /
+       ●
+     y[i]
+</pre></div>
+</div>
+<p>If we have many points close together, this approximation becomes very accurate!</p>
+</section>
+<section id="finding-the-maximum">
+<h3>4.5 Finding the Maximum<a class="headerlink" href="#finding-the-maximum" title="Permalink to this heading">#</a></h3>
+<p>At maximum deflection, slope changes from <strong>negative to positive</strong> (for downward deflection):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Before max:  slope &lt; 0  (going down)
+At max:      slope ≈ 0  (flat, turning point)
+After max:   slope &gt; 0  (going up)
+</pre></div>
+</div>
+<p><strong>Algorithm:</strong></p>
+<ol class="arabic simple">
+<li><p>Calculate slope at each point using finite differences</p></li>
+<li><p>Find where slope is closest to zero</p></li>
+<li><p>That’s where maximum deflection occurs!</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">slopes</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">deflections</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">dx</span> <span class="o">=</span> <span class="n">x_positions</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x_positions</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">slope</span> <span class="o">=</span> <span class="p">(</span><span class="n">deflections</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">deflections</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">/</span> <span class="n">dx</span>
+    <span class="n">slopes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">slope</span><span class="p">)</span>
+
+<span class="c1"># Find point with minimum slope magnitude (closest to zero)</span>
+<span class="c1"># Or simply find minimum deflection value</span>
+<span class="n">max_deflection_index</span> <span class="o">=</span> <span class="n">deflections</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">deflections</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="why-not-just-find-minimum-value">
+<h3>4.6 Why Not Just Find Minimum Value?<a class="headerlink" href="#why-not-just-find-minimum-value" title="Permalink to this heading">#</a></h3>
+<p>You’re right - we can! For deflection curves, finding <code class="docutils literal notranslate"><span class="pre">min(deflections)</span></code> gives the maximum downward deflection.</p>
+<p>But computing the <strong>slope</strong> teaches us:</p>
+<ul class="simple">
+<li><p>How finite differences work (foundation for numerical methods)</p></li>
+<li><p>Visualizing where slope = 0 confirms the maximum location</p></li>
+<li><p>Later problems (stress analysis, vibrations) need derivatives explicitly</p></li>
+</ul>
+</section>
+<section id="accuracy-considerations">
+<h3>4.7 Accuracy Considerations<a class="headerlink" href="#accuracy-considerations" title="Permalink to this heading">#</a></h3>
+<p>Finite difference accuracy depends on <strong>step size</strong> <span class="math notranslate nohighlight">\(\Delta x\)</span>:</p>
+<ul class="simple">
+<li><p>Smaller <span class="math notranslate nohighlight">\(\Delta x\)</span> → more accurate</p></li>
+<li><p>But too small → rounding errors</p></li>
+<li><p>Typical: 50-200 points along beam length</p></li>
+</ul>
+<p><strong>Error</strong> in finite difference:
+$<span class="math notranslate nohighlight">\(\text{Error} = O(\Delta x) \text{ for forward/backward}\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(\text{Error} = O(\Delta x^2) \text{ for central difference}\)</span>$</p>
+<p>This means halving <span class="math notranslate nohighlight">\(\Delta x\)</span> reduces error by ~2× (forward) or ~4× (central).</p>
+</section>
+</section>
+<section id="serviceability-check-l-360-criterion">
+<h2>5. Serviceability Check (L/360 Criterion)<a class="headerlink" href="#serviceability-check-l-360-criterion" title="Permalink to this heading">#</a></h2>
+<section id="building-code-requirement">
+<h3>5.1 Building Code Requirement<a class="headerlink" href="#building-code-requirement" title="Permalink to this heading">#</a></h3>
+<p>Maximum deflection should not exceed:</p>
+<div class="math notranslate nohighlight">
+\[\delta_{max} \leq \frac{L}{360}\]</div>
+<p>This is a <strong>serviceability limit</strong> to prevent:</p>
+<ul class="simple">
+<li><p>Visible sagging</p></li>
+<li><p>Cracking of finishes (plaster, tiles)</p></li>
+<li><p>User discomfort</p></li>
+<li><p>Vibration issues</p></li>
+</ul>
+</section>
+<section id="id1">
+<h3>5.2 Example<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>For <span class="math notranslate nohighlight">\(L = 6\)</span> m:
+$<span class="math notranslate nohighlight">\(\delta_{allowable} = \frac{6000 \text{ mm}}{360} = 16.67 \text{ mm}\)</span>$</p>
+<p>If calculated deflection = 6.34 mm &lt; 16.67 mm → <strong>PASS</strong> ✓</p>
+</section>
+</section>
+<section id="why-asymmetric-loads-create-off-center-deflection">
+<h2>6. Why Asymmetric Loads Create Off-Center Deflection<a class="headerlink" href="#why-asymmetric-loads-create-off-center-deflection" title="Permalink to this heading">#</a></h2>
+<section id="symmetry-argument">
+<h3>6.1 Symmetry Argument<a class="headerlink" href="#symmetry-argument" title="Permalink to this heading">#</a></h3>
+<p><strong>Symmetric case</strong> (equal loads at equal distances from center):</p>
+<ul class="simple">
+<li><p>Load at 2m: 5 kN</p></li>
+<li><p>Load at 4m: 5 kN (6m beam)</p></li>
+<li><p>Maximum deflection at center (3m) by symmetry</p></li>
+</ul>
+<p><strong>Asymmetric case</strong> (unequal loads or positions):</p>
+<ul class="simple">
+<li><p>Load at 1.5m: 5 kN</p></li>
+<li><p>Load at 4.0m: 8 kN</p></li>
+<li><p>Heavier load “pulls” maximum toward itself</p></li>
+<li><p>Maximum at ~3.15m (closer to the 8 kN load)</p></li>
+</ul>
+</section>
+<section id="influence-lines">
+<h3>6.2 Influence Lines<a class="headerlink" href="#influence-lines" title="Permalink to this heading">#</a></h3>
+<p>Each load creates a deflection “shape.” The total shape is the sum. The 8 kN load at 4.0m creates a larger deflection contribution that shifts the peak rightward.</p>
+</section>
+</section>
+<section id="data-structures-in-the-code">
+<h2>7. Data Structures in the Code<a class="headerlink" href="#data-structures-in-the-code" title="Permalink to this heading">#</a></h2>
+<section id="why-different-types">
+<h3>7.1 Why Different Types?<a class="headerlink" href="#why-different-types" title="Permalink to this heading">#</a></h3>
+<p><strong>Tuples</strong> for loads: <code class="docutils literal notranslate"><span class="pre">(1.5,</span> <span class="pre">5000)</span></code></p>
+<ul class="simple">
+<li><p>Immutable: Load position and magnitude don’t change</p></li>
+<li><p>Paired data: Always position + magnitude together</p></li>
+<li><p>Access: <code class="docutils literal notranslate"><span class="pre">loads[0][0]</span></code> = position, <code class="docutils literal notranslate"><span class="pre">loads[0][1]</span></code> = magnitude</p></li>
+</ul>
+<p><strong>Dictionary</strong> for beam: <code class="docutils literal notranslate"><span class="pre">{'L':</span> <span class="pre">6.0,</span> <span class="pre">'E':</span> <span class="pre">200e9,</span> <span class="pre">'I':</span> <span class="pre">8.33e-6}</span></code></p>
+<ul class="simple">
+<li><p>Named access: <code class="docutils literal notranslate"><span class="pre">beam['L']</span></code> is clearer than <code class="docutils literal notranslate"><span class="pre">beam[0]</span></code></p></li>
+<li><p>Self-documenting: Know what each value means</p></li>
+<li><p>Flexible: Easy to add properties later</p></li>
+</ul>
+<p><strong>Lists</strong> for computation: <code class="docutils literal notranslate"><span class="pre">deflections</span> <span class="pre">=</span> <span class="pre">[0.0]</span> <span class="pre">*</span> <span class="pre">n</span></code></p>
+<ul class="simple">
+<li><p>Mutable: Need to update values during calculation</p></li>
+<li><p>Indexed: Access by position <code class="docutils literal notranslate"><span class="pre">deflections[i]</span></code></p></li>
+<li><p>Dynamic: Can compute, modify, extend</p></li>
+</ul>
+</section>
+</section>
+<section id="summary">
+<h2>8. Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<p><strong>Key Equations:</strong></p>
+<ol class="arabic simple">
+<li><p>Point load deflection: <span class="math notranslate nohighlight">\(y(x) = \frac{Pbx}{6LEI}(L^2 - b^2 - x^2)\)</span> for <span class="math notranslate nohighlight">\(x \leq a\)</span></p></li>
+<li><p>Superposition: <span class="math notranslate nohighlight">\(y_{total} = \sum y_i\)</span></p></li>
+<li><p>Finite difference: <span class="math notranslate nohighlight">\(\frac{dy}{dx} \approx \frac{y_{i+1} - y_i}{\Delta x}\)</span></p></li>
+<li><p>Serviceability: <span class="math notranslate nohighlight">\(\delta_{max} \leq \frac{L}{360}\)</span></p></li>
+</ol>
+<p><strong>Key Concepts:</strong></p>
+<ul class="simple">
+<li><p><strong>Superposition</strong>: Add deflections from each load independently</p></li>
+<li><p><strong>Finite differences</strong>: Approximate derivatives using nearby points</p></li>
+<li><p><strong>Maximum location</strong>: Where slope = 0 (or find minimum deflection directly)</p></li>
+<li><p><strong>Data structures</strong>: Use appropriate types for different purposes</p></li>
+</ul>
+<p><strong>Engineering Reality:</strong>
+This is how real structural engineers analyze beams! More complex cases use finite element software, but the principles (superposition, deflection limits) remain the same.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># BEAM PROPERTIES (dictionary)</span>
+<span class="n">beam</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;L&#39;</span><span class="p">:</span> <span class="mf">6.0</span><span class="p">,</span>        <span class="c1"># length (m)</span>
+    <span class="s1">&#39;E&#39;</span><span class="p">:</span> <span class="mf">200e9</span><span class="p">,</span>      <span class="c1"># Young&#39;s modulus (Pa)</span>
+    <span class="s1">&#39;I&#39;</span><span class="p">:</span> <span class="mf">8.33e-6</span><span class="p">,</span>    <span class="c1"># moment of inertia (m^4)</span>
+<span class="p">}</span>
+
+<span class="c1"># POINT LOADS (tuples: position and magnitude)</span>
+<span class="n">loads</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">8000</span><span class="p">),</span>     <span class="c1"># 5 kN at 1.5m (HVAC unit)</span>
+    <span class="p">(</span><span class="mf">3.5</span><span class="p">,</span> <span class="mi">4000</span><span class="p">),</span>     <span class="c1"># 8 kN at 4.0m (equipment)</span>
+    <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2000</span><span class="p">),</span>
+<span class="p">)</span>
+
+<span class="c1"># CALCULATE DEFLECTION using beam formula (superposition)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">deflection_point_load</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">I</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Deflection at x due to point load P at position a&quot;&quot;&quot;</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">L</span> <span class="o">-</span> <span class="n">a</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="n">a</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">P</span> <span class="o">*</span> <span class="n">b</span> <span class="o">*</span> <span class="n">x</span> <span class="o">/</span> <span class="p">(</span><span class="mi">6</span> <span class="o">*</span> <span class="n">L</span> <span class="o">*</span> <span class="n">E</span> <span class="o">*</span> <span class="n">I</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="n">L</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">P</span> <span class="o">*</span> <span class="n">a</span> <span class="o">*</span> <span class="p">(</span><span class="n">L</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">6</span> <span class="o">*</span> <span class="n">L</span> <span class="o">*</span> <span class="n">E</span> <span class="o">*</span> <span class="n">I</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="n">L</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">a</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="p">(</span><span class="n">L</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># CREATE POSITION LIST and compute deflections</span>
+<span class="n">n_points</span> <span class="o">=</span> <span class="mi">201</span>
+<span class="n">x_positions</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="n">beam</span><span class="p">[</span><span class="s1">&#39;L&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">n_points</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_points</span><span class="p">)]</span>
+<span class="n">deflections</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">*</span> <span class="n">n_points</span>  <span class="c1"># initialize list</span>
+
+<span class="c1"># Add deflection from each load (superposition)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">x_positions</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">load_pos</span><span class="p">,</span> <span class="n">load_mag</span> <span class="ow">in</span> <span class="n">loads</span><span class="p">:</span>
+        <span class="n">deflections</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">deflection_point_load</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">load_mag</span><span class="p">,</span> <span class="n">load_pos</span><span class="p">,</span>
+                                                <span class="n">beam</span><span class="p">[</span><span class="s1">&#39;L&#39;</span><span class="p">],</span> <span class="n">beam</span><span class="p">[</span><span class="s1">&#39;E&#39;</span><span class="p">],</span> <span class="n">beam</span><span class="p">[</span><span class="s1">&#39;I&#39;</span><span class="p">])</span>
+
+<span class="c1"># FIND MAXIMUM using finite difference derivative</span>
+<span class="c1"># dy/dx ≈ (y[i+1] - y[i]) / dx</span>
+<span class="n">slopes</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">deflections</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">dx</span> <span class="o">=</span> <span class="n">x_positions</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x_positions</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">slope</span> <span class="o">=</span> <span class="p">(</span><span class="n">deflections</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">deflections</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">/</span> <span class="n">dx</span>
+    <span class="n">slopes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">slope</span><span class="p">)</span>
+
+<span class="c1"># Find where slope changes from negative to positive (minimum deflection = max downward)</span>
+<span class="n">max_deflection</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">max_location</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">deflections</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">deflections</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">&gt;</span> <span class="n">max_deflection</span><span class="p">:</span>
+        <span class="n">max_deflection</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">deflections</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">max_location</span> <span class="o">=</span> <span class="n">x_positions</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+<span class="c1"># RESULTS dictionary</span>
+<span class="n">results</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;max_deflection_mm&#39;</span><span class="p">:</span> <span class="n">max_deflection</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">,</span>
+    <span class="s1">&#39;max_location_m&#39;</span><span class="p">:</span> <span class="n">max_location</span><span class="p">,</span>
+    <span class="s1">&#39;allowable_mm&#39;</span><span class="p">:</span> <span class="n">beam</span><span class="p">[</span><span class="s1">&#39;L&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">360</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">,</span>
+    <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="s1">&#39;PASS&#39;</span> <span class="k">if</span> <span class="n">max_deflection</span> <span class="o">&lt;</span> <span class="n">beam</span><span class="p">[</span><span class="s1">&#39;L&#39;</span><span class="p">]</span><span class="o">/</span><span class="mi">360</span> <span class="k">else</span> <span class="s1">&#39;FAIL&#39;</span>
+<span class="p">}</span>
+
+<span class="c1"># PLOT RESULTS</span>
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="c1"># 1. DEFLECTION DIAGRAM</span>
+<span class="n">y_mm</span> <span class="o">=</span> <span class="p">[</span><span class="n">y</span> <span class="o">*</span> <span class="mi">1000</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">deflections</span><span class="p">]</span>  <span class="c1"># convert to mm</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_positions</span><span class="p">,</span> <span class="n">y_mm</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Deflection&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;allowable_mm&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Allowable = </span><span class="si">{</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;allowable_mm&quot;</span><span class="p">]</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1"> mm&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">max_location</span><span class="p">,</span> <span class="o">-</span><span class="n">max_deflection</span><span class="o">*</span><span class="mi">1000</span><span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+         <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Max = </span><span class="si">{</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;max_deflection_mm&quot;</span><span class="p">]</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> mm&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">pos</span><span class="p">,</span> <span class="n">load</span> <span class="ow">in</span> <span class="n">loads</span><span class="p">:</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Deflection (mm)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Beam Deflection (downward is negative)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+
+<span class="c1"># 2. SLOPE DIAGRAM (finite difference derivative)</span>
+<span class="n">x_slopes</span> <span class="o">=</span> <span class="p">[</span><span class="n">x_positions</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">x_positions</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x_positions</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">slopes</span><span class="p">))]</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_slopes</span><span class="p">,</span> <span class="n">slopes</span><span class="p">,</span> <span class="s1">&#39;g-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Slope (dy/dx)&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Slope = 0 (max deflection)&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">max_location</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Slope (rad)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Deflection Slope - Maximum where slope = 0&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="c1"># 3. BEAM SCHEMATIC</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">beam</span><span class="p">[</span><span class="s1">&#39;L&#39;</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;k-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Beam&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;^&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Support&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">beam</span><span class="p">[</span><span class="s1">&#39;L&#39;</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;^&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">pos</span><span class="p">,</span> <span class="n">load</span> <span class="ow">in</span> <span class="n">loads</span><span class="p">:</span>
+    <span class="n">ax3</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">head_width</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">head_length</span><span class="o">=</span><span class="mf">0.08</span><span class="p">,</span>
+              <span class="n">fc</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">ax3</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">load</span><span class="o">/</span><span class="mi">1000</span><span class="si">:</span><span class="s1">.0f</span><span class="si">}</span><span class="s1"> kN&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+             <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">beam</span><span class="p">[</span><span class="s1">&#39;L&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.3</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Position along beam (m)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Loading Configuration&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/581314109bdd5ce00fe72c0de95e17f9ac6d22109fd4b506418ed0f85df4a2ce.png" src="../../../_images/581314109bdd5ce00fe72c0de95e17f9ac6d22109fd4b506418ed0f85df4a2ce.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/lectures/11_AI"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-physical-problem">1. The Physical Problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deflection-formula-for-a-point-load">2. Deflection Formula for a Point Load</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-equation">2.1 The Equation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-meaning">2.2 Physical Meaning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-overview-optional">2.3 Derivation Overview (Optional)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principle-of-superposition">3. Principle of Superposition</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-concept">3.1 The Concept</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-it-works">3.2 Why It Works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">3.3 Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-implementation">3.4 Practical Implementation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-maximum-deflection-using-finite-differences">4. Finding Maximum Deflection Using Finite Differences</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-problem">4.1 The Problem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-difference-approximation-of-derivatives">4.2 Finite Difference Approximation of Derivatives</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-finite-differences">4.3 Types of Finite Differences</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-understanding">4.4 Visual Understanding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-maximum">4.5 Finding the Maximum</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-not-just-find-minimum-value">4.6 Why Not Just Find Minimum Value?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accuracy-considerations">4.7 Accuracy Considerations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#serviceability-check-l-360-criterion">5. Serviceability Check (L/360 Criterion)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-code-requirement">5.1 Building Code Requirement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.2 Example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-asymmetric-loads-create-off-center-deflection">6. Why Asymmetric Loads Create Off-Center Deflection</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#symmetry-argument">6.1 Symmetry Argument</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#influence-lines">6.2 Influence Lines</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-structures-in-the-code">7. Data Structures in the Code</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-different-types">7.1 Why Different Types?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">8. Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Krishna Kumar
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
