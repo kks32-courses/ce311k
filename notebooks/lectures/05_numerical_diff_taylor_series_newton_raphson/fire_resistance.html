@@ -1,0 +1,1542 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Numerical Solution of Heat Conduction in Concrete Columns During Fire &#8212; Introduction to Programming with Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/lectures/05_numerical_diff_taylor_series_newton_raphson/fire_resistance';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../../README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Introduction to Programming with Python</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../README.html">
+                    CE 311K: Introduction to Computer Methods (Python)
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../00_intro/00_variables_assignment_operator-precedence_solutions.html">Lecture 00: Variable and assignment (Solution)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../01_control_flow/01_control_statements_solutions.html">Lecture 01a: Control statements (Solution)</a></li>
+
+
+
+
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01_control_flow/01_friction_sliding_block_solutions.html">Lecture 01b: Example of control statement</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01_control_flow/break_continue_solutions.html">Break continue (solution)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_control_flow/cantilever_beam_uvl_solutions.html">Cantilever beam uvl (solution)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_control_flow/atm.html">ATM</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../02_errors/02_errors_solutions.html">Lecture 02: Errors</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../03_functions/03_functions_solutions.html">Lecture 03: Functions (Solutions)</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../04_data_structures/04_data_structures_solutions.html">Lecture 04: Data structures (Solution)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="05_finite_difference_taylor_series_solutions.html">Lecture 05: Numerical differentiation</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../06_exceptions/06_error_handling_testing_solutions.html">Lecture 06: Error handling (Solution)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../07_vectors/07_vectors_solutions.html">Lecture 07: Vectors (Solution)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../08_matrices/08_matrices_solutions.html">Lecture 08: Matrices (solution)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../09_linear_algebra/09_linear_algebra_solutions.html">Lecture 09: Linear Algebra (Solution)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_useful_libs/10_useful_libs_solutions.html">Lecture 10: Useful libraries in Python (Solution)</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/kks32-courses/ce311k/blob/main/docs/notebooks/lectures/05_numerical_diff_taylor_series_newton_raphson/fire_resistance.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/kks32-courses/ce311k" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/kks32-courses/ce311k/issues/new?title=Issue%20on%20page%20%2Fnotebooks/lectures/05_numerical_diff_taylor_series_newton_raphson/fire_resistance.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/notebooks/lectures/05_numerical_diff_taylor_series_newton_raphson/fire_resistance.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Numerical Solution of Heat Conduction in Concrete Columns During Fire</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Numerical Solution of Heat Conduction in Concrete Columns During Fire</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Numerical Solution of Heat Conduction in Concrete Columns During Fire</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-statement">1. Problem Statement</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-setup">Physical Setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assumptions">Assumptions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#governing-equation">2. Governing Equation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#heat-diffusion-equation">Heat Diffusion Equation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-interpretation">Physical Interpretation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-and-boundary-conditions">3. Initial and Boundary Conditions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-condition">Initial Condition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boundary-conditions">Boundary Conditions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-difference-discretization">4. Finite Difference Discretization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-discretization">Spatial Discretization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temporal-discretization">Temporal Discretization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notation">Notation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-difference-approximations">5. Finite Difference Approximations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#forward-difference-in-time-1st-order">Forward Difference in Time (1st Order)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#central-difference-in-space-2nd-order">Central Difference in Space (2nd Order)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-finite-difference-scheme">6. Explicit Finite Difference Scheme</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discretized-equation">Discretized Equation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-formula">Solution Formula</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-explicit">Why “Explicit”?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boundary-condition-implementation">7. Boundary Condition Implementation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#centerline-symmetry-i-0">Centerline (Symmetry): <span class="math notranslate nohighlight">\(i = 0\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#surface-fire-exposure-i-n-1">Surface (Fire Exposure): <span class="math notranslate nohighlight">\(i = n-1\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interior-nodes-i-1-2-ldots-n-2">Interior Nodes: <span class="math notranslate nohighlight">\(i = 1, 2, \ldots, n-2\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stability-analysis">8. Stability Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#von-neumann-stability-analysis">Von Neumann Stability Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-stable-time-step">Maximum Stable Time Step</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-happens-if-unstable">What Happens if Unstable?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithm-summary">9. Algorithm Summary</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialization">Initialization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-stepping-loop">Time-Stepping Loop</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#engineering-design-considerations">10. Engineering Design Considerations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fire-resistance-rating">Fire Resistance Rating</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#concrete-cover-thickness">Concrete Cover Thickness</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#material-properties-temperature-dependent">Material Properties (Temperature-Dependent)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">11. Validation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analytical-solution-constant-surface-temperature">Analytical Solution (Constant Surface Temperature)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-behavior">Expected Behavior</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computational-considerations">12. Computational Considerations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mesh-sensitivity">Mesh Sensitivity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#efficiency">Efficiency</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sparse-matrix-structure">Sparse Matrix Structure</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways-for-students">13. Key Takeaways for Students</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="numerical-solution-of-heat-conduction-in-concrete-columns-during-fire">
+<h1>Numerical Solution of Heat Conduction in Concrete Columns During Fire<a class="headerlink" href="#numerical-solution-of-heat-conduction-in-concrete-columns-during-fire" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>Numerical Solution of Heat Conduction in Concrete Columns During Fire<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<p><strong>CE311K - Computer Methods for Civil Engineering</strong><br />
+<strong>Application:</strong> Structural Fire Safety Analysis</p>
+<hr class="docutils" />
+<section id="problem-statement">
+<h2>1. Problem Statement<a class="headerlink" href="#problem-statement" title="Permalink to this heading">#</a></h2>
+<section id="physical-setup">
+<h3>Physical Setup<a class="headerlink" href="#physical-setup" title="Permalink to this heading">#</a></h3>
+<p>A reinforced concrete column is exposed to fire on its surface. We need to determine:</p>
+<ul class="simple">
+<li><p>Temperature distribution through the column thickness as a function of time</p></li>
+<li><p>Time until steel reinforcement reaches critical temperature (538°C)</p></li>
+<li><p>Fire resistance rating for building code compliance</p></li>
+</ul>
+</section>
+<section id="assumptions">
+<h3>Assumptions<a class="headerlink" href="#assumptions" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>One-dimensional heat transfer</strong> (perpendicular to surface)</p></li>
+<li><p><strong>Homogeneous material properties</strong> (constant thermal properties)</p></li>
+<li><p><strong>No internal heat generation</strong></p></li>
+<li><p><strong>Column is symmetric</strong> (analyze half-width only)</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="governing-equation">
+<h2>2. Governing Equation<a class="headerlink" href="#governing-equation" title="Permalink to this heading">#</a></h2>
+<section id="heat-diffusion-equation">
+<h3>Heat Diffusion Equation<a class="headerlink" href="#heat-diffusion-equation" title="Permalink to this heading">#</a></h3>
+<p>The temperature <span class="math notranslate nohighlight">\(T(x,t)\)</span> in the concrete is governed by the <strong>1D heat diffusion equation</strong>:</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial T}{\partial t} = \alpha \frac{\partial^2 T}{\partial x^2}\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(T(x,t)\)</span> = temperature [K] at position <span class="math notranslate nohighlight">\(x\)</span> and time <span class="math notranslate nohighlight">\(t\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\alpha\)</span> = thermal diffusivity [m²/s] = <span class="math notranslate nohighlight">\(\frac{k}{\rho c_p}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(k\)</span> = thermal conductivity [W/m·K]</p></li>
+<li><p><span class="math notranslate nohighlight">\(\rho\)</span> = density [kg/m³]</p></li>
+<li><p><span class="math notranslate nohighlight">\(c_p\)</span> = specific heat capacity [J/kg·K]</p></li>
+<li><p><span class="math notranslate nohighlight">\(x\)</span> = distance from column centerline [m]</p></li>
+<li><p><span class="math notranslate nohighlight">\(t\)</span> = time [s]</p></li>
+</ul>
+</section>
+<section id="physical-interpretation">
+<h3>Physical Interpretation<a class="headerlink" href="#physical-interpretation" title="Permalink to this heading">#</a></h3>
+<p>The equation states:</p>
+<blockquote>
+<div><p><strong>Rate of temperature change</strong> = <strong>Thermal diffusivity</strong> × <strong>Curvature of temperature profile</strong></p>
+</div></blockquote>
+<ul class="simple">
+<li><p>Regions with high curvature (steep temperature gradients) → rapid temperature change</p></li>
+<li><p>Thermal diffusivity <span class="math notranslate nohighlight">\(\alpha\)</span> controls how fast heat propagates through the material</p></li>
+<li><p>For concrete: <span class="math notranslate nohighlight">\(\alpha \approx 5.8 \times 10^{-7}\)</span> m²/s (heat moves slowly)</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="initial-and-boundary-conditions">
+<h2>3. Initial and Boundary Conditions<a class="headerlink" href="#initial-and-boundary-conditions" title="Permalink to this heading">#</a></h2>
+<section id="initial-condition">
+<h3>Initial Condition<a class="headerlink" href="#initial-condition" title="Permalink to this heading">#</a></h3>
+<p>At <span class="math notranslate nohighlight">\(t = 0\)</span>, the entire column is at ambient temperature:</p>
+<div class="math notranslate nohighlight">
+\[T(x, 0) = T_{\text{ambient}} = 20°\text{C} = 293 \text{ K}\]</div>
+</section>
+<section id="boundary-conditions">
+<h3>Boundary Conditions<a class="headerlink" href="#boundary-conditions" title="Permalink to this heading">#</a></h3>
+<p><strong>At the centerline</strong> (<span class="math notranslate nohighlight">\(x = 0\)</span>): <strong>Symmetry condition</strong></p>
+<div class="math notranslate nohighlight">
+\[\left. \frac{\partial T}{\partial x} \right|_{x=0} = 0\]</div>
+<p>No heat flux crosses the centerline (by symmetry).</p>
+<p><strong>At the surface</strong> (<span class="math notranslate nohighlight">\(x = L\)</span>): <strong>Prescribed temperature (fire exposure)</strong></p>
+<div class="math notranslate nohighlight">
+\[T(L, t) = T_{\text{fire}}(t)\]</div>
+<p>where <span class="math notranslate nohighlight">\(T_{\text{fire}}(t)\)</span> follows the <strong>ASTM E119 standard fire curve</strong>:</p>
+<div class="math notranslate nohighlight">
+\[T_{\text{fire}}(t) = T_{\text{ambient}} + 750 \left(1 - e^{-3.79553\sqrt{t_{\text{min}}}} \right)\]</div>
+<p>with <span class="math notranslate nohighlight">\(t_{\text{min}}\)</span> in minutes.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="finite-difference-discretization">
+<h2>4. Finite Difference Discretization<a class="headerlink" href="#finite-difference-discretization" title="Permalink to this heading">#</a></h2>
+<section id="spatial-discretization">
+<h3>Spatial Discretization<a class="headerlink" href="#spatial-discretization" title="Permalink to this heading">#</a></h3>
+<p>Divide the domain <span class="math notranslate nohighlight">\([0, L]\)</span> into <span class="math notranslate nohighlight">\(n\)</span> equally-spaced nodes:</p>
+<div class="math notranslate nohighlight">
+\[x_i = i \cdot \Delta x, \quad i = 0, 1, 2, \ldots, n-1\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Delta x = \frac{L}{n-1}\)</span> is the spatial step size.</p>
+</section>
+<section id="temporal-discretization">
+<h3>Temporal Discretization<a class="headerlink" href="#temporal-discretization" title="Permalink to this heading">#</a></h3>
+<p>Divide time into discrete steps:</p>
+<div class="math notranslate nohighlight">
+\[t^n = n \cdot \Delta t, \quad n = 0, 1, 2, \ldots, N\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Delta t\)</span> is the time step size.</p>
+</section>
+<section id="notation">
+<h3>Notation<a class="headerlink" href="#notation" title="Permalink to this heading">#</a></h3>
+<p>Let <span class="math notranslate nohighlight">\(T_i^n\)</span> denote the temperature at spatial node <span class="math notranslate nohighlight">\(i\)</span> and time level <span class="math notranslate nohighlight">\(n\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[T_i^n \approx T(x_i, t^n)\]</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="finite-difference-approximations">
+<h2>5. Finite Difference Approximations<a class="headerlink" href="#finite-difference-approximations" title="Permalink to this heading">#</a></h2>
+<section id="forward-difference-in-time-1st-order">
+<h3>Forward Difference in Time (1st Order)<a class="headerlink" href="#forward-difference-in-time-1st-order" title="Permalink to this heading">#</a></h3>
+<p>The time derivative is approximated using a <strong>forward difference</strong> (explicit):</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial T}{\partial t} \bigg|_i^n \approx \frac{T_i^{n+1} - T_i^n}{\Delta t}\]</div>
+<p><strong>Truncation error:</strong> <span class="math notranslate nohighlight">\(O(\Delta t)\)</span> (first-order accurate)</p>
+<p><strong>Derivation:</strong> Taylor series expansion:</p>
+<div class="math notranslate nohighlight">
+\[T_i^{n+1} = T_i^n + \Delta t \frac{\partial T}{\partial t}\bigg|_i^n + \frac{(\Delta t)^2}{2} \frac{\partial^2 T}{\partial t^2}\bigg|_i^n + O(\Delta t^3)\]</div>
+<p>Rearranging:</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial T}{\partial t}\bigg|_i^n = \frac{T_i^{n+1} - T_i^n}{\Delta t} - \frac{\Delta t}{2} \frac{\partial^2 T}{\partial t^2}\bigg|_i^n + O(\Delta t^2)\]</div>
+<p>The second term is the truncation error <span class="math notranslate nohighlight">\(O(\Delta t)\)</span>.</p>
+</section>
+<section id="central-difference-in-space-2nd-order">
+<h3>Central Difference in Space (2nd Order)<a class="headerlink" href="#central-difference-in-space-2nd-order" title="Permalink to this heading">#</a></h3>
+<p>The second spatial derivative is approximated using a <strong>central difference</strong>:</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial^2 T}{\partial x^2} \bigg|_i^n \approx \frac{T_{i+1}^n - 2T_i^n + T_{i-1}^n}{(\Delta x)^2}\]</div>
+<p><strong>Truncation error:</strong> <span class="math notranslate nohighlight">\(O(\Delta x^2)\)</span> (second-order accurate)</p>
+<p><strong>Derivation:</strong> Taylor series expansions:</p>
+<p>Forward:
+$<span class="math notranslate nohighlight">\(T_{i+1}^n = T_i^n + \Delta x \frac{\partial T}{\partial x}\bigg|_i^n + \frac{(\Delta x)^2}{2} \frac{\partial^2 T}{\partial x^2}\bigg|_i^n + \frac{(\Delta x)^3}{6} \frac{\partial^3 T}{\partial x^3}\bigg|_i^n + O(\Delta x^4)\)</span>$</p>
+<p>Backward:
+$<span class="math notranslate nohighlight">\(T_{i-1}^n = T_i^n - \Delta x \frac{\partial T}{\partial x}\bigg|_i^n + \frac{(\Delta x)^2}{2} \frac{\partial^2 T}{\partial x^2}\bigg|_i^n - \frac{(\Delta x)^3}{6} \frac{\partial^3 T}{\partial x^3}\bigg|_i^n + O(\Delta x^4)\)</span>$</p>
+<p>Adding these two equations:</p>
+<div class="math notranslate nohighlight">
+\[T_{i+1}^n + T_{i-1}^n = 2T_i^n + (\Delta x)^2 \frac{\partial^2 T}{\partial x^2}\bigg|_i^n + O(\Delta x^4)\]</div>
+<p>Rearranging:</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial^2 T}{\partial x^2}\bigg|_i^n = \frac{T_{i+1}^n - 2T_i^n + T_{i-1}^n}{(\Delta x)^2} + O(\Delta x^2)\]</div>
+<p>Note: The first and third derivative terms cancel out, giving <strong>second-order accuracy</strong>.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="explicit-finite-difference-scheme">
+<h2>6. Explicit Finite Difference Scheme<a class="headerlink" href="#explicit-finite-difference-scheme" title="Permalink to this heading">#</a></h2>
+<section id="discretized-equation">
+<h3>Discretized Equation<a class="headerlink" href="#discretized-equation" title="Permalink to this heading">#</a></h3>
+<p>Substituting the finite difference approximations into the heat equation:</p>
+<div class="math notranslate nohighlight">
+\[\frac{T_i^{n+1} - T_i^n}{\Delta t} = \alpha \frac{T_{i+1}^n - 2T_i^n + T_{i-1}^n}{(\Delta x)^2}\]</div>
+</section>
+<section id="solution-formula">
+<h3>Solution Formula<a class="headerlink" href="#solution-formula" title="Permalink to this heading">#</a></h3>
+<p>Solving for <span class="math notranslate nohighlight">\(T_i^{n+1}\)</span> (the temperature at the next time step):</p>
+<div class="math notranslate nohighlight">
+\[T_i^{n+1} = T_i^n + \frac{\alpha \Delta t}{(\Delta x)^2} \left( T_{i+1}^n - 2T_i^n + T_{i-1}^n \right)\]</div>
+<p>Define the <strong>Fourier number</strong> (or <strong>mesh Fourier number</strong>):</p>
+<div class="math notranslate nohighlight">
+\[r = \frac{\alpha \Delta t}{(\Delta x)^2}\]</div>
+<p>Then the scheme simplifies to:</p>
+<div class="math notranslate nohighlight">
+\[\boxed{T_i^{n+1} = T_i^n + r \left( T_{i+1}^n - 2T_i^n + T_{i-1}^n \right)}\]</div>
+<p>or equivalently:</p>
+<div class="math notranslate nohighlight">
+\[\boxed{T_i^{n+1} = r T_{i-1}^n + (1 - 2r) T_i^n + r T_{i+1}^n}\]</div>
+</section>
+<section id="why-explicit">
+<h3>Why “Explicit”?<a class="headerlink" href="#why-explicit" title="Permalink to this heading">#</a></h3>
+<p>This method is called <strong>explicit</strong> because <span class="math notranslate nohighlight">\(T_i^{n+1}\)</span> is computed directly from known values at time level <span class="math notranslate nohighlight">\(n\)</span>:</p>
+<ul class="simple">
+<li><p>No system of equations to solve</p></li>
+<li><p>Easy to implement</p></li>
+<li><p>Fast computation per time step</p></li>
+<li><p><strong>But</strong>: conditionally stable (see below)</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="boundary-condition-implementation">
+<h2>7. Boundary Condition Implementation<a class="headerlink" href="#boundary-condition-implementation" title="Permalink to this heading">#</a></h2>
+<section id="centerline-symmetry-i-0">
+<h3>Centerline (Symmetry): <span class="math notranslate nohighlight">\(i = 0\)</span><a class="headerlink" href="#centerline-symmetry-i-0" title="Permalink to this heading">#</a></h3>
+<p>From the symmetry condition <span class="math notranslate nohighlight">\(\frac{\partial T}{\partial x}\big|_{x=0} = 0\)</span>, we use a <strong>one-sided difference</strong>:</p>
+<div class="math notranslate nohighlight">
+\[\frac{T_1^n - T_{-1}^n}{2\Delta x} = 0\]</div>
+<p>This gives: <span class="math notranslate nohighlight">\(T_{-1}^n = T_1^n\)</span> (ghost point)</p>
+<p>Substituting into the scheme at <span class="math notranslate nohighlight">\(i=0\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[T_0^{n+1} = T_0^n + r(T_1^n - 2T_0^n + T_{-1}^n) = T_0^n + r(T_1^n - 2T_0^n + T_1^n)\]</div>
+<div class="math notranslate nohighlight">
+\[\boxed{T_0^{n+1} = T_0^n + 2r(T_1^n - T_0^n)}\]</div>
+<p><strong>Simplified implementation:</strong> Since symmetry implies no gradient, we can also use:</p>
+<div class="math notranslate nohighlight">
+\[\boxed{T_0^{n+1} = T_1^{n+1}}\]</div>
+</section>
+<section id="surface-fire-exposure-i-n-1">
+<h3>Surface (Fire Exposure): <span class="math notranslate nohighlight">\(i = n-1\)</span><a class="headerlink" href="#surface-fire-exposure-i-n-1" title="Permalink to this heading">#</a></h3>
+<p>Prescribed temperature from fire curve:</p>
+<div class="math notranslate nohighlight">
+\[\boxed{T_{n-1}^{n+1} = T_{\text{fire}}(t^{n+1})}\]</div>
+</section>
+<section id="interior-nodes-i-1-2-ldots-n-2">
+<h3>Interior Nodes: <span class="math notranslate nohighlight">\(i = 1, 2, \ldots, n-2\)</span><a class="headerlink" href="#interior-nodes-i-1-2-ldots-n-2" title="Permalink to this heading">#</a></h3>
+<p>Use the standard explicit formula:</p>
+<div class="math notranslate nohighlight">
+\[\boxed{T_i^{n+1} = r T_{i-1}^n + (1 - 2r) T_i^n + r T_{i+1}^n}\]</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="stability-analysis">
+<h2>8. Stability Analysis<a class="headerlink" href="#stability-analysis" title="Permalink to this heading">#</a></h2>
+<section id="von-neumann-stability-analysis">
+<h3>Von Neumann Stability Analysis<a class="headerlink" href="#von-neumann-stability-analysis" title="Permalink to this heading">#</a></h3>
+<p>For the explicit scheme to be <strong>stable</strong>, numerical errors must not grow exponentially. The stability criterion is:</p>
+<div class="math notranslate nohighlight">
+\[\boxed{r = \frac{\alpha \Delta t}{(\Delta x)^2} \leq \frac{1}{2}}\]</div>
+<p><strong>Physical interpretation:</strong></p>
+<ul class="simple">
+<li><p>Each spatial node receives heat from neighbors weighted by <span class="math notranslate nohighlight">\(r\)</span></p></li>
+<li><p>The center node coefficient is <span class="math notranslate nohighlight">\((1-2r)\)</span></p></li>
+<li><p>For stability: <span class="math notranslate nohighlight">\((1-2r) \geq 0 \Rightarrow r \leq 0.5\)</span></p></li>
+<li><p>If <span class="math notranslate nohighlight">\(r &gt; 0.5\)</span>: numerical oscillations grow without bound</p></li>
+</ul>
+</section>
+<section id="maximum-stable-time-step">
+<h3>Maximum Stable Time Step<a class="headerlink" href="#maximum-stable-time-step" title="Permalink to this heading">#</a></h3>
+<p>Rearranging the stability criterion:</p>
+<div class="math notranslate nohighlight">
+\[\Delta t \leq \frac{(\Delta x)^2}{2\alpha}\]</div>
+<p><strong>Example:</strong> For concrete with <span class="math notranslate nohighlight">\(\alpha = 5.8 \times 10^{-7}\)</span> m²/s and <span class="math notranslate nohighlight">\(\Delta x = 0.004\)</span> m:</p>
+<div class="math notranslate nohighlight">
+\[\Delta t \leq \frac{(0.004)^2}{2 \times 5.8 \times 10^{-7}} = 13.8 \text{ s}\]</div>
+<p>Using <span class="math notranslate nohighlight">\(\Delta t = 1.08\)</span> s gives <span class="math notranslate nohighlight">\(r = 0.039 \ll 0.5\)</span> ✓ <strong>Very stable</strong></p>
+</section>
+<section id="what-happens-if-unstable">
+<h3>What Happens if Unstable?<a class="headerlink" href="#what-happens-if-unstable" title="Permalink to this heading">#</a></h3>
+<p>If you violate the stability criterion (<span class="math notranslate nohighlight">\(r &gt; 0.5\)</span>):</p>
+<ul class="simple">
+<li><p>The coefficient <span class="math notranslate nohighlight">\((1-2r)\)</span> becomes <strong>negative</strong></p></li>
+<li><p>Solution exhibits unphysical oscillations</p></li>
+<li><p>Errors grow exponentially</p></li>
+<li><p>Solution “blows up” (temperatures → ±∞)</p></li>
+</ul>
+<p>This is a great demonstration for students!</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="algorithm-summary">
+<h2>9. Algorithm Summary<a class="headerlink" href="#algorithm-summary" title="Permalink to this heading">#</a></h2>
+<section id="initialization">
+<h3>Initialization<a class="headerlink" href="#initialization" title="Permalink to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1. Set initial condition: T[i, 0] = T_ambient for all i
+2. Calculate r = α·Δt/(Δx)²
+3. Check stability: if r &gt; 0.5, reduce Δt or increase Δx
+</pre></div>
+</div>
+</section>
+<section id="time-stepping-loop">
+<h3>Time-Stepping Loop<a class="headerlink" href="#time-stepping-loop" title="Permalink to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>For n = 0, 1, 2, ..., N-1:
+    
+    // Update fire temperature
+    T_fire = fire_temperature(t^n)
+    
+    // Interior nodes (explicit formula)
+    For i = 1, 2, ..., n-2:
+        T[i, n+1] = T[i, n] + r·(T[i+1, n] - 2·T[i, n] + T[i-1, n])
+    
+    // Boundary: centerline (symmetry)
+    T[0, n+1] = T[1, n+1]
+    
+    // Boundary: surface (fire exposure)
+    T[n-1, n+1] = T_fire
+    
+    // Check rebar temperature
+    If T[rebar_index, n+1] ≥ T_critical:
+        Record failure time and exit
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="engineering-design-considerations">
+<h2>10. Engineering Design Considerations<a class="headerlink" href="#engineering-design-considerations" title="Permalink to this heading">#</a></h2>
+<section id="fire-resistance-rating">
+<h3>Fire Resistance Rating<a class="headerlink" href="#fire-resistance-rating" title="Permalink to this heading">#</a></h3>
+<p>Building codes require minimum fire resistance:</p>
+<ul class="simple">
+<li><p><strong>1-hour rating:</strong> Most commercial buildings</p></li>
+<li><p><strong>2-hour rating:</strong> High-rise buildings, exit stairwells</p></li>
+<li><p><strong>3-hour rating:</strong> Critical infrastructure</p></li>
+</ul>
+<p><strong>Criterion:</strong> Steel reinforcement must stay below 538°C (1000°F)</p>
+<ul class="simple">
+<li><p>Steel loses 50% of its yield strength at this temperature</p></li>
+<li><p>Structural failure becomes likely</p></li>
+</ul>
+</section>
+<section id="concrete-cover-thickness">
+<h3>Concrete Cover Thickness<a class="headerlink" href="#concrete-cover-thickness" title="Permalink to this heading">#</a></h3>
+<p>The distance from rebar to fire-exposed surface:</p>
+<ul class="simple">
+<li><p><strong>More cover</strong> → better fire protection, higher rating</p></li>
+<li><p><strong>Less cover</strong> → lower cost, more usable space</p></li>
+</ul>
+<p><strong>Typical values:</strong></p>
+<ul class="simple">
+<li><p>2 inches (5 cm): Standard for columns</p></li>
+<li><p>3 inches (7.5 cm): Enhanced fire protection</p></li>
+<li><p>1.5 inches (3.8 cm): Minimum for corrosion protection</p></li>
+</ul>
+</section>
+<section id="material-properties-temperature-dependent">
+<h3>Material Properties (Temperature-Dependent)<a class="headerlink" href="#material-properties-temperature-dependent" title="Permalink to this heading">#</a></h3>
+<p><strong>Advanced models</strong> account for:</p>
+<ul class="simple">
+<li><p>Thermal conductivity <span class="math notranslate nohighlight">\(k(T)\)</span> decreases at high temperatures</p></li>
+<li><p>Specific heat <span class="math notranslate nohighlight">\(c_p(T)\)</span> increases (moisture evaporation)</p></li>
+<li><p>Concrete spalling at high temperatures</p></li>
+<li><p>Radiation and convection at the surface</p></li>
+</ul>
+<p>Our simplified model assumes constant properties (conservative).</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="validation">
+<h2>11. Validation<a class="headerlink" href="#validation" title="Permalink to this heading">#</a></h2>
+<section id="analytical-solution-constant-surface-temperature">
+<h3>Analytical Solution (Constant Surface Temperature)<a class="headerlink" href="#analytical-solution-constant-surface-temperature" title="Permalink to this heading">#</a></h3>
+<p>For constant <span class="math notranslate nohighlight">\(T_{\text{surface}}\)</span> applied at <span class="math notranslate nohighlight">\(t=0\)</span>, the analytical solution is:</p>
+<div class="math notranslate nohighlight">
+\[T(x,t) = T_{\text{surface}} + (T_{\text{initial}} - T_{\text{surface}}) \cdot \text{erf}\left(\frac{x}{2\sqrt{\alpha t}}\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\text{erf}(z)\)</span> is the error function.</p>
+<p><strong>Use:</strong> Validate numerical code against this solution before applying time-varying fire curve.</p>
+</section>
+<section id="expected-behavior">
+<h3>Expected Behavior<a class="headerlink" href="#expected-behavior" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Surface temperature follows fire curve immediately</p></li>
+<li><p>Interior temperature lags (thermal inertia)</p></li>
+<li><p>Temperature gradient is steepest near surface</p></li>
+<li><p>Heat penetration depth <span class="math notranslate nohighlight">\(\sim \sqrt{\alpha t}\)</span> (diffusive scaling)</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="computational-considerations">
+<h2>12. Computational Considerations<a class="headerlink" href="#computational-considerations" title="Permalink to this heading">#</a></h2>
+<section id="mesh-sensitivity">
+<h3>Mesh Sensitivity<a class="headerlink" href="#mesh-sensitivity" title="Permalink to this heading">#</a></h3>
+<p><strong>Spatial mesh:</strong></p>
+<ul class="simple">
+<li><p>Finer mesh → better accuracy, smaller stable <span class="math notranslate nohighlight">\(\Delta t\)</span></p></li>
+<li><p>Rule of thumb: <span class="math notranslate nohighlight">\(\Delta x \approx\)</span> 1-5 mm for concrete</p></li>
+</ul>
+<p><strong>Temporal mesh:</strong></p>
+<ul class="simple">
+<li><p>Limited by stability criterion</p></li>
+<li><p>Typical: <span class="math notranslate nohighlight">\(\Delta t = 1-10\)</span> seconds</p></li>
+</ul>
+</section>
+<section id="efficiency">
+<h3>Efficiency<a class="headerlink" href="#efficiency" title="Permalink to this heading">#</a></h3>
+<p>For explicit method:</p>
+<ul class="simple">
+<li><p><strong>Cost per time step:</strong> <span class="math notranslate nohighlight">\(O(n)\)</span> (loop over nodes)</p></li>
+<li><p><strong>Total cost:</strong> <span class="math notranslate nohighlight">\(O(n \times N)\)</span> where <span class="math notranslate nohighlight">\(N\)</span> = number of time steps</p></li>
+<li><p>Very fast for 1D problems</p></li>
+<li><p>Memory: store only two time levels</p></li>
+</ul>
+</section>
+<section id="sparse-matrix-structure">
+<h3>Sparse Matrix Structure<a class="headerlink" href="#sparse-matrix-structure" title="Permalink to this heading">#</a></h3>
+<p>If written in matrix form: <span class="math notranslate nohighlight">\(\mathbf{T}^{n+1} = \mathbf{A} \mathbf{T}^n + \mathbf{b}^n\)</span></p>
+<p>Matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is <strong>tridiagonal</strong> (only 3 non-zero entries per row).</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="key-takeaways-for-students">
+<h2>13. Key Takeaways for Students<a class="headerlink" href="#key-takeaways-for-students" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Forward difference in time</strong> → explicit method → conditionally stable</p></li>
+<li><p><strong>Central difference in space</strong> → second-order accurate</p></li>
+<li><p><strong>Stability criterion</strong> <span class="math notranslate nohighlight">\(r \leq 0.5\)</span> is <strong>critical</strong> – violate it and solution fails</p></li>
+<li><p>Explicit methods are simple but require small time steps</p></li>
+<li><p>Physical interpretation: heat diffuses slowly through concrete (protective effect)</p></li>
+<li><p>Engineering trade-off: cover thickness vs. cost vs. fire rating</p></li>
+<li><p>Building codes specify minimum fire resistance based on occupancy</p></li>
+<li><p>Numerical methods handle time-varying boundary conditions easily</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>ASTM E119:</strong> Standard Test Methods for Fire Tests of Building Construction and Materials</p></li>
+<li><p><strong>ACI 318:</strong> Building Code Requirements for Structural Concrete</p></li>
+<li><p>Cengel, Y. A., <em>Heat and Mass Transfer: Fundamentals and Applications</em></p></li>
+<li><p>LeVeque, R. J., <em>Finite Difference Methods for Ordinary and Partial Differential Equations</em></p></li>
+</ul>
+<hr class="docutils" />
+<p><strong>End of Document</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">CE311K - Computer Methods for Civil Engineering</span>
+<span class="sd">Example: Heat Conduction in Concrete Column During Fire</span>
+
+<span class="sd">Problem: Structural fire safety analysis</span>
+<span class="sd">How long before a steel reinforcement bar reaches critical temperature?</span>
+
+<span class="sd">Governing Equation: ∂T/∂t = α * ∂²T/∂x²  (1D heat diffusion)</span>
+
+<span class="sd">Time discretization: Forward difference (explicit)</span>
+<span class="sd">Space discretization: Central difference</span>
+
+<span class="sd">Application: Fire resistance rating of reinforced concrete columns</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.animation</span><span class="w"> </span><span class="kn">import</span> <span class="n">FuncAnimation</span>
+
+<span class="c1"># ============================================================================</span>
+<span class="c1"># PROBLEM SETUP: CONCRETE COLUMN IN FIRE</span>
+<span class="c1"># ============================================================================</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;STRUCTURAL FIRE SAFETY: CONCRETE COLUMN HEAT TRANSFER&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Explicit Finite Difference Method&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
+
+<span class="c1"># Column geometry</span>
+<span class="n">width</span> <span class="o">=</span> <span class="mf">0.40</span>  <span class="c1"># Column width (m) - typical 16&quot; column</span>
+<span class="n">cover</span> <span class="o">=</span> <span class="mf">0.05</span>  <span class="c1"># Concrete cover to rebar center (m) - 2&quot; cover</span>
+
+<span class="c1"># Concrete thermal properties</span>
+<span class="n">rho</span> <span class="o">=</span> <span class="mi">2400</span>  <span class="c1"># Density (kg/m³)</span>
+<span class="n">c_p</span> <span class="o">=</span> <span class="mi">1000</span>  <span class="c1"># Specific heat (J/kg·K)</span>
+<span class="n">k_concrete</span> <span class="o">=</span> <span class="mf">1.4</span>  <span class="c1"># Thermal conductivity (W/m·K)</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="n">k_concrete</span> <span class="o">/</span> <span class="p">(</span><span class="n">rho</span> <span class="o">*</span> <span class="n">c_p</span><span class="p">)</span>  <span class="c1"># Thermal diffusivity (m²/s)</span>
+
+<span class="c1"># Steel rebar properties (for critical temperature check)</span>
+<span class="n">T_critical_steel</span> <span class="o">=</span> <span class="mi">538</span> <span class="o">+</span> <span class="mi">273</span>  <span class="c1"># Critical temp for steel = 538°C (1000°F) in Kelvin</span>
+
+<span class="c1"># Fire exposure (Standard fire curve - ASTM E119 / ISO 834)</span>
+<span class="n">T_ambient</span> <span class="o">=</span> <span class="mi">20</span> <span class="o">+</span> <span class="mi">273</span>  <span class="c1"># Initial temperature (K)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">fire_temperature</span><span class="p">(</span><span class="n">t_minutes</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;ASTM E119 standard fire curve: T = T_0 + 750*(1 - e^(-3.79553*sqrt(t)))&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">t_minutes</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">T_ambient</span>
+    <span class="n">T_fire_celsius</span> <span class="o">=</span> <span class="mi">20</span> <span class="o">+</span> <span class="mi">750</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">3.79553</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">t_minutes</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">T_fire_celsius</span> <span class="o">+</span> <span class="mi">273</span>  <span class="c1"># Convert to Kelvin</span>
+
+<span class="c1"># Simulation parameters</span>
+<span class="n">t_total</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">3600</span>  <span class="c1"># 3 hours in seconds (typical fire rating requirement)</span>
+<span class="n">n_time_steps</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="n">t_total</span> <span class="o">/</span> <span class="n">n_time_steps</span>
+
+<span class="c1"># Spatial discretization (half-width due to symmetry)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">51</span><span class="p">)</span>  <span class="c1"># From center to surface</span>
+<span class="n">n_nodes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">dx</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Stability check</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">/</span> <span class="p">(</span><span class="n">dx</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Column Geometry:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Width: </span><span class="si">{</span><span class="n">width</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> cm (</span><span class="si">{</span><span class="n">width</span><span class="o">*</span><span class="mf">39.37</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> inches)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Rebar cover: </span><span class="si">{</span><span class="n">cover</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> cm (</span><span class="si">{</span><span class="n">cover</span><span class="o">*</span><span class="mf">39.37</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> inches)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Rebar location: </span><span class="si">{</span><span class="n">cover</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> m from surface&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Material Properties (Concrete):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Thermal diffusivity: </span><span class="si">{</span><span class="n">alpha</span><span class="si">:</span><span class="s2">.2e</span><span class="si">}</span><span class="s2"> m²/s&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Thermal conductivity: </span><span class="si">{</span><span class="n">k_concrete</span><span class="si">}</span><span class="s2"> W/m·K&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Fire Exposure:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Standard: ASTM E119&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Duration: </span><span class="si">{</span><span class="n">t_total</span><span class="o">/</span><span class="mi">3600</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> hours&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Initial temp: </span><span class="si">{</span><span class="n">T_ambient</span><span class="o">-</span><span class="mi">273</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Fire temp (1hr): </span><span class="si">{</span><span class="n">fire_temperature</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span><span class="o">-</span><span class="mi">273</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Fire temp (2hr): </span><span class="si">{</span><span class="n">fire_temperature</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span><span class="o">-</span><span class="mi">273</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Steel critical temp: </span><span class="si">{</span><span class="n">T_critical_steel</span><span class="o">-</span><span class="mi">273</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Numerical Parameters:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Spatial nodes: </span><span class="si">{</span><span class="n">n_nodes</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Time steps: </span><span class="si">{</span><span class="n">n_time_steps</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Δx = </span><span class="si">{</span><span class="n">dx</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> cm&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Δt = </span><span class="si">{</span><span class="n">dt</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> s = </span><span class="si">{</span><span class="n">dt</span><span class="o">/</span><span class="mi">60</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> minutes&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Stability Check:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  r = α*Δt/Δx² = </span><span class="si">{</span><span class="n">r</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">r</span> <span class="o">&lt;=</span> <span class="mf">0.5</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  ✓ STABLE (r ≤ 0.5)&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  ✗ UNSTABLE (r &gt; 0.5)&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Required: Δt ≤ </span><span class="si">{</span><span class="mf">0.5</span><span class="o">*</span><span class="n">dx</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">alpha</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> s&quot;</span><span class="p">)</span>
+    <span class="n">exit</span><span class="p">()</span>
+
+<span class="c1"># ============================================================================</span>
+<span class="c1"># ANALYTICAL SOLUTION (for validation)</span>
+<span class="c1"># ============================================================================</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">For constant surface temperature (simplified case), analytical solution exists:</span>
+<span class="sd">T(x,t) = T_surface + (T_initial - T_surface) * erf(x/(2*sqrt(α*t)))</span>
+
+<span class="sd">We&#39;ll use this to validate our numerical method at a fixed fire temperature</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">analytical_solution_const_temp</span><span class="p">(</span><span class="n">x_vals</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">T_surface</span><span class="p">,</span> <span class="n">T_initial</span><span class="p">,</span> <span class="n">alpha</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Semi-infinite solid with constant surface temperature&quot;&quot;&quot;</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.special</span><span class="w"> </span><span class="kn">import</span> <span class="n">erf</span>
+    <span class="k">if</span> <span class="n">t</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">full_like</span><span class="p">(</span><span class="n">x_vals</span><span class="p">,</span> <span class="n">T_initial</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">T_surface</span> <span class="o">+</span> <span class="p">(</span><span class="n">T_initial</span> <span class="o">-</span> <span class="n">T_surface</span><span class="p">)</span> <span class="o">*</span> <span class="n">erf</span><span class="p">(</span><span class="n">x_vals</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">alpha</span><span class="o">*</span><span class="n">t</span><span class="p">)))</span>
+
+<span class="c1"># ============================================================================</span>
+<span class="c1"># EXPLICIT FINITE DIFFERENCE SOLUTION</span>
+<span class="c1"># ============================================================================</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Governing equation: ∂T/∂t = α * ∂²T/∂x²</span>
+
+<span class="sd">Forward difference in time:</span>
+<span class="sd">(T[i,n+1] - T[i,n])/Δt = α * ∂²T/∂x²|[i,n]</span>
+
+<span class="sd">Central difference in space:</span>
+<span class="sd">∂²T/∂x²|[i,n] ≈ (T[i+1,n] - 2*T[i,n] + T[i-1,n])/Δx²</span>
+
+<span class="sd">Explicit scheme:</span>
+<span class="sd">T[i,n+1] = T[i,n] + r*(T[i+1,n] - 2*T[i,n] + T[i-1,n])</span>
+
+<span class="sd">where r = α*Δt/Δx²</span>
+
+<span class="sd">Boundary conditions:</span>
+<span class="sd">- x=0 (center): ∂T/∂x = 0 (symmetry) → T[0] = T[1]</span>
+<span class="sd">- x=width/2 (surface): T = T_fire(t)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1"># Initialize arrays</span>
+<span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_nodes</span><span class="p">,</span> <span class="n">n_time_steps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">T</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">T_ambient</span>  <span class="c1"># Initial condition</span>
+
+<span class="c1"># Track time and rebar temperature</span>
+<span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_total</span><span class="p">,</span> <span class="n">n_time_steps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">time_minutes</span> <span class="o">=</span> <span class="n">time</span> <span class="o">/</span> <span class="mi">60</span>
+
+<span class="c1"># Find rebar location index</span>
+<span class="n">rebar_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="p">(</span><span class="n">width</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="n">cover</span><span class="p">)))</span>
+<span class="n">rebar_distance</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">rebar_index</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;SOLVING HEAT TRANSFER...&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
+
+<span class="c1"># Store snapshots for visualization</span>
+<span class="n">snapshot_times_min</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">180</span><span class="p">]</span>  <span class="c1"># minutes</span>
+<span class="n">snapshot_indices</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">t_snap</span> <span class="ow">in</span> <span class="n">snapshot_times_min</span><span class="p">:</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">time_minutes</span> <span class="o">-</span> <span class="n">t_snap</span><span class="p">))</span>
+    <span class="n">snapshot_indices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+
+<span class="c1"># Time stepping</span>
+<span class="n">rebar_critical_time</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_time_steps</span><span class="p">):</span>
+    <span class="c1"># Update fire temperature</span>
+    <span class="n">T_fire</span> <span class="o">=</span> <span class="n">fire_temperature</span><span class="p">(</span><span class="n">time_minutes</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
+
+    <span class="c1"># Interior nodes (explicit scheme)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_nodes</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">r</span> <span class="o">*</span> <span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">])</span>
+
+    <span class="c1"># Boundary condition at center (symmetry)</span>
+    <span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">T</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="c1"># Boundary condition at surface (fire exposure)</span>
+    <span class="n">T</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">T_fire</span>
+
+    <span class="c1"># Check if rebar reached critical temperature</span>
+    <span class="k">if</span> <span class="n">rebar_critical_time</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">T</span><span class="p">[</span><span class="n">rebar_index</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">T_critical_steel</span><span class="p">:</span>
+        <span class="n">rebar_critical_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="mi">60</span>  <span class="c1"># in minutes</span>
+
+    <span class="c1"># Progress indicator</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">1000</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">progress</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_time_steps</span> <span class="o">*</span> <span class="mi">100</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Progress: </span><span class="si">{</span><span class="n">progress</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">% - Time: </span><span class="si">{</span><span class="n">time_minutes</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> min - &quot;</span>
+              <span class="sa">f</span><span class="s2">&quot;Surface: </span><span class="si">{</span><span class="n">T</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">]</span><span class="o">-</span><span class="mi">273</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">°C - Rebar: </span><span class="si">{</span><span class="n">T</span><span class="p">[</span><span class="n">rebar_index</span><span class="p">,</span><span class="n">n</span><span class="p">]</span><span class="o">-</span><span class="mi">273</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✓ Solution complete!&quot;</span><span class="p">)</span>
+
+<span class="c1"># ============================================================================</span>
+<span class="c1"># RESULTS ANALYSIS</span>
+<span class="c1"># ============================================================================</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;FIRE RESISTANCE ANALYSIS&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
+
+<span class="c1"># Final temperatures</span>
+<span class="n">T_surface_final</span> <span class="o">=</span> <span class="n">T</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">273</span>
+<span class="n">T_center_final</span> <span class="o">=</span> <span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">273</span>
+<span class="n">T_rebar_final</span> <span class="o">=</span> <span class="n">T</span><span class="p">[</span><span class="n">rebar_index</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">273</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Final Temperatures (after </span><span class="si">{</span><span class="n">t_total</span><span class="o">/</span><span class="mi">3600</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> hours):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Surface (fire-exposed): </span><span class="si">{</span><span class="n">T_surface_final</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Rebar location: </span><span class="si">{</span><span class="n">T_rebar_final</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Column center: </span><span class="si">{</span><span class="n">T_center_final</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Steel Reinforcement Analysis:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Critical temperature: </span><span class="si">{</span><span class="n">T_critical_steel</span><span class="o">-</span><span class="mi">273</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Rebar location: </span><span class="si">{</span><span class="n">rebar_distance</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> cm from center (</span><span class="si">{</span><span class="p">(</span><span class="n">width</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="n">rebar_distance</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> cm cover)&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">rebar_critical_time</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  ✗ CRITICAL: Rebar reached </span><span class="si">{</span><span class="n">T_critical_steel</span><span class="o">-</span><span class="mi">273</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">°C after </span><span class="si">{</span><span class="n">rebar_critical_time</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> minutes&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Fire rating: &lt; </span><span class="si">{</span><span class="n">rebar_critical_time</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> minutes&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">rebar_critical_time</span> <span class="o">&lt;</span> <span class="mi">60</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  RECOMMENDATION: Increase cover or use fire protection&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">rebar_critical_time</span> <span class="o">&lt;</span> <span class="mi">120</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  RECOMMENDATION: Adequate for 1-hour rating, consider upgrade for 2-hour&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Rating: Adequate for 2-hour fire resistance&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  ✓ SAFE: Rebar stayed below </span><span class="si">{</span><span class="n">T_critical_steel</span><span class="o">-</span><span class="mi">273</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">°C for entire </span><span class="si">{</span><span class="n">t_total</span><span class="o">/</span><span class="mi">3600</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> hour test&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Fire rating: &gt; </span><span class="si">{</span><span class="n">t_total</span><span class="o">/</span><span class="mi">60</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> minutes&quot;</span><span class="p">)</span>
+
+<span class="c1"># ============================================================================</span>
+<span class="c1"># VISUALIZATION</span>
+<span class="c1"># ============================================================================</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="c1"># Plot 1: Temperature profiles at different times</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">YlOrRd</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">snapshot_indices</span><span class="p">)))</span>
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">snap_idx</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">snapshot_indices</span><span class="p">):</span>
+    <span class="n">t_min</span> <span class="o">=</span> <span class="n">time_minutes</span><span class="p">[</span><span class="n">snap_idx</span><span class="p">]</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="n">T</span><span class="p">[:,</span> <span class="n">snap_idx</span><span class="p">]</span><span class="o">-</span><span class="mi">273</span><span class="p">,</span> <span class="s1">&#39;o-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+             <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;t = </span><span class="si">{</span><span class="n">t_min</span><span class="si">:</span><span class="s1">.0f</span><span class="si">}</span><span class="s1"> min&#39;</span><span class="p">,</span> <span class="n">markevery</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">T_critical_steel</span><span class="o">-</span><span class="mi">273</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Critical temp (</span><span class="si">{</span><span class="n">T_critical_steel</span><span class="o">-</span><span class="mi">273</span><span class="si">:</span><span class="s1">.0f</span><span class="si">}</span><span class="s1">°C)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">rebar_distance</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Rebar location&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Distance from Column Center (cm)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Temperature (°C)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Temperature Profiles Through Column Thickness&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="mi">100</span><span class="p">])</span>
+
+<span class="c1"># Plot 2: Temperature history at key locations</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_minutes</span><span class="p">,</span> <span class="n">T</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span><span class="o">-</span><span class="mi">273</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Surface (fire-exposed)&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_minutes</span><span class="p">,</span> <span class="n">T</span><span class="p">[</span><span class="n">rebar_index</span><span class="p">,</span> <span class="p">:]</span><span class="o">-</span><span class="mi">273</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span>
+         <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Rebar (</span><span class="si">{</span><span class="p">(</span><span class="n">width</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="n">rebar_distance</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1"> cm cover)&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_minutes</span><span class="p">,</span> <span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span><span class="o">-</span><span class="mi">273</span><span class="p">,</span> <span class="s1">&#39;g-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Column center&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">T_critical_steel</span><span class="o">-</span><span class="mi">273</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Critical temp (</span><span class="si">{</span><span class="n">T_critical_steel</span><span class="o">-</span><span class="mi">273</span><span class="si">:</span><span class="s1">.0f</span><span class="si">}</span><span class="s1">°C)&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">rebar_critical_time</span><span class="p">:</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">rebar_critical_time</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Failure time (</span><span class="si">{</span><span class="n">rebar_critical_time</span><span class="si">:</span><span class="s1">.0f</span><span class="si">}</span><span class="s1"> min)&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time (minutes)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Temperature (°C)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Temperature History During Fire Exposure&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_total</span><span class="o">/</span><span class="mi">60</span><span class="p">])</span>
+
+<span class="c1"># Plot 3: Fire curve comparison</span>
+<span class="n">ax3</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">t_fire_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">T_fire_curve</span> <span class="o">=</span> <span class="p">[</span><span class="n">fire_temperature</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">-</span><span class="mi">273</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">t_fire_test</span><span class="p">]</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_fire_test</span><span class="p">,</span> <span class="n">T_fire_curve</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;ASTM E119 Standard Fire&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_minutes</span><span class="p">,</span> <span class="n">T</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span><span class="o">-</span><span class="mi">273</span><span class="p">,</span> <span class="s1">&#39;b--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Column surface temp&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time (minutes)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Temperature (°C)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Standard Fire Curve vs Surface Temperature&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">180</span><span class="p">])</span>
+
+<span class="c1"># Plot 4: Heatmap of temperature evolution</span>
+<span class="n">ax4</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="c1"># Downsample for visualization</span>
+<span class="n">time_downsample</span> <span class="o">=</span> <span class="n">time_minutes</span><span class="p">[::</span><span class="mi">20</span><span class="p">]</span>
+<span class="n">T_downsample</span> <span class="o">=</span> <span class="n">T</span><span class="p">[:,</span> <span class="p">::</span><span class="mi">20</span><span class="p">]</span> <span class="o">-</span> <span class="mi">273</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">time_downsample</span><span class="p">,</span> <span class="n">x</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">contour</span> <span class="o">=</span> <span class="n">ax4</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">T_downsample</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;hot&#39;</span><span class="p">)</span>
+<span class="n">contour_lines</span> <span class="o">=</span> <span class="n">ax4</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">T_downsample</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">538</span><span class="p">],</span>
+                             <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">contour_lines</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">°C&#39;</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">rebar_distance</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;cyan&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Rebar location&#39;</span><span class="p">)</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">contour</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax4</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Temperature (°C)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time (minutes)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Distance from Center (cm)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Temperature Evolution (Space-Time)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;fire_resistance_analysis.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">✓ Analysis plots saved!&quot;</span><span class="p">)</span>
+
+<span class="c1"># ============================================================================</span>
+<span class="c1"># VALIDATION AGAINST ANALYTICAL SOLUTION (constant temperature case)</span>
+<span class="c1"># ============================================================================</span>
+
+<span class="c1"># For validation, compare against analytical solution at a fixed temperature</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;VALIDATION (Constant Surface Temp = 1000°C)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
+
+<span class="n">T_fixed</span> <span class="o">=</span> <span class="mi">1000</span> <span class="o">+</span> <span class="mi">273</span>  <span class="c1"># Fixed fire temperature for validation</span>
+<span class="n">t_validate</span> <span class="o">=</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span>  <span class="c1"># 1 hour</span>
+<span class="n">n_validate</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">t_validate</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span>
+
+<span class="c1"># Numerical solution with fixed surface temp</span>
+<span class="n">T_validate_num</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_nodes</span><span class="p">,</span> <span class="n">n_validate</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">T_validate_num</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">T_ambient</span>
+
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_validate</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_nodes</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">T_validate_num</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">T_validate_num</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">r</span> <span class="o">*</span> <span class="p">(</span>
+            <span class="n">T_validate_num</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">T_validate_num</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">T_validate_num</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span>
+        <span class="p">)</span>
+    <span class="n">T_validate_num</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">T_validate_num</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">T_validate_num</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">T_fixed</span>
+
+<span class="c1"># Analytical solution</span>
+<span class="n">T_validate_analytical</span> <span class="o">=</span> <span class="n">analytical_solution_const_temp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t_validate</span><span class="p">,</span> <span class="n">T_fixed</span><span class="p">,</span> <span class="n">T_ambient</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span>
+
+<span class="c1"># Calculate error</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">T_validate_num</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">T_validate_analytical</span><span class="p">)</span>
+<span class="n">max_error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+<span class="n">rms_error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">error</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;After </span><span class="si">{</span><span class="n">t_validate</span><span class="o">/</span><span class="mi">3600</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> hour with constant surface temp:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Maximum error: </span><span class="si">{</span><span class="n">max_error</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> K&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  RMS error: </span><span class="si">{</span><span class="n">rms_error</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> K&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Relative error: </span><span class="si">{</span><span class="n">max_error</span><span class="o">/</span><span class="p">(</span><span class="n">T_fixed</span><span class="o">-</span><span class="n">T_ambient</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">max_error</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  ✓ Excellent agreement with analytical solution&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Analysis complete! Check the plots for detailed results.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>======================================================================
+STRUCTURAL FIRE SAFETY: CONCRETE COLUMN HEAT TRANSFER
+Explicit Finite Difference Method
+======================================================================
+
+Column Geometry:
+  Width: 40 cm (16 inches)
+  Rebar cover: 5.0 cm (2.0 inches)
+  Rebar location: 0.050 m from surface
+
+Material Properties (Concrete):
+  Thermal diffusivity: 5.83e-07 m²/s
+  Thermal conductivity: 1.4 W/m·K
+
+Fire Exposure:
+  Standard: ASTM E119
+  Duration: 3 hours
+  Initial temp: 20°C
+  Fire temp (1hr): 770°C
+  Fire temp (2hr): 770°C
+  Steel critical temp: 538°C
+
+Numerical Parameters:
+  Spatial nodes: 51
+  Time steps: 10000
+  Δx = 0.40 cm
+  Δt = 1.08 s = 0.018 minutes
+
+Stability Check:
+  r = α*Δt/Δx² = 0.0394
+  ✓ STABLE (r ≤ 0.5)
+
+======================================================================
+SOLVING HEAT TRANSFER...
+======================================================================
+  Progress: 10% - Time: 18.0 min - Surface: 770°C - Rebar: 151°C
+  Progress: 20% - Time: 36.0 min - Surface: 770°C - Rebar: 273°C
+  Progress: 30% - Time: 54.0 min - Surface: 770°C - Rebar: 346°C
+  Progress: 40% - Time: 72.0 min - Surface: 770°C - Rebar: 394°C
+  Progress: 50% - Time: 90.0 min - Surface: 770°C - Rebar: 429°C
+  Progress: 60% - Time: 108.0 min - Surface: 770°C - Rebar: 455°C
+  Progress: 70% - Time: 126.0 min - Surface: 770°C - Rebar: 477°C
+  Progress: 80% - Time: 144.0 min - Surface: 770°C - Rebar: 495°C
+  Progress: 90% - Time: 162.0 min - Surface: 770°C - Rebar: 510°C
+  Progress: 100% - Time: 180.0 min - Surface: 770°C - Rebar: 523°C
+✓ Solution complete!
+
+======================================================================
+FIRE RESISTANCE ANALYSIS
+======================================================================
+
+Final Temperatures (after 3 hours):
+  Surface (fire-exposed): 770°C
+  Rebar location: 523°C
+  Column center: 137°C
+
+Steel Reinforcement Analysis:
+  Critical temperature: 538°C
+  Rebar location: 15.2 cm from center (4.8 cm cover)
+  ✓ SAFE: Rebar stayed below 538°C for entire 3 hour test
+  Fire rating: &gt; 180 minutes
+
+✓ Analysis plots saved!
+
+======================================================================
+VALIDATION (Constant Surface Temp = 1000°C)
+======================================================================
+After 1 hour with constant surface temp:
+  Maximum error: 978.01 K
+  RMS error: 535.65 K
+  Relative error: 99.80%
+</pre></div>
+</div>
+<img alt="../../../_images/e3c0ecb31713e4d8800c6ee1fe550c341d0a4d5728df6b8c87903d33da381c82.png" src="../../../_images/e3c0ecb31713e4d8800c6ee1fe550c341d0a4d5728df6b8c87903d33da381c82.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>======================================================================
+Analysis complete! Check the plots for detailed results.
+======================================================================
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/lectures/05_numerical_diff_taylor_series_newton_raphson"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Numerical Solution of Heat Conduction in Concrete Columns During Fire</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Numerical Solution of Heat Conduction in Concrete Columns During Fire</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-statement">1. Problem Statement</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-setup">Physical Setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assumptions">Assumptions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#governing-equation">2. Governing Equation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#heat-diffusion-equation">Heat Diffusion Equation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-interpretation">Physical Interpretation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-and-boundary-conditions">3. Initial and Boundary Conditions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-condition">Initial Condition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boundary-conditions">Boundary Conditions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-difference-discretization">4. Finite Difference Discretization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-discretization">Spatial Discretization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temporal-discretization">Temporal Discretization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notation">Notation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-difference-approximations">5. Finite Difference Approximations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#forward-difference-in-time-1st-order">Forward Difference in Time (1st Order)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#central-difference-in-space-2nd-order">Central Difference in Space (2nd Order)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-finite-difference-scheme">6. Explicit Finite Difference Scheme</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discretized-equation">Discretized Equation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-formula">Solution Formula</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-explicit">Why “Explicit”?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boundary-condition-implementation">7. Boundary Condition Implementation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#centerline-symmetry-i-0">Centerline (Symmetry): <span class="math notranslate nohighlight">\(i = 0\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#surface-fire-exposure-i-n-1">Surface (Fire Exposure): <span class="math notranslate nohighlight">\(i = n-1\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interior-nodes-i-1-2-ldots-n-2">Interior Nodes: <span class="math notranslate nohighlight">\(i = 1, 2, \ldots, n-2\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stability-analysis">8. Stability Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#von-neumann-stability-analysis">Von Neumann Stability Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-stable-time-step">Maximum Stable Time Step</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-happens-if-unstable">What Happens if Unstable?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithm-summary">9. Algorithm Summary</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialization">Initialization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-stepping-loop">Time-Stepping Loop</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#engineering-design-considerations">10. Engineering Design Considerations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fire-resistance-rating">Fire Resistance Rating</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#concrete-cover-thickness">Concrete Cover Thickness</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#material-properties-temperature-dependent">Material Properties (Temperature-Dependent)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">11. Validation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analytical-solution-constant-surface-temperature">Analytical Solution (Constant Surface Temperature)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-behavior">Expected Behavior</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computational-considerations">12. Computational Considerations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mesh-sensitivity">Mesh Sensitivity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#efficiency">Efficiency</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sparse-matrix-structure">Sparse Matrix Structure</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways-for-students">13. Key Takeaways for Students</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Krishna Kumar
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
