@@ -544,6 +544,86 @@ document.write(`
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="n">numpy</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">np</span>
+<span class="k">import</span><span class="w"> </span><span class="n">numba</span>
+<span class="n">from</span><span class="w"> </span><span class="n">numba</span><span class="w"> </span><span class="k">import</span><span class="w"> </span><span class="n">jit</span>
+<span class="k">import</span><span class="w"> </span><span class="n">time</span>
+
+<span class="c"># Sample data</span>
+<span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1_000_000</span>
+<span class="n">v1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">v2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+<span class="n">print</span><span class="p">(</span><span class="sa">f</span><span class="s">&quot;Vector size: {n:,} elements</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+
+<span class="c"># ============================================</span>
+<span class="c"># 1. DOT PRODUCT</span>
+<span class="c"># ============================================</span>
+
+<span class="c"># Pure Python (slow)</span>
+<span class="n">def</span><span class="w"> </span><span class="n">dot_python</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="o">:</span>
+<span class="w">    </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">range</span><span class="p">(</span><span class="n">len</span><span class="p">(</span><span class="n">a</span><span class="p">))</span><span class="o">:</span>
+<span class="w">        </span><span class="n">result</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span>
+
+<span class="c"># Numba JIT version</span>
+<span class="nd">@jit</span><span class="p">(</span><span class="n">nopython</span><span class="o">=</span><span class="n">True</span><span class="p">)</span>
+<span class="n">def</span><span class="w"> </span><span class="n">dot_numba</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="o">:</span>
+<span class="w">    </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">range</span><span class="p">(</span><span class="n">len</span><span class="p">(</span><span class="n">a</span><span class="p">))</span><span class="o">:</span>
+<span class="w">        </span><span class="n">result</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span>
+
+<span class="c"># Benchmark</span>
+<span class="n">print</span><span class="p">(</span><span class="s">&quot;DOT PRODUCT:&quot;</span><span class="p">)</span>
+<span class="n">print</span><span class="p">(</span><span class="s">&quot;-&quot;</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">50</span><span class="p">)</span>
+
+<span class="c"># Pure Python</span>
+<span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">result_py</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dot_python</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span><span class="w"> </span><span class="n">v2</span><span class="p">)</span>
+<span class="n">time_py</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span>
+<span class="n">print</span><span class="p">(</span><span class="sa">f</span><span class="s">&quot;Pure Python:  {time_py:.4f}s&quot;</span><span class="p">)</span>
+
+<span class="c"># NumPy</span>
+<span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">result_np</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span><span class="w"> </span><span class="n">v2</span><span class="p">)</span>
+<span class="n">time_np</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span>
+<span class="n">print</span><span class="p">(</span><span class="sa">f</span><span class="s">&quot;NumPy:        {time_np:.6f}s  (speedup: {time_py/time_np:.0f}x)&quot;</span><span class="p">)</span>
+
+<span class="c"># Numba (first call includes compilation)</span>
+<span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">result_nb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dot_numba</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span><span class="w"> </span><span class="n">v2</span><span class="p">)</span>
+<span class="n">time_nb_first</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span>
+<span class="n">print</span><span class="p">(</span><span class="sa">f</span><span class="s">&quot;Numba (1st):  {time_nb_first:.6f}s  (includes compilation)&quot;</span><span class="p">)</span>
+
+<span class="c"># Numba (subsequent calls)</span>
+<span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">result_nb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dot_numba</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span><span class="w"> </span><span class="n">v2</span><span class="p">)</span>
+<span class="n">time_nb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span>
+<span class="n">print</span><span class="p">(</span><span class="sa">f</span><span class="s">&quot;Numba (2nd):  {time_nb:.6f}s  (speedup: {time_py/time_nb:.0f}x)&quot;</span><span class="p">)</span>
+
+<span class="n">print</span><span class="p">(</span><span class="sa">f</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">NumPy vs Numba: {time_nb/time_np:.2f}x (Numba/NumPy ratio)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vector size: 1,000,000 elements
+
+DOT PRODUCT:
+--------------------------------------------------
+Pure Python:  0.3565s
+NumPy:        0.001576s  (speedup: 226x)
+Numba (1st):  0.127507s  (includes compilation)
+Numba (2nd):  0.001952s  (speedup: 183x)
+
+NumPy vs Numba: 1.24x (Numba/NumPy ratio)
+</pre></div>
+</div>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
