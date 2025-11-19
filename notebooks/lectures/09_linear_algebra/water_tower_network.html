@@ -1,0 +1,1241 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Water Tower Network: Linear Systems Analysis &#8212; Introduction to Programming with Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/lectures/09_linear_algebra/water_tower_network';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../../README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Introduction to Programming with Python</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../README.html">
+                    CE 311K: Introduction to Computer Methods (Python)
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../00_intro/00_variables_assignment_operator-precedence_solutions.html">Lecture 00: Variable and assignment (Solution)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../01_control_flow/01_control_statements_solutions.html">Lecture 01a: Control statements (Solution)</a></li>
+
+
+
+
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01_control_flow/01_friction_sliding_block_solutions.html">Lecture 01b: Example of control statement</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01_control_flow/break_continue_solutions.html">Break continue (solution)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_control_flow/cantilever_beam_uvl_solutions.html">Cantilever beam uvl (solution)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_control_flow/atm.html">ATM</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../02_errors/02_errors_solutions.html">Lecture 02: Errors</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../03_functions/03_functions_solutions.html">Lecture 03: Functions (Solutions)</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../04_data_structures/04_data_structures_solutions.html">Lecture 04: Data structures (Solution)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../05_numerical_diff_taylor_series_newton_raphson/05_finite_difference_taylor_series_solutions.html">Lecture 05: Numerical differentiation</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../06_exceptions/06_error_handling_testing_solutions.html">Lecture 06: Error handling (Solution)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../07_vectors/07_vectors_solutions.html">Lecture 07: Vectors (Solution)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../08_matrices/08_matrices_solutions.html">Lecture 08: Matrices (solution)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="09_linear_algebra_solutions.html">Lecture 09: Linear Algebra (Solution)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_useful_libs/10_useful_libs_solutions.html">Lecture 10: Useful libraries in Python (Solution)</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/kks32-courses/ce311k/blob/main/docs/notebooks/lectures/09_linear_algebra/water_tower_network.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/kks32-courses/ce311k" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/kks32-courses/ce311k/issues/new?title=Issue%20on%20page%20%2Fnotebooks/lectures/09_linear_algebra/water_tower_network.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/notebooks/lectures/09_linear_algebra/water_tower_network.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Water Tower Network: Linear Systems Analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#city-layout-physical-story">City Layout &amp; Physical Story</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-setup">Physical Setup</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gauss-seidel-method-implementation">Gauss-Seidel Method Implementation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-1-good-system-well-conditioned">Case 1: Good System (Well-Conditioned)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-interpretation">Physical Interpretation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-using-numpy-linalg-solve">Solution using numpy.linalg.solve</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-using-gauss-seidel">Solution using Gauss-Seidel</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-2-singular-system-ring-topology-no-unique-solution">Case 2: Singular System (Ring Topology - No Unique Solution)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Physical Interpretation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-3-broken-system-tower-c-isolated-but-pumping">Case 3: Broken System (Tower C Isolated but Pumping)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Physical Interpretation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="water-tower-network-linear-systems-analysis">
+<h1>Water Tower Network: Linear Systems Analysis<a class="headerlink" href="#water-tower-network-linear-systems-analysis" title="Permalink to this heading">#</a></h1>
+<section id="city-layout-physical-story">
+<h2>City Layout &amp; Physical Story<a class="headerlink" href="#city-layout-physical-story" title="Permalink to this heading">#</a></h2>
+<p>A city has three water towers (A, B, C) that supply water to different districts. The towers are interconnected and also supply water directly to the city. We want to find the flow rates at each tower to meet demand.</p>
+<section id="physical-setup">
+<h3>Physical Setup<a class="headerlink" href="#physical-setup" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Tower A</strong>: Connected to the city and to Tower B</p></li>
+<li><p><strong>Tower B</strong>: Connected to the city, Tower A, and Tower C</p></li>
+<li><p><strong>Tower C</strong>: Connected to the city and to Tower B</p></li>
+</ul>
+<p>The flow balance equations at each tower give us a system of linear equations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="kn">import</span> <span class="n">linalg</span> <span class="k">as</span> <span class="n">la</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="gauss-seidel-method-implementation">
+<h2>Gauss-Seidel Method Implementation<a class="headerlink" href="#gauss-seidel-method-implementation" title="Permalink to this heading">#</a></h2>
+<p>The Gauss-Seidel method is an iterative technique for solving systems of linear equations. It updates each variable using the most recent values available.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">gauss_seidel</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Solve Ax = b using Gauss-Seidel iteration.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters:</span>
+<span class="sd">    -----------</span>
+<span class="sd">    A : ndarray</span>
+<span class="sd">        Coefficient matrix</span>
+<span class="sd">    b : ndarray</span>
+<span class="sd">        Right-hand side vector</span>
+<span class="sd">    x0 : ndarray, optional</span>
+<span class="sd">        Initial guess (defaults to zeros)</span>
+<span class="sd">    tol : float</span>
+<span class="sd">        Convergence tolerance</span>
+<span class="sd">    max_iter : int</span>
+<span class="sd">        Maximum number of iterations</span>
+<span class="sd">    verbose : bool</span>
+<span class="sd">        Print iteration details</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">    --------</span>
+<span class="sd">    x : ndarray</span>
+<span class="sd">        Solution vector</span>
+<span class="sd">    history : list</span>
+<span class="sd">        Iteration history [(iteration, x_values, error), ...]</span>
+<span class="sd">    converged : bool</span>
+<span class="sd">        Whether the method converged</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x0</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="k">if</span> <span class="n">x0</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">history</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)]</span>
+    
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_iter</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">x_old</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">])</span> <span class="o">&lt;</span> <span class="mf">1e-12</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Warning: Near-zero diagonal element at row </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="c1"># Skip update for this variable to avoid division by zero</span>
+                <span class="k">continue</span>
+            
+            <span class="n">sigma</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">j</span> <span class="o">!=</span> <span class="n">i</span><span class="p">:</span>
+                    <span class="n">sigma</span> <span class="o">+=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+            <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">sigma</span><span class="p">)</span> <span class="o">/</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span>
+        
+        <span class="n">error</span> <span class="o">=</span> <span class="n">la</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x_old</span><span class="p">,</span> <span class="nb">ord</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span>
+        <span class="n">history</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">k</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">error</span><span class="p">))</span>
+        
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Iter </span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">: x = </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">, error = </span><span class="si">{</span><span class="n">error</span><span class="si">:</span><span class="s2">.2e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">error</span> <span class="o">&lt;</span> <span class="n">tol</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">history</span><span class="p">,</span> <span class="kc">True</span>
+    
+    <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">history</span><span class="p">,</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="case-1-good-system-well-conditioned">
+<h2>Case 1: Good System (Well-Conditioned)<a class="headerlink" href="#case-1-good-system-well-conditioned" title="Permalink to this heading">#</a></h2>
+<section id="physical-interpretation">
+<h3>Physical Interpretation<a class="headerlink" href="#physical-interpretation" title="Permalink to this heading">#</a></h3>
+<p>All three towers are connected to the city and to each other. The coefficient matrix is diagonally dominant, ensuring Gauss-Seidel convergence.</p>
+<p><strong>Flow equations:</strong></p>
+<ul class="simple">
+<li><p>Tower A: 4A - B - C = 100 (supplies 100 units to city)</p></li>
+<li><p>Tower B: -A + 4B - C = 150 (supplies 150 units to city)</p></li>
+<li><p>Tower C: -A - B + 4C = 200 (supplies 200 units to city)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Good case: Diagonally dominant matrix</span>
+<span class="n">A_good</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="n">b_good</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Coefficient Matrix A:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A_good</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">RHS Vector b:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b_good</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Coefficient Matrix A:
+[[ 4. -1. -1.]
+ [-1.  4. -1.]
+ [-1. -1.  4.]]
+
+RHS Vector b:
+[100. 150. 200.]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check matrix properties</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Matrix Properties:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Determinant: </span><span class="si">{</span><span class="n">la</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">A_good</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Condition number: </span><span class="si">{</span><span class="n">la</span><span class="o">.</span><span class="n">cond</span><span class="p">(</span><span class="n">A_good</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Check diagonal dominance</span>
+<span class="n">is_diag_dominant</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">A_good</span><span class="p">)):</span>
+    <span class="n">diag</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">A_good</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">])</span>
+    <span class="n">off_diag_sum</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">A_good</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">])</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">A_good</span><span class="p">))</span> <span class="k">if</span> <span class="n">j</span> <span class="o">!=</span> <span class="n">i</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">diag</span> <span class="o">&lt;=</span> <span class="n">off_diag_sum</span><span class="p">:</span>
+        <span class="n">is_diag_dominant</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Row </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: |</span><span class="si">{</span><span class="n">A_good</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">| vs </span><span class="si">{</span><span class="n">off_diag_sum</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="s1">&#39;OK&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">diag</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">off_diag_sum</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;NOT dominant&#39;</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Diagonally dominant: </span><span class="si">{</span><span class="n">is_diag_dominant</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matrix Properties:
+Determinant: 50.0000
+Condition number: 2.5000
+Row 0: |4.0| vs 2.0 -&gt; OK
+Row 1: |4.0| vs 2.0 -&gt; OK
+Row 2: |4.0| vs 2.0 -&gt; OK
+
+Diagonally dominant: True
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="solution-using-numpy-linalg-solve">
+<h3>Solution using numpy.linalg.solve<a class="headerlink" href="#solution-using-numpy-linalg-solve" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Direct solution</span>
+<span class="n">x_direct</span> <span class="o">=</span> <span class="n">la</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A_good</span><span class="p">,</span> <span class="n">b_good</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Direct Solution (linalg.solve):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tower A flow: </span><span class="si">{</span><span class="n">x_direct</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tower B flow: </span><span class="si">{</span><span class="n">x_direct</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tower C flow: </span><span class="si">{</span><span class="n">x_direct</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Verify solution</span>
+<span class="n">residual</span> <span class="o">=</span> <span class="n">la</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">A_good</span> <span class="o">@</span> <span class="n">x_direct</span> <span class="o">-</span> <span class="n">b_good</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Residual ||Ax - b||: </span><span class="si">{</span><span class="n">residual</span><span class="si">:</span><span class="s2">.2e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Direct Solution (linalg.solve):
+Tower A flow: 65.000000
+Tower B flow: 75.000000
+Tower C flow: 85.000000
+
+Residual ||Ax - b||: 5.86e-14
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="solution-using-gauss-seidel">
+<h3>Solution using Gauss-Seidel<a class="headerlink" href="#solution-using-gauss-seidel" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gauss-Seidel solution</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">x_gs</span><span class="p">,</span> <span class="n">history</span><span class="p">,</span> <span class="n">converged</span> <span class="o">=</span> <span class="n">gauss_seidel</span><span class="p">(</span><span class="n">A_good</span><span class="p">,</span> <span class="n">b_good</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Converged: </span><span class="si">{</span><span class="n">converged</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Gauss-Seidel Solution:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tower A flow: </span><span class="si">{</span><span class="n">x_gs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tower B flow: </span><span class="si">{</span><span class="n">x_gs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tower C flow: </span><span class="si">{</span><span class="n">x_gs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iter 1: x = [25.     43.75   67.1875], error = 6.72e+01
+Iter 2: x = [52.734375   67.48046875 80.05371094], error = 2.77e+01
+Iter 3: x = [61.88354492 72.98431396 83.71696472], error = 9.15e+00
+Iter 4: x = [64.17531967 74.4730711  84.66209769], error = 2.29e+00
+Iter 5: x = [64.7837922  74.86147247 84.91131617], error = 6.08e-01
+Iter 6: x = [64.94319716 74.96362833 84.97670637], error = 1.59e-01
+Iter 7: x = [64.98508368 74.99044751 84.9938828 ], error = 4.19e-02
+Iter 8: x = [64.99608258 74.99749134 84.99839348], error = 1.10e-02
+Iter 9: x = [64.99897121 74.99934117 84.99957809], error = 2.89e-03
+Iter 10: x = [64.99972982 74.99982698 84.9998892 ], error = 7.59e-04
+Iter 11: x = [64.99992904 74.99995456 84.9999709 ], error = 1.99e-04
+Iter 12: x = [64.99998137 74.99998807 84.99999236], error = 5.23e-05
+Iter 13: x = [64.99999511 74.99999687 84.99999799], error = 1.37e-05
+Iter 14: x = [64.99999871 74.99999918 84.99999947], error = 3.61e-06
+Iter 15: x = [64.99999966 74.99999978 84.99999986], error = 9.48e-07
+
+Converged: True
+
+Gauss-Seidel Solution:
+Tower A flow: 65.000000
+Tower B flow: 75.000000
+Tower C flow: 85.000000
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot convergence</span>
+<span class="n">iterations</span> <span class="o">=</span> <span class="p">[</span><span class="n">h</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">history</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span>  <span class="c1"># Skip initial</span>
+<span class="n">errors</span> <span class="o">=</span> <span class="p">[</span><span class="n">h</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">history</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">iterations</span><span class="p">,</span> <span class="n">errors</span><span class="p">,</span> <span class="s1">&#39;b-o&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Tolerance&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Iteration&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Error (log scale)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Gauss-Seidel Convergence (Good Case)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">x_history</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">h</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">history</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">history</span><span class="p">)),</span> <span class="n">x_history</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;r-o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Tower A&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">history</span><span class="p">)),</span> <span class="n">x_history</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;g-s&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Tower B&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">history</span><span class="p">)),</span> <span class="n">x_history</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;b-^&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Tower C&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Iteration&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Flow Rate&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Solution Evolution&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/a723d16d6bcfc3491003009a35dfe18fb6974dc5b3b8bff8bf5399a8cea3c305.png" src="../../../_images/a723d16d6bcfc3491003009a35dfe18fb6974dc5b3b8bff8bf5399a8cea3c305.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Iteration table</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Gauss-Seidel Iteration Table:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Iter&#39;</span><span class="si">:</span><span class="s2">&gt;4</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="s1">&#39;Tower A&#39;</span><span class="si">:</span><span class="s2">&gt;12</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="s1">&#39;Tower B&#39;</span><span class="si">:</span><span class="s2">&gt;12</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="s1">&#39;Tower C&#39;</span><span class="si">:</span><span class="s2">&gt;12</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="s1">&#39;Error&#39;</span><span class="si">:</span><span class="s2">&gt;12</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">err</span> <span class="ow">in</span> <span class="n">history</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="o">&lt;=</span> <span class="mi">10</span> <span class="ow">or</span> <span class="n">k</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">history</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">err_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">err</span><span class="si">:</span><span class="s2">.2e</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span> <span class="k">else</span> <span class="s2">&quot;---&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">k</span><span class="si">:</span><span class="s2">&gt;4</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">&gt;12.6f</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">&gt;12.6f</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">:</span><span class="s2">&gt;12.6f</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">err_str</span><span class="si">:</span><span class="s2">&gt;12</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gauss-Seidel Iteration Table:
+----------------------------------------------------------------------
+Iter |      Tower A |      Tower B |      Tower C |        Error
+----------------------------------------------------------------------
+   0 |     0.000000 |     0.000000 |     0.000000 |          ---
+   1 |    25.000000 |    43.750000 |    67.187500 |     6.72e+01
+   2 |    52.734375 |    67.480469 |    80.053711 |     2.77e+01
+   3 |    61.883545 |    72.984314 |    83.716965 |     9.15e+00
+   4 |    64.175320 |    74.473071 |    84.662098 |     2.29e+00
+   5 |    64.783792 |    74.861472 |    84.911316 |     6.08e-01
+   6 |    64.943197 |    74.963628 |    84.976706 |     1.59e-01
+   7 |    64.985084 |    74.990448 |    84.993883 |     4.19e-02
+   8 |    64.996083 |    74.997491 |    84.998393 |     1.10e-02
+   9 |    64.998971 |    74.999341 |    84.999578 |     2.89e-03
+  10 |    64.999730 |    74.999827 |    84.999889 |     7.59e-04
+  15 |    65.000000 |    75.000000 |    85.000000 |     9.48e-07
+----------------------------------------------------------------------
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="case-2-singular-system-ring-topology-no-unique-solution">
+<h2>Case 2: Singular System (Ring Topology - No Unique Solution)<a class="headerlink" href="#case-2-singular-system-ring-topology-no-unique-solution" title="Permalink to this heading">#</a></h2>
+<section id="id1">
+<h3>Physical Interpretation<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>The towers form a ring network where each tower only connects to its neighbors. This creates dependent equations - the system has infinitely many solutions.</p>
+<p><strong>Flow equations (ring topology):</strong></p>
+<ul class="simple">
+<li><p>Tower A: A - B = 0 (A sends to B)</p></li>
+<li><p>Tower B: B - C = 0 (B sends to C)</p></li>
+<li><p>Tower C: C - A = 0 (C sends to A)</p></li>
+</ul>
+<p>These equations are dependent: if A = B and B = C and C = A, any value works!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Singular case: Ring topology (dependent equations)</span>
+<span class="n">A_singular</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="n">b_singular</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Coefficient Matrix A (Singular):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A_singular</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">RHS Vector b:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b_singular</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Coefficient Matrix A (Singular):
+[[ 1. -1.  0.]
+ [ 0.  1. -1.]
+ [-1.  0.  1.]]
+
+RHS Vector b:
+[0. 0. 0.]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check matrix properties</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Matrix Properties:&quot;</span><span class="p">)</span>
+<span class="n">det</span> <span class="o">=</span> <span class="n">la</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">A_singular</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Determinant: </span><span class="si">{</span><span class="n">det</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Matrix is </span><span class="si">{</span><span class="s1">&#39;SINGULAR&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">det</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">1e-10</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;non-singular&#39;</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Rank</span>
+<span class="n">rank</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">matrix_rank</span><span class="p">(</span><span class="n">A_singular</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Rank: </span><span class="si">{</span><span class="n">rank</span><span class="si">}</span><span class="s2"> (full rank would be </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">A_singular</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matrix Properties:
+Determinant: 0.000000
+Matrix is SINGULAR
+Rank: 2 (full rank would be 3)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Try direct solution - this will fail</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Attempting linalg.solve on singular matrix...&quot;</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">x_direct</span> <span class="o">=</span> <span class="n">la</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A_singular</span><span class="p">,</span> <span class="n">b_singular</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Solution: </span><span class="si">{</span><span class="n">x_direct</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Warning: Got a solution but matrix is singular!&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">la</span><span class="o">.</span><span class="n">LinAlgError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ERROR: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;linalg.solve correctly identifies singular matrix.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attempting linalg.solve on singular matrix...
+ERROR: Singular matrix
+linalg.solve correctly identifies singular matrix.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Try Gauss-Seidel on singular system</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Attempting Gauss-Seidel on singular matrix...&quot;</span><span class="p">)</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>  <span class="c1"># Non-zero initial guess</span>
+<span class="n">x_gs</span><span class="p">,</span> <span class="n">history</span><span class="p">,</span> <span class="n">converged</span> <span class="o">=</span> <span class="n">gauss_seidel</span><span class="p">(</span><span class="n">A_singular</span><span class="p">,</span> <span class="n">b_singular</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Converged: </span><span class="si">{</span><span class="n">converged</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Final values: </span><span class="si">{</span><span class="n">x_gs</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Note: Gauss-Seidel may appear to converge but the solution is meaningless.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attempting Gauss-Seidel on singular matrix...
+Iter 1: x = [1. 1. 1.], error = 0.00e+00
+
+Converged: True
+Final values: [1. 1. 1.]
+
+Note: Gauss-Seidel may appear to converge but the solution is meaningless.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="case-3-broken-system-tower-c-isolated-but-pumping">
+<h2>Case 3: Broken System (Tower C Isolated but Pumping)<a class="headerlink" href="#case-3-broken-system-tower-c-isolated-but-pumping" title="Permalink to this heading">#</a></h2>
+<section id="id2">
+<h3>Physical Interpretation<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<p>Tower C is completely isolated (no connection to A or B) but is still trying to pump water. This creates an <strong>inconsistent</strong> system - a zero row in the matrix with non-zero demand.</p>
+<p><strong>Flow equations:</strong></p>
+<ul class="simple">
+<li><p>Tower A: 4A - B = 100</p></li>
+<li><p>Tower B: -A + 4B = 150</p></li>
+<li><p>Tower C: 0A + 0B + 0C = 200 (impossible!)</p></li>
+</ul>
+<p>The third equation says 0 = 200, which is impossible.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Broken case: C isolated but pumping</span>
+<span class="n">A_broken</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>    <span class="c1"># Zero row - C is isolated</span>
+<span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="n">b_broken</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>  <span class="c1"># But C still has demand!</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Coefficient Matrix A (Broken):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A_broken</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">RHS Vector b:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b_broken</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Note: Row 3 is all zeros but b[2] = 200 (inconsistent!)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Coefficient Matrix A (Broken):
+[[ 4. -1.  0.]
+ [-1.  4.  0.]
+ [ 0.  0.  0.]]
+
+RHS Vector b:
+[100. 150. 200.]
+
+Note: Row 3 is all zeros but b[2] = 200 (inconsistent!)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check matrix properties</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Matrix Properties:&quot;</span><span class="p">)</span>
+<span class="n">det</span> <span class="o">=</span> <span class="n">la</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">A_broken</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Determinant: </span><span class="si">{</span><span class="n">det</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Matrix is </span><span class="si">{</span><span class="s1">&#39;SINGULAR&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">det</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">1e-10</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;non-singular&#39;</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Rank analysis</span>
+<span class="n">rank_A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">matrix_rank</span><span class="p">(</span><span class="n">A_broken</span><span class="p">)</span>
+<span class="n">augmented</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">A_broken</span><span class="p">,</span> <span class="n">b_broken</span><span class="p">])</span>
+<span class="n">rank_aug</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">matrix_rank</span><span class="p">(</span><span class="n">augmented</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Rank of A: </span><span class="si">{</span><span class="n">rank_A</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Rank of [A|b]: </span><span class="si">{</span><span class="n">rank_aug</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">System is </span><span class="si">{</span><span class="s1">&#39;INCONSISTENT (no solution)&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">rank_A</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">rank_aug</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;consistent&#39;</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matrix Properties:
+Determinant: 0.000000
+Matrix is SINGULAR
+
+Rank of A: 2
+Rank of [A|b]: 3
+
+System is INCONSISTENT (no solution)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Try direct solution - this will fail</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Attempting linalg.solve on broken matrix...&quot;</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">x_direct</span> <span class="o">=</span> <span class="n">la</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A_broken</span><span class="p">,</span> <span class="n">b_broken</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Solution: </span><span class="si">{</span><span class="n">x_direct</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">la</span><span class="o">.</span><span class="n">LinAlgError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ERROR: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;linalg.solve correctly identifies singular matrix.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attempting linalg.solve on broken matrix...
+ERROR: Singular matrix
+linalg.solve correctly identifies singular matrix.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Watch Gauss-Seidel fail spectacularly</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Attempting Gauss-Seidel on broken matrix...&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(Watch it fail due to zero diagonal element)</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">x_gs</span><span class="p">,</span> <span class="n">history</span><span class="p">,</span> <span class="n">converged</span> <span class="o">=</span> <span class="n">gauss_seidel</span><span class="p">(</span><span class="n">A_broken</span><span class="p">,</span> <span class="n">b_broken</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Converged: </span><span class="si">{</span><span class="n">converged</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Final values: </span><span class="si">{</span><span class="n">x_gs</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Gauss-Seidel cannot update variable C due to zero diagonal.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The system has no solution - C is isolated but has demand.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attempting Gauss-Seidel on broken matrix...
+(Watch it fail due to zero diagonal element)
+
+Warning: Near-zero diagonal element at row 2
+Iter 1: x = [25.   43.75  0.  ], error = 4.38e+01
+Warning: Near-zero diagonal element at row 2
+Iter 2: x = [35.9375   46.484375  0.      ], error = 1.09e+01
+Warning: Near-zero diagonal element at row 2
+Iter 3: x = [36.62109375 46.65527344  0.        ], error = 6.84e-01
+Warning: Near-zero diagonal element at row 2
+Iter 4: x = [36.66381836 46.66595459  0.        ], error = 4.27e-02
+Warning: Near-zero diagonal element at row 2
+Iter 5: x = [36.66648865 46.66662216  0.        ], error = 2.67e-03
+Warning: Near-zero diagonal element at row 2
+Iter 6: x = [36.66665554 46.66666389  0.        ], error = 1.67e-04
+Warning: Near-zero diagonal element at row 2
+Iter 7: x = [36.66666597 46.66666649  0.        ], error = 1.04e-05
+Warning: Near-zero diagonal element at row 2
+Iter 8: x = [36.66666662 46.66666666  0.        ], error = 6.52e-07
+
+Converged: True
+Final values: [36.66666662 46.66666666  0.        ]
+
+Gauss-Seidel cannot update variable C due to zero diagonal.
+The system has no solution - C is isolated but has demand.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Case</p></th>
+<th class="head"><p>Matrix Property</p></th>
+<th class="head"><p>linalg.solve</p></th>
+<th class="head"><p>Gauss-Seidel</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Good</p></td>
+<td><p>Diagonally dominant, det != 0</p></td>
+<td><p>Works</p></td>
+<td><p>Converges</p></td>
+</tr>
+<tr class="row-odd"><td><p>Singular</p></td>
+<td><p>det = 0, rank deficient</p></td>
+<td><p>Fails (LinAlgError)</p></td>
+<td><p>May not converge / meaningless</p></td>
+</tr>
+<tr class="row-even"><td><p>Broken (inconsistent)</p></td>
+<td><p>Zero row, rank(A) != rank([A</p></td>
+<td><p>b])</p></td>
+<td><p>Fails (LinAlgError)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visual comparison of all three cases</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">matrices</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="n">A_good</span><span class="p">,</span> <span class="s2">&quot;Good Case</span><span class="se">\n</span><span class="s2">(Diagonally Dominant)&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">A_singular</span><span class="p">,</span> <span class="s2">&quot;Singular Case</span><span class="se">\n</span><span class="s2">(Disconnected from City)&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">A_broken</span><span class="p">,</span> <span class="s2">&quot;Broken Case</span><span class="se">\n</span><span class="s2">(C Isolated)&quot;</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="n">matrices</span><span class="p">):</span>
+    <span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu&#39;</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    
+    <span class="c1"># Add text annotations</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">matrix</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="si">:</span><span class="s1">.0f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> 
+                   <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+                   <span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span> <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">matrix</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="k">else</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span>
+    
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">])</span>
+    
+    <span class="n">det</span> <span class="o">=</span> <span class="n">la</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;det = </span><span class="si">{</span><span class="n">det</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/890d65e60aad1df7d5edecaebca21bf366054e87b19c4babfe141c8cba973a60.png" src="../../../_images/890d65e60aad1df7d5edecaebca21bf366054e87b19c4babfe141c8cba973a60.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/lectures/09_linear_algebra"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#city-layout-physical-story">City Layout &amp; Physical Story</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-setup">Physical Setup</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gauss-seidel-method-implementation">Gauss-Seidel Method Implementation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-1-good-system-well-conditioned">Case 1: Good System (Well-Conditioned)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-interpretation">Physical Interpretation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-using-numpy-linalg-solve">Solution using numpy.linalg.solve</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-using-gauss-seidel">Solution using Gauss-Seidel</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-2-singular-system-ring-topology-no-unique-solution">Case 2: Singular System (Ring Topology - No Unique Solution)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Physical Interpretation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-3-broken-system-tower-c-isolated-but-pumping">Case 3: Broken System (Tower C Isolated but Pumping)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Physical Interpretation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Krishna Kumar
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
