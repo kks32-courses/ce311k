@@ -1,0 +1,8 @@
+{
+  "fetch_time": "2025-08-27T05:41:00.095177",
+  "total_records": 1000,
+  "date_range_start": "2024-06-01 00:00:46+00:00",
+  "date_range_end": "2024-06-08 02:24:02+00:00",
+  "top_incident_type": "Crash Urgent",
+  "unique_locations": 968
+}
