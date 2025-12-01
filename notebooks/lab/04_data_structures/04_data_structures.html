@@ -450,7 +450,6 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-04-4-dictionaries">Exercise 04.4 (dictionaries)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a></li>
 </ul>
 
             </nav>
@@ -463,16 +462,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize Otter</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">otter</span>
-<span class="n">grader</span> <span class="o">=</span> <span class="n">otter</span><span class="o">.</span><span class="n">Notebook</span><span class="p">(</span><span class="s2">&quot;04_data_structures.ipynb&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<section id="exercise-04-1-selecting-and-passing-data-structures">
+  <section id="exercise-04-1-selecting-and-passing-data-structures">
 <h1>Exercise 04.1 (selecting and passing data structures)<a class="headerlink" href="#exercise-04-1-selecting-and-passing-data-structures" title="Permalink to this heading">#</a></h1>
 <p>Given the coordinates of the vertices of a triangle, <span class="math notranslate nohighlight">\((x_0, y_0)\)</span>, <span class="math notranslate nohighlight">\((x_1, y_1)\)</span> and <span class="math notranslate nohighlight">\((x_2, y_2)\)</span>, the area <span class="math notranslate nohighlight">\(A\)</span> of the triangle is given by:
 $<span class="math notranslate nohighlight">\(
@@ -481,8 +471,8 @@ A = \left| \frac{x_0(y_1  - y_2) + x_1(y_2 - y_0) + x_2(y_0 - y_1)}{2} \right|
 There is an old function named `area` that computes the area of a triangle given the coordinates of the vertices as six arguments (\)</span>x<span class="math notranslate nohighlight">\( and \)</span>y$ components of each vertex). The order of the function arguments must be (<code class="docutils literal notranslate"><span class="pre">x0,</span> <span class="pre">y0,</span> <span class="pre">x1,</span> <span class="pre">y1,</span> <span class="pre">x2,</span> <span class="pre">y2)</span></code>. With six arguments, the likelihood of a user passing arguments in the wrong order is high.</p>
 <p>You have been hired as a Python consultant to rewrite the function for computing the area of a triangle.</p>
 <p>Use an appropriate data structure, e.g. a <code class="docutils literal notranslate"><span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">tuple</span></code>, <code class="docutils literal notranslate"><span class="pre">dict</span></code>, etc,  to develop a new version of the function with a simpler interface (the interface is the arguments that are passed to the function). Add appropriate checks inside your function to validate the input data.<br>
-<strong>HINT:</strong> <li>if the number of input coordinates is not 3, print “incorrect number of coordinates”</li></p>
-<li>if the calculated area is 0, print "invalid coordinates for a triangle"</li><div class="cell docutils container">
+<strong>HINT:</strong> <li>if the number of input coordinates is not 3, print <code class="docutils literal notranslate"><span class="pre">incorrect</span> <span class="pre">number</span> <span class="pre">of</span> <span class="pre">coordinates</span></code></li><li>if the calculated area is 0, print <code class="docutils literal notranslate"><span class="pre">invalid</span> <span class="pre">coordinates</span> <span class="pre">for</span> <span class="pre">a</span> <span class="pre">triangle</span></code> </li></p>
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># input format</span>
 <span class="c1"># coord = [(x0,y0),(x1,y1),(x2,y2)]</span>
@@ -497,7 +487,7 @@ There is an old function named `area` that computes the area of a triangle given
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)]</span>
-<span class="n">area_triangle</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">area_triangle</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># should return 4.0</span>
 </pre></div>
 </div>
 </div>
@@ -505,7 +495,7 @@ There is an old function named `area` that computes the area of a triangle given
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">)]</span>
-<span class="n">area_triangle</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">area_triangle</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># should print &quot;incorrect number of coordinates&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -513,7 +503,7 @@ There is an old function named `area` that computes the area of a triangle given
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)]</span>
-<span class="n">area_triangle</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">area_triangle</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># should print &quot;incorrect number of coordinates&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -521,14 +511,7 @@ There is an old function named `area` that computes the area of a triangle given
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">)]</span>
-<span class="n">area_triangle</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&quot;q1&quot;</span><span class="p">)</span>
+<span class="n">area_triangle</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># should print &quot;invalid coordinates for a triangle&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -542,7 +525,7 @@ A = \left| \frac{1}{2} \sum_{i=0}^{n-1} \left(x_{i} y _{i+1} - x_{i+1} y_{i} \ri
 \)</span><span class="math notranslate nohighlight">\(
 and where \)</span>(x_n, y_n) = (x_0, y_0)$. The vertices should be ordered as you move around the polygon.</p>
 <p>Write a function that computes the area of a simple polygon with an arbitrary number of vertices. Test your function for some simple shapes. Pay careful attention to the range of any loops.</p>
-<div class="cell docutils container">
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">polygon_area</span>
 </pre></div>
@@ -552,7 +535,7 @@ and where \)</span>(x_n, y_n) = (x_0, y_0)$. The vertices should be ordered as y
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vertices</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)]</span>
-<span class="n">polygon_area</span><span class="p">(</span><span class="n">vertices</span><span class="p">)</span>
+<span class="n">polygon_area</span><span class="p">(</span><span class="n">vertices</span><span class="p">)</span> <span class="c1"># should return 4.0</span>
 </pre></div>
 </div>
 </div>
@@ -560,14 +543,7 @@ and where \)</span>(x_n, y_n) = (x_0, y_0)$. The vertices should be ordered as y
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vertices</span><span class="o">=</span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">),(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">),(</span><span class="mi">6</span><span class="p">,</span><span class="mi">1</span><span class="p">)]</span>
-<span class="n">polygon_area</span><span class="p">(</span><span class="n">vertices</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&quot;q2&quot;</span><span class="p">)</span>
+<span class="n">polygon_area</span><span class="p">(</span><span class="n">vertices</span><span class="p">)</span> <span class="c1"># should return 16.0</span>
 </pre></div>
 </div>
 </div>
@@ -586,7 +562,7 @@ and where \)</span>(x_n, y_n) = (x_0, y_0)$. The vertices should be ordered as y
 <section id="optional-advanced">
 <h2>Optional (advanced)<a class="headerlink" href="#optional-advanced" title="Permalink to this heading">#</a></h2>
 <p>Try writing a one-line version of this operation using list comprehension and the built-in function <a class="reference external" href="https://docs.python.org/3/library/functions.html#zip"><code class="docutils literal notranslate"><span class="pre">zip</span></code></a>.</p>
-<div class="cell docutils container">
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">4.3</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
 <span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
@@ -600,14 +576,7 @@ and where \)</span>(x_n, y_n) = (x_0, y_0)$. The vertices should be ordered as y
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">4.3</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
 <span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="n">sum_vector</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&quot;q3&quot;</span><span class="p">)</span>
+<span class="n">sum_vector</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span> <span class="c1"># should return [-2, 11.3, -20, 8]</span>
 </pre></div>
 </div>
 </div>
@@ -634,7 +603,7 @@ From the dictionary, produce and print</p>
 <li><p>Find the oldest occupied building, and print the zone and the abbreviation for this building</p></li>
 <li><p>Find the oldest building in a given zone.</p></li>
 </ol>
-<div class="cell docutils container">
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># find the abbreviations for the buildings</span>
 <span class="n">buildings</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ATHLETIC FIELDS PAVILION (EASTSIDE)&quot;</span><span class="p">,</span> 
@@ -672,55 +641,35 @@ From the dictionary, produce and print</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sorted_abv</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sorted_abv</span> <span class="c1"># should return [&#39;ADH&#39;, &#39;AF1&#39;, &#39;AF2&#39;, &#39;AFP&#39;, &#39;AHG&#39;]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">old_building</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">old_building</span> <span class="c1"># should return &#39;ANNA HISS GYMNASIUM&#39;</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">old_abv</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">old_abv</span> <span class="c1"># should return &#39;AHG&#39;</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">old_zone</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">old_zone</span> <span class="c1"># should return 1</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">old_building2</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&quot;q4&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="submission">
-<h1>Submission<a class="headerlink" href="#submission" title="Permalink to this heading">#</a></h1>
-<p>Make sure you have run all cells in your notebook in order before running the cell below, so that all images/graphs appear in the output. The cell below will generate a zip file for you to submit. <strong>Please save before exporting!</strong></p>
-<p>These are some submission instructions.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save your notebook first, then run this cell to export your submission.</span>
-<span class="n">grader</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="n">run_tests</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">old_building2</span> <span class="c1"># should return &#39;ATHLETIC FIELDS PAVILION&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -780,7 +729,6 @@ From the dictionary, produce and print</p>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-04-4-dictionaries">Exercise 04.4 (dictionaries)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a></li>
 </ul>
 
   </nav></div>

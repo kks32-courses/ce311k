@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Lab 05 Error checking &#8212; Introduction to Programming with Python</title>
+    <title>Exercise 02 (bisection) &#8212; Introduction to Programming with Python</title>
   
   
   
@@ -64,7 +64,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/lab/05_exceptions_root/05_exceptions';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/lab/02_roots_errors/02_roots_errors';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -270,7 +270,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://colab.research.google.com/github/kks32-courses/ce311k/blob/main/docs/notebooks/lab/05_exceptions_root/05_exceptions.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/kks32-courses/ce311k/blob/main/docs/notebooks/lab/02_roots_errors/02_roots_errors.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -318,7 +318,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/kks32-courses/ce311k/issues/new?title=Issue%20on%20page%20%2Fnotebooks/lab/05_exceptions_root/05_exceptions.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/kks32-courses/ce311k/issues/new?title=Issue%20on%20page%20%2Fnotebooks/lab/02_roots_errors/02_roots_errors.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -348,7 +348,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../../_sources/notebooks/lab/05_exceptions_root/05_exceptions.ipynb" target="_blank"
+      <li><a href="../../../_sources/notebooks/lab/02_roots_errors/02_roots_errors.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -432,7 +432,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Lab 05 Error checking</h1>
+    <h1>Exercise 02 (bisection)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -442,13 +442,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lab 05 Error checking</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-05-0-checking-data-validity">Lab 05.0 (checking data validity)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exercise 02 (bisection)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task">Task</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-05-1-raising-exceptions">Exercise 05.1 (raising exceptions)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-raphson">Newton-Raphson</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fixed-point-iteration">Fixed-point iteration</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-02-series-expansion">Exercise 02 (series expansion)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hints">Hints</a></li>
 </ul>
 </li>
 </ul>
@@ -463,131 +462,187 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="lab-05-error-checking">
-<h1>Lab 05 Error checking<a class="headerlink" href="#lab-05-error-checking" title="Permalink to this heading">#</a></h1>
-<section id="lab-05-0-checking-data-validity">
-<h2>Lab 05.0 (checking data validity)<a class="headerlink" href="#lab-05-0-checking-data-validity" title="Permalink to this heading">#</a></h2>
-<p>The Fibonacci series is valid only for <span class="math notranslate nohighlight">\(n \ge 0\)</span>. Add to the Fibonacci function in this notebook a check that raises an exception if <span class="math notranslate nohighlight">\(n &lt; 0\)</span>. Try some invalid data cases to check that an exception is raised.</p>
-<p><em>Optional:</em> Use <code class="docutils literal notranslate"><span class="pre">pytest</span></code> to test that an exception <em>is</em> raised for some <span class="math notranslate nohighlight">\(n &lt; 0\)</span> cases.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> 
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the nth Fibonacci number using recursion&quot;&quot;&quot;</span>
-    <span class="c1"># YOUR CODE HERE</span>
-    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Perform some tests    </span>
-<span class="k">assert</span> <span class="n">fibonacci</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
-<span class="k">assert</span> <span class="n">fibonacci</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
-<span class="k">assert</span> <span class="n">fibonacci</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
-<span class="k">assert</span> <span class="n">fibonacci</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
-<span class="k">assert</span> <span class="n">fibonacci</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mi">55</span>
-<span class="k">assert</span> <span class="n">fibonacci</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span> <span class="o">==</span> <span class="mi">610</span>
-
-<span class="c1"># Check that ValueError is raised for n &lt; 0</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
-<span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
-    <span class="n">fibonacci</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-<span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
-    <span class="n">fibonacci</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="exercise-05-1-raising-exceptions">
-<h1>Exercise 05.1 (raising exceptions)<a class="headerlink" href="#exercise-05-1-raising-exceptions" title="Permalink to this heading">#</a></h1>
-<p>Write root finding functions using (bisection method, Newton Raphson and fixed point iteration) to raise an error if the maximum number of iterations is exceeded. Reduce the maximum allowed iterations to test that an exception is raised.</p>
-<p>Add any other checks on the input data that you think are appropriate.</p>
-<p>Compute the roots of the following Polynomial function <span class="math notranslate nohighlight">\( x^3 - 6x^2 + 4x + 12\)</span>  using:</p>
-<ul class="simple">
-<li><p>Bisection method</p></li>
-<li><p>Newton Raphson iterations</p></li>
-<li><p>Fixed point iteration</p></li>
+  <section id="exercise-02-bisection">
+<h1>Exercise 02 (bisection)<a class="headerlink" href="#exercise-02-bisection" title="Permalink to this heading">#</a></h1>
+<p>Bisection is an iterative method for finding approximate roots of a function. Say we know that the function <span class="math notranslate nohighlight">\(f(x)\)</span> has one root between <span class="math notranslate nohighlight">\(x_{0}\)</span> and <span class="math notranslate nohighlight">\(x_{1}\)</span> (<span class="math notranslate nohighlight">\(x_{0} &lt; x_{1}\)</span>). We then:</p>
+<ul>
+<li><p>Evaluate <span class="math notranslate nohighlight">\(f\)</span> at the midpoint <span class="math notranslate nohighlight">\(x_{\rm mid} = (x_0 + x_1)/2\)</span>, i.e. compute
+<span class="math notranslate nohighlight">\(f_{\rm mid} = f(x_{\rm mid})\)</span></p></li>
+<li><p>Evaluate <span class="math notranslate nohighlight">\(f(x_0) \cdot f(x_{\rm mid})\)</span></p>
+<ul>
+<li><p>If <span class="math notranslate nohighlight">\(f(x_0) \cdot f(x_{\rm mid}) &lt; 0\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(f\)</span> must change sign somewhere between <span class="math notranslate nohighlight">\(x_0\)</span> and <span class="math notranslate nohighlight">\(x_{\rm mid}\)</span>, hence the root must lie between
+<span class="math notranslate nohighlight">\(x_0\)</span> and <span class="math notranslate nohighlight">\(x_{\rm mid}\)</span>, so set <span class="math notranslate nohighlight">\(x_1 = x_{\rm mid}\)</span>.</p>
+</li>
+<li><p>Else</p>
+<p><span class="math notranslate nohighlight">\(f\)</span> must change sign somewhere between <span class="math notranslate nohighlight">\(x_{\rm mid}\)</span> and <span class="math notranslate nohighlight">\(x_1\)</span>, so set
+<span class="math notranslate nohighlight">\(x_0 = x_{\rm mid}\)</span>.</p>
+</li>
 </ul>
-<div class="cell docutils container">
+</li>
+</ul>
+<p>The above steps can be repeated a specified number of times, or until <span class="math notranslate nohighlight">\(|f_{\rm mid}|\)</span>
+is below a tolerance, with <span class="math notranslate nohighlight">\(x_{\rm mid}\)</span> being the approximate root.</p>
+<section id="task">
+<h2>Task<a class="headerlink" href="#task" title="Permalink to this heading">#</a></h2>
+<p>The function</p>
+<div class="math notranslate nohighlight">
+\[
+f(x) = x^3 - 6x^2 + 4x + 12
+\]</div>
+<p>has one root somewhere between <span class="math notranslate nohighlight">\(x_0 = 3\)</span> and <span class="math notranslate nohighlight">\(x_1 = 6\)</span>.</p>
+<ol class="arabic simple">
+<li><p>Use the bisection method to find an approximate root <span class="math notranslate nohighlight">\(x_{r}\)</span> using 15 iterations
+(use a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop).</p></li>
+<li><p>Use the bisection method to find an approximate root <span class="math notranslate nohighlight">\(x_{r}\)</span> such that
+<span class="math notranslate nohighlight">\(\left| f(x_{r}) \right| &lt; 1 \times 10^{-6}\)</span> and report the number of iterations
+required (use a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop with a large number of iterations).</p></li>
+</ol>
+<p>Store the approximate root using the variable <code class="docutils literal notranslate"><span class="pre">x_mid</span></code>, and store <span class="math notranslate nohighlight">\(f(x_{\rm mid})\)</span> using the variable <code class="docutils literal notranslate"><span class="pre">f</span></code>. And store them in the list <code class="docutils literal notranslate"><span class="pre">ans</span></code>= [<code class="docutils literal notranslate"><span class="pre">x_mid</span></code>, <code class="docutils literal notranslate"><span class="pre">f</span></code>]. For task 2, you will store the number of iteration in <code class="docutils literal notranslate"><span class="pre">n_iter</span></code></p>
+<p><em>Hint:</em> Use  <code class="docutils literal notranslate"><span class="pre">abs</span></code> to compute the absolute value of a number, e.g. <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">abs(x)</span></code> assigns the absolute value of <code class="docutils literal notranslate"><span class="pre">x</span></code> to <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">fn</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Evaluate polynomial function&quot;&quot;&quot;</span>
-    
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Task 1: For loop with a defined number of iterations</span>
+<span class="c1"># Initial end points</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="mf">3.0</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="mf">6.0</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">bisection</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">tol</span><span class="p">,</span> <span class="n">max_it</span><span class="p">):</span>
-    <span class="c1"># YOUR CODE HERE</span>
-    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">...</span><span class="p">):</span>
+    <span class="o">...</span>
+<span class="n">ans1</span> <span class="o">=</span> <span class="p">[</span><span class="n">x_mid</span><span class="p">,</span> <span class="n">f</span><span class="p">]</span> <span class="c1"># store answers in the list</span>
+<span class="c1"># Print the number of iterations, final x and final f value</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">ans1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ans1</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Test with max_it = 30</span>
-<span class="n">x</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span> <span class="n">num_it</span> <span class="o">=</span> <span class="n">bisection</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1.0e-6</span><span class="p">,</span> <span class="n">max_it</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
-
-<span class="c1"># Test with max_it = 20</span>
-<span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">RuntimeError</span><span class="p">):</span>
-    <span class="n">x</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span> <span class="n">num_it</span> <span class="o">=</span> <span class="n">bisection</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1.0e-6</span><span class="p">,</span> <span class="n">max_it</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="nb">round</span><span class="p">(</span><span class="n">ans1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mf">4.534149169921875</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mf">0.0</span>
+<span class="k">assert</span> <span class="nb">abs</span><span class="p">(</span><span class="n">ans1</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">&lt;</span> <span class="mf">0.0009</span>
 </pre></div>
 </div>
 </div>
 </div>
-<section id="newton-raphson">
-<h2>Newton-Raphson<a class="headerlink" href="#newton-raphson" title="Permalink to this heading">#</a></h2>
-<div class="cell docutils container">
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">dfn</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Evaluate the derivation of the function&quot;&quot;&quot;</span>
-    
-<span class="k">def</span><span class="w"> </span><span class="nf">newton_raphson</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">tol</span><span class="p">,</span> <span class="n">max_it</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Newton Raphson iterations&quot;&quot;&quot;</span>
-    <span class="c1"># YOUR CODE HERE</span>
-    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Task 2: For loop with a defined tolerance</span>
+<span class="c1"># Initial end points</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="mf">3.0</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="mf">6.0</span>
+<span class="n">tol</span> <span class="o">=</span> <span class="mf">1.0e-6</span>
+
+<span class="n">n_iter</span> <span class="o">=</span> <span class="o">...</span> <span class="c1">#number of iteration</span>
+<span class="n">ans2</span> <span class="o">=</span> <span class="p">[</span><span class="n">x_mid</span><span class="p">,</span> <span class="n">f</span><span class="p">]</span> <span class="c1"># store answers in the list</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">n_iter</span><span class="p">,</span> <span class="n">ans2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ans2</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> 
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Test with max_it = 30</span>
-<span class="n">x</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span> <span class="n">num_it</span> <span class="o">=</span> <span class="n">newton_raphson</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">dfn</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1.0e-6</span><span class="p">,</span> <span class="n">max_it</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
-
-<span class="c1"># Test with max_it to fail</span>
-<span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">RuntimeError</span><span class="p">):</span>
-    <span class="n">x</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span> <span class="n">num_it</span> <span class="o">=</span> <span class="n">newton_raphson</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">dfn</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1.0e-6</span><span class="p">,</span> <span class="n">max_it</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">n_iter</span> <span class="o">==</span> <span class="mi">23</span>
+<span class="k">assert</span> <span class="nb">round</span><span class="p">(</span><span class="n">ans2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mf">4.534149169921875</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="mf">0.0</span>
+<span class="k">assert</span> <span class="nb">abs</span><span class="p">(</span><span class="n">ans2</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">&lt;</span> <span class="mf">1.0e-6</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="fixed-point-iteration">
-<h2>Fixed-point iteration<a class="headerlink" href="#fixed-point-iteration" title="Permalink to this heading">#</a></h2>
-<p>Usually a formula for finding the root of an equation can be found by rearranging <span class="math notranslate nohighlight">\(f(x) = 0\)</span> to be: <span class="math notranslate nohighlight">\(x = g(x)\)</span> and then using the computation formula: $<span class="math notranslate nohighlight">\( x_{i+1} = g(x_i)\)</span>$ to solve for succesively more accurate approximations of the root.</p>
-<p>Consider: <span class="math notranslate nohighlight">\(f(x) = x^2 - 4\sin(x) =0 \)</span> can be rearranged as <span class="math notranslate nohighlight">\(x = g(x) = 4\frac{\sin(x)}{x}\)</span>. So the computational formula is $<span class="math notranslate nohighlight">\( x_{i+1} = g(x_i) = 4\frac{\sin(x_i)}{x_i}\)</span>$</p>
-<p>We could solve the equations for <span class="math notranslate nohighlight">\(x\)</span> stating at an initial guess of <span class="math notranslate nohighlight">\(x = x_0\)</span>. The relative approximation error is computed as:</p>
-<p>$<span class="math notranslate nohighlight">\(\eta = \left|\frac{x_{i+1} - x_i}{x_{i+1}}\right| &lt; \varepsilon\)</span>$.</p>
-<div class="cell docutils container">
+</section>
+<section id="exercise-02-series-expansion">
+<h1>Exercise 02 (series expansion)<a class="headerlink" href="#exercise-02-series-expansion" title="Permalink to this heading">#</a></h1>
+<p>The power series expansion for the sine function is:</p>
+<div class="math notranslate nohighlight">
+\[
+\sin(x) = \sum_{n = 0}^{\infty} (-1)^n \frac{x^{2n +1}}{(2n+1)!}
+\]</div>
+<p>(See mathematics data book for a less compact version; this compact version is preferred here as it is simpler to program.)</p>
+<ol class="arabic simple">
+<li><p>Using a <code class="docutils literal notranslate"><span class="pre">for</span></code> statement, approximate <span class="math notranslate nohighlight">\(\sin(3\pi/2)\)</span> using 15 terms in the series expansion and report the absolute error.</p></li>
+<li><p>Using a <code class="docutils literal notranslate"><span class="pre">for</span></code> statement, compute how many terms in the series are required to approximate <span class="math notranslate nohighlight">\(\sin(3\pi/2)\)</span> to within <span class="math notranslate nohighlight">\(1 \times 10^{-8}\)</span>.</p></li>
+</ol>
+<p>Store the absolute value of the error in the variable <code class="docutils literal notranslate"><span class="pre">error_1</span></code> and <code class="docutils literal notranslate"><span class="pre">error_2</span></code>.</p>
+<p><em>Note:</em> Calculators and computers use iterative or series expansions to compute trigonometric functions, similar to the one above (although they use more efficient formulations than the above series).</p>
+<section id="hints">
+<h2>Hints<a class="headerlink" href="#hints" title="Permalink to this heading">#</a></h2>
+<p>To compute the factorial and to get a good approximation of <span class="math notranslate nohighlight">\(\pi\)</span>, use the Python <code class="docutils literal notranslate"><span class="pre">math</span></code> module:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="n">nfact</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">pi</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span>
+</pre></div>
+</div>
+<p>You only need ‘<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">math</span></code>’ once at the top of your program. Standard modules, like <code class="docutils literal notranslate"><span class="pre">math</span></code>, will be explained in a later. If you want to test for angles for which sine is not simple, you can use</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">1.3</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>to get an accurate computation of sine to check the absolute error.</p>
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">fixed_point</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">tol</span><span class="p">,</span> <span class="n">max_it</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fixed point iterations&quot;&quot;&quot;</span>
-    <span class="c1"># YOUR CODE HERE</span>
-    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import the math module to access math.sin and math.factorial</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="c1"># Value at which to approximate sine</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mf">1.5</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span>
+
+<span class="c1"># Initialise approximation of sine</span>
+<span class="n">approx_sin</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+<span class="c1"># YOUR CODE HERE</span>
+<span class="o">...</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The error is:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">error_1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Test with max_it = 30</span>
-<span class="n">x</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span> <span class="n">num_it</span> <span class="o">=</span> <span class="n">fixed_point</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1.0e-6</span><span class="p">,</span> <span class="n">max_it</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">error_1</span> <span class="o">&lt;</span> <span class="mf">1.0e-12</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_otter_answer_cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import the math module to access math.sin and math.factorial</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
 
-<span class="c1"># Test with max_it to fail</span>
-<span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">RuntimeError</span><span class="p">):</span>
-    <span class="n">x</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span> <span class="n">num_it</span> <span class="o">=</span> <span class="n">fixed_point</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1.0e-6</span><span class="p">,</span> <span class="n">max_it</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="c1"># Value at which to approximate sine</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mf">1.5</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span>
+
+<span class="c1"># Tolerance and initial error (this just needs to be larger than tol)</span>
+<span class="n">tol</span> <span class="o">=</span> <span class="mf">1.0e-8</span>
+<span class="n">error_2</span> <span class="o">=</span> <span class="n">tol</span> <span class="o">+</span> <span class="mf">1.0</span>
+
+<span class="c1"># Intialise approximation of sine</span>
+<span class="n">approx_sin</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+<span class="c1"># Initialise counter</span>
+<span class="n">n_term</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># Loop until error satisfies tolerance or a fixed number of iterations is reached</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1001</span><span class="p">):</span>
+    
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+    
+    
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The error is:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">error_2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of terms in series:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">n_term</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_otter_answer_cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">error_2</span> <span class="o">&lt;=</span> <span class="mf">1.0e-8</span>
+<span class="k">assert</span> <span class="n">n_term</span> <span class="o">==</span> <span class="mi">12</span>
 </pre></div>
 </div>
 </div>
@@ -608,7 +663,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./notebooks/lab/05_exceptions_root"
+            path: "./notebooks/lab/02_roots_errors"
         },
         predefinedOutput: true
     }
@@ -640,13 +695,12 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lab 05 Error checking</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-05-0-checking-data-validity">Lab 05.0 (checking data validity)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exercise 02 (bisection)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task">Task</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-05-1-raising-exceptions">Exercise 05.1 (raising exceptions)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-raphson">Newton-Raphson</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fixed-point-iteration">Fixed-point iteration</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-02-series-expansion">Exercise 02 (series expansion)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hints">Hints</a></li>
 </ul>
 </li>
 </ul>

@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Submission &#8212; Introduction to Programming with Python</title>
+    <title>&lt;no title&gt; &#8212; Introduction to Programming with Python</title>
   
   
   
@@ -419,7 +419,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -430,11 +432,19 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Submission</h1>
+    <h1><no title></h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -444,16 +454,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize Otter</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">otter</span>
-<span class="n">grader</span> <span class="o">=</span> <span class="n">otter</span><span class="o">.</span><span class="n">Notebook</span><span class="p">(</span><span class="s2">&quot;03_functions.ipynb&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<center><h2> Assignment 03: Functions and modules </h2></center>
+  <center><h2> Assignment 03: Functions and modules </h2></center>
 <p>Note: Please upload your solution as an ipynb file to Gradescope.</p>
 <p>The purpose of this assignment is to develop your skills in writing functions and modules.</p>
 <p><strong>Question 1:</strong><br>
@@ -475,11 +476,11 @@ Write a function to solve for the deflection of a beam supporting a uniformly di
 \begin{align*}
 q &amp; = 4000 ~lb/ft\
 L &amp; = 20 ~ft\
-EI &amp; = 1.2x10^8 ~lb.ft^2
-\end{align*}
+EI &amp; = 1.2<em>10^8 ~lb.ft^2
+\end{align</em>}
 Using these values, obtain the deflection at 3 locations: <span class="math notranslate nohighlight">\(x = L/4, L/2, 3L/4\)</span> for both simply supported and fixed end beams.<br>
 <strong>HINT</strong>: Specify an argument called <em>fixity_type</em>. The input for this argument is a string, either “simply supported” or “fixed end”. Use this argument with if/else statement to check which equation to use.</p>
-<div class="cell docutils container">
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#fixity_type</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">beam_deflection</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">fixity_type</span><span class="o">=</span><span class="s1">&#39;simply supported&#39;</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">4000</span><span class="p">,</span> <span class="n">EI</span><span class="o">=</span><span class="mf">1.2e8</span><span class="p">):</span>
@@ -489,27 +490,18 @@ Using these values, obtain the deflection at 3 locations: <span class="math notr
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&quot;q1&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p><strong>Question 2-1:</strong><br>
 Create a user defined function called <strong>bisection</strong> that implements the Bisection Method for computing the roots of equations. The equation that is to be solved should be defined in a separate user defined function called <strong>fn</strong> and this function should be used within the bisection function. Use the bisection function within a Python script to find a root of an equation (see below). The arguments for the bisection function should be the initial guesses for <span class="math notranslate nohighlight">\(x0\)</span> and <span class="math notranslate nohighlight">\(x1\)</span>.  The returned values from the bisection function should be <strong>the identified root, the number of iterations it took to obtain the root, and the error</strong>.</p>
-<p>Your bisection function should stop iterating on the root when the approximate error (<span class="math notranslate nohighlight">\(\varepsilon_a\)</span>) is less than 0.01%.</p>
+<p>Your bisection function should stop iterating on the root when the approximate error <span class="math notranslate nohighlight">\(\varepsilon_a\)</span>, which is <span class="math notranslate nohighlight">\(abs(fn(x*))\)</span>, is less than <span class="math notranslate nohighlight">\(1e-4\)</span>.</p>
 <p>Your program should contain extensive error checking. At a minimum, it must include the following features:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(a) If the initial guesses are for an invalid range, then your program should return an error message.
-(b) If the number of iterations it takes to converge to a solution exceeds 300, your program should produce an error message indicating that the solution could not be found within the specified number of iterations.
-</pre></div>
-</div>
+<p>(a) If the initial guesses are for an invalid range, then your program should return an <code class="docutils literal notranslate"><span class="pre">Value</span> <span class="pre">error</span></code> message.
+(b) If the number of iterations it takes to converge to a solution exceeds 300, your program should produce an <code class="docutils literal notranslate"><span class="pre">Runtime</span> <span class="pre">error</span></code> message indicating that the solution could not be found within the specified number of iterations.</p>
 <p>When debugging your program it is important to solve a problem for which you know the answer. Use the simple polynomial for the accelerating car (given below):
 \begin{equation*}
 f(t) = 0.5 * a * t^2 + v_0 * t - d
 \end{equation*}
 Specify, <span class="math notranslate nohighlight">\(a = 0.6m/s^2\)</span>, <span class="math notranslate nohighlight">\(v_0 = 4.5 m/s\)</span>, and <span class="math notranslate nohighlight">\(d=50m\)</span> and the approximate solution for the root is at <span class="math notranslate nohighlight">\(t\approx7.43s\)</span>.</p>
-<div class="cell docutils container">
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">fn</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">v0</span><span class="o">=</span><span class="mf">4.5</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
     <span class="o">...</span>
@@ -520,54 +512,45 @@ Specify, <span class="math notranslate nohighlight">\(a = 0.6m/s^2\)</span>, <sp
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">round</span><span class="p">(</span><span class="n">fn</span><span class="p">(</span><span class="mf">7.43</span><span class="p">),</span> <span class="mi">9</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bisection</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<p><strong>Question 2-2</strong>: Raise an error message.</p>
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&quot;q2-1&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bisection</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span> <span class="c1"># should raise ValueError</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>Question 2-2</strong>: Raise an error message. <em>This part will be manually graded.</em></p>
-<!-- BEGIN QUESTION -->
-<div class="cell docutils container">
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bisection</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bisection</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">1e100</span><span class="p">)</span> <span class="c1"># should raise RuntimeError</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bisection</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">1e100</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<!-- END QUESTION -->
 <p><strong>Question 3:</strong><br>
 Develop Python functions that computes the following.</p>
-<ol type="a">
-    <li>utmath_max(a, b)</li>
-    <li>utmath_min(a, b)</li>
-    <li>utmath_abs(x)</li>
-    <li>utmath_sin(x, tolerance) (using an approximate solution for $\sin$ with a default argument of $1e-6$ of tolerance. x is in radians)</li>
-    <li>utmath_cos(x, tolerance) (using an approximate solution for $\cos$ with a default argument of $1e-3$ of tolerance. x is in radians)</li>
-</ol>
-Using the defined modules compute the following:
+<ul class="simple">
+<li><p>utmath_max(a, b)</p></li>
+<li><p>utmath_min(a, b)</p></li>
+<li><p>utmath_abs(x)</p></li>
+<li><p>utmath_sin(x, tolerance) (using an approximate solution for <span class="math notranslate nohighlight">\(\sin\)</span> with a default argument of <code class="docutils literal notranslate"><span class="pre">1e-6</span></code> of tolerance. x is in radians)</p></li>
+<li><p>utmath_cos(x, tolerance) (using an approximate solution for <span class="math notranslate nohighlight">\(\cos\)</span> with a default argument of <code class="docutils literal notranslate"><span class="pre">1e-3</span></code> of tolerance. x is in radians)
+Using the defined modules compute the following:</p></li>
+</ul>
 <ol type="a">
     <li>utmath_max(5, 3)</li>
     <li>utmath_min(-3, -7)</li>
@@ -576,7 +559,7 @@ Using the defined modules compute the following:
     <li>utmath_sin(0.5, 1e-8)</li>
     <li>utmath_cos(1.5)</li>
     <li>utmath_cos(1.5, 1e-6)</li>
-</ol><div class="cell docutils container">
+</ol><div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">utmath_max</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
@@ -585,75 +568,55 @@ Using the defined modules compute the following:
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">utmath_max</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">utmath_min</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">utmath_abs</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">utmath_sin</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">utmath_sin</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1e-9</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">utmath_cos</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">utmath_cos</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1e-6</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&quot;q3&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<section id="submission">
-<h1>Submission<a class="headerlink" href="#submission" title="Permalink to this heading">#</a></h1>
-<p>Make sure you have run all cells in your notebook in order before running the cell below, so that all images/graphs appear in the output. The cell below will generate a zip file for you to submit. <strong>Please save before exporting!</strong></p>
-<p>These are some submission instructions.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save your notebook first, then run this cell to export your submission.</span>
-<span class="n">grader</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="n">run_tests</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -691,6 +654,20 @@ Using the defined modules compute the following:
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>

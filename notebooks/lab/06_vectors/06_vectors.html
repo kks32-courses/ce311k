@@ -448,7 +448,6 @@ document.write(`
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-07-2-member-functions">Exercise 07.2 (member functions)</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-07-3-angle-between-two-vectors">Exercise 07.3 (angle between two vectors)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a></li>
 </ul>
 
             </nav>
@@ -462,15 +461,6 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize Otter</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">otter</span>
-<span class="n">grader</span> <span class="o">=</span> <span class="n">otter</span><span class="o">.</span><span class="n">Notebook</span><span class="p">(</span><span class="s2">&quot;06_vectors.ipynb&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
@@ -499,7 +489,7 @@ the timing). The values of the array entries are not important for this test. Us
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Add two vectors using built-in addition operator and test using a random vector of size 1,000,000:</span>
 <span class="c1"># generate two &#39;random&#39; vectors of size 1,000,000:</span>
@@ -511,7 +501,7 @@ the timing). The values of the array entries are not important for this test. Us
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Add two vectors using own implementation:</span>
 <span class="n">x</span> <span class="o">=</span> <span class="o">...</span>
@@ -593,7 +583,7 @@ the timing). The values of the array entries are not important for this test. Us
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># use your adder function with jit compilation</span>
 <span class="nd">@numba</span><span class="o">.</span><span class="n">jit</span>
@@ -605,7 +595,7 @@ the timing). The values of the array entries are not important for this test. Us
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">time</span> z = adder_jit(x,y)
 </pre></div>
@@ -636,7 +626,7 @@ the first and the last entries.</p>
 </pre></div>
 </div>
 <p>to test your functions.</p>
-<div class="cell docutils container">
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">to_percentage_and_sort</span><span class="p">(</span><span class="n">scores</span><span class="p">):</span>
     <span class="o">...</span>
@@ -648,7 +638,7 @@ the first and the last entries.</p>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">58.0</span><span class="p">,</span> <span class="mf">35.0</span><span class="p">,</span> <span class="mf">24.0</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mf">7.8</span><span class="p">])</span>
 <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">to_percentage_and_sort</span><span class="p">(</span><span class="n">scores</span><span class="p">),</span> <span class="p">[</span> <span class="mf">13.0</span><span class="p">,</span> <span class="mf">40.0</span><span class="p">,</span> <span class="mf">58.33333333</span><span class="p">,</span>  <span class="mf">70.0</span><span class="p">,</span> <span class="mf">96.66666667</span><span class="p">])</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
@@ -676,20 +666,13 @@ the first and the last entries.</p>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&quot;q2&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 </section>
 <section id="exercise-07-3-angle-between-two-vectors">
 <h1>Exercise 07.3 (angle between two vectors)<a class="headerlink" href="#exercise-07-3-angle-between-two-vectors" title="Permalink to this heading">#</a></h1>
 <p>Compute the angle between two vectors <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>. Using:
 $<span class="math notranslate nohighlight">\(\alpha = \cos^{-1}\left( \frac{a \cdot b}{|a| \cdot |b|} \right)\)</span>$</p>
 <p>Where <span class="math notranslate nohighlight">\(|a|\)</span> is the magnitude of the vector.</p>
-<div class="cell docutils container">
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your CODE HERE</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">angle_between_vectors</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
@@ -704,20 +687,8 @@ $<span class="math notranslate nohighlight">\(\alpha = \cos^{-1}\left( \frac{a \
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&quot;q3&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="submission">
-<h1>Submission<a class="headerlink" href="#submission" title="Permalink to this heading">#</a></h1>
-<p>Make sure you have run all cells in your notebook in order before running the cell below, so that all images/graphs appear in the output. The cell below will generate a zip file for you to submit. <strong>Please save before exporting!</strong></p>
-<p>These are some submission instructions.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save your notebook first, then run this cell to export your submission.</span>
-<span class="n">grader</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="n">run_tests</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">angle</span> <span class="o">=</span> <span class="n">angle_between_vectors</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="k">assert</span> <span class="nb">round</span><span class="p">(</span><span class="n">angle</span> <span class="o">-</span> <span class="mf">0.367208</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="mf">0.0</span>
 </pre></div>
 </div>
 </div>
@@ -775,7 +746,6 @@ $<span class="math notranslate nohighlight">\(\alpha = \cos^{-1}\left( \frac{a \
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-07-2-member-functions">Exercise 07.2 (member functions)</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-07-3-angle-between-two-vectors">Exercise 07.3 (angle between two vectors)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a></li>
 </ul>
 
   </nav></div>

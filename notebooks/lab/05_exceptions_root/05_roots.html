@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Exercise 05.1 &#8212; Introduction to Programming with Python</title>
+    <title>Exercise 05 Error checking &#8212; Introduction to Programming with Python</title>
   
   
   
@@ -432,7 +432,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Exercise 05.1</h1>
+    <h1>Exercise 05 Error checking</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -442,11 +442,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exercise 05.1</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exercise 05 Error checking</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-05-0-checking-data-validity">Exercise 05.0 (checking data validity)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-05-1-raising-exceptions">Exercise 05.1 (raising exceptions)</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fixed-point-iteration">Fixed-point iteration</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a></li>
 </ul>
 
             </nav>
@@ -459,29 +462,60 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="cell docutils container">
+  <section id="exercise-05-error-checking">
+<h1>Exercise 05 Error checking<a class="headerlink" href="#exercise-05-error-checking" title="Permalink to this heading">#</a></h1>
+<section id="exercise-05-0-checking-data-validity">
+<h2>Exercise 05.0 (checking data validity)<a class="headerlink" href="#exercise-05-0-checking-data-validity" title="Permalink to this heading">#</a></h2>
+<p>The Fibonacci series is valid only for <span class="math notranslate nohighlight">\(n \ge 0\)</span>. Add to the Fibonacci function in this notebook a check that raises an exception if <span class="math notranslate nohighlight">\(n &lt; 0\)</span>. Try some invalid data cases to check that an exception is raised.</p>
+<p><em>Optional:</em> Use <code class="docutils literal notranslate"><span class="pre">pytest</span></code> to test that an exception <em>is</em> raised for some <span class="math notranslate nohighlight">\(n &lt; 0\)</span> cases.</p>
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize Otter</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">otter</span>
-<span class="n">grader</span> <span class="o">=</span> <span class="n">otter</span><span class="o">.</span><span class="n">Notebook</span><span class="p">(</span><span class="s2">&quot;05_roots.ipynb&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your function should be able to &quot;raise&quot; error messages when the input is invalid.</span>
+<span class="c1"># &quot;raise&quot; ValueError messages, not &quot;print&quot;</span>
+<span class="c1"># &quot;raise&quot; ValueError messages, not &quot;print&quot;</span>
+<span class="c1"># &quot;raise&quot; ValueError messages, not &quot;print&quot;</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="o">...</span>
 </pre></div>
 </div>
 </div>
 </div>
-<section id="exercise-05-1">
-<h1>Exercise 05.1<a class="headerlink" href="#exercise-05-1" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Perform some tests    </span>
+<span class="k">assert</span> <span class="n">fibonacci</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">assert</span> <span class="n">fibonacci</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="k">assert</span> <span class="n">fibonacci</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="k">assert</span> <span class="n">fibonacci</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+<span class="k">assert</span> <span class="n">fibonacci</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mi">55</span>
+<span class="k">assert</span> <span class="n">fibonacci</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span> <span class="o">==</span> <span class="mi">610</span>
+
+<span class="c1"># Check that ValueError is raised for n &lt; 0</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+<span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+    <span class="n">fibonacci</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># Check that ValueError is raised for n is not an integer</span>
+<span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+    <span class="n">fibonacci</span><span class="p">(</span><span class="mf">2.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="exercise-05-1-raising-exceptions">
+<h1>Exercise 05.1 (raising exceptions)<a class="headerlink" href="#exercise-05-1-raising-exceptions" title="Permalink to this heading">#</a></h1>
 <p>Write root finding functions using (bisection method, Newton Raphson and fixed point iteration) to raise an error if the maximum number of iterations is exceeded. Reduce the maximum allowed iterations to test that an exception is raised.</p>
 <p>Add any other checks on the input data that you think are appropriate.</p>
 <p>Compute the roots of the following Polynomial function <span class="math notranslate nohighlight">\( x^3 - 6x^2 + 4x + 12\)</span>  using:</p>
 <ul class="simple">
 <li><p>Bisection method</p></li>
 <li><p>Newton Raphson iterations</p></li>
-<li><p>Fixed point iteration</p></li>
 </ul>
 <p><em>HINT</em> <br>
 raise ValueError for invalid initial guess(x0,x1) of bisection method<br>
 raise RuntimeError for max iteration exceeded</p>
-<div class="cell docutils container">
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">fn</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="o">...</span>
@@ -516,6 +550,15 @@ raise RuntimeError for max iteration exceeded</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Test with max_it = 20</span>
+<span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">RuntimeError</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span> <span class="n">num_it</span> <span class="o">=</span> <span class="n">bisection</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1.0e-6</span><span class="p">,</span> <span class="n">max_it</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Newton-Raphson</span>
 <span class="c1"># Test with max_it = 30</span>
 <span class="n">x</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span> <span class="n">num_it</span> <span class="o">=</span> <span class="n">newton_raphson</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">dfn</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1.0e-6</span><span class="p">,</span> <span class="n">max_it</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
@@ -527,7 +570,9 @@ raise RuntimeError for max iteration exceeded</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&quot;q1&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Test with max_it to fail</span>
+<span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">RuntimeError</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span> <span class="n">num_it</span> <span class="o">=</span> <span class="n">newton_raphson</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">dfn</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1.0e-6</span><span class="p">,</span> <span class="n">max_it</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -537,8 +582,9 @@ raise RuntimeError for max iteration exceeded</p>
 <p>Usually a formula for finding the root of an equation can be found by rearranging <span class="math notranslate nohighlight">\(f(x) = 0\)</span> to be: <span class="math notranslate nohighlight">\(x = g(x)\)</span> and then using the computation formula: $<span class="math notranslate nohighlight">\( x_{i+1} = g(x_i)\)</span>$ to solve for succesively more accurate approximations of the root.</p>
 <p>Consider: <span class="math notranslate nohighlight">\(f(x) = x^2 - 4\sin(x) =0 \)</span> can be rearranged as <span class="math notranslate nohighlight">\(x = g(x) = 4\frac{\sin(x)}{x}\)</span>. So the computational formula is $<span class="math notranslate nohighlight">\( x_{i+1} = g(x_i) = 4\frac{\sin(x_i)}{x_i}\)</span>$</p>
 <p>We could solve the equations for <span class="math notranslate nohighlight">\(x\)</span> stating at an initial guess of <span class="math notranslate nohighlight">\(x = x_0\)</span>. The relative approximation error is computed as:</p>
-<p>$<span class="math notranslate nohighlight">\(\eta = \left|\frac{x_{i+1} - x_i}{x_{i+1}}\right| &lt; \varepsilon\)</span>$.</p>
-<div class="cell docutils container">
+<p><span class="math notranslate nohighlight">\(\eta = \left|\frac{x_{i+1} - x_i}{x_{i+1}}\right| &lt; \varepsilon\)</span>.</p>
+<p>Compute one of the roots of function <span class="math notranslate nohighlight">\( x^3 - 6x^2 + 4x + 12\)</span> using Fixed-point iteration approach</p>
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">fixed_point</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">tol</span><span class="p">,</span> <span class="n">max_it</span><span class="p">):</span>
     <span class="o">...</span>
@@ -560,25 +606,14 @@ raise RuntimeError for max iteration exceeded</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&quot;q2&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Test with max_it to fail</span>
+<span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">RuntimeError</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span> <span class="n">num_it</span> <span class="o">=</span> <span class="n">fixed_point</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1.0e-6</span><span class="p">,</span> <span class="n">max_it</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-</section>
-<section id="submission">
-<h1>Submission<a class="headerlink" href="#submission" title="Permalink to this heading">#</a></h1>
-<p>Make sure you have run all cells in your notebook in order before running the cell below, so that all images/graphs appear in the output. The cell below will generate a zip file for you to submit. <strong>Please save before exporting!</strong></p>
-<p>These are some submission instructions.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save your notebook first, then run this cell to export your submission.</span>
-<span class="n">grader</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="n">run_tests</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -626,11 +661,14 @@ raise RuntimeError for max iteration exceeded</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exercise 05.1</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exercise 05 Error checking</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-05-0-checking-data-validity">Exercise 05.0 (checking data validity)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-05-1-raising-exceptions">Exercise 05.1 (raising exceptions)</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fixed-point-iteration">Fixed-point iteration</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a></li>
 </ul>
 
   </nav></div>

@@ -449,7 +449,6 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q3">Q3</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a></li>
 </ul>
             </nav>
         </div>
@@ -461,30 +460,20 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize Otter</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">otter</span>
-<span class="n">grader</span> <span class="o">=</span> <span class="n">otter</span><span class="o">.</span><span class="n">Notebook</span><span class="p">(</span><span class="s2">&quot;04_taylor_newton.ipynb&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<section class="tex2jax_ignore mathjax_ignore" id="assignment-04-taylor-series-and-newton-raphson">
+  <section class="tex2jax_ignore mathjax_ignore" id="assignment-04-taylor-series-and-newton-raphson">
 <h1>Assignment 04: Taylor series and Newton Raphson<a class="headerlink" href="#assignment-04-taylor-series-and-newton-raphson" title="Permalink to this heading">#</a></h1>
 <p>The purpose of this assignment is to develop your skills in creating approximate functions using Taylor series and find roots of functions using the Newton’s iterations.</p>
 <p>Taylor series expansion of
 <span class="math notranslate nohighlight">\( f(x) = sin(ax) \)</span> near 0, where a is a known constant:</p>
-<div class="math notranslate nohighlight">
-\[ax - \frac{a^3}{3!}x^3+ \frac{a^5}{5!}x^5 - \frac{a^7}{7!}x^7 + \cdots$$ or
-$$ \sum_{n = 0}^{\infty}\frac{a^{2n+1}(-1)^n}{(2n+1)!}x^{2n+1} \]</div>
+<p><span class="math notranslate nohighlight">\(ax - \frac{a^3}{3!}x^3+ \frac{a^5}{5!}x^5 - \frac{a^7}{7!}x^7 + \cdots\)</span> or
+<span class="math notranslate nohighlight">\( \sum_{n = 0}^{\infty}\frac{a^{2n+1}(-1)^n}{(2n+1)!}x^{2n+1} \)</span></p>
 <section id="q1">
 <h2>Q1<a class="headerlink" href="#q1" title="Permalink to this heading">#</a></h2>
 <p>Write the Taylor’s series expansion of the function <span class="math notranslate nohighlight">\(f(x)
 	= sin(ax)\)</span>
 near <span class="math notranslate nohighlight">\(x = 0\)</span>,
 where <span class="math notranslate nohighlight">\(a \ne 0\)</span> is a known constant. Write a Python function to compute the approximate solution and error. Compute the relative and absolute errors using <span class="math notranslate nohighlight">\(math.sin(ax)\)</span> as the exact answer.</p>
-<div class="cell docutils container">
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">taylor_sin_ax</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span> <span class="c1">#n define the number of terms of Taylor series used</span>
@@ -495,13 +484,6 @@ where <span class="math notranslate nohighlight">\(a \ne 0\)</span> is a known c
 <span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">taylor_sin_ax</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">taylor_sin_ax</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&quot;q1&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -517,7 +499,7 @@ where <span class="math notranslate nohighlight">\(a \ne 0\)</span> is a known c
 <section id="b">
 <h3>(b)<a class="headerlink" href="#b" title="Permalink to this heading">#</a></h3>
 <p>Using the Newton’s method, Start at <span class="math notranslate nohighlight">\(x_0 = 1\)</span> and compute <strong>the root and the error at the end of the the first three iterations</strong>. Compare the error against the bisection approach.</p>
-<div class="cell docutils container">
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># (a)</span>
 <span class="c1"># store the root and error in the variable &#39;root1&#39; and &#39;error1&#39;</span>
@@ -526,18 +508,11 @@ where <span class="math notranslate nohighlight">\(a \ne 0\)</span> is a known c
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># (b)</span>
 <span class="c1"># store the root and error in the variable &#39;root2&#39; and &#39;error2&#39;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">root2</span><span class="p">,</span> <span class="n">error2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&quot;q2&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -547,31 +522,11 @@ where <span class="math notranslate nohighlight">\(a \ne 0\)</span> is a known c
 <section id="q3">
 <h2>Q3<a class="headerlink" href="#q3" title="Permalink to this heading">#</a></h2>
 <p>Using the Newton-Raphson iteration find the <strong>root</strong> of the equation <span class="math notranslate nohighlight">\(\sqrt{x} + x^2 = 7\)</span>. With an initial guess of <span class="math notranslate nohighlight">\(x = 7\)</span> compute the <strong>number of iterations</strong> required for the error in the root to be below <span class="math notranslate nohighlight">\(1.0e^{-6}\)</span>.</p>
-<div class="cell docutils container">
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-6</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">root3</span><span class="p">,</span> <span class="n">num_iter</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&quot;q3&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="submission">
-<h2>Submission<a class="headerlink" href="#submission" title="Permalink to this heading">#</a></h2>
-<p>Make sure you have run all cells in your notebook in order before running the cell below, so that all images/graphs appear in the output. The cell below will generate a zip file for you to submit. <strong>Please save before exporting!</strong></p>
-<p>These are some submission instructions.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save your notebook first, then run this cell to export your submission.</span>
-<span class="n">grader</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="n">run_tests</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -631,7 +586,6 @@ where <span class="math notranslate nohighlight">\(a \ne 0\)</span> is a known c
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q3">Q3</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a></li>
 </ul>
   </nav></div>
 

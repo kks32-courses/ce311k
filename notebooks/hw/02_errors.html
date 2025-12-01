@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Submission &#8212; Introduction to Programming with Python</title>
+    <title>&lt;no title&gt; &#8212; Introduction to Programming with Python</title>
   
   
   
@@ -419,7 +419,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -430,11 +432,19 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Submission</h1>
+    <h1><no title></h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -444,22 +454,16 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize Otter</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">otter</span>
-<span class="n">grader</span> <span class="o">=</span> <span class="n">otter</span><span class="o">.</span><span class="n">Notebook</span><span class="p">(</span><span class="s2">&quot;02_errors.ipynb&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<center><h2> Assignment 02: Errors </h2></center>
+  <center><h2> Assignment 02: Errors </h2></center>
 <p>Note: Please upload your solution as an ipynb file to the Gradescope page.</p>
 <p><justify> The purpose of this assignment is to develop your skills in computing absolute and relative errors. Use 64 bit floating point representation unless otherwise specified (this is the default in Python).</justify></p>
 <p><strong>Question 1:</strong> <br>
 if <span class="math notranslate nohighlight">\(\vert x \vert &lt; 1\)</span> it is known that:</p>
-<center>$\frac{1}{1 - x} = 1 + x + x^2 + x^3 + \dots$<br></center>
-For this series, compute for $x = -0.1$ the absolute and relative errors for 3, 5 and 7 terms in the series.<div class="cell docutils container">
+<p>\begin{align*}
+\frac{1}{1 - x} = 1 + x + x^2 + x^3 + \dots
+\end{align*}</p>
+<p>For this series, compute for <span class="math notranslate nohighlight">\(x = -0.1\)</span> the absolute and relative errors for 3, 5 and 7 terms in the series.</p>
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">q1_abs_err</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1">#store the answers in order of absolute errors for 3, 5, and 7 terms</span>
 <span class="n">q1_rel_err</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1">#store the answers in order of relative errors for 3, 5, and 7 terms</span>
@@ -471,22 +475,15 @@ For this series, compute for $x = -0.1$ the absolute and relative errors for 3, 
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&quot;q1&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p><strong>Question 2:</strong> <br>
-Evaluate <span class="math notranslate nohighlight">\(e^{-5}\)</span> using two approaches:
-\begin{align*}
+Evaluate <span class="math notranslate nohighlight">\(e^{-5}\)</span> using two approaches:</p>
+<p>\begin{align*}
 e^{-x} &amp;  = 1 - x + \frac{x^2}{2!} - \frac{x^3}{3!} + \dots \
 \mathrm{and}\
 e^{-x} = \frac{1}{e^x} &amp; = \frac{1}{1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \dots}
 \end{align*}
 compare with the true value of <span class="math notranslate nohighlight">\(6.737947 \times 10^{-3}\)</span> for <span class="math notranslate nohighlight">\(x = 5\)</span>. Use 20 terms to evaluate each series and compute the absolute and relative errors.</p>
-<div class="cell docutils container">
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># store answers in the lists</span>
 <span class="n">q2_abs_err</span> <span class="o">=</span> <span class="p">[]</span> 
@@ -497,13 +494,6 @@ compare with the true value of <span class="math notranslate nohighlight">\(6.73
 <span class="c1"># print approach 2 errors</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;abs_err for approach 2: </span><span class="si">{</span><span class="n">q2_abs_err</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;rel_err for approach 2: </span><span class="si">{</span><span class="n">q2_rel_err</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&quot;q2&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -520,7 +510,7 @@ The function <span class="math notranslate nohighlight">\(\cos(x)\)</span> can b
 <li><p>iii. three terms in the expansion.<br></p></li>
 </ul>
 <p>(b) Compute the number of terms required to have a solution that is accurate for 10 significant figures.</p>
-<div class="cell docutils container">
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># store answers in the lists</span>
 <span class="n">q3_abs_err</span> <span class="o">=</span> <span class="p">[]</span>
@@ -536,13 +526,6 @@ The function <span class="math notranslate nohighlight">\(\cos(x)\)</span> can b
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&quot;q3&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p><strong>Question 4:</strong> <br>
 The infinite series
 \begin{equation*}
@@ -552,9 +535,11 @@ converges on a value of <span class="math notranslate nohighlight">\(f(n) = \pi^
 Write a program in single precision to calculate <span class="math notranslate nohighlight">\(f(n)\)</span> for <span class="math notranslate nohighlight">\(n = 10,000\)</span>
 by computing the sum from <span class="math notranslate nohighlight">\(i = 1\)</span> to <span class="math notranslate nohighlight">\(10,000\)</span>. Using 16, 32 and 64 bit floating point representations, compute the absolute errors.</p>
 <p><em>Hint</em>: use <em>np.float16(x)</em> to represent a variable <strong>x</strong> as a 16-bit floating point number. Use the same representation for both the variable used for the summation and inside the iteration loop.</p>
-<div class="cell docutils container">
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">q4_abs_err</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># store answers in order of the following results</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">q4_abs_err</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># store answers in order of the following results</span>
 
 <span class="c1">#use np.float16() inside iteration</span>
 <span class="n">sums</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -580,16 +565,9 @@ by computing the sum from <span class="math notranslate nohighlight">\(i = 1\)</
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&quot;q4&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p><strong>Question 5:</strong> <br>
 Let <span class="math notranslate nohighlight">\(x^* = x \pm \varepsilon_x\)</span> and <span class="math notranslate nohighlight">\(y^* =  y \pm \varepsilon_y\)</span> are the absolute errors associated with the variables. Compute the absolute error accumulation for the subtraction operation <span class="math notranslate nohighlight">\(x^* - y^*\)</span>. (Refer to error accumulation section in the handout).</p>
-<div class="cell docutils container">
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mf">9.99</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mf">9.98</span>
@@ -601,28 +579,14 @@ Let <span class="math notranslate nohighlight">\(x^* = x \pm \varepsilon_x\)</sp
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&quot;q5&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p><strong>Question 6:</strong> <br>
 Let <span class="math notranslate nohighlight">\(x^* = x (1 \pm \eta_x)\)</span> and <span class="math notranslate nohighlight">\(y^* =  y  (1 \pm \eta_y)\)</span> are the relative errors associated with the variables. What is the relative error of multiplication (<span class="math notranslate nohighlight">\(x^*y^*\)</span>). Assume <span class="math notranslate nohighlight">\(\eta_x\eta_y\)</span> is negligible as <span class="math notranslate nohighlight">\(\eta_x\)</span> and <span class="math notranslate nohighlight">\(\eta_y\)</span> are small enough.</p>
-<div class="cell docutils container">
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ηx</span> <span class="o">=</span> <span class="o">...</span>
 <span class="n">ηy</span> <span class="o">=</span> <span class="o">...</span>
 <span class="c1"># the relative error of multiplication</span>
 <span class="n">η</span> <span class="o">=</span> <span class="o">...</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&quot;q6&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -667,7 +631,7 @@ The recipe for deducing the square root of a number <span class="math notranslat
 </tr>
 </tbody>
 </table>
-<div class="cell docutils container">
+<div class="cell tag_otter_answer_cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">q7_rel_err</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># store the relative errors for x=16 and x=2**0.5</span>
 <span class="c1"># x = 16</span>
@@ -676,26 +640,6 @@ The recipe for deducing the square root of a number <span class="math notranslat
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&quot;q7&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<section id="submission">
-<h1>Submission<a class="headerlink" href="#submission" title="Permalink to this heading">#</a></h1>
-<p>Make sure you have run all cells in your notebook in order before running the cell below, so that all images/graphs appear in the output. The cell below will generate a zip file for you to submit. <strong>Please save before exporting!</strong></p>
-<p>These are some submission instructions.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save your notebook first, then run this cell to export your submission.</span>
-<span class="n">grader</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="n">run_tests</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -733,6 +677,20 @@ The recipe for deducing the square root of a number <span class="math notranslat
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>
